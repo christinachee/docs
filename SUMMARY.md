@@ -74,6 +74,10 @@
 * [Customer Support Link](customize/customer-support-link.md)
 * [Localization & UI Text](customize/localization.md)
 
+## Attack Protection
+
+* [Brute-force Protection](attack-protection/brute-force-protection.md)
+
 ## APIs
 
 * [API for Client Applications](apis/api-for-client-applications.md)

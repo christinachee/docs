@@ -10,7 +10,7 @@ You can view the audit log in the Portal, or retrieve logs using the [Admin API]
 
 The portal provides an interface for you to look up the log by event and date range.
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>View audit logs in the Portal</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption><p>View audit logs in the Portal</p></figcaption></figure>
 
 ### Retrieve with Admin API
 
