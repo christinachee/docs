@@ -28,6 +28,11 @@
 * [Local Development Setup](tutorials/local-setup/README.md)
   * [Cookie-based Authorization](tutorials/local-setup/local-cookie-based-web-setup.md)
 
+## How-To Guides <a href="#how-to-guide" id="how-to-guide"></a>
+
+* [Integrate](how-to-guide/integration/README.md)
+  * [Add custom fields to a JWT Access Token](how-to-guide/integration/add-custom-fields-to-a-jwt-access-token.md)
+
 ## Strategies
 
 * [User, Identity and Authenticator](strategies/user-identity-and-authenticator.md)
