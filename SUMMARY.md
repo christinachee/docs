@@ -4,9 +4,11 @@
 
 ## Get Started
 
-* [Choose your authentication approach](get-started/authentication-approach/README.md)
-  * [Token-based (Native mobile or Single-page app)](get-started/authentication-approach/token-based.md)
-  * [Cookie-based (Website or Single-page app)](get-started/authentication-approach/cookie-based.md)
+* [Start Building](get-started/start-building/README.md)
+  * [Native/Mobile App](get-started/start-building/native-mobile-app.md)
+  * [Single-Page App](get-started/start-building/single-page-app.md)
+  * [Regular Web App](get-started/start-building/regular-web-app.md)
+  * [Backend/API](get-started/start-building/backend-api.md)
 * [Web SDK](get-started/website.md)
 * [React Native SDK](get-started/react-native.md)
 * [Flutter SDK](get-started/flutter.md)
@@ -18,6 +20,9 @@
 * [Backend Integration](get-started/backend-integration/README.md)
   * [Validate JWT in your application server](get-started/backend-integration/jwt.md)
   * [Forward Authentication to Authgear Resolver Endpoint](get-started/backend-integration/nginx.md)
+* [Choose your authentication approach](get-started/authentication-approach/README.md)
+  * [Token-based (Native mobile or Single-page app)](get-started/authentication-approach/token-based.md)
+  * [Cookie-based (Website or Single-page app)](get-started/authentication-approach/cookie-based.md)
 
 ## tutorials
 

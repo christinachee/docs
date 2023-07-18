@@ -42,6 +42,6 @@ You can choose to protect against only the attempts from a single IP address or 
 
 #### Apply only to selected authenticators
 
-<figure><img src="../.gitbook/assets/image (7) (1).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (7).png" alt="" width="563"><figcaption></figcaption></figure>
 
 The brute-force protection do not only applies to password, it can also protect against other authenticator attempts.
