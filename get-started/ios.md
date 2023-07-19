@@ -23,7 +23,7 @@ From the Project listing, create a new Project or select an existing Project. Af
 3. Input the name of your application and select **Native App** as the application type. Click "Save".
 4. You will see a list of guides that can help you for setting up, then click "Next".
 
-![Create an application](../../.gitbook/assets/create-application-app-1.png)
+![Create an application](../.gitbook/assets/create-application-app-1.png)
 
 **Step 2: Configure the application**
 
@@ -31,13 +31,13 @@ From the Project listing, create a new Project or select an existing Project. Af
 2. Head back to Authgear Portal, fill in the Redirect URI that you have defined in the previous steps.
 3. Click "Save" in the top tool bar and keep the **Client ID**. You can also obtain it again from the Applications list later.
 
-![Edit an application](../../.gitbook/assets/edit-application-app.png)
+![Edit an application](../.gitbook/assets/edit-application-app.png)
 
 {% hint style="info" %}
-If you wish to [validate JSON Web Token (JWT) in your own application server](../../backend-integration/jwt/), turn on "Issue JWT as access token".\[^2] If you wish to [forward authentication requests to Authgear Resolver Endpoint](../../backend-integration/nginx/), leave this unchecked. See comparisons in [Backend Integration](../../backend-integration/).
+If you wish to [validate JSON Web Token (JWT) in your own application server](../backend-integration/jwt/), turn on "Issue JWT as access token".\[^2] If you wish to [forward authentication requests to Authgear Resolver Endpoint](../backend-integration/nginx/), leave this unchecked. See comparisons in [Backend Integration](../backend-integration/).
 {% endhint %}
 
-![](../../.gitbook/assets/application-jwt.png)
+![](../.gitbook/assets/application-jwt.png)
 {% endtab %}
 
 {% tab title="authgear.yaml (self-deployed)" %}
@@ -166,7 +166,7 @@ The value of `sessionState` can be `.unknown`, `.noSession` or `.authenticated`.
 
 ## Fetching User Info
 
-In some cases, you may need to obtain current user info through the SDK. (e.g. Display email address in the UI). Use the `fetchUserInfo` function to obtain the user info, see [example](../../integrate/user-profile.md#userinfo-endpoint).
+In some cases, you may need to obtain current user info through the SDK. (e.g. Display email address in the UI). Use the `fetchUserInfo` function to obtain the user info, see [example](../integrate/user-profile.md#userinfo-endpoint).
 
 ## Using the Access Token in HTTP Requests
 
@@ -215,8 +215,8 @@ authgear.logout { result in
 
 To protect your application server from unauthorized access. You will need to **integrate your backend with Authgear**.
 
-{% content-ref url="../backend-api/backend-integration.md" %}
-[backend-integration.md](../backend-api/backend-integration.md)
+{% content-ref url="backend-integration/" %}
+[backend-integration](backend-integration/)
 {% endcontent-ref %}
 
 ## iOS SDK Reference

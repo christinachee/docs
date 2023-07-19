@@ -26,7 +26,7 @@ Make sure the option **Issue JWT as access token** is enabled in your **Applicat
 3. On the **App Configuration** dashboard, locate the "**Access token**" section.
 4. Make the toggle **Issue JWT as access token** switch on.
 
-<figure><img src="../../.gitbook/assets/image (8).png" alt="" width="537"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (8) (1).png" alt="" width="537"><figcaption></figcaption></figure>
 
 ### Create a new Event Hook
 
@@ -36,7 +36,7 @@ With the use of Hooks, Authgear provides flexibility for adding custom logic to 
 2. **Add** a new **Blocking Event**.
 3. Choose the Block Hook **Type** as the _TypeSctipt_ and set the Event option to _JWT access token pre-create_. You will write a new Typescript function from scratch.
 
-<figure><img src="../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (9) (1).png" alt=""><figcaption></figcaption></figure>
 
 4. Click on **Edit Script** under the **Config** option.
 5. Copy and paste the following into the editor:
@@ -90,7 +90,7 @@ Open your **OpenID Auth App** configuration, and find **Client ID**, **Client Se
 
 <img src="../../.gitbook/assets/image (5).png" alt="" data-size="original">
 
-<img src="../../.gitbook/assets/image (3).png" alt="" data-size="original">
+<img src="../../.gitbook/assets/image (3) (1).png" alt="" data-size="original">
 
 **Step 2: Construct the authorization endpoint URL**
 
@@ -132,7 +132,7 @@ curl --request POST \
 
 Finally, we can debug the access token using the [JWT Debugger tool](https://jwt.io/) to see if the custom field and value we added previously are there inside the JWT payload.&#x20;
 
-![](../../.gitbook/assets/image.png)
+![](<../../.gitbook/assets/image (9).png>)
 
 \
 

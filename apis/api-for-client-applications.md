@@ -22,7 +22,7 @@ The endpoint serves as a resolver to check the access token or cookie in the req
 
 See the list of `x-authgear-` headers in the specs [here](https://github.com/authgear/authgear-server/blob/master/docs/specs/api-resolver.md).
 
-See implementation examples [here](../get-started/backend-api/nginx.md).
+See implementation examples [here](../get-started/backend-integration/nginx.md).
 
 ## /
 

@@ -13,10 +13,10 @@ Authgear consists of these major parts:
 * **Authgear server**
   * It is an OpenID Connect (OIDC) compatible authentication service
   * It provides wide range of authentication and user management features
-  * The [Authgear Resolver Endpoint](get-started/backend-api/nginx.md) or [JWT access tokens](get-started/backend-api/jwt.md) can be used to authenticate incoming requests
+  * The [Authgear Resolver Endpoint](get-started/backend-integration/nginx.md) or [JWT access tokens](get-started/backend-integration/jwt.md) can be used to authenticate incoming requests
 * **Authgear SDKs**
   * Used for developer to integrate Authgear into their apps. It can be used to perform user authentication, get the user profile, send authenticated requests
-  * Explore: [Web (JavaScript)](get-started/single-page-app/website.md), [React Native](get-started/native-mobile-app/react-native.md), [iOS](get-started/native-mobile-app/ios.md), [Android](get-started/native-mobile-app/android/), [Flutter](get-started/native-mobile-app/flutter.md), [Xamarin](get-started/native-mobile-app/xamarin.md)
+  * Explore: [Web (JavaScript)](get-started/single-page-app/website.md), [React Native](get-started/react-native.md), [iOS](get-started/ios.md), [Android](get-started/android/), [Flutter](get-started/flutter.md), [Xamarin](get-started/xamarin.md)
 * **Admin API**
   * For backend servers to perform administrative tasks. Most things about user management you can do in the Authgear Portal, you can do it with [Admin API](apis/admin-api/)
 * **Authgear Portal**

@@ -39,7 +39,7 @@ From the Project listing, create a new Project or select an existing Project. Af
 ![Edit an application](../../.gitbook/assets/edit-application-1.png)
 
 {% hint style="info" %}
-If you want to validate JWT access token in your server, under **Access Token**, turn on **Issue JWT as access token**. If you will forward incoming requests to Authgear Resolver Endpoint for authentication, leave this unchecked. See comparisons in [Backend Integration](../backend-api/backend-integration.md).
+If you want to validate JWT access token in your server, under **Access Token**, turn on **Issue JWT as access token**. If you will forward incoming requests to Authgear Resolver Endpoint for authentication, leave this unchecked. See comparisons in [Backend Integration](../backend-integration/).
 {% endhint %}
 
 ![](../../.gitbook/assets/application-jwt.png)
@@ -271,14 +271,14 @@ authgear
 
 ### Cookie-based authentication
 
-If you are using cookies, all requests from your applications under `*.yourdomain.com` to your application server will include the session cookie automatically. You can skip this section and see the next step: [Backend Integration](../backend-api/backend-integration.md)
+If you are using cookies, all requests from your applications under `*.yourdomain.com` to your application server will include the session cookie automatically. You can skip this section and see the next step: [Backend Integration](../backend-integration/)
 
 ## Next steps
 
 To protect your application server from unauthorized access. You will need to **integrate Authgear to your backend**.
 
-{% content-ref url="../backend-api/backend-integration.md" %}
-[backend-integration.md](../backend-api/backend-integration.md)
+{% content-ref url="../backend-integration/" %}
+[backend-integration](../backend-integration/)
 {% endcontent-ref %}
 
 ## JavaScript SDK Reference
