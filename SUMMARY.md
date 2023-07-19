@@ -4,39 +4,35 @@
 
 ## Get Started
 
-* [Start Building](get-started/start-building/README.md)
-  * [Native/Mobile App](get-started/start-building/native-mobile-app.md)
-  * [Single-Page App](get-started/start-building/single-page-app.md)
-  * [Regular Web App](get-started/start-building/regular-web-app.md)
-  * [Backend/API](get-started/start-building/backend-api.md)
-* [Web SDK](get-started/website.md)
-* [React Native SDK](get-started/react-native.md)
-* [Flutter SDK](get-started/flutter.md)
-* [Xamarin SDK](get-started/xamarin.md)
-* [Android SDK](get-started/android/README.md)
-  * [Android Kotlin coroutine support](get-started/android/coroutine-support.md)
-  * [Android OKHttp Interceptor Extension (Optional)](get-started/android/okhttp-interceptor-extension.md)
-* [iOS SDK](get-started/ios.md)
-* [Backend Integration](get-started/backend-integration/README.md)
-  * [Validate JWT in your application server](get-started/backend-integration/jwt.md)
-  * [Forward Authentication to Authgear Resolver Endpoint](get-started/backend-integration/nginx.md)
+* [Start Building](get-started/start-building.md)
+* [Single-Page App](get-started/single-page-app/README.md)
+  * [JavaScript (Web)](get-started/single-page-app/website.md)
+  * [React](get-started/single-page-app/react.md)
+  * [Angular](get-started/single-page-app/angular.md)
+  * [Vue](get-started/single-page-app/vue.md)
+* [Native/Mobile App](get-started/native-mobile-app/README.md)
+  * [iOS SDK](get-started/native-mobile-app/ios.md)
+  * [Android SDK](get-started/native-mobile-app/android/README.md)
+    * [Android Kotlin coroutine support](get-started/native-mobile-app/android/coroutine-support.md)
+    * [Android OKHttp Interceptor Extension (Optional)](get-started/native-mobile-app/android/okhttp-interceptor-extension.md)
+  * [Flutter SDK](get-started/native-mobile-app/flutter.md)
+  * [React Native SDK](get-started/native-mobile-app/react-native.md)
+  * [Xamarin SDK](get-started/native-mobile-app/xamarin.md)
+* [Regular Web App](get-started/regular-web-app.md)
+* [Backend/API](get-started/backend-api/README.md)
+  * [Backend Integration](get-started/backend-api/backend-integration.md)
+  * [Forward Authentication to Authgear Resolver Endpoint](get-started/backend-api/nginx.md)
+  * [Validate JWT in your application server](get-started/backend-api/jwt.md)
 * [Choose your authentication approach](get-started/authentication-approach/README.md)
   * [Token-based (Native mobile or Single-page app)](get-started/authentication-approach/token-based.md)
   * [Cookie-based (Website or Single-page app)](get-started/authentication-approach/cookie-based.md)
-
-## tutorials
-
-* [Single-Page App](tutorials/spa/README.md)
-  * [React Tutorial: User Auth with Authgear SDK](tutorials/spa/react.md)
-  * [Vue Tutorial: User Auth with Authgear SDK](tutorials/spa/vue.md)
-  * [Angular Tutorial: User Auth with Authgear SDK](tutorials/spa/angular.md)
-* [Local Development Setup](tutorials/local-setup/README.md)
-  * [Cookie-based Authorization](tutorials/local-setup/local-cookie-based-web-setup.md)
 
 ## How-To Guides <a href="#how-to-guide" id="how-to-guide"></a>
 
 * [Integrate](how-to-guide/integration/README.md)
   * [Add custom fields to a JWT Access Token](how-to-guide/integration/add-custom-fields-to-a-jwt-access-token.md)
+* [Authenticate](how-to-guide/authenticate/README.md)
+  * [Setup local development environment for Cookie-based authentication](how-to-guide/authenticate/local-cookie-based-web-setup.md)
 
 ## Strategies
 

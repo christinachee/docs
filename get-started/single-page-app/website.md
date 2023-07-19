@@ -2,7 +2,7 @@
 description: Integrate Authgear to your website with the Web SDK
 ---
 
-# Web SDK
+# JavaScript (Web)
 
 This guide provides instructions on integrating Authgear with a Web app. Supported browsers include:
 
@@ -22,29 +22,29 @@ From the Project listing, create a new Project or select an existing Project. Af
 **Step 1: Create an application in the Portal**
 
 1. Go to **Applications** on the left menu bar.
-1. Click **⊕Add Application** in the top tool bar.
-1. Input the name of your application and select the application type **Single Page Application** or **Traditional Web Application**. Click "Save".
-1. You will see a list of guides that can help you for setting up, then click "Next".
+2. Click **⊕Add Application** in the top tool bar.
+3. Input the name of your application and select the application type **Single Page Application** or **Traditional Web Application**. Click "Save".
+4. You will see a list of guides that can help you for setting up, then click "Next".
 
-![Create an application](<../.gitbook/assets/create-application-1.png>)
+![Create an application](../../.gitbook/assets/create-application-1.png)
 
 **Step 2: Configure the application**
 
 1. Decide the paths in your website that users will be redirected to after they have authenticated or logged out with Authgear.
-    - For after authentication (**Authorized Redirect URIs**). e.g.`https://yourdomain.com/after-authentication` , or `http://localhost:4000/after-authentication` for local development.
-    - For after logging out (**Post Logout Redirect URIs**). e.g.`https://yourdomain.com/after-logout` , or `http://localhost:4000/after-logout` for local development.
-1. Fill in the **Authorized Redirect URIs** and **Post Logout Redirect URIs** that you have defined in the previous steps.
-1. Click "Save" in the top tool bar and keep the **Client ID**. You can also obtain it again from the applications list later.
+   * For after authentication (**Authorized Redirect URIs**). e.g.`https://yourdomain.com/after-authentication` , or `http://localhost:4000/after-authentication` for local development.
+   * For after logging out (**Post Logout Redirect URIs**). e.g.`https://yourdomain.com/after-logout` , or `http://localhost:4000/after-logout` for local development.
+2. Fill in the **Authorized Redirect URIs** and **Post Logout Redirect URIs** that you have defined in the previous steps.
+3. Click "Save" in the top tool bar and keep the **Client ID**. You can also obtain it again from the applications list later.
 
-![Edit an application](<../.gitbook/assets/edit-application-1.png>)
+![Edit an application](../../.gitbook/assets/edit-application-1.png)
 
 {% hint style="info" %}
-If you want to validate JWT access token in your server, under **Access Token**, turn on **Issue JWT as access token**. If you will forward incoming requests to Authgear Resolver Endpoint for authentication, leave this unchecked. See comparisons in [Backend Integration](backend-integration/).
+If you want to validate JWT access token in your server, under **Access Token**, turn on **Issue JWT as access token**. If you will forward incoming requests to Authgear Resolver Endpoint for authentication, leave this unchecked. See comparisons in [Backend Integration](../backend-api/backend-integration.md).
 {% endhint %}
 
-![](<../.gitbook/assets/application-jwt.png>)
+![](../../.gitbook/assets/application-jwt.png)
 
-**Step 3: Setup a custom domain (Required for** [**Cookie-based authentication**](authentication-approach/cookie-based.md)**)**
+**Step 3: Setup a custom domain (Required for** [**Cookie-based authentication**](../authentication-approach/cookie-based.md)**)**
 
 1. Go to **Custom Domains**
 2. Add your custom domain in **Input New Domain**
@@ -203,11 +203,11 @@ if (sessionState === "AUTHENTICATED") {
 }
 ```
 
-The value of `sessionState` can be `UNKNOWN`, `NO_SESSION` or `AUTHENTICATED`. Initially the `sessionState` is `UNKNOWN`. After a call to `authgear.configure`, the session state would become `AUTHENTICATED` if a previous session was found, or `NO_SESSION` if such session was not found. 
+The value of `sessionState` can be `UNKNOWN`, `NO_SESSION` or `AUTHENTICATED`. Initially the `sessionState` is `UNKNOWN`. After a call to `authgear.configure`, the session state would become `AUTHENTICATED` if a previous session was found, or `NO_SESSION` if such session was not found.
 
 ## Fetching User Info
 
-In some cases, you may need to obtain current user info through the SDK. (e.g. Display email address in the UI). Use the `fetchUserInfo` function to obtain the user info, see [example](../integrate/user-profile.md#userinfo-endpoint). 
+In some cases, you may need to obtain current user info through the SDK. (e.g. Display email address in the UI). Use the `fetchUserInfo` function to obtain the user info, see [example](../../integrate/user-profile.md#userinfo-endpoint).
 
 ## Log the user out
 
@@ -271,14 +271,14 @@ authgear
 
 ### Cookie-based authentication
 
-If you are using cookies, all requests from your applications under `*.yourdomain.com` to your application server will include the session cookie automatically. You can skip this section and see the next step: [Backend Integration](backend-integration/)
+If you are using cookies, all requests from your applications under `*.yourdomain.com` to your application server will include the session cookie automatically. You can skip this section and see the next step: [Backend Integration](../backend-api/backend-integration.md)
 
 ## Next steps
 
 To protect your application server from unauthorized access. You will need to **integrate Authgear to your backend**.
 
-{% content-ref url="backend-integration/" %}
-[backend-integration](backend-integration/)
+{% content-ref url="../backend-api/backend-integration.md" %}
+[backend-integration.md](../backend-api/backend-integration.md)
 {% endcontent-ref %}
 
 ## JavaScript SDK Reference

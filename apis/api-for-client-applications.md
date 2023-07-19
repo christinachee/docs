@@ -1,4 +1,4 @@
-# API for Client Applications (OIDC 2.0)
+# API for Client Applications
 
 If your app is `myapp`, the endpoint of your app is `https://myapp.authgearapps.com`.
 
@@ -22,7 +22,7 @@ The endpoint serves as a resolver to check the access token or cookie in the req
 
 See the list of `x-authgear-` headers in the specs [here](https://github.com/authgear/authgear-server/blob/master/docs/specs/api-resolver.md).
 
-See implementation examples [here](../get-started/backend-integration/nginx.md).
+See implementation examples [here](../get-started/backend-api/nginx.md).
 
 ## /
 

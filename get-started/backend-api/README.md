@@ -17,6 +17,6 @@ layout:
 
 If your API or backend service needs authentication, you can validate the JWT token in your application server code.
 
-{% content-ref url="../backend-integration/" %}
-[backend-integration](../backend-integration/)
+{% content-ref url="backend-integration.md" %}
+[backend-integration.md](backend-integration.md)
 {% endcontent-ref %}

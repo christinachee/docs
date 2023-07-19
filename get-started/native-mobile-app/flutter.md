@@ -23,7 +23,7 @@ From the Project listing, create a new Project or select an existing Project. Af
 3. Input the name of your application and select **Native App** as the application type. Click "Save".
 4. You will see a list of guides that can help you for setting up, then click "Next".
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption><p>Create Application</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption><p>Create Application</p></figcaption></figure>
 
 **Step 2: Configure the application**
 
@@ -31,13 +31,13 @@ From the Project listing, create a new Project or select an existing Project. Af
 2. Head back to Authgear Portal, fill in the Redirect URI that you have defined in the previous steps.
 3. Click "Save" in the top tool bar and keep the **Client ID**. You can also obtain it again from the Applications list later.
 
-![Edit an application](../.gitbook/assets/edit-application-app.png)
+![Edit an application](../../.gitbook/assets/edit-application-app.png)
 
 {% hint style="info" %}
-If you wish to [validate JSON Web Token (JWT) in your own application server](../backend-integration/jwt/), select "Issue JWT as access token".\[^2] If you wish to [forward authentication requests to Authgear Resolver Endpoint](../backend-integration/nginx/), leave this unchecked. See comparisons in [Backend Integration](../backend-integration/).
+If you wish to [validate JSON Web Token (JWT) in your own application server](../../backend-integration/jwt/), select "Issue JWT as access token".\[^2] If you wish to [forward authentication requests to Authgear Resolver Endpoint](../../backend-integration/nginx/), leave this unchecked. See comparisons in [Backend Integration](../../backend-integration/).
 {% endhint %}
 
-![](../.gitbook/assets/application-jwt.png)
+![](../../.gitbook/assets/application-jwt.png)
 {% endtab %}
 
 {% tab title="authgear.yaml (self-deployed)" %}
@@ -129,7 +129,7 @@ If your Android app is targeting API level 30 or above (Android 11 or above), yo
 
 #### Declare URL Handling in Info.plist
 
-In `Info.plist`, add the matching redirect URI by adding the key `CFBundleURLTypes` and the values inside `<dict>` as shown as the following example.&#x20;
+In `Info.plist`, add the matching redirect URI by adding the key `CFBundleURLTypes` and the values inside `<dict>` as shown as the following example.
 
 ```markup
 <?xml version="1.0" encoding="UTF-8"?>
@@ -238,7 +238,7 @@ The value of `sessionState` can be `SessionState.unknown`, `SessionState.noSessi
 
 ## Fetching User Info
 
-In some cases, you may need to obtain current user info through the SDK. (e.g. Display email address in the UI). Use the `fetchUserInfo` function to obtain the user info, see [example](../integrate/user-profile.md#userinfo-endpoint).
+In some cases, you may need to obtain current user info through the SDK. (e.g. Display email address in the UI). Use the `fetchUserInfo` function to obtain the user info, see [example](../../integrate/user-profile.md#userinfo-endpoint).
 
 ## Using the Access Token in HTTP Requests
 
@@ -263,8 +263,8 @@ await authgear.logout();
 
 To protect your application server from unauthorized access. You will need to **integrate your backend with Authgear**.
 
-{% content-ref url="backend-integration/" %}
-[backend-integration](backend-integration/)
+{% content-ref url="../backend-api/backend-integration.md" %}
+[backend-integration.md](../backend-api/backend-integration.md)
 {% endcontent-ref %}
 
 ## Flutter SDK Reference
@@ -273,6 +273,6 @@ For detailed documentation on the Flutter SDK, visit [Flutter SDK Reference](htt
 
 ### Footnote
 
-\[^1]: For futher instruction on setting up custom URI scheme in Flutter, see [https://docs.flutter.dev/development/ui/navigation/deep-linking](https://docs.flutter.dev/development/ui/navigation/deep-linking)&#x20;
+\[^1]: For futher instruction on setting up custom URI scheme in Flutter, see [https://docs.flutter.dev/development/ui/navigation/deep-linking](https://docs.flutter.dev/development/ui/navigation/deep-linking)
 
 \[^2]: For more explaination on JWT, see [https://en.wikipedia.org/wiki/JSON\_Web\_Token](https://en.wikipedia.org/wiki/JSON\_Web\_Token)

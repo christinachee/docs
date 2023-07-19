@@ -13,7 +13,7 @@ In this section, we are going to explain how to make an authorized request to yo
 ## Setup Overview
 
 1. To determine which user is calling your server, you will need to include the Authorization header in every request that send to your application server.
-2. You will need to set up [Backend integration](../get-started/backend-integration/nginx.md), Authgear will help you to resolve the Authorization header to determine whether the incoming HTTP request is authenticated or not.
+2. You will need to set up [Backend integration](../get-started/backend-api/nginx.md), Authgear will help you to resolve the Authorization header to determine whether the incoming HTTP request is authenticated or not.
 
 In the below section, we will explain how to set up SDK to include Authorization header to your application requests.
 
@@ -89,7 +89,6 @@ var authgear = new AuthgearSdk(UIKit.UIApplication.SharedApplication, authgearOp
 await authgear.ConfigureAsync();
 ```
 {% endtab %}
-
 {% endtabs %}
 
 ### Get the latest session state
@@ -187,12 +186,11 @@ if (sessionState == SessionState.Authenticated)
 }
 ```
 {% endtab %}
-
 {% endtabs %}
 
 ## Calling an API
 
-### **Use `fetch` function from the SDK \(JavaScript Only\)**
+### **Use `fetch` function from the SDK (JavaScript Only)**
 
 **Javascript Only**. Authgear SDK provides `fetch` function for you to call your application server. The `fetch` function will include Authorization header in your application request, and handle refresh access token automatically. `authgear.fetch` implement [fetch](https://fetch.spec.whatwg.org/). If you are using another networking library and want to include the Authorization header yourself. You can skip this and go to the next step.
 
@@ -299,12 +297,11 @@ httpRequestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer
 // Send the request with the headers...
 ```
 {% endtab %}
-
 {% endtabs %}
 
 ### Handle revoked sessions
 
-If the session is revoked from the management portal, the client will call your application server with an invalid access token. Your application server can check that by looking at the [resolver headers](../get-started/backend-integration/nginx.md). 
+If the session is revoked from the management portal, the client will call your application server with an invalid access token. Your application server can check that by looking at the [resolver headers](../get-started/backend-api/nginx.md).
 
 For example, you application may return HTTP status code 401 for unauthorized requests. Depending on your application flow, you may want to show your user login page again or reset the SDK `sessionState` to `NO_SESSION` locally. To clear the `sessionState`, you can use `clearSessionState` function.
 
@@ -377,6 +374,4 @@ if (statusCode == HttpStatusCode.Unauthorized)
 }
 ```
 {% endtab %}
-
 {% endtabs %}
-
