@@ -17,7 +17,7 @@ The standard attributes in UserProfile in OIDC are a standardized schema for rep
 
 ### Prerequisites
 
-* **An Authgear account:** You need an Authgear account to follow this guide. If you don't have one, you can [create it for free](https://accounts.portal.authgearapps.com/signup?\_ga=2.103619076.563520449.1688969336-1174359617.1686657394) on the Authgear website.
+* **An Authgear account:** You need an Authgear account to follow this guide. If you don't have one, you can[ create it for free](https://accounts.portal.authgear.com/signup) on the Authgear website.
 * **A Registered App:** You need a [registered application](https://docs.authgear.com/get-started/website#setup-application-in-authgear) (client) in Authgear.
 
 ### Access user profiles from the Authgear UI portal
@@ -30,7 +30,7 @@ It is the fastest and easiest way to view user profiles and manage them.&#x20;
 
 To view see user profile of a specific user:
 
-1. Go to the [Authgear Portal](https://portal.authgearapps.com/).
+1. Go to the [Authgear Portal](https://portal.authgear.com/).
 2. Navigate to **User Management.**
 3. Choose a user you would like to view a profile.
 4. On the **User Details** page, you will see the **Profile** tab.

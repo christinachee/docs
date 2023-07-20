@@ -13,7 +13,7 @@ This guide provides instructions on integrating Authgear with a Web app. Support
 
 ## Setup Application in Authgear
 
-Signup for an Authgear Portal account in [https://portal.authgearapps.com/](https://portal.authgearapps.com/). Or you can use your self-deployed Authgear.
+Signup for an Authgear Portal account in [https://portal.authgear.com/](https://portal.authgear.com/). Or you can use your self-deployed Authgear.
 
 From the Project listing, create a new Project or select an existing Project. After that, we will need to create an application in the project.
 
@@ -102,7 +102,7 @@ import authgear from "@authgear/web";
 authgear
   .configure({
     // custom domain endpoint or default endpoint
-    // default domain should be something like: https://<yourapp>.authgearapps.com
+    // default domain should be something like: https://<yourapp>.authgear-apps.com
     endpoint: "<your_app_endpoint>",
     // Client ID of your application
     clientID: "<your_client_id>",

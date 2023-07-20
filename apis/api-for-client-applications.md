@@ -1,6 +1,6 @@
 # API for Client Applications
 
-If your app is `myapp`, the endpoint of your app is `https://myapp.authgearapps.com`.
+If your app is `myapp`, the endpoint of your app is `https://myapp.authgear-apps.com`.
 
 Unless otherwise specified, all paths mentioned here are relative to the endpoint of your app.
 
@@ -14,7 +14,7 @@ Here is [an example of how it looks](https://accounts.portal.authgearapps.com/.w
 
 This endpoint serves a JSON document containing the authorization server metadata of your app. That includes the authorization endpoint, the token endpoint and the JWKs endpoint.
 
-Here is [an example of how it looks](https://accounts.portal.authgearapps.com/.well-known/oauth-authorization-server).
+Here is [an example of how it looks](https://accounts.portal.authgear.com/.well-known/openid-configuration).
 
 ## /\_resolver/resolve
 

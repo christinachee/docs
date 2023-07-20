@@ -10,7 +10,7 @@ This guide provides instructions on integrating Authgear with an Android app. Su
 
 ## Setup Application in Authgear
 
-Signup for an Authgear Portal account in [https://portal.authgearapps.com/](https://portal.authgearapps.com/). Or you can use your self-deployed Authgear.
+Signup for an Authgear Portal account in [https://portal.authgear.com](https://portal.authgear.com/). Or you can use your self-deployed Authgear.
 
 From the Project listing, create a new Project or select an existing Project. After that, we will need to create an application in the project.
 
@@ -134,7 +134,7 @@ public class MyAwesomeApplication extends Application {
     // The client ID of the oauth client.
     private static final String CLIENT_ID = "a_random_generated_string"
     // Deployed authgear's endpoint
-    private static final String AUTHGEAR_ENDPOINT = "http://<myapp>.authgearapps.com/"
+    private static final String AUTHGEAR_ENDPOINT = "http://<myapp>.authgear-apps.com/"
     private Authgear mAuthgear;
     public void onCreate() {
         super.onCreate();

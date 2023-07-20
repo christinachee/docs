@@ -175,7 +175,7 @@ This event supports [Mutations on the JWT payload](./#mutations-on-the-jwt-paylo
     },
     "jwt": {
       "payload": {
-        "iss": "https://myapp.authgearapps.com",
+        "iss": "https://myapp.authgear-apps.com",
         "aud": ["YOUR_CLIENT_ID"],
         "sub": "338deafa-400b-4589-a922-2c92d670b757"
       }
@@ -856,7 +856,6 @@ Occurs when a phone number is updated. Phone numbers can be updated by the user 
 ```
 
 ### identity.phone.verified
-
 
 Occurs when a phone number is change from unverified to verified for an existing user. Phone can be verified by the user in the setting page, mark verified by admin through admin API or Portal.
 

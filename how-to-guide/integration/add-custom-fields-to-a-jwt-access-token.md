@@ -14,14 +14,14 @@ You can also [add custom attributes](https://docs.authgear.com/integrate/user-pr
 
 ### Prerequisites
 
-* **An Authgear account:** You need an Authgear account to follow this guide. If you don't have one, you can [create it for free](https://accounts.portal.authgearapps.com/signup?\_ga=2.103619076.563520449.1688969336-1174359617.1686657394) on the Authgear website.
+* **An Authgear account:** You need an Authgear account to follow this guide. If you don't have one, you can [create it for free](https://accounts.portal.authgear.com/signup) on the Authgear website.
 * **A Registered App:** You need a [registered application](https://docs.authgear.com/get-started/website#setup-application-in-authgear) (client) in Authgear.
 
 ### Enable Access Token for your App
 
 Make sure the option **Issue JWT as access token** is enabled in your **Application** settings in the Portal.
 
-1. Log into your [Authgear account](https://portal.authgearapps.com/?\_ga=2.25390521.563520449.1688969336-1174359617.1686657394).
+1. Log into your [Authgear account](https://portal.authgear.com/?\_ga=2.25390521.563520449.1688969336-1174359617.1686657394).
 2. Navigate to the **Applications** tab and choose the existing App.
 3. On the **App Configuration** dashboard, locate the "**Access token**" section.
 4. Make the toggle **Issue JWT as access token** switch on.

@@ -10,7 +10,7 @@ This guide provides instructions on integrating Authgear with an iOS app. Suppor
 
 ## Setup Application in Authgear
 
-Signup for an Authgear Portal account in [https://portal.authgearapps.com/](https://portal.authgearapps.com/). Or you can use your self-deployed Authgear.
+Signup for an Authgear Portal account in [https://portal.authgear.com/](https://portal.authgear.com). Or you can use your self-deployed Authgear.
 
 From the Project listing, create a new Project or select an existing Project. After that, we will need to create an application in the project.
 
@@ -104,7 +104,7 @@ In your application's `Info.plist` , register your custom URL scheme, (e.g. `com
 SDK must be properly configured before use.
 
 ```swift
-// your_app_endpoint should looks like this https://<yourapp>.authgearapps.com
+// your_app_endpoint should looks like this https://<yourapp>.authgear-apps.com
 let authgear = Authgear(clientId: "{your_clien_id}", endpoint: "{your_app_endpoint}")
 authgear.configure() { result in
     switch result {

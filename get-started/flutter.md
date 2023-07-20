@@ -10,7 +10,7 @@ This guide provides instructions on integrating Authgear with a Flutter app. Sup
 
 ## Setup Application in Authgear
 
-Signup for an Authgear Portal account in [https://portal.authgearapps.com/](https://portal.authgearapps.com/). Or you can use your self-deployed Authgear.
+Signup for an Authgear Portal account in [https://portal.authgear.com/](https://portal.authgear.com/). Or you can use your self-deployed Authgear.
 
 From the Project listing, create a new Project or select an existing Project. After that, we will need to create an application in the project.
 

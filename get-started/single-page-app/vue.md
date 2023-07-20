@@ -2,7 +2,7 @@
 description: Follow this quickstart tutorial to add authentication to your Vue application
 ---
 
-# Vue Tutorial: User Auth with Authgear SDK
+# Vue
 
 Authgear helps you add user logins to your Vue apps. It provides prebuilt login page and user settings page that accelerate the development.
 
@@ -28,7 +28,7 @@ Follow this :clock1: **15 minutes** tutorial to create a simple app using Vue wi
 
 ## Setup Application in Authgear
 
-Signup for an account in [https://portal.authgearapps.com/](https://portal.authgearapps.com/) and create a Project.
+Signup for an account in [https://portal.authgear.com/](https://portal.authgear.com/) and create a Project.
 
 After that, we will need to create an Application in the Project Portal.
 

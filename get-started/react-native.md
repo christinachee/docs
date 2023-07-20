@@ -14,7 +14,7 @@ React Native have opt-in support for the [New Architecture](https://reactnative.
 
 ## Setup Application in Authgear
 
-Signup for an Authgear Portal account in [https://portal.authgearapps.com/](https://portal.authgearapps.com/). Or you can use your self-deployed Authgear.
+Signup for an Authgear Portal account in [https://portal.authgear.com/](https://portal.authgear.com/). Or you can use your self-deployed Authgear.
 
 From the Project listing, create a new Project or select an existing Project. After that, we will need to create an application in the project.
 
@@ -212,7 +212,7 @@ function LoginScreen() {
     authgear
       .configure({
         clientID: "client_id",
-        endpoint: "http://<myapp>.authgearapps.com",
+        endpoint: "http://<myapp>.authgear-apps.com",
       })
       .then(() => {
         authgear

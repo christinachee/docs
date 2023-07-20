@@ -1,15 +1,14 @@
 ---
 description: >-
-  Event are generated and delivered to your hooks. You will be notified when important events such as new user signup happen.
+  Event are generated and delivered to your hooks. You will be notified when
+  important events such as new user signup happen.
 ---
 
-# Events
+# Events and Hooks
 
 Events are divided into two kinds, **Blocking** and **Non-blocking**.
 
-Each event can have multiple hooks.
-The delivery order of non-blocking events is unspecified.
-Blocking events are delivered in the order as in the configuration.
+Each event can have multiple hooks. The delivery order of non-blocking events is unspecified. Blocking events are delivered in the order as in the configuration.
 
 ## Blocking Events
 
@@ -43,27 +42,19 @@ Each of your hooks must respond within 5 seconds. All of your hooks must complet
 
 ### Blocking Event Mutations
 
-Your hooks can optionally apply mutation for certain blocking events.
-The supported mutation is specific for each type of blocking events.
-Refer to the [Event List](./event-list.md) to see what mutation is supported.
+Your hooks can optionally apply mutation for certain blocking events. The supported mutation is specific for each type of blocking events. Refer to the [Event List](event-list.md) to see what mutation is supported.
 
-Mutations by a hook is applied only when the operation is allowed to proceed.
-Mutations take effect only when all hooks allow the operation to proceed.
+Mutations by a hook is applied only when the operation is allowed to proceed. Mutations take effect only when all hooks allow the operation to proceed.
 
-The mutations are specified in the hook response.
-Objects not appearing in `mutations` are left intact.
-The mutated objects are **NOT** merged with the original ones.
+The mutations are specified in the hook response. Objects not appearing in `mutations` are left intact. The mutated objects are **NOT** merged with the original ones.
 
-The mutated objects are **NOT** validated, and are propagated along the hook chain.
-The mutated objects are validated after traversing the hook chain.
+The mutated objects are **NOT** validated, and are propagated along the hook chain. The mutated objects are validated after traversing the hook chain.
 
 Mutations do **NOT** generate extra events to avoid infinite loops.
 
 #### Mutations on the user object
 
-When a blocking event supports mutations on the user object,
-your hooks can respond a JSON document to allow the operation,
-and specify the mutations you want to apply on the user object.
+When a blocking event supports mutations on the user object, your hooks can respond a JSON document to allow the operation, and specify the mutations you want to apply on the user object.
 
 ```json
 {
@@ -81,19 +72,13 @@ and specify the mutations you want to apply on the user object.
 }
 ```
 
-To mutate the user object, include `user` inside `mutations`.
-Only `standard_attributes` and `custom_attributes` of the user object are mutable.
+To mutate the user object, include `user` inside `mutations`. Only `standard_attributes` and `custom_attributes` of the user object are mutable.
 
-> You must include the **WHOLE** `standard_attributes` or `custom_attributes` when
-> you specify the mutations. Otherwise, missing attributes **WILL BE** deleted.
+> You must include the **WHOLE** `standard_attributes` or `custom_attributes` when you specify the mutations. Otherwise, missing attributes **WILL BE** deleted.
 
 #### Mutations on the JWT payload
 
-When a blocking event supports mutations on the JWT payload,
-your hooks can respond a JSON document to allow the operation,
-and specify additional fields that you want to include in the JWT payload.
-However, you **MUST NOT** change or remove any existing fields in the JWT payload,
-as they are essential to the validity of the JWT.
+When a blocking event supports mutations on the JWT payload, your hooks can respond a JSON document to allow the operation, and specify additional fields that you want to include in the JWT payload. However, you **MUST NOT** change or remove any existing fields in the JWT payload, as they are essential to the validity of the JWT.
 
 ```json5
 {
@@ -102,7 +87,7 @@ as they are essential to the validity of the JWT.
     "jwt": {
       "payload": {
         // The original payload you get from the event object.
-        "iss": "https://myapp.authgearapps.com",
+        "iss": "https://myapp.authgear-apps.com",
         "aud": ["YOUR_CLIENT_ID"],
         "sub": "THE_USER_ID",
         // Other essential JWT fields that you MUST retain.
@@ -117,8 +102,7 @@ as they are essential to the validity of the JWT.
 }
 ```
 
-To add additional fields to the JWT payload, include `jwt.payload` inside `mutations`.
-You **MUST** add your own fields only.
+To add additional fields to the JWT payload, include `jwt.payload` inside `mutations`. You **MUST** add your own fields only.
 
 > You must include the **WHOLE** `jwt.payload` from the event object when you specify the mutations.
 

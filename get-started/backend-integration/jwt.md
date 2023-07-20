@@ -18,7 +18,7 @@ This Discovery endpoint serves a JSON document containing the OpenID Connect con
 
 `https://<YOUR_AUTHGEAR_ENDPOINT>/.well-known/openid-configuration`&#x20;
 
-Here is [an example of how it looks](https://accounts.portal.authgearapps.com/.well-known/openid-configuration).
+Here is [an example of how it looks](https://accounts.portal.authgear.com/.well-known/openid-configuration).
 
 The JSON Web Key Sets (JWKS) endpoint can be found in `jwk_url` in the configuration.
 

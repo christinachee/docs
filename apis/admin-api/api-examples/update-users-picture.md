@@ -1,4 +1,4 @@
-# Update user's picture through Admin API
+# Update user's picture
 
 Authgear allows your server to update the user's picture via the Admin APIs.
 
@@ -7,8 +7,8 @@ Authgear allows your server to update the user's picture via the Admin APIs.
 To update the user's picture:
 
 1. Make a `GET` request to `/_api/admin/images/upload` to obtain the pre-signed upload url.
-1. Make a `POST` request to the pre-signed upload url to upload the image file. This call returns the result url once the upload is finished.
-1. Call the Admin GraphQL API `/_api/admin/graphql` to update the user's standard attributes. Update the `picture` attribute with the result url returned by the previous call.
+2. Make a `POST` request to the pre-signed upload url to upload the image file. This call returns the result url once the upload is finished.
+3. Call the Admin GraphQL API `/_api/admin/graphql` to update the user's standard attributes. Update the `picture` attribute with the result url returned by the previous call.
 
 ## API Details
 
@@ -20,7 +20,7 @@ The call will look like this:
 
 ```http
 GET /_api/admin/images/upload HTTP/1.1
-Host: <YOUR_APP>.authgearapps.com
+Host: <YOUR_APP>.authgear-apps.com
 Authorization: Bearer <JWT>
 ```
 
@@ -44,7 +44,7 @@ The call will look like this:
 
 ```http
 POST <PRESIGNED_UPLOAD_URL_PATH> HTTP/1.1
-Host: <YOUR_APP>.authgearapps.com
+Host: <YOUR_APP>.authgear-apps.com
 Content-Length: <CONTENT_LENGTH>
 Content-Type: multipart/form-data; boundary=----boundary
 
@@ -68,4 +68,4 @@ The call returns the result url once the upload completed, the url is in format 
 
 ### Update user's picture in the standard attributes
 
-Follow the doc of [Update user's standard attributes](./update-users-standard-attributes.md) to update the user's `picture` attribute. Replace the attribute with the new picture url (e.g. `authgearimages:///...`) obtained by the previous upload.
+Follow the doc of [Update user's standard attributes](update-users-standard-attributes.md) to update the user's `picture` attribute. Replace the attribute with the new picture url (e.g. `authgearimages:///...`) obtained by the previous upload.

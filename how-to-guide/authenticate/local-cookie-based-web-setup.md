@@ -22,9 +22,9 @@ You can learn more [here](../../get-started/authentication-approach/cookie-based
 
 > For local development, it is highly recommended to create a new application on Authgear before continuing to the rest of the guide.
 
-1. Log in and create a new project on [https://portal.authgearapps.com](https://portal.authgearapps.com)
+1. Log in and create a new project on [https://portal.authgear.com/](https://portal.authgear.com/)
 2. Go to the **Application** tab in your dashboard
-3. Add your local application domain `{SUBDOMAIN}.{PROJECT_NAME}.authgearapps.com` under the **Allowed Origins** list&#x20;
+3. Add your local application domain `{SUBDOMAIN}.{PROJECT_NAME}.authgear-apps.com` under the **Allowed Origins** list&#x20;
 4. Add an application, name it whatever you want. **DO NOT check the Issue JWT as access token** box because we are using cookie-based authorization.&#x20;
 5. Put your redirect URI for login and logout under the **Redirect URIs** list and **Post Logout Redirect URIs** list respectively.
 
@@ -35,7 +35,7 @@ To make the cookies visible to the browser, the local website domain has to be i
 By adding the following line to the `/etc/hosts` file on the local machine, we can point the application domain name to localhost.
 
 ```
-127.0.0.1 {SUBDOMAIN}.{PROJECT_NAME}.authgearapps.com
+127.0.0.1 {SUBDOMAIN}.{PROJECT_NAME}.authgear-apps.com
 ```
 
 The browser will be able to see the auth cookies if visiting the website via this domain.
@@ -49,7 +49,7 @@ Although you can see the cookies now, the cookies have the **Secure** attribute 
 One quick simple way to do this is to use [mkcert](https://github.com/FiloSottile/mkcert), you may follow the installation steps [here](https://github.com/FiloSottile/mkcert#installation). After installing mkcert, generate a certificate with the following command:
 
 ```
-mkcert *.{PROJECT_NAME}.authgearapps.com
+mkcert *.{PROJECT_NAME}.authgear-apps.com
 ```
 
 A key file and a cert file will be generated. They will be used in the next part of the guide.
@@ -67,7 +67,7 @@ The examples below show the nginx config files for nginx in host and nginx in do
 ```
 server {
   listen       443 ssl;
-  server_name  {SUBDOMAIN}.{PROJECT_NAME}.authgearapps.com;
+  server_name  {SUBDOMAIN}.{PROJECT_NAME}.authgear-apps.com;
 
   ssl_certificate      /path/to/your/cert;
   ssl_certificate_key  /path/to/your/key;
@@ -96,7 +96,7 @@ server {
   location /_auth {
     internal;
     resolver 8.8.8.8;
-    set $resolver https://{PROJECT_NAME}.authgearapps.com/_resolver/resolve;
+    set $resolver https://{PROJECT_NAME}.authgear-apps.com/_resolver/resolve;
     proxy_pass $resolver;
     proxy_pass_request_body off;
     proxy_set_header Content-Length "";
@@ -113,7 +113,7 @@ Docker `host` network driver is not supported in Docker Desktop, it has to be in
 ```
 server {
   listen       443 ssl;
-  server_name  {SUBDOMAIN}.{PROJECT_NAME}.authgearapps.com;
+  server_name  {SUBDOMAIN}.{PROJECT_NAME}.authgear-apps.com;
 
   ssl_certificate      /path/to/your/cert;
   ssl_certificate_key  /path/to/your/key;
@@ -157,6 +157,6 @@ In the above examples, nginx will also authenticate requests by creating sub-req
 
 ## Finish
 
-Now visit the website through `https://{SUBDOMAIN}.{PROJECT_NAME}.authgearapps.com`, the browser will be able to send requests with the authorization cookies.
+Now visit the website through `https://{SUBDOMAIN}.{PROJECT_NAME}.authgear-apps.com`, the browser will be able to send requests with the authorization cookies.
 
 For implementing login and logout logic in your website, please refer to [Web SDK](../../get-started/single-page-app/website.md).
