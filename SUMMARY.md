@@ -30,13 +30,20 @@
 
 ## How-To Guides <a href="#how-to-guide" id="how-to-guide"></a>
 
-* [Monitor](how-to-guide/monitor/README.md)
-  * [Audit Log](how-to-guide/monitor/audit-log.md)
+* [Authenticate](how-to-guide/authenticate/README.md)
+  * [Setup local development environment for Cookie-based authentication](how-to-guide/authenticate/local-cookie-based-web-setup.md)
+* [Customize](how-to-guide/customize/README.md)
+  * [Privacy Policy & Terms of Service Links](how-to-guide/customize/privacy-policy-terms-of-service.md)
+  * [Branding in Auth UI](how-to-guide/customize/branding.md)
+  * [Custom domain](how-to-guide/customize/custom-domain.md)
+  * [Custom Email Provider](how-to-guide/customize/custom-email-provider.md)
+  * [Customer Support Link](how-to-guide/customize/customer-support-link.md)
+  * [Localization & UI Text](how-to-guide/customize/localization.md)
 * [Integrate](how-to-guide/integration/README.md)
   * [Access User Profiles](how-to-guide/integration/access-user-profiles.md)
   * [Add custom fields to a JWT Access Token](how-to-guide/integration/add-custom-fields-to-a-jwt-access-token.md)
-* [Authenticate](how-to-guide/authenticate/README.md)
-  * [Setup local development environment for Cookie-based authentication](how-to-guide/authenticate/local-cookie-based-web-setup.md)
+* [Monitor](how-to-guide/monitor/README.md)
+  * [Audit Log](how-to-guide/monitor/audit-log.md)
 
 ## Concepts <a href="#how-to-guide" id="how-to-guide"></a>
 
@@ -78,15 +85,6 @@
   * [Event List](integrate/events-hooks/event-list.md)
   * [Webhooks](integrate/events-hooks/webhooks.md)
   * [JavaScript / TypeScript Hooks](integrate/events-hooks/denohooks.md)
-
-## Customize
-
-* [Privacy Policy & Terms of Service Links](customize/privacy-policy-terms-of-service.md)
-* [Branding in Auth UI](customize/branding.md)
-* [Custom domain](customize/custom-domain.md)
-* [Custom Email Provider](customize/custom-email-provider.md)
-* [Customer Support Link](customize/customer-support-link.md)
-* [Localization & UI Text](customize/localization.md)
 
 ## Security
 

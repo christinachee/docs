@@ -19,6 +19,6 @@ Authgear consists of these major parts:
   * You can use the Authgear Portal for configuring your project, managing users, checking [audit log](../how-to-guide/monitor/audit-log.md), and customizing the behavior by [event hooks](../integrate/events-hooks/).
 * **AuthUI**
   * The prebuilt UI for end-users to complete authentication and perform [account settings](../integrate/auth-ui.md)
-  * It can be [customized](../customize/branding.md) to fit your company's branding
+  * It can be [customized](../how-to-guide/customize/branding.md) to fit your company's branding
 * **Events and Hooks**
   * Use [event and hooks](../integrate/events-hooks/) to get the information about events that happened (non-blocking) and change the process of the Authgear server (blocking)

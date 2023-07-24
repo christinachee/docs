@@ -17,7 +17,7 @@ A paid subscription is required for setting up a custom domain.
 * Go to your domain provider's site, add DNS records based on the values shown on the portal page. &#x20;
 * Click **Verify** after adding the DNS records, you may need to wait for the propagation of your updated DNS records. &#x20;
 
-![Setup DNS records and verify](../.gitbook/assets/custom-domain-verification.png)
+![Setup DNS records and verify](../../.gitbook/assets/custom-domain-verification.png)
 
 ## 3. Activate your custom domain
 

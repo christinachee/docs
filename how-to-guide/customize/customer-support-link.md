@@ -18,7 +18,7 @@ You can add a customer support link in the Portal.
 
 The value will be used as the `href` of `<a>` HTML tag. It can be a URL or a `mailto:` link.
 
-![Contact customer support in the 2-step verification screen](../.gitbook/assets/mfa-customer-support.png)
+![Contact customer support in the 2-step verification screen](../../.gitbook/assets/mfa-customer-support.png)
 
 ## Customize the label
 
@@ -30,4 +30,3 @@ You can also modify the text shown to the end-users by including two special tra
     "enter-recovery-code-instead-with-customer-support-v1": "Having Trouble? <button class=\"btn secondary-btn\" type=\"submit\">Use recovery code</button> or <a class=\"link\" target=\"_blank\" href={customerSupportLink}>contact customer support</a>",
 }
 ```
-
