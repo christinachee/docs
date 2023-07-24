@@ -86,9 +86,10 @@
 * [Customer Support Link](customize/customer-support-link.md)
 * [Localization & UI Text](customize/localization.md)
 
-## Attack Protection
+## Security
 
-* [Brute-force Protection](attack-protection/brute-force-protection.md)
+* [Brute-force Protection](security/brute-force-protection.md)
+* [Non-HTTP scheme redirect URI](security/redirect-uri.md)
 
 ## APIs
 
@@ -124,7 +125,3 @@
   * [Environment Variables](deploy-on-your-cloud/configurations/env.md)
   * [authgear.yaml](deploy-on-your-cloud/configurations/authgear.yaml.md)
   * [authgear.secrets.yaml](deploy-on-your-cloud/configurations/authgear.secrets.yaml.md)
-
-## Security Concerns
-
-* [Non-HTTP scheme redirect URI](security-concerns/redirect-uri.md)
