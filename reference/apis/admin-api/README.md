@@ -24,7 +24,7 @@ If you want to explore what the Admin API can do, you can visit the GraphiQL too
 * Click on the **GraphiQL tool** link
 * Toggle the **schema** documentation by pressing the Docs button in the top left corner.
 
-<figure><img src="../../.gitbook/assets/GraphiQL Explorer.png" alt=""><figcaption><p>Explor the Admin API with GraphiQL tool from the Admin Portal</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/GraphiQL Explorer.png" alt=""><figcaption><p>Explor the Admin API with GraphiQL tool from the Admin Portal</p></figcaption></figure>
 
 {% hint style="danger" %}
 The GraphiQL tool is NOT a sandbox environment and all changes will be made on **real, live, production data**. Use with care!

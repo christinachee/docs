@@ -4,17 +4,17 @@ Authgear provides the event logs for you to analyze security issues and monitor 
 
 ## View and retrieve logs
 
-You can view the audit log in the Portal, or retrieve logs using the [Admin API](../apis/admin-api/).
+You can view the audit log in the Portal, or retrieve logs using the [Admin API](../../reference/apis/admin-api/).
 
 ### View in Portal
 
 The portal provides an interface for you to look up the log by event and date range.
 
-<figure><img src="../.gitbook/assets/image (5) (1).png" alt=""><figcaption><p>View audit logs in the Portal</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5) (1).png" alt=""><figcaption><p>View audit logs in the Portal</p></figcaption></figure>
 
 ### Retrieve with Admin API
 
-The API schema can be found in the [Admin API QraphiQL Explorer](../apis/admin-api/#api-explorer). For example:
+The API schema can be found in the [Admin API QraphiQL Explorer](../../reference/apis/admin-api/#api-explorer). For example:
 
 ```graphql
 query {
@@ -33,7 +33,7 @@ query {
 
 ## Log events
 
-Here are the list of activity types that are logged:
+Here is the list of activity types that are logged:
 
 #### Authentication failed
 

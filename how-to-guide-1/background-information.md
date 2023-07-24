@@ -14,9 +14,9 @@ Authgear consists of these major parts:
   * Used for developers to integrate Authgear into their apps. It can be used to perform user authentication, get the user profile, send authenticated requests
   * Explore: [Web (JavaScript)](../get-started/single-page-app/website.md), [React Native](../get-started/react-native.md), [iOS](../get-started/ios.md), [Android](../get-started/android/), [Flutter](../get-started/flutter.md), [Xamarin](../get-started/xamarin.md)
 * **Admin API**
-  * For backend servers to perform administrative tasks. Most things about user management you can do in the Authgear Portal, you can do it with [Admin API](../apis/admin-api/)
+  * For backend servers to perform administrative tasks. Most things about user management you can do in the Authgear Portal, you can do it with [Admin API](../reference/apis/admin-api/)
 * **Authgear Portal**
-  * You can use the Authgear Portal for configuring your project, managing users, checking [audit log](../monitor/audit-log.md), and customizing the behavior by [event hooks](../integrate/events-hooks/).
+  * You can use the Authgear Portal for configuring your project, managing users, checking [audit log](../how-to-guide/monitor/audit-log.md), and customizing the behavior by [event hooks](../integrate/events-hooks/).
 * **AuthUI**
   * The prebuilt UI for end-users to complete authentication and perform [account settings](../integrate/auth-ui.md)
   * It can be [customized](../customize/branding.md) to fit your company's branding

@@ -30,6 +30,8 @@
 
 ## How-To Guides <a href="#how-to-guide" id="how-to-guide"></a>
 
+* [Monitor](how-to-guide/monitor/README.md)
+  * [Audit Log](how-to-guide/monitor/audit-log.md)
 * [Integrate](how-to-guide/integration/README.md)
   * [Access User Profiles](how-to-guide/integration/access-user-profiles.md)
   * [Add custom fields to a JWT Access Token](how-to-guide/integration/add-custom-fields-to-a-jwt-access-token.md)
@@ -91,22 +93,19 @@
 * [Brute-force Protection](security/brute-force-protection.md)
 * [Non-HTTP scheme redirect URI](security/redirect-uri.md)
 
-## APIs
+## Reference
 
-* [API for Client Applications](apis/api-for-client-applications.md)
-* [Admin API](apis/admin-api/README.md)
-  * [Authentication and Security](apis/admin-api/authentication-and-security.md)
-  * [API Schema](apis/admin-api/api-schema.md)
-  * [Using global node IDs](apis/admin-api/node-id.md)
-  * [API Examples](apis/admin-api/api-examples/README.md)
-    * [Search for users](apis/admin-api/api-examples/search-for-users.md)
-    * [Update user's standard attributes](apis/admin-api/api-examples/update-users-standard-attributes.md)
-    * [Update user's picture](apis/admin-api/api-examples/update-users-picture.md)
-    * [Generate OTP code](apis/admin-api/api-examples/generate-otp-code.md)
-
-## Monitor
-
-* [Audit Log](monitor/audit-log.md)
+* [APIs](reference/apis/README.md)
+  * [API for Client Applications](reference/apis/api-for-client-applications.md)
+  * [Admin API](reference/apis/admin-api/README.md)
+    * [Authentication and Security](reference/apis/admin-api/authentication-and-security.md)
+    * [API Schema](reference/apis/admin-api/api-schema.md)
+    * [Using global node IDs](reference/apis/admin-api/node-id.md)
+    * [API Examples](reference/apis/admin-api/api-examples/README.md)
+      * [Search for users](reference/apis/admin-api/api-examples/search-for-users.md)
+      * [Update user's standard attributes](reference/apis/admin-api/api-examples/update-users-standard-attributes.md)
+      * [Update user's picture](reference/apis/admin-api/api-examples/update-users-picture.md)
+      * [Generate OTP code](reference/apis/admin-api/api-examples/generate-otp-code.md)
 
 ## Client App SDKs
 

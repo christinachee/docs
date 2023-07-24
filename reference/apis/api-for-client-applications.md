@@ -22,7 +22,7 @@ The endpoint serves as a resolver to check the access token or cookie in the req
 
 See the list of `x-authgear-` headers in the specs [here](https://github.com/authgear/authgear-server/blob/master/docs/specs/api-resolver.md).
 
-See implementation examples [here](../get-started/backend-integration/nginx.md).
+See implementation examples [here](../../get-started/backend-integration/nginx.md).
 
 ## /
 
@@ -38,4 +38,4 @@ Admin GraphQL API endpoint. For usage details, please check [Admin APIs](admin-a
 
 ## /oauth2/userinfo
 
-The UserInfo Endpoint is an OAuth 2.0 Protected Resource that returns Claims about the authenticated End-User. When the client presents with a valid Access Token, the endpoint responds with the claims packaged in a JSON object. The claims are also the attributes of the [User Profile](../integrate/user-profile.md).&#x20;
+The UserInfo Endpoint is an OAuth 2.0 Protected Resource that returns Claims about the authenticated End-User. When the client presents with a valid Access Token, the endpoint responds with the claims packaged in a JSON object. The claims are also the attributes of the [User Profile](../../integrate/user-profile.md).&#x20;
