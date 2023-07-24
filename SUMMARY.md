@@ -36,6 +36,10 @@
 * [Authenticate](how-to-guide/authenticate/README.md)
   * [Setup local development environment for Cookie-based authentication](how-to-guide/authenticate/local-cookie-based-web-setup.md)
 
+## Concepts <a href="#how-to-guide" id="how-to-guide"></a>
+
+* [Background Information](how-to-guide-1/background-information.md)
+
 ## Strategies
 
 * [User, Identity and Authenticator](strategies/user-identity-and-authenticator.md)

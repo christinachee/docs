@@ -1,35 +1,15 @@
 ---
-description: Authgear is an authentication server for web and mobile apps.
+description: >-
+  Auhgear is a highly adaptable identity-as-a-service (IDaaS) platform for web
+  and mobile applications.
 ---
 
 # Authgear Overview
 
-**Authgear** is an authentication server for web and mobile apps. It is highly customizable yet comes with sensible defaults. It is built on top of [OpenID Connect (OIDC) standard](https://openid.net/connect/), making it very easy to integrate. It supports single sign-on (SSO) via integration with popular providers such as Google, Apple, and Azure Active Directory (AD). It also supports logging in via email address and phone number with one-time password or traditional password with strong password policy. Multiple factor authentication with time-based one-time password or out-out-band one-time password is available out of the box. Users can manage their sessions in the web-based settings page. Authgear, together with popular reverse proxies such as Nginx, can work as the authentication proxy for your other services.
+As **Auhgear** is constructed on the [OpenID Connect](https://openid.net/developers/how-connect-works/) (OIDC) standard, it supports a wide range of identity providers, including [Google](https://developers.google.com/identity), [Apple](https://support.apple.com/en-gb/guide/deployment/depa64848f3a/web), and [Azure Active Directory](https://azure.microsoft.com/en-gb/products/active-directory/) (AD). Authgear enables developers to integrate **multiple authentication methods**, such as [social logins](https://www.authgear.com/features/social-login), [passwordless](https://www.authgear.com/features/passwordless-authentication), [biometrics logins](https://www.authgear.com/features/biometric-authentication), [one-time-password (OTP) with SMS/WhatsApp](https://www.authgear.com/features/whatsapp-otp), and multi-factor authentication (MFA)**.**&#x20;
 
-### Concepts
+Authgear takes care of the heavy lifting in terms of user authentication, making it easier and faster to implement by integrating it into various types of applications - from single-page web apps to mobile applications to API services. You can also change how the end-users see your [signup and login pages](https://www.authgear.com/solutions/customer-identity-and-access-management) with a **user-friendly drag-drop low-code** dashboard. Most importantly, you can [get started](https://accounts.portal.authgear.com/signup) **with Authgear for free**.
 
-Authgear consists of these major parts:
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Get Started</strong></td><td>Jump in with Authgear's getting started guides.</td><td><a href="get-started/start-building/">start-building</a></td></tr><tr><td><strong>How-To Guides</strong></td><td>Find a step-by-step guide to take your project to the next level.</td><td><a href="broken-reference">Broken link</a></td></tr><tr><td><strong>Concepts</strong></td><td>Learn the basics.</td><td><a href="broken-reference">Broken link</a></td></tr></tbody></table>
 
-* **Authgear server**
-  * It is an OpenID Connect (OIDC) compatible authentication service
-  * It provides wide range of authentication and user management features
-  * The [Authgear Resolver Endpoint](get-started/backend-integration/nginx.md) or [JWT access tokens](get-started/backend-integration/jwt.md) can be used to authenticate incoming requests
-* **Authgear SDKs**
-  * Used for developer to integrate Authgear into their apps. It can be used to perform user authentication, get the user profile, send authenticated requests
-  * Explore: [Web (JavaScript)](get-started/single-page-app/website.md), [React Native](get-started/react-native.md), [iOS](get-started/ios.md), [Android](get-started/android/), [Flutter](get-started/flutter.md), [Xamarin](get-started/xamarin.md)
-* **Admin API**
-  * For backend servers to perform administrative tasks. Most things about user management you can do in the Authgear Portal, you can do it with [Admin API](apis/admin-api/)
-* **Authgear Portal**
-  * You can use the Authgear Portal for configuring your project, manage user, check [audit log](monitor/audit-log.md), customize the behavior by [event hooks](integrate/events-hooks/).
-* **AuthUI**
-  * The prebuilt UI for end-users to complete authentication and perform [account settings](integrate/auth-ui.md)
-  * It can be [customized](customize/branding.md) to fit your company's branding
-* **Events and Hooks**
-  * Use [event and hooks](integrate/events-hooks/) to get the information about events that happened (non-blocking) and change the process of Authgear server (blocking)
-
-### Quickstart guides
-
-Adding Authgear to your single-page web app? Follow these tutorials to integrate Authgear with your favorite front-end frameworks.
-
-* [React](get-started/single-page-app/react.md)
-* [Vue](get-started/single-page-app/vue.md)
+### Try it out
