@@ -48,10 +48,11 @@
 ## Concepts <a href="#how-to-guide" id="how-to-guide"></a>
 
 * [Background Information](how-to-guide-1/background-information.md)
+* [Authgear use cases](how-to-guide-1/authgear-use-cases.md)
+* [User, Identity and Authenticator](how-to-guide-1/user-identity-and-authenticator.md)
 
 ## Strategies
 
-* [User, Identity and Authenticator](strategies/user-identity-and-authenticator.md)
 * [Passkeys](strategies/passkeys.md)
 * [WhatsApp OTP Login](strategies/whatsapp-otp-login.md)
 * [Email Login Link](strategies/email-login-link.md)
