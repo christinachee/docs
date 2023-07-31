@@ -47,6 +47,7 @@
 
 ## Concepts <a href="#how-to-guide" id="how-to-guide"></a>
 
+* [Identity Fundamentals](how-to-guide-1/identity-fundamentals.md)
 * [Background Information](how-to-guide-1/background-information.md)
 * [Authgear use cases](how-to-guide-1/authgear-use-cases.md)
 * [User, Identity and Authenticator](how-to-guide-1/user-identity-and-authenticator.md)
