@@ -10,7 +10,7 @@ Passkeys replace passwords and other passwordless login methods. It is built on 
 
 #### Platform support and Multi-devices
 
-The passkey standard is supported on the latest versions of Chrome, Safari, and Firefox browsers. On iOS 16 and macOS 13 (Ventura), [Apple has added passkey support](https://developer.apple.com/passkeys/) to the iCloud Keychain service. Passkeys are also [supported on Android 9](https://developers.google.com/identity/passkeys/supported-environments#android-passkey-support) (API level 28) or higher. A passkey is synchronized and relayed with an iCloud account and can be used across a user's devices. [Google](https://blog.google/technology/safety-security/one-step-closer-to-a-passwordless-future/) and [Microsoft](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/expansion-of-fido-standard-and-new-updates-for-microsoft/ba-p/3290633) have also announced the support in their future platforms.
+The passkey standard is supported on the latest versions of Chrome, Safari, and Firefox browsers. On iOS 16 and macOS 13 (Ventura), [Apple has added passkey support](https://developer.apple.com/passkeys/) to the iCloud Keychain service. Passkeys are also [supported on Android 9](https://developers.google.com/identity/passkeys/supported-environments#android-passkey-support) (API level 28) or higher. A passkey is synchronized and relayed with an iCloud account and can be used across a user's devices.&#x20;
 
 Users can log in to their accounts using their biometrics easily. On Apple devices, Touch ID and Face ID authorize the use of the passkey which then authenticates the user on the app or website.
 
