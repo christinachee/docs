@@ -8,11 +8,11 @@ The UserInfo endpoint returns the Claims about the authenticated end-user, incl
 
 The `userInfo` object is returned from calling **fetch user info** function which contains a unique identifier of the user.
 
-| Key         | Type      | Description                                                                                                                                                                                                             |
-| ----------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| isAnonymous | _boolean_ | Indicate if the user is anonymous, i.e. no [identity](../how-to-guide-1/user-identity-and-authenticator.md#identity) or [authenticator](../how-to-guide-1/user-identity-and-authenticator.md#authenticator) is provided |
-| isVerified  | _boolean_ | Indicate if the user completed the verification requirement                                                                                                                                                             |
-| sub         | _string_  | Unique identifier of the user in your Authgear project                                                                                                                                                                  |
+| Key         | Type      | Description                                                                                                                                                                                                 |
+| ----------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| isAnonymous | _boolean_ | Indicate if the user is anonymous, i.e. no [identity](../concepts/user-identity-and-authenticator.md#identity) or [authenticator](../concepts/user-identity-and-authenticator.md#authenticator) is provided |
+| isVerified  | _boolean_ | Indicate if the user completed the verification requirement                                                                                                                                                 |
+| sub         | _string_  | Unique identifier of the user in your Authgear project                                                                                                                                                      |
 
 {% tabs %}
 {% tab title="JavaScript" %}
@@ -112,7 +112,7 @@ The following attributes are built-in supported by Authgear. They are the set of
 
 ### Standard Attributes that are coupled with Identities
 
-The following attributes are coupled with the [identities](../how-to-guide-1/user-identity-and-authenticator.md#identity) owned by the end-user. The represents the email addresses, phone numbers, or usernames the end-users are using to authenticate themselves on Authgear. If the end-user uses a third-party identity provider for authentication, these attributes will be coupled with the corresponding attributes returned by the provider.
+The following attributes are coupled with the [identities](../concepts/user-identity-and-authenticator.md#identity) owned by the end-user. The represents the email addresses, phone numbers, or usernames the end-users are using to authenticate themselves on Authgear. If the end-user uses a third-party identity provider for authentication, these attributes will be coupled with the corresponding attributes returned by the provider.
 
 * `email`
 * `email_verified`
