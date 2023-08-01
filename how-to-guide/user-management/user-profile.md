@@ -8,11 +8,11 @@ The UserInfo endpoint returns the Claims about the authenticated end-user, incl
 
 The `userInfo` object is returned from calling **fetch user info** function which contains a unique identifier of the user.
 
-| Key         | Type      | Description                                                                                                                                                                                                 |
-| ----------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| isAnonymous | _boolean_ | Indicate if the user is anonymous, i.e. no [identity](../concepts/user-identity-and-authenticator.md#identity) or [authenticator](../concepts/user-identity-and-authenticator.md#authenticator) is provided |
-| isVerified  | _boolean_ | Indicate if the user completed the verification requirement                                                                                                                                                 |
-| sub         | _string_  | Unique identifier of the user in your Authgear project                                                                                                                                                      |
+| Key         | Type      | Description                                                                                                                                                                                                       |
+| ----------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| isAnonymous | _boolean_ | Indicate if the user is anonymous, i.e. no [identity](../../concepts/user-identity-and-authenticator.md#identity) or [authenticator](../../concepts/user-identity-and-authenticator.md#authenticator) is provided |
+| isVerified  | _boolean_ | Indicate if the user completed the verification requirement                                                                                                                                                       |
+| sub         | _string_  | Unique identifier of the user in your Authgear project                                                                                                                                                            |
 
 {% tabs %}
 {% tab title="JavaScript" %}
@@ -112,7 +112,7 @@ The following attributes are built-in supported by Authgear. They are the set of
 
 ### Standard Attributes that are coupled with Identities
 
-The following attributes are coupled with the [identities](../concepts/user-identity-and-authenticator.md#identity) owned by the end-user. The represents the email addresses, phone numbers, or usernames the end-users are using to authenticate themselves on Authgear. If the end-user uses a third-party identity provider for authentication, these attributes will be coupled with the corresponding attributes returned by the provider.
+The following attributes are coupled with the [identities](../../concepts/user-identity-and-authenticator.md#identity) owned by the end-user. The represents the email addresses, phone numbers, or usernames the end-users are using to authenticate themselves on Authgear. If the end-user uses a third-party identity provider for authentication, these attributes will be coupled with the corresponding attributes returned by the provider.
 
 * `email`
 * `email_verified`
@@ -172,7 +172,7 @@ These are the parties that have access to the user profile:
 
 ### The Admin API
 
-Through [the Admin API](../reference/apis/admin-api/), developers **ALWAYS** have **full access** to **ALL** the standard attributes and custom attributes. The Admin API allows the developer to view or edit the standard attributes and the custom attributes.
+Through [the Admin API](../../reference/apis/admin-api/), developers **ALWAYS** have **full access** to **ALL** the standard attributes and custom attributes. The Admin API allows the developer to view or edit the standard attributes and the custom attributes.
 
 ### The Portal
 
@@ -188,6 +188,6 @@ The end-user can view or edit the standard attributes through the Profile sectio
 
 ## Profiles from Third-party Identity Providers
 
-Authgear supports various [social and enterprise identity providers](../how-to-guide/how-to-setup-sso-integrations/). End-users can sign up and log in to your apps via these connections. Upon signup, these providers will return a set of user attributes about the end-user. Authgear will copy those attributes and populate the profile of the end-user.
+Authgear supports various [social and enterprise identity providers](../how-to-setup-sso-integrations/). End-users can sign up and log in to your apps via these connections. Upon signup, these providers will return a set of user attributes about the end-user. Authgear will copy those attributes and populate the profile of the end-user.
 
 More info about the population logic can be found in [the specification](https://github.com/authgear/authgear-server/blob/master/docs/specs/user-profile/design.md#standard-attributes-population).

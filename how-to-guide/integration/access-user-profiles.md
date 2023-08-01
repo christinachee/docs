@@ -4,7 +4,7 @@ description: Learn how to access User Profiles
 
 # Access User Profiles
 
-To access any of the applications in your Authgear account, each user must have a profile in the account. [User Profiles](../../integrate/user-profile.md) contain information about your users such as name, contact information, and [standard](../../integrate/user-profile.md#standard-attributes) and[ custom attributes](../../integrate/user-profile.md#custom-attributes) you define. You can retrieve and manage user profiles in the following ways:
+To access any of the applications in your Authgear account, each user must have a profile in the account. [User Profiles](../user-management/user-profile.md) contain information about your users such as name, contact information, and [standard](../user-management/user-profile.md#standard-attributes) and[ custom attributes](../user-management/user-profile.md#custom-attributes) you define. You can retrieve and manage user profiles in the following ways:
 
 * [From the Authgear UI portal](access-user-profiles.md#access-user-profiles-from-the-authgear-ui-portal).
 * [From your apps using Authgear SDKs](access-user-profiles.md#access-user-profiles-from-apps-using-authgear-sdks).
@@ -172,7 +172,7 @@ query {
 
 ### Access user profiles from the OIDC UserInfo endpoint
 
-The OpenID Connect (OIDC) [UseInfo](../../integrate/user-profile.md#userinfo-endpoint) endpoint is a protected resource that provides information about a user when a service provider presents an access token that has been issued by your **Authgear Token endpoint**. The scopes in the access token specify the user attributes that are returned in the response of the user info endpoint. It is important to note that the `openid` scope must be one of the access token claims.
+The OpenID Connect (OIDC) [UseInfo](../user-management/user-profile.md#userinfo-endpoint) endpoint is a protected resource that provides information about a user when a service provider presents an access token that has been issued by your **Authgear Token endpoint**. The scopes in the access token specify the user attributes that are returned in the response of the user info endpoint. It is important to note that the `openid` scope must be one of the access token claims.
 
 To access a user's profile using the UserInfo endpoint of OpenID Connect, you need to follow these steps:
 

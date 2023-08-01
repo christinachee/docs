@@ -16,9 +16,9 @@ Authgear consists of these major parts:
 * **Admin API**
   * For backend servers to perform administrative tasks. Most things about user management you can do in the Authgear Portal, you can do it with [Admin API](../reference/apis/admin-api/)
 * **Authgear Portal**
-  * You can use the Authgear Portal for configuring your project, managing users, checking [audit log](../how-to-guide/monitor/audit-log.md), and customizing the behavior by [event hooks](../integrate/events-hooks/).
+  * You can use the Authgear Portal for configuring your project, managing users, checking [audit log](../how-to-guide/monitor/audit-log.md), and customizing the behavior by [event hooks](../how-to-guide/events-hooks/).
 * **AuthUI**
-  * The prebuilt UI for end-users to complete authentication and perform [account settings](../integrate/auth-ui.md)
+  * The prebuilt UI for end-users to complete authentication and perform [account settings](../how-to-guide/user-management/auth-ui.md)
   * It can be [customized](../how-to-guide/customize/branding.md) to fit your company's branding
 * **Events and Hooks**
-  * Use [event and hooks](../integrate/events-hooks/) to get the information about events that happened (non-blocking) and change the process of the Authgear server (blocking)
+  * Use [event and hooks](../how-to-guide/events-hooks/) to get the information about events that happened (non-blocking) and change the process of the Authgear server (blocking)

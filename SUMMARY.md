@@ -37,8 +37,11 @@
   * [Add Biometric Login](how-to-guide/authenticate/biometric.md)
   * [Add Ethereum & NFT Login](how-to-guide/authenticate/web3.md)
   * [Add Anonymous Users](how-to-guide/authenticate/anonymous-users.md)
+  * [Use Authgear as an OpenID Connect Provider](how-to-guide/authenticate/oidc-provider.md)
+  * [Reauthentication](how-to-guide/authenticate/reauthentication.md)
   * [Passwordless Login for Apple App Store Review](how-to-guide/authenticate/passwordless-demo-user-for-apple-app-review.md)
   * [Setup local development environment for Cookie-based authentication](how-to-guide/authenticate/local-cookie-based-web-setup.md)
+* [Single Sign-on](how-to-guide/single-sign-on.md)
 * [Identity Providers](how-to-guide/how-to-setup-sso-integrations/README.md)
   * [Connect Apps to Apple](how-to-guide/how-to-setup-sso-integrations/apple.md)
   * [Connect Apps to Google](how-to-guide/how-to-setup-sso-integrations/google.md)
@@ -62,6 +65,17 @@
   * [Update user profile using Hooks](how-to-guide/integration/update-user-profile-using-hooks.md)
 * [Monitor](how-to-guide/monitor/README.md)
   * [Audit Log](how-to-guide/monitor/audit-log.md)
+* [User Management](how-to-guide/user-management/README.md)
+  * [User Profile](how-to-guide/user-management/user-profile.md)
+  * [User Settings](how-to-guide/user-management/auth-ui.md)
+  * [Account Deletion](how-to-guide/user-management/account-deletion.md)
+* [Events and Hooks](how-to-guide/events-hooks/README.md)
+  * [Event List](how-to-guide/events-hooks/event-list.md)
+  * [Webhooks](how-to-guide/events-hooks/webhooks.md)
+  * [JavaScript / TypeScript Hooks](how-to-guide/events-hooks/denohooks.md)
+* [Mobile Apps](how-to-guide/mobile-apps/README.md)
+  * [Use SDK to call your application server](how-to-guide/mobile-apps/using-sdk-to-call-your-application-server.md)
+  * [Force authentication on app launch](how-to-guide/mobile-apps/force-authentication-on-app-launch.md)
 
 ## Concepts
 
@@ -69,22 +83,7 @@
 * [Background Information](concepts/background-information.md)
 * [Authgear use cases](concepts/authgear-use-cases.md)
 * [User, Identity and Authenticator](concepts/user-identity-and-authenticator.md)
-
-## Integrate
-
-* [Using SDK to call your application server](integrate/using-sdk-to-call-your-application-server.md)
-* [User Settings](integrate/auth-ui.md)
-* [User Profile](integrate/user-profile.md)
-* [Reauthentication](integrate/reauthentication.md)
-* [How Authgear integrate with your applications](integrate/how-authgear-integrate-with-your-applications.md)
-* [Single Sign-on](integrate/single-sign-on.md)
-* [Force authentication on app launch](integrate/force-authentication-on-app-launch.md)
-* [Account Deletion](integrate/account-deletion.md)
-* [Using Authgear as an OpenID Connect Provider](integrate/oidc-provider.md)
-* [Events and Hooks](integrate/events-hooks/README.md)
-  * [Event List](integrate/events-hooks/event-list.md)
-  * [Webhooks](integrate/events-hooks/webhooks.md)
-  * [JavaScript / TypeScript Hooks](integrate/events-hooks/denohooks.md)
+* [How Authgear integrate with your applications](concepts/how-authgear-integrate-with-your-applications.md)
 
 ## Security
 

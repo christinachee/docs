@@ -8,7 +8,7 @@ description: >-
 
 ## Overview
 
-Reauthentication in Authgear is built on top of the [OIDC ID token](https://openid.net/specs/openid-connect-core-1_0.html#IDToken). The ID token is a JWT.
+Reauthentication in Authgear is built on top of the [OIDC ID token](https://openid.net/specs/openid-connect-core-1\_0.html#IDToken). The ID token is a JWT.
 
 Your sensitive operation server endpoint **MUST** require the ID token. When you receive the ID token, you **MUST** verify the signature of it. If the signature is valid, you can trust the claims inside the ID token.
 
@@ -16,9 +16,9 @@ The `auth_time` claim in the ID token tells **when** was the end-user last authe
 
 The `https://authgear.com/claims/user/can_reauthenticate` claim in the ID token tells whether the end-user can be reauthenticated. If the value of this claim is `false`, then depending on your business needs, you can either allow the end-user to proceed, or forbid the end-user to perform sensitive operations. The flows are illustrated by the following diagrams.
 
-![Sequence diagram for end-user who CANNOT reauthenticate](../.gitbook/assets/reauthentication-impossible.png)
+![Sequence diagram for end-user who CANNOT reauthenticate](../../.gitbook/assets/reauthentication-impossible.png)
 
-![Sequence diagram for end-user who CAN reauthenticate](../.gitbook/assets/reauthentication-possible.png)
+![Sequence diagram for end-user who CAN reauthenticate](../../.gitbook/assets/reauthentication-possible.png)
 
 ## SDK Integration
 
@@ -438,7 +438,6 @@ public async void OnPerformSensitiveOperationClicked(object sender, EventArgs ar
 }
 ```
 {% endtab %}
-
 {% endtabs %}
 
 ## Backend Integration
@@ -598,4 +597,3 @@ func CheckIDToken(idToken string) error {
 ```
 {% endtab %}
 {% endtabs %}
-

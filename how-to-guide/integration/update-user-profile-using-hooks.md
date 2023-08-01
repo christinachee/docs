@@ -4,7 +4,7 @@ description: Learn how to update a User profile's custom attributes suing Hooks
 
 # Update user profile using Hooks
 
-Using [Hooks](../../integrate/events-hooks/denohooks.md) you can put **extra information** into the user profile's [custom attributes](../../integrate/user-profile.md#custom-attributes) programmatically. This is useful for [Profile Enrichment](https://www.authgear.com/post/how-profile-enrichment-can-boost-your-product) where making your current customer data better by adding more details from outside sources.
+Using [Hooks](../events-hooks/denohooks.md) you can put **extra information** into the user profile's [custom attributes](../user-management/user-profile.md#custom-attributes) programmatically. This is useful for [Profile Enrichment](https://www.authgear.com/post/how-profile-enrichment-can-boost-your-product) where making your current customer data better by adding more details from outside sources.
 
 Here are easy steps to achieve this:
 

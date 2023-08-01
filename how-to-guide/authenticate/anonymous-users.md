@@ -94,7 +94,7 @@ authgear
 
 ### Check the UserInfo object
 
-After "signing up" as an anonymous user, you can [retrieve the "UserInfo" object](../../integrate/user-profile.md#userinfo-endpoint) and see the `sub` of the end-user.
+After "signing up" as an anonymous user, you can [retrieve the "UserInfo" object](../user-management/user-profile.md#userinfo-endpoint) and see the `sub` of the end-user.
 
 **UserInfo**
 

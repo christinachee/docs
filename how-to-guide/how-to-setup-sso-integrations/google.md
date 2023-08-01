@@ -10,7 +10,7 @@ To configure Google OAuth client for Authgear, you will need to create an OAuth 
 
 ### Create a new project
 
-Create a project on Google Cloud Platform through [console](https://console.cloud.google.com/). If you are adding Authgear to your existing Google Cloud Platform projects, you may skip to the next step to create the OAuth client.&#x20;
+Create a project on Google Cloud Platform through [console](https://console.cloud.google.com/). If you are adding Authgear to your existing Google Cloud Platform projects, you may skip to the next step to create the OAuth client.
 
 ### Create OAuth Consent Screen
 
@@ -51,9 +51,8 @@ You will need the values of **Client ID**, **Client secret** to configure Google
 
 🎉Done! You have just added Google Sign In to your apps!
 
-Your end-users can now sign in with Google on Authgear pre-built Log In and Sign Up page. Existing end-users can connect their account to Google in the [User Settings](../../integrate/auth-ui.md) page.
+Your end-users can now sign in with Google on Authgear pre-built Log In and Sign Up page. Existing end-users can connect their account to Google in the [User Settings](../user-management/auth-ui.md) page.
 
 !["Sign in with Google" in Log in and Sign up page](../../.gitbook/assets/google\_sign\_in.png)
 
 ![Your end-users can connect to their Google account in User Settings page](../../.gitbook/assets/connect\_with\_google.png)
-

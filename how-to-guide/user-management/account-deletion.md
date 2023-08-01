@@ -14,7 +14,7 @@ In the pre-built [**User Settings**](auth-ui.md) page, you can show a button for
 
 Enable this button in the **Advanced** -> **Account Deletion** page in the **Portal**
 
-!["Delete your account" button in the User Settings page](<../.gitbook/assets/Delete Your Account Button.jpg>)
+!["Delete your account" button in the User Settings page](<../../.gitbook/assets/Delete Your Account Button.jpg>)
 
 Note that if you enable this feature, you have to prepare for encountering invalid session every time your users close User Settings in your mobile apps. If your users unfortunately decided to delete their account in User Settings, all their sessions will become invalid immediately.
 
@@ -69,7 +69,7 @@ Alternatively, if you did not enable the "Delete Account" button in **User Setti
 
 ### Schedule Deletion
 
-Your backend server can invoke the mutation `scheduleAccountDeletion` with the [Admin API](../reference/apis/admin-api/) to initiate the account deletion.
+Your backend server can invoke the mutation `scheduleAccountDeletion` with the [Admin API](../../reference/apis/admin-api/) to initiate the account deletion.
 
 Here is an example:
 
@@ -93,7 +93,7 @@ mutation {
 
 ### Immediate Deletion
 
-Your backend server can invoke the mutation `scheduleAccountDeletion` with the [Admin API](../reference/apis/admin-api/) to initiate the account deletion.
+Your backend server can invoke the mutation `scheduleAccountDeletion` with the [Admin API](../../reference/apis/admin-api/) to initiate the account deletion.
 
 Here is an example:
 
@@ -124,4 +124,4 @@ You may listen to the following events to integrate the deletion behavior to you
 
 * `user.pre_schedule_deletion`
 
-See the event details in [Webhooks](broken-reference/).
+See the event details in [Webhooks](../../integrate/broken-reference/).
