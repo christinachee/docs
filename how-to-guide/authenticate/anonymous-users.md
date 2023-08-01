@@ -4,25 +4,25 @@ description: >-
   later.
 ---
 
-# Anonymous Users
+# Add Anonymous Users
 
 ## Overview
 
-You can use the create an Anonymous User account for the guests in your apps, so they can carry out interactions just like a normal user. For example, guests can post comments and save preference in your social platform before setting email and password. The user session will persist even the app has been closed.
+You can use create an Anonymous User account for the guests in your apps, so they can carry out interactions just like a normal user. For example, guests can post comments and save preferences in your social platform before setting email and password. The user session will persist even if the app has been closed.
 
-This improves the app experience because the user do not need to set up authenticators until further down the user journey, while still enjoying most of the app features. For app developers, the ability to create and assign Anonymous User also makes it easier to link the activities of an individual before and after sign-up.&#x20;
+This improves the app experience because the user does not need to set up authenticators until further down the user journey, while still enjoying most of the app features. For app developers, the ability to create and assign Anonymous User also makes it easier to link the activities of an individual before and after sign-up.
 
 ## Enable Anonymous User for your project
 
 1. In the portal, go to **Authentication > Anonymous Users**.
-2. Turn on **Enable anonymous users?**.
+2. Turn on **Enable anonymous users.**
 3. **Save** the settings.
 
 ## Using the SDK
 
 ### Sign up as an Anonymous User
 
-This will create an Anonymous User for the session. Subsequent requests from the end-user in the session can be identify by the same `sub`
+This will create an Anonymous User for the session. Subsequent requests from the end-user in the session can be identified by the same `sub`
 
 {% tabs %}
 {% tab title="React Native" %}
@@ -36,7 +36,6 @@ authgear
         // Handle the error
     });
 ```
-
 {% endtab %}
 
 {% tab title="Flutter" %}
@@ -48,7 +47,6 @@ try {
     // Handle the error
 }
 ```
-
 {% endtab %}
 
 {% tab title="iOS" %}
@@ -78,7 +76,6 @@ mAuthgear.authenticateAnonymously(new OnAuthenticateAnonymouslyListener() {
     }
 });
 ```
-
 {% endtab %}
 
 {% tab title="Web" %}
@@ -97,7 +94,7 @@ authgear
 
 ### Check the UserInfo object
 
-After "signing up" as an anonymous user, you can [retrieve the "UserInfo" object](../integrate/user-profile.md#userinfo-endpoint) and see the `sub` of the end-user.
+After "signing up" as an anonymous user, you can [retrieve the "UserInfo" object](../../integrate/user-profile.md#userinfo-endpoint) and see the `sub` of the end-user.
 
 **UserInfo**
 
@@ -172,7 +169,6 @@ authgear.promoteAnonymousUser(options, new OnPromoteAnonymousUserListener() {
 {% endtab %}
 
 {% tab title="Web" %}
-
 **Step 1: Start the promotion flow**
 
 When the user clicks promote on your website, make a **start promotion** call to redirect them to the promotion page.
@@ -199,8 +195,7 @@ authgear
 
 **Step 2: Handle the promotion result**
 
-After the user promotes on the promotion page, the user will be redirected to the
-`redirectURL` with a `code` parameter in the URL query. In the `redirectURI` of your application, make a **finish promotion** call to handle the promotion result.
+After the user promotes on the promotion page, the user will be redirected to the `redirectURL` with a `code` parameter in the URL query. In the `redirectURI` of your application, make a **finish promotion** call to handle the promotion result.
 
 ```typescript
 authgear
@@ -227,10 +222,10 @@ On Mobile SDKs, creating an anonymous user will create a key-pair. The key-pair 
 
 On the Web SDK, there will be no key-pair created. Therefore the end-user will not be able to login to the same Anonymous User after the their session become invalid. For cookie-based authentication, it is controlled by the "idle timeout" and "session lifetime" of the **Cookie**. For token-based authentication, it is controlled by the "idle timeout" and "token lifetime" of the **Refresh Token**.
 
-In other words, The anonymous user account lifetime is the same as the logged in session lifetime.
+In other words, The anonymous user account lifetime is the same as the logged-in session lifetime.
 
 To adjust the lifetime settings, change the timeouts and lifetimes in **Portal** > **Applications** accordingly.
 
-#### Caution for high traffic websites
+#### Caution for high-traffic websites
 
 You should create anonymous users only when necessary in the user journey to prevent creating excessive orphan accounts in your tenant.

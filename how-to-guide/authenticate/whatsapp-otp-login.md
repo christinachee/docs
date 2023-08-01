@@ -4,9 +4,9 @@ description: >-
   alternative to SMS
 ---
 
-# WhatsApp OTP Login
+# Add WhatsApp OTP Login
 
-<figure><img src="../.gitbook/assets/WhatsApp.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/WhatsApp.png" alt=""><figcaption></figcaption></figure>
 
 Authgear let your users login passwordlessly with WhatsApp OTP.
 
@@ -19,7 +19,7 @@ To enable this feature from the Portal:
 5. In the dropdown **Verify phone number by**, select either **WhatsApp or SMS** or **WhatsApp only**.
 6. Press **Save** on the top left corner.
 
-<figure><img src="../.gitbook/assets/WhatsApp.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/WhatsApp.jpg" alt=""><figcaption></figcaption></figure>
 
 When the user login with their phone number, a WhatsApp message with an OTP and the app name will be received. They can copy the code by tapping on the "Copy code" button and log in by the code.
 

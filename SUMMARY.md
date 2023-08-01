@@ -31,7 +31,24 @@
 ## How-To Guides <a href="#how-to-guide" id="how-to-guide"></a>
 
 * [Authenticate](how-to-guide/authenticate/README.md)
+  * [Add Passkeys Login](how-to-guide/authenticate/passkeys.md)
+  * [Add WhatsApp OTP Login](how-to-guide/authenticate/whatsapp-otp-login.md)
+  * [Add Email Magic Link Login](how-to-guide/authenticate/add-email-magic-link-login.md)
+  * [Add Biometric Login](how-to-guide/authenticate/biometric.md)
+  * [Add Ethereum & NFT Login](how-to-guide/authenticate/web3.md)
+  * [Add Anonymous Users](how-to-guide/authenticate/anonymous-users.md)
+  * [Passwordless Login for Apple App Store Review](how-to-guide/authenticate/passwordless-demo-user-for-apple-app-review.md)
   * [Setup local development environment for Cookie-based authentication](how-to-guide/authenticate/local-cookie-based-web-setup.md)
+* [Social & Enterprise Identity Providers](how-to-guide/how-to-setup-sso-integrations/README.md)
+  * [Connect Apps to Apple](how-to-guide/how-to-setup-sso-integrations/apple.md)
+  * [Connect Apps to Google](how-to-guide/how-to-setup-sso-integrations/google.md)
+  * [Connect Apps to Facebook](how-to-guide/how-to-setup-sso-integrations/facebook.md)
+  * [Connect Apps to GitHub](how-to-guide/how-to-setup-sso-integrations/github.md)
+  * [Connect Apps to LinkedIn](how-to-guide/how-to-setup-sso-integrations/linkedin.md)
+  * [Connect Apps to Azure Active Directory](how-to-guide/how-to-setup-sso-integrations/azureadv2.md)
+  * [Connect Apps to Microsoft AD FS](how-to-guide/how-to-setup-sso-integrations/adfs.md)
+  * [Connect Apps to Azure AD B2C](how-to-guide/how-to-setup-sso-integrations/azureadb2c.md)
+  * [Connect Apps to WeChat](how-to-guide/how-to-setup-sso-integrations/wechat.md)
 * [Customize](how-to-guide/customize/README.md)
   * [Privacy Policy & Terms of Service Links](how-to-guide/customize/privacy-policy-terms-of-service.md)
   * [Branding in Auth UI](how-to-guide/customize/branding.md)
@@ -52,26 +69,6 @@
 * [Background Information](concepts/background-information.md)
 * [Authgear use cases](concepts/authgear-use-cases.md)
 * [User, Identity and Authenticator](concepts/user-identity-and-authenticator.md)
-
-## Strategies
-
-* [Passkeys](strategies/passkeys.md)
-* [WhatsApp OTP Login](strategies/whatsapp-otp-login.md)
-* [Email Login Link](strategies/email-login-link.md)
-* [Social & Enterprise Identity Providers](strategies/how-to-setup-sso-integrations/README.md)
-  * [Connect Apps to Apple](strategies/how-to-setup-sso-integrations/apple.md)
-  * [Connect Apps to Google](strategies/how-to-setup-sso-integrations/google.md)
-  * [Connect Apps to Facebook](strategies/how-to-setup-sso-integrations/facebook.md)
-  * [Connect Apps to GitHub](strategies/how-to-setup-sso-integrations/github.md)
-  * [Connect Apps to LinkedIn](strategies/how-to-setup-sso-integrations/linkedin.md)
-  * [Connect Apps to Azure Active Directory](strategies/how-to-setup-sso-integrations/azureadv2.md)
-  * [Connect Apps to Microsoft AD FS](strategies/how-to-setup-sso-integrations/adfs.md)
-  * [Connect Apps to Azure AD B2C](strategies/how-to-setup-sso-integrations/azureadb2c.md)
-  * [Connect Apps to WeChat](strategies/how-to-setup-sso-integrations/wechat.md)
-* [Biometric login](strategies/biometric.md)
-* [Anonymous Users](strategies/anonymous-users.md)
-* [Passwordless Login for Apple App Store Review](strategies/passwordless-demo-user-for-apple-app-review.md)
-* [Login with Ethereum & NFT](strategies/web3.md)
 
 ## Integrate
 

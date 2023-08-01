@@ -2,19 +2,19 @@
 description: Login with NFTs help developers build Web3 apps without blockchain knowledge
 ---
 
-# Login with Ethereum & NFT
+# Add Ethereum & NFT Login
 
-Sign In With Ethereum(also known as SIWE) introduces a new way of authentication and identification of a user using their crypto-wallet addresses. Authgear saves you from all the complex setups and brings you the technology of the future with just a simple click.
+Sign In With Ethereum(also known as SIWE) introduces a new way of authenticating and identification of a user using their crypto-wallet addresses. Authgear saves you from all the complex setups and brings you the technology of the future with just a simple click.
 
 ### Platform support
 
 The Sign In With Ethereum standard is built on the [EIP-4361](https://eips.ethereum.org/EIPS/eip-4361) specification, which is typically performed on Web3 providers.
 
-To make this as simple as possible, the following mainstream consumer-facing web3 providers are selected to be the gateway connecting between your application and users.
+To make this as simple as possible, the following mainstream consumer-facing web3 providers are selected to be the gateway connecting your application and users.
 
 * [MetaMask](https://metamask.io/)
 
-These providers are typically supported by browsers with WebExtensions API, namely Chrome, Firefox, Edge and Brave.
+These providers are typically supported by browsers with WebExtensions API, namely Chrome, Firefox, Edge, and Brave.
 
 ### Supported NFTs
 
@@ -27,7 +27,7 @@ At the current stage, the following token types are supported:
 
 ## **Wallet address and NFTs in UserInfo**
 
-In the [`UserInfo`](../integrate/user-profile.md#userinfo-endpoint) object of a user, the wallet address and the NFTs owned can be found.
+In the [`UserInfo`](../../integrate/user-profile.md#userinfo-endpoint) object of a user, the wallet address and the NFTs owned can be found.
 
 Here is an example of such user:
 

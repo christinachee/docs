@@ -2,7 +2,7 @@
 description: Passwordless login with email links
 ---
 
-# Email Login Link
+# Add Email Magic Link Login
 
 Email Login Links, also known as "**magic link**", is a passwordless authentication method that allows users to log into a website or application without using a traditional password. Instead, it relies on a unique link sent to the user's email address.
 
@@ -23,4 +23,4 @@ To enable Email Login Links:
 3. Go to the "**Verification and OTP**" tab
 4. Under "**Email**", in the "**Verify email by**" field, select "**Login Link**"
 
-<figure><img src="../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
