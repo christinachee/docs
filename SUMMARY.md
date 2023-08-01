@@ -39,7 +39,7 @@
   * [Add Anonymous Users](how-to-guide/authenticate/anonymous-users.md)
   * [Passwordless Login for Apple App Store Review](how-to-guide/authenticate/passwordless-demo-user-for-apple-app-review.md)
   * [Setup local development environment for Cookie-based authentication](how-to-guide/authenticate/local-cookie-based-web-setup.md)
-* [Social & Enterprise Identity Providers](how-to-guide/how-to-setup-sso-integrations/README.md)
+* [Identity Providers](how-to-guide/how-to-setup-sso-integrations/README.md)
   * [Connect Apps to Apple](how-to-guide/how-to-setup-sso-integrations/apple.md)
   * [Connect Apps to Google](how-to-guide/how-to-setup-sso-integrations/google.md)
   * [Connect Apps to Facebook](how-to-guide/how-to-setup-sso-integrations/facebook.md)
