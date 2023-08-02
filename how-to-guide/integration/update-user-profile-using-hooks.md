@@ -1,5 +1,5 @@
 ---
-description: Learn how to update a User profile's custom attributes suing Hooks
+description: Learn how to update a User profile's custom attributes using Hooks
 ---
 
 # Update user profile using Hooks
