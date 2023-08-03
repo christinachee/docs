@@ -62,7 +62,7 @@
 * [Integrate](how-to-guide/integration/README.md)
   * [Access User Profiles](how-to-guide/integration/access-user-profiles.md)
   * [Add custom fields to a JWT Access Token](how-to-guide/integration/add-custom-fields-to-a-jwt-access-token.md)
-  * [Update user profile using Hooks](how-to-guide/integration/update-user-profile-using-hooks.md)
+  * [Update user profile on sign-up using Hooks](how-to-guide/integration/update-user-profile-on-sign-up-using-hooks.md)
 * [Monitor](how-to-guide/monitor/README.md)
   * [Audit Log](how-to-guide/monitor/audit-log.md)
 * [User Management](how-to-guide/user-management/README.md)
