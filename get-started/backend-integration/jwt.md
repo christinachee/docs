@@ -12,9 +12,11 @@ Before we start, make sure the option **Issue JWT as access token** is enabled i
 
 ![Make sure "Issue JWT as access token" is enabled in your application](../../.gitbook/assets/issue-jwt-as-access-token.png)
 
+With the **Issue JWT as access token** option turned on in your application, Authgear will issue JWT as access tokens. The incoming HTTP requests should include the access token in their `Authorization` headers. Without setting the reverse proxy, your backend server can use your Authgear **JWKS** to verify the request and decode user information from the JWT access token.
+
 ## Find the JSON Web Key Sets (JWKS) endpoint
 
-This Discovery endpoint serves a JSON document containing the OpenID Connect configuration of your app. It includes the authorization endpoint, the token endpoint and the JWKS endpoint.
+This Discovery endpoint serves as a JSON document containing the OpenID Connect configuration of your app. It includes the authorization endpoint, the token endpoint, and the JWKS endpoint.
 
 `https://<YOUR_AUTHGEAR_ENDPOINT>/.well-known/openid-configuration`&#x20;
 
@@ -65,7 +67,7 @@ def fetch_jwks_uri(base_address):
     return jwks_uri
 ```
 
-### Step 3: Get JWT token from the Authorization header
+### Step 3: Get the JWT token from the Authorization header
 
 Define a function to extract the access token from the Authorization header in the incoming request. It should look like `Authorization: Bearer <access_token>`.
 
@@ -257,6 +259,12 @@ npm install --save express-jwt jwks-rsa
 ### Step 3: Protect API Endpoints
 {% endtab %}
 {% endtabs %}
+
+### Check the validity of JWT
+
+The `auth_time` claim in an **OIDC ID token** represents the time **when the user authentication occurred**. Extract the `auth_time` claim from the token, which should represent the time of the original authentication in seconds. If the difference between the current time and `auth_time` exceeds your threshold (for example, 5mins), initiate the [re-authentication](../../how-to-guide/authenticate/reauthentication.md) process.
+
+See an example of how to verify the signature of the ID token, and then validate the claims `auth_time` inside [here](../../how-to-guide/authenticate/reauthentication.md#backend-integration).
 
 ## Decode user from cookies
 

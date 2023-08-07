@@ -8,23 +8,39 @@ description: >-
 
 For Mobile App or Single Page Web App or Website, each request from the client to your application server should contain an access token or a cookie. Your backend server should validate them for each HTTP request.
 
-There are two approaches to verify the requests, validate JWT in the your server or forward to Authgear Resolver Endpoint.
+There are different approaches to verify the requests based on whether you validate JWT (JSON Web Tokens) in your server, or forward authentication to Authgear Resolver Endpoint.
 
-**Validate JSON Web Token (JWT) in your application server**
+### Validate JWT in your server
 
-This approach is only available for **Token-based authentication**.
+Authgear uses [JSON Web Token (JWT)](https://jwt.io/?\_gl=1\*1ybgym6\*rollup\_ga\*MTI1NDM1NjUwMy4xNjg3NzEyNTIz\*rollup\_ga\_F1G3E656YZ\*MTY5MTEzNjEzNS45NS4xLjE2OTExMzYxNDguNDcuMC4w\*\_ga\*MTI1NDM1NjUwMy4xNjg3NzEyNTIz\*\_ga\_QKMSDV5369\*MTY5MTEzNjEzNS44Ny4xLjE2OTExMzYxNDguNDcuMC4w&\_ga=2.165043391.1472871049.1691063710-1254356503.1687712523) for secure data transmission, authentication, and authorization. Tokens should be parsed and validated in regular web, native, and single-page applications to make sure the token isn’t compromised and the signature is authentic.&#x20;
 
-With the **Issue JWT as access token** option turned on in your application, Authgear will issue JWT as access tokens. The incoming HTTP requests should include the access token in their `Authorization` headers. Without setting the reverse proxy, your backend server can use your Authgear JWKS to verify the request and decode user information from the JWT access token.
+Read more on [Validate JWT in your application server](jwt.md) guide.
 
-**Forward Authentication to Authgear Resolver Endpoint**
+#### JWT Token in Authorization Header
 
-This approach is available for both **Token-based** and **Cookie-based authentication**.
+This approach is only available for [Token-based authentication](../authentication-approach/token-based.md) and involves passing the JWT token within the HTTP Authorization header. This approach is widely used in OAuth 2.0 and OIDC implementations, providing a standardized way to authenticate users.
 
-The recommended but more complicated approach is to forward each incoming HTTP request to the Authgear Resolver Endpoint to verify the access token or cookie.&#x20;
+#### JWT Token in Cookies
 
-You can forward the requests without the request body to the resolver endpoint. Authgear will look at the `Authorization` and `Cookie` in the HTTP header, verify the token, and respond HTTP 200 with `X-Authgear-` headers for session validity, the user id...etc.
+JWT tokens can be stored in **HTTP cookies** and sent with each request. It is suitable for  [Cookie-based authentication](../authentication-approach/cookie-based.md)**.** Storing JWTs in cookies as a way to persist the user's session across requests. The server then uses JWKS to validate the token. This approach is useful in scenarios where you want to maintain user sessions across different services in a more traditional web application setup.
 
-If you use a popular reverse proxy on your deployment, such as NGINX, Traefik, etc, you can configure it with a few simple lines of forward auth config. Your backend should read the returned headers to determine the identity of the user of the HTTP request.
+{% hint style="info" %}
+For Cookie-based authentication, JWT in cookies is not supported yet. [You can track the issue here](https://github.com/authgear/authgear-server/issues/1180).
+{% endhint %}
+
+### Forward Authentication to Authgear Resolver Endpoint
+
+Forward Authentication is a process where an intermediate **reverse** **proxy or API Gateway** is responsible for authenticating a request before it reaches the intended application or service. This can add an extra layer of security and centralize the authentication logic. An intermediate service forwards each incoming HTTP request to the Authgear Resolver Endpoint to verify the access token or cookie in the HTTP header.&#x20;
+
+Read more on [Forward Authentication to Authgear Resolver Endpoint](nginx.md) guide.
+
+#### Forward Authorization Header
+
+Before processing the request, your server or a reverse proxy forwards the request to an [Authgear Resolver Endpoint](nginx.md#authgear-resolver-endpoint). This endpoint resolves and verifies the authentication information (such as an Access Token) from the request **Authorization Header**.
+
+#### Forward Cookie in HTTP header
+
+In this pattern, Access Token (JWT) is stored in a cookie, and your server or a reverse proxy may contact the [Authgear Resolver Endpoint](nginx.md#authgear-resolver-endpoint) to obtain more information or validate certain aspects of the request.
 
 ## Comparison
 

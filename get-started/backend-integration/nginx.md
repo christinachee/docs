@@ -6,7 +6,9 @@ description: >-
 
 # Forward Authentication to Authgear Resolver Endpoint
 
-In this section, we will explain how to set up reverse proxy in NGINX to protect your app server from unauthorized access with the Authgear resolver.
+In this section, we will explain how to set up a reverse proxy in NGINX to protect your app server from unauthorized access with the Authgear resolver. You can forward the requests without the request body to the resolver endpoint. Authgear will look at the `Authorization` and `Cookie` in the HTTP header, verify the token, and respond to HTTP 200 with `X-Authgear-` headers for session validity, the user id...etc.
+
+If you use a popular reverse proxy on your deployment, such as [NGINX](https://www.nginx.com/), [Traefik](https://traefik.io/traefik/), or API Gateways such as [Apache APISIX](https://apisix.apache.org/), you can configure it with a few simple lines of forward auth config. Your backend should read the returned headers to determine the identity of the user of the HTTP request.
 
 You can also use the forward authentication features of the other popular reverse proxy. e.g.
 
@@ -18,15 +20,15 @@ Authgear provides an endpoint for forward authentication. Subrequests should be 
 
 `https://<your_app_endpoint>/_resolver/resolve`
 
-## How Forward Authentication works
+## How Forward Authentication Works
 
 ![](../../.gitbook/assets/how-forward-authentication-works.png)
 
-1. After the user is logged in, send application request to your server from the client app with access token/cookies.
+1. After the user is logged in, send an application request to your server from the client app with access token/cookies.
 2. Set up a reverse proxy in your infrastructure to authenticate HTTP requests. The reverse proxy will forward the incoming HTTP requests without the request body to the Authgear Resolver Endpoint.
 3. Authgear resolver parses the access token and returns HTTP headers including the user login state. The headers are starting with `x-authgear-`.
 4. You have to instruct your reverse proxy to include those extra headers, before forwarding the request to your backend server.
-5. Your backend server looks at the headers and response to the client app accordingly. e.g. Returns user's content or HTTP 401 if the user is not logged in.
+5. Your backend server looks at the headers and responds to the client app accordingly. e.g. Returns the user's content or HTTP 401 if the user is not logged in.
 
 There are so many reverse proxies available in the wild. So here we are going to illustrate the idea of using Nginx as the reverse proxy.
 
