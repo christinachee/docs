@@ -37,6 +37,7 @@
   * [Add Biometric Login](how-to-guide/authenticate/biometric.md)
   * [Add Ethereum & NFT Login](how-to-guide/authenticate/web3.md)
   * [Add Anonymous Users](how-to-guide/authenticate/anonymous-users.md)
+  * [Add authentication to any web page](how-to-guide/authenticate/add-authentication-to-any-web-page.md)
   * [Use Authgear as an OpenID Connect Provider](how-to-guide/authenticate/oidc-provider.md)
   * [Reauthentication](how-to-guide/authenticate/reauthentication.md)
   * [Passwordless Login for Apple App Store Review](how-to-guide/authenticate/passwordless-demo-user-for-apple-app-review.md)
