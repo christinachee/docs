@@ -80,7 +80,6 @@
 ## Concepts
 
 * [Identity Fundamentals](concepts/identity-fundamentals.md)
-* [Background Information](concepts/background-information.md)
 * [Authgear use cases](concepts/authgear-use-cases.md)
 * [User, Identity and Authenticator](concepts/user-identity-and-authenticator.md)
 * [How Authgear integrate with your applications](concepts/how-authgear-integrate-with-your-applications.md)

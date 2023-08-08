@@ -1,7 +1,7 @@
 ---
 description: >-
   Auhgear is a highly adaptable identity-as-a-service (IDaaS) platform for web
-  and mobile applications.
+  and mobile applications
 ---
 
 # Authgear Overview
@@ -20,5 +20,26 @@ description: >-
 * APIs for further integration and customizations.
 
 Most importantly, you can [get started](https://accounts.portal.authgear.com/signup) **with Authgear for free**.
+
+### Learn about Authgear&#x20;
+
+Authgear contains the following high-level components:
+
+#### Authenticate on the Web/Mobile App
+
+* **Client App SDKs** - for developers to quickly implement authentication with Auth UI on your web and mobile applications. Check out [Start Building](get-started/start-building/) for tutorials and API References.
+* **Auth UI** - is the default batteries included UI for login, signup and setting page. You can customize the style via the **Portal**, including the CSS and HTML of each page**.**
+* **Authentication API** (coming soon) - for developers to implement their own login, signup and reauthenticate UI (e.g. a mobile native view); or to define a customized login, signup and reauth flow.
+* [**Use Authgear as OpenID Connect Provider**](how-to-guide/authenticate/oidc-provider.md) - for developers to use Authgear with other software that already support OIDC login, you can use Authgear as an OpenID Connect Provider.
+
+#### Backend Authentication and Integrations
+
+* [**Backend Integration**](get-started/backend-integration/) - explain the common approach of using Access Token or Cookies (JWT or random string) to authenticate an API or HTTP Requests.
+* [**Admin API**](reference/apis/admin-api/) - allow your backend to interact directly with Authgear for user management purpose.
+* [**Events and Hooks**](how-to-guide/events-hooks/) - call external web endpoint or use the hosted type-script to customize the behaviour of Authgear. E.g. blocking certain type of sign up, or call external endpoint for each login
+
+#### Management Portal
+
+* **Authgear Portal** - You can configure your projects, manage users, check out [audit log](how-to-guide/monitor/audit-log.md), or customize the **AuthUI**
 
 <table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Get Started</strong></td><td>Jump in with Authgear's getting started guides.</td><td><a href="get-started/start-building/">start-building</a></td></tr><tr><td><strong>How-To Guides</strong></td><td>Find a step-by-step guide to take your project to the next level.</td><td><a href="broken-reference">Broken link</a></td></tr><tr><td><strong>Concepts</strong></td><td>Learn the basics.</td><td><a href="broken-reference">Broken link</a></td></tr></tbody></table>
