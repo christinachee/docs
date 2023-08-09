@@ -157,6 +157,6 @@ In the above examples, nginx will also authenticate requests by creating sub-req
 
 ## Finish
 
-Now visit the website through `https://{SUBDOMAIN}.{PROJECT_NAME}.authgear-apps.com`, the browser will be able to send requests with the authorization cookies.
+Now visit the website through `https://<yourapp>.authgear-apps.com`, and the browser will be able to send requests with the authorization cookies.
 
 For implementing login and logout logic in your website, please refer to [Web SDK](../../get-started/single-page-app/website.md).

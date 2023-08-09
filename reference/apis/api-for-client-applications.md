@@ -6,19 +6,19 @@ Unless otherwise specified, all paths mentioned here are relative to the endpoin
 
 ## /.well-known/openid-configuration
 
-This endpoint serves a JSON document containing the OpenID Connect configuration of your app. That includes the authorization endpoint, the token endpoint and the JWKs endpoint.
+This endpoint serves as a JSON document containing the OpenID Connect configuration of your app. That includes the authorization endpoint, the token endpoint, and the JWKs endpoint.
 
 Here is [an example of how it looks](https://accounts.portal.authgearapps.com/.well-known/openid-configuration).
 
 ## /.well-known/oauth-authorization-server
 
-This endpoint serves a JSON document containing the authorization server metadata of your app. That includes the authorization endpoint, the token endpoint and the JWKs endpoint.
+This endpoint serves a JSON document containing the authorization server metadata of your app. That includes the authorization endpoint, the token endpoint, and the JWKs endpoint.
 
 Here is [an example of how it looks](https://accounts.portal.authgear.com/.well-known/openid-configuration).
 
 ## /\_resolver/resolve
 
-The endpoint serves as a resolver to check the access token or cookie in the request headers. Forward incoming HTTP requests to this endpoint and the resolver will adds the `x-authgear-` headers the to response.
+The endpoint serves as a resolver to check the access token or cookie in the request headers. Forward incoming HTTP requests to this endpoint and the resolver will add the `x-authgear-` headers the to response.
 
 See the list of `x-authgear-` headers in the specs [here](https://github.com/authgear/authgear-server/blob/master/docs/specs/api-resolver.md).
 
@@ -26,7 +26,7 @@ See implementation examples [here](../../get-started/backend-integration/nginx.m
 
 ## /
 
-This endpoint is the entrypoint of the Web UI. You can visit it if you want to try your configuration. However, this is NOT the authorization endpoint. You must use our SDK to initiate the authentication.
+This endpoint is the entry point of the Web UI. You can visit it if you want to try your configuration. However, this is NOT the authorization endpoint. You must use our SDK to initiate the authentication.
 
 ## /settings
 
