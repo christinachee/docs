@@ -26,7 +26,7 @@ To let the operation proceed, return a JSON document with `is_allowed` set to `t
 }
 ```
 
-To abort the operation, return a JSON document with `is_allowed` set to `true`, and a non-empty `reason` and `title`.
+To abort the operation, return a JSON document with `is_allowed` set to `false`, and a non-empty `reason` and `title`.
 
 ```json
 {
