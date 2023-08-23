@@ -21,6 +21,14 @@ If you have a traditional web application like **Java EE, Express, PHP, GO, Lara
 [java-spring-boot.md](java-spring-boot.md)
 {% endcontent-ref %}
 
+{% content-ref url="next.js.md" %}
+[next.js.md](next.js.md)
+{% endcontent-ref %}
+
+{% content-ref url="asp.net-core-mvc.md" %}
+[asp.net-core-mvc.md](asp.net-core-mvc.md)
+{% endcontent-ref %}
+
 {% content-ref url="../authentication-approach/cookie-based.md" %}
 [cookie-based.md](../authentication-approach/cookie-based.md)
 {% endcontent-ref %}
