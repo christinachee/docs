@@ -20,6 +20,7 @@
   * [Xamarin SDK](get-started/xamarin.md)
 * [Regular Web App](get-started/regular-web-app/README.md)
   * [Java Spring Boot](get-started/regular-web-app/java-spring-boot.md)
+  * [Next.js](get-started/regular-web-app/next.js.md)
 * [Backend/API](get-started/start-building/backend-api.md)
   * [Backend Integration](get-started/backend-integration/README.md)
   * [Validate JWT in your application server](get-started/backend-integration/jwt.md)
