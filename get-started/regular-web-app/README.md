@@ -29,6 +29,14 @@ If you have a traditional web application like **Java EE, Express, PHP, GO, Lara
 [asp.net-core-mvc.md](asp.net-core-mvc.md)
 {% endcontent-ref %}
 
+{% content-ref url="express.md" %}
+[express.md](express.md)
+{% endcontent-ref %}
+
+{% content-ref url="php.md" %}
+[php.md](php.md)
+{% endcontent-ref %}
+
 {% content-ref url="../authentication-approach/cookie-based.md" %}
 [cookie-based.md](../authentication-approach/cookie-based.md)
 {% endcontent-ref %}
