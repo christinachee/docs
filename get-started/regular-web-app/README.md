@@ -33,6 +33,10 @@ If you have a traditional web application like **Java EE, Express, PHP, GO, Lara
 [express.md](express.md)
 {% endcontent-ref %}
 
+{% content-ref url="laravel.md" %}
+[laravel.md](laravel.md)
+{% endcontent-ref %}
+
 {% content-ref url="php.md" %}
 [php.md](php.md)
 {% endcontent-ref %}
