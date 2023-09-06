@@ -22,6 +22,7 @@
   * [Java Spring Boot](get-started/regular-web-app/java-spring-boot.md)
   * [Next.js](get-started/regular-web-app/next.js.md)
   * [ASP.NET Core MVC](get-started/regular-web-app/asp.net-core-mvc.md)
+  * [Laravel](get-started/regular-web-app/laravel.md)
   * [Express](get-started/regular-web-app/express.md)
   * [PHP](get-started/regular-web-app/php.md)
 * [Backend/API](get-started/start-building/backend-api.md)
