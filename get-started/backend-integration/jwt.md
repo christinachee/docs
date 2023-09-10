@@ -48,7 +48,7 @@ pip install PyJWT
 
 ### Step 2: Find the JSON Web Key Sets (JWKS) endpoint
 
-Define a function to find the JWKS endpoint from the OpenID Connect configuration. Use your Authgear endpoint as `base_address`
+Define a function to find the JWKS endpoint from the OpenID Connect configuration. Use your Authgear endpoint as the `base_address`
 
 ```python
 import json
@@ -86,7 +86,7 @@ def parse_header(authz_header):
 
 ### Step 4: Verify and decode the JWT token
 
-Here show an example of using Flask web framework to guard a path. You may need to adjust some of the codes to suit your technologies.
+Here we show an example of using the Flask web framework to guard a path. You may need to adjust some of the codes to suit your technologies.
 
 ```python
 from flask import request
@@ -129,6 +129,131 @@ def hello():
         return {
             "message": "no token"
         }
+```
+{% endtab %}
+
+{% tab title="Node.js" %}
+### Step 1: Install dependencies
+
+```bash
+npm install --save axios jwks-rsa jsonwebtoken
+```
+
+### Step 2: Find the JWKS Endpoint
+
+Use the following method to get the JWKS URI (you'll need to URI to extract the public signing key from a JWT).
+
+```javascript
+const appUrl = ""; //place your authgear app endpoint here
+const getJwksUri = async (appUrl) => {
+    const config_endpoint = appUrl + "/.well-known/openid-configuration";
+    const data = await axios.get(config_endpoint);
+    return data.data.jwks_uri;
+}
+```
+
+### Step 3: Extract JWT from Request Header
+
+Use the following code to extract only the token part from a `Bearer [token]` authorization header in your Express app:
+
+```javascript
+const express = require("express");
+const axios = require("axios");
+const node_jwt = require('jsonwebtoken');
+const jwksClient = require('jwks-rsa');
+
+const app = express();
+const port = 3002;
+app.get('/', async (req, res) => {
+
+    const requestHeader = req.headers;
+    if (requestHeader.authorization == undefined) {
+        res.send("Invalid header");
+        return;
+    }
+    const authorizationHeader = requestHeader.authorization.split(" ");
+    const access_token = authorizationHeader[1];
+
+}
+```
+
+### Step 4: Decode Access Token
+
+Next, decode the access token so that you can extract the JWT `kid` from the result. You'll need this \`kid to get the public signing key. Use the following code to decode the JWT:
+
+```javascript
+const decoded_access_token = node_jwt.decode(access_token, {complete: true});
+```
+
+### Step 5: Get JWT Signing Keys and Verify the JWT
+
+Use the following code to extract the JWT public keys then verify the JWT using the keys:
+
+```javascript
+const jwks_uri = await getJwksUri(appUrl);
+    const client = jwksClient({
+        strictSsl: true,
+        jwksUri: jwks_uri
+    });
+    const signing_key = await client.getSigningKey(decoded_access_token.header.kid);
+
+    try {
+        const verify = node_jwt.verify(access_token, signing_key.publicKey, { algorithms: ['RS256'] });
+        res.send(JSON.stringify(verify))
+    }
+    catch(error) {
+        res.send(error);  
+    }
+    
+```
+
+Here's what your Express app should look like after putting the code in all the steps together:
+
+```javascript
+const express = require("express");
+const axios = require("axios");
+const node_jwt = require('jsonwebtoken');
+const jwksClient = require('jwks-rsa');
+
+const app = express();
+const port = 3002;
+
+const appUrl = "https://demo-1-ea.authgear.cloud";
+const getJwksUri = async (appUrl) => {
+    const config_endpoint = appUrl + "/.well-known/openid-configuration";
+    const data = await axios.get(config_endpoint);
+    return data.data.jwks_uri;
+}
+
+app.get('/', async (req, res) => {
+
+    const requestHeader = req.headers;
+    if (requestHeader.authorization == undefined) {
+        res.send("Invalid header");
+        return;
+    }
+    const authorizationHeader = requestHeader.authorization.split(" ");
+    const access_token = authorizationHeader[1];
+    const decoded_access_token = node_jwt.decode(access_token, {complete: true});
+    const jwks_uri = await getJwksUri(appUrl);
+    const client = jwksClient({
+        strictSsl: true,
+        jwksUri: jwks_uri
+    });
+    const signing_key = await client.getSigningKey(decoded_access_token.header.kid);
+
+    try {
+        const verify = node_jwt.verify(access_token, signing_key.publicKey, { algorithms: ['RS256'] });
+        res.send(JSON.stringify(verify))
+    }
+    catch(error) {
+        res.send(error);  
+    }
+});
+
+app.listen(port, () => {
+    console.log(`server started on port ${port}`);
+});
 ```
 {% endtab %}
 
@@ -241,28 +366,86 @@ func handler(w http.ResponseWriter, r *http.Request) {
 ```
 {% endtab %}
 
-{% tab title="Node.js" %}
-{% hint style="success" %}
-TODO: Node.js example is coming soon
-{% endhint %}
+{% tab title="PHP" %}
+### Step 1: Install Packages
 
-Here is an example demonstrates how to add authorization to an Express.js API
-
-### Step 1: Install dependencies
+First, install the dependencies required by running these com
 
 ```bash
-npm install --save express-jwt jwks-rsa
+composer require firebase/php-jwt
 ```
 
-### Step 2: Configure the middleware
+```bash
+composer require guzzlehttp/guzzle
+```
 
-### Step 3: Protect API Endpoints
+### Step 2: Find the JWKS Endpoint&#x20;
+
+Create a function that finds the JWKS endpoint from your Authgear application endpoint using the following code:
+
+```php
+<?php
+require 'vendor/autoload.php';
+use Firebase\JWT\JWT;
+
+use Firebase\JWT\JWK;
+use Firebase\JWT\Key;
+use GuzzleHttp\Client;
+
+$appUrl = ""; //place your authgear app endpoint here
+
+function getJwksUri($appUrl) {
+    $configEndpoint = $appUrl . "/.well-known/openid-configuration";
+    $httpClient = new Client();
+    $response = $httpClient->request('GET', $configEndpoint);
+    $responseObject = json_decode($response->getBody());
+    return $responseObject->jwks_uri;
+}
+```
+
+### Step 3: Get Signing Key
+
+Add the following code to your application to get the JWT signing key:
+
+```php
+$jwksUri = getJwksUri($appUrl);
+$httpClient = new Client();
+$jwksUriResponse = $httpClient->request('GET', $jwksUri);
+$keysObject = json_decode($jwksUriResponse->getBody());
+
+$jwks = (array) ($keysObject->keys)[0];
+
+$parsedKey = JWK::parseKey($jwks, "RS256");
+$signingKey = $parsedKey->getKeyMaterial();
+```
+
+### Step 4: Extract the JWT From the Request Header
+
+To extract the access token from the HTTP request use the following code:
+
+```php
+if (!isset($_SERVER['HTTP_AUTHORIZATION']))
+    throw new Exception("Invalid authorization header");
+$authorizationHeader = $_SERVER['HTTP_AUTHORIZATION'];
+$jwt = (explode(" ", $authorizationHeader))[1];
+```
+
+### Step 5: Validate and Decode JWT
+
+Finally, decode the JWT signing key.
+
+```php
+$decoded = JWT::decode($jwt, new Key($signingKey, 'RS256'));
+echo json_encode($decoded);
+```
+
+
 {% endtab %}
 {% endtabs %}
 
 ### Check the validity of JWT
 
-The `auth_time` claim in an **OIDC ID token** represents the time **when the user authentication occurred**. Extract the `auth_time` claim from the token, which should represent the time of the original authentication in seconds. If the difference between the current time and `auth_time` exceeds your threshold (for example, 5mins), initiate the [re-authentication](../../how-to-guide/authenticate/reauthentication.md) process.
+The `auth_time` claim in an **OIDC ID token** represents the time **when the user authentication occurred**. Extract the `auth_time` claim from the token, which should represent the time of the original authentication in seconds. If the difference between the current time and `auth_time` exceeds your threshold (for example, 5 minutes), initiate the [re-authentication](../../how-to-guide/authenticate/reauthentication.md) process.
 
 See an example of how to verify the signature of the ID token, and then validate the claims `auth_time` inside [here](../../how-to-guide/authenticate/reauthentication.md#backend-integration).
 
