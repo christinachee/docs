@@ -70,6 +70,7 @@
   * [Access User Profiles](how-to-guide/integration/access-user-profiles.md)
   * [Add custom fields to a JWT Access Token](how-to-guide/integration/add-custom-fields-to-a-jwt-access-token.md)
   * [Update user profile on sign-up using Hooks](how-to-guide/integration/update-user-profile-on-sign-up-using-hooks.md)
+  * [User Analytics by Google Tag Manager](how-to-guide/integration/user-analytics-by-google-tag-manager.md)
 * [Monitor](how-to-guide/monitor/README.md)
   * [Audit Log For Users Activities](how-to-guide/monitor/audit-log.md)
   * [Audit Log for Admin API and Portal](how-to-guide/monitor/audit-log-for-admin-api-and-portal.md)
@@ -97,6 +98,7 @@
 
 * [Brute-force Protection](security/brute-force-protection.md)
 * [Non-HTTP scheme redirect URI](security/redirect-uri.md)
+* [Password Strength](security/password-strength.md)
 
 ## Reference
 
@@ -105,6 +107,7 @@
   * [Admin API](reference/apis/admin-api/README.md)
     * [Authentication and Security](reference/apis/admin-api/authentication-and-security.md)
     * [API Schema](reference/apis/admin-api/api-schema.md)
+    * [API Queries and Mutations](reference/apis/admin-api/api-queries-and-mutations.md)
     * [Using global node IDs](reference/apis/admin-api/node-id.md)
     * [API Examples](reference/apis/admin-api/api-examples/README.md)
       * [Search for users](reference/apis/admin-api/api-examples/search-for-users.md)
