@@ -41,5 +41,6 @@ Authgear contains the following high-level components:
 #### Management Portal
 
 * **Authgear Portal** - You can configure your projects, manage users, check out [audit log](how-to-guide/monitor/audit-log.md), or customize the **AuthUI**
+* **Analytics Page** - View reports of your total users and active users over a specific time interval on the [analytics page](how-to-guide/monitor/analytics.md).
 
 <table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Get Started</strong></td><td>Jump in with Authgear's getting started guides.</td><td><a href="get-started/start-building/">start-building</a></td></tr><tr><td><strong>How-To Guides</strong></td><td>Find a step-by-step guide to take your project to the next level.</td><td><a href="broken-reference">Broken link</a></td></tr><tr><td><strong>Concepts</strong></td><td>Learn the basics.</td><td><a href="broken-reference">Broken link</a></td></tr></tbody></table>

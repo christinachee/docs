@@ -74,6 +74,7 @@
 * [Monitor](how-to-guide/monitor/README.md)
   * [Audit Log For Users Activities](how-to-guide/monitor/audit-log.md)
   * [Audit Log for Admin API and Portal](how-to-guide/monitor/audit-log-for-admin-api-and-portal.md)
+  * [Analytics](how-to-guide/monitor/analytics.md)
 * [User Management](how-to-guide/user-management/README.md)
   * [User Profile](how-to-guide/user-management/user-profile.md)
   * [User Settings](how-to-guide/user-management/auth-ui.md)
