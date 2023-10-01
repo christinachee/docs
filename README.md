@@ -1,6 +1,6 @@
 ---
 description: >-
-  Auhgear is a highly adaptable identity-as-a-service (IDaaS) platform for web
+  Authgear is a highly adaptable identity-as-a-service (IDaaS) platform for web
   and mobile applications
 ---
 

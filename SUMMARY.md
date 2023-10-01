@@ -115,6 +115,8 @@
       * [Update user's standard attributes](reference/apis/admin-api/api-examples/update-users-standard-attributes.md)
       * [Update user's picture](reference/apis/admin-api/api-examples/update-users-picture.md)
       * [Generate OTP code](reference/apis/admin-api/api-examples/generate-otp-code.md)
+* [Glossary](reference/glossary.md)
+* [Billing FAQ](reference/billing-faq.md)
 
 ## Client App SDKs
 
