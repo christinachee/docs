@@ -1,6 +1,6 @@
 # API for Client Applications
 
-If your app is `myapp`, the endpoint of your app is `https://myapp.authgear-apps.com`.
+If your app is `myapp`, the endpoint of your app is `https://myapp.authgear.cloud`.
 
 Unless otherwise specified, all paths mentioned here are relative to the endpoint of your app.
 

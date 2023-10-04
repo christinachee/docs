@@ -1,6 +1,6 @@
 # Custom domain
 
-Set up a custom domain to let your users to access the Authgear pages with your unique, brand-centric domain name. You can use a custom domain (e.g. `auth.yourdomain.com`) instead of the Authgear generated domain (e.g. `<YOUR_APP>.authgear-apps.com`).
+Set up a custom domain to let your users to access the Authgear pages with your unique, brand-centric domain name. You can use a custom domain (e.g. `auth.yourdomain.com`) instead of the Authgear generated domain (e.g. `<YOUR_APP>.authgear.cloud`).
 
 {% hint style="info" %}
 A paid subscription is required for setting up a custom domain.
@@ -22,5 +22,5 @@ A paid subscription is required for setting up a custom domain.
 ## 3. Activate your custom domain
 
 * You will return to the custom domain list after verifying your custom domain. Click **Activate** to use your custom domain.
-* Now you can access Authgear pages with your custom domain, your default Authgear generated domain (e.g. `<YOUR_APP>.authgear-apps.com`) cannot be used anymore. **Update your SDK endpoint to use the new custom domain**.
+* Now you can access Authgear pages with your custom domain, your default Authgear generated domain (e.g. `<YOUR_APP>.authgear.cloud`) cannot be used anymore. **Update your SDK endpoint to use the new custom domain**.
 * The certificate of your custom domain is managed by Authgear, you may need to wait for a while for certificate provisioning.&#x20;

@@ -73,7 +73,7 @@ const config = {
     redirect_url: "http://localhost:3000"
   },
   auth: {
-    tokenHost: 'https://your-project.authgear-apps.com',
+    tokenHost: 'https://your-project.authgear.cloud',
     tokenPath: '/oauth2/token',
     authorizePath: '/oauth2/authorize',
   },
@@ -95,7 +95,7 @@ app.listen(3000, () => {
 });
 ```
 
-**Note:** Paste the correct values of client id, client secret, and redirect URL for your Authgear app inside the `client` object in the config variable. Also, set tokenHost to the hostname part of your Authgear app endpoint URL. That is the part before the first "/". For example, tokenHost for `https://example.authgear-apps.com/oauth2/token` will be `https://demo-1-ea.authgear-apps.com`.
+**Note:** Paste the correct values of client id, client secret, and redirect URL for your Authgear app inside the `client` object in the config variable. Also, set tokenHost to the hostname part of your Authgear app endpoint URL. That is the part before the first "/". For example, tokenHost for `https://example.authgear.cloud/oauth2/token` will be `https://demo-1-ea.authgear.cloud`.
 
 Run your app.js file using the `node app.js` command. You should get a page like this on a web browser when you visit `localhost:3000`:&#x20;
 

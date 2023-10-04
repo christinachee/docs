@@ -102,7 +102,7 @@ import authgear from "@authgear/web";
 authgear
   .configure({
     // custom domain endpoint or default endpoint
-    // default domain should be something like: https://<yourapp>.authgear-apps.com
+    // default domain should be something like: https://<yourapp>.authgear.cloud
     endpoint: "<your_app_endpoint>",
     // Client ID of your application
     clientID: "<your_client_id>",

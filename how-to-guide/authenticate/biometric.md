@@ -86,7 +86,7 @@ public class MyAwesomeApplication extends Application {
     // The client ID of the oauth client.
     private static final String CLIENT_ID = "a_random_generated_string"
     // Deployed authgear's endpoint
-    private static final String AUTHGEAR_ENDPOINT = "http://<myapp>.authgear-apps.com/"
+    private static final String AUTHGEAR_ENDPOINT = "http://<myapp>.authgear.cloud/"
     private Authgear mAuthgear;
     public void onCreate() {
         super.onCreate();
@@ -124,7 +124,7 @@ function LoginScreen() {
     authgear
       .configure({
         clientID: "client_id",
-        endpoint: "http://<myapp>.authgear-apps.com",
+        endpoint: "http://<myapp>.authgear.cloud",
         tokenStorage: new TransientTokenStorage()
       })
       .then(() => {

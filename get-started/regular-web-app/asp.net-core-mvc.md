@@ -32,7 +32,7 @@ Use the interactive selector to create a new **Authgear OIDC Client application*
 
 <figure><img src="../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
 
-Every application in Authgear is assigned an alphanumeric, unique client ID that your application code will use to call Authgear APIs through the OpenID Connect Client in the .NET app. Note down the Authgear `ISSUER` (for example, [https://example-auth.authgear-apps.com](https://example-auth.authgear-apps.com)), `CLIENT ID`, `CLIENT SECRET`, and `OpenID Token Endpoint` ([https://example-auth.authgear-apps.com/oauth2/token](https://example-auth.authgear-apps.com/oauth2/token)) from the output. You will use these values in the next step for the client app config.
+Every application in Authgear is assigned an alphanumeric, unique client ID that your application code will use to call Authgear APIs through the OpenID Connect Client in the .NET app. Note down the Authgear `ISSUER` (for example, [https://example-auth.authgear.cloud](https://example-auth.authgear.cloud)), `CLIENT ID`, `CLIENT SECRET`, and `OpenID Token Endpoint` ([https://example-auth.authgear.cloud/oauth2/token](https://example-auth.authgear.cloud/oauth2/token)) from the output. You will use these values in the next step for the client app config.
 
 <figure><img src="../../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
 

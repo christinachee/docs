@@ -87,7 +87,7 @@ When a blocking event supports mutations on the JWT payload, your hooks can resp
     "jwt": {
       "payload": {
         // The original payload you get from the event object.
-        "iss": "https://myapp.authgear-apps.com",
+        "iss": "https://myapp.authgear.cloud",
         "aud": ["YOUR_CLIENT_ID"],
         "sub": "THE_USER_ID",
         // Other essential JWT fields that you MUST retain.

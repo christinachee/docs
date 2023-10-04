@@ -33,7 +33,7 @@ Use the interactive selector to create a new **Authgear OIDC Client application*
 
 <figure><img src="https://uploads-ssl.webflow.com/60658b47b03f0c77e8c14884/64ae4853e73acf7a9284f8a8_Untitled%20(2)%20(1).png" alt=""><figcaption></figcaption></figure>
 
-Every application in Authgear is assigned an alphanumeric, unique client ID that your application code will use to call Authgear APIs through the Spring Boot [OAuth 2 Client](https://docs.spring.io/spring-security/reference/reactive/oauth2/client/index.html). Note down the Authgear issuer (for example, https://example-auth.authgear-apps.com/), CLIENT ID, CLIENT SECRET, and OpenID endpoints from the output. You will use these values in the next step for the client app config.
+Every application in Authgear is assigned an alphanumeric, unique client ID that your application code will use to call Authgear APIs through the Spring Boot [OAuth 2 Client](https://docs.spring.io/spring-security/reference/reactive/oauth2/client/index.html). Note down the Authgear issuer (for example, https://example-auth.authgear.cloud/), CLIENT ID, CLIENT SECRET, and OpenID endpoints from the output. You will use these values in the next step for the client app config.
 
 <figure><img src="https://uploads-ssl.webflow.com/60658b47b03f0c77e8c14884/64ae485914ea3016deaaad18_Untitled%20(3)%20(1).png" alt=""><figcaption></figcaption></figure>
 

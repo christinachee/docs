@@ -104,7 +104,7 @@ In your application's `Info.plist` , register your custom URL scheme, (e.g. `com
 SDK must be properly configured before use.
 
 ```swift
-// your_app_endpoint should looks like this https://<yourapp>.authgear-apps.com
+// your_app_endpoint should looks like this https://<yourapp>.authgear.cloud
 let authgear = Authgear(clientId: "{your_clien_id}", endpoint: "{your_app_endpoint}")
 authgear.configure() { result in
     switch result {

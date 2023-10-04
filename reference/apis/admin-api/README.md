@@ -8,7 +8,7 @@ The Admin API allows your server to manage users via a GraphQL endpoint. You can
 
 ## The Admin API GraphQL endpoint
 
-The Admin API GraphQL endpoint is at `/_api/admin/graphql`. For example, if your app is `myapp` , then the endpoint is `https://myapp.authgear-apps.com/_api/admin/graphql` .
+The Admin API GraphQL endpoint is at `/_api/admin/graphql`. For example, if your app is `myapp` , then the endpoint is `https://myapp.authgear.cloud/_api/admin/graphql` .
 
 ## Authentication of the API endpoint
 

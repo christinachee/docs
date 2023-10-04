@@ -41,7 +41,7 @@ import (
 
 // Replace "myapp" with your project ID here. 
 // It is the first part of your Authgear endpoint. 
-// e.g. The project ID is "myapp" for "https://myapp.authgear-apps.com"
+// e.g. The project ID is "myapp" for "https://myapp.authgear.cloud"
 const ProjectID = "myapp"
 
 // Replace "mykid" with the key ID you see in the portal.
@@ -97,7 +97,7 @@ private_key = open("private-key.pem", "r").read()
 
 # Replace "myapp" with your project ID here. 
 # It is the first part of your Authgear endpoint. 
-# e.g. The project ID is "myapp" for "https://myapp.authgear-apps.com"
+# e.g. The project ID is "myapp" for "https://myapp.authgear.cloud"
 PROJECT_ID = "myapp"
 
 # Replace "mykid" with the key ID you see in the portal.

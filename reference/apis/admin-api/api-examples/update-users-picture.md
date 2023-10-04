@@ -20,7 +20,7 @@ The call will look like this:
 
 ```http
 GET /_api/admin/images/upload HTTP/1.1
-Host: <YOUR_APP>.authgear-apps.com
+Host: <YOUR_APP>.authgear.cloud
 Authorization: Bearer <JWT>
 ```
 
@@ -44,7 +44,7 @@ The call will look like this:
 
 ```http
 POST <PRESIGNED_UPLOAD_URL_PATH> HTTP/1.1
-Host: <YOUR_APP>.authgear-apps.com
+Host: <YOUR_APP>.authgear.cloud
 Content-Length: <CONTENT_LENGTH>
 Content-Type: multipart/form-data; boundary=----boundary
 

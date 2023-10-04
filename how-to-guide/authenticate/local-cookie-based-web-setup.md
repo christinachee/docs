@@ -113,7 +113,7 @@ Docker `host` network driver is not supported in Docker Desktop, it has to be in
 ```
 server {
   listen       443 ssl;
-  server_name  {SUBDOMAIN}.{PROJECT_NAME}.authgear-apps.com;
+  server_name  {SUBDOMAIN}.{PROJECT_NAME}.authgear.cloud;
 
   ssl_certificate      /path/to/your/cert;
   ssl_certificate_key  /path/to/your/key;
@@ -143,7 +143,7 @@ server {
   location /_auth {
     internal;
     resolver 8.8.8.8;
-    set $resolver https://{PROJECT_NAME}.authgearapps.com/_resolver/resolve;
+    set $resolver https://{PROJECT_NAME}.authgear.cloud/_resolver/resolve;
     proxy_pass $resolver;
     proxy_pass_request_body off;
     proxy_set_header Content-Length "";
@@ -157,6 +157,6 @@ In the above examples, nginx will also authenticate requests by creating sub-req
 
 ## Finish
 
-Now visit the website through `https://<yourapp>.authgear-apps.com`, and the browser will be able to send requests with the authorization cookies.
+Now visit the website through `https://<yourapp>.authgear.cloud`, and the browser will be able to send requests with the authorization cookies.
 
 For implementing login and logout logic in your website, please refer to [Web SDK](../../get-started/single-page-app/website.md).

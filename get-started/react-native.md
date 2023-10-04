@@ -212,7 +212,7 @@ function LoginScreen() {
     authgear
       .configure({
         clientID: "client_id",
-        endpoint: "http://<myapp>.authgear-apps.com",
+        endpoint: "http://<myapp>.authgear.cloud",
       })
       .then(() => {
         authgear

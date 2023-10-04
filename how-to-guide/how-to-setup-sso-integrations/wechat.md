@@ -83,8 +83,8 @@ func main() {
 }
 ```
 
-* Fill in JS接口安全域名. The value is your Authgear domain name plus port, e.g. `192.168.2.88:3000` or `myapp.authgear-apps.com`
-* Fill in 网页授权获取用户基本信息. The value is your Authgear domain name plus port, e.g. `192.168.2.88:3000` or `myapp.authgear-apps.com`
+* Fill in JS接口安全域名. The value is your Authgear domain name plus port, e.g. `192.168.2.88:3000` or `myapp.authgear.cloud`
+* Fill in 网页授权获取用户基本信息. The value is your Authgear domain name plus port, e.g. `192.168.2.88:3000` or `myapp.authgear.cloud`
 * Look for an QR code in the sandbox settings page. You must scan it with your Wechat app and follow the sandbox account.
 
 ### Configure Sign in with WeChat through the Authgear portal
