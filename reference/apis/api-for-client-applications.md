@@ -8,7 +8,7 @@ Unless otherwise specified, all paths mentioned here are relative to the endpoin
 
 This endpoint serves as a JSON document containing the OpenID Connect configuration of your app. That includes the authorization endpoint, the token endpoint, and the JWKs endpoint.
 
-Here is [an example of how it looks](https://accounts.portal.authgearapps.com/.well-known/openid-configuration).
+Here is [an example of how it looks](https://accounts.portal.authgear.com/.well-known/openid-configuration).
 
 ## /.well-known/oauth-authorization-server
 

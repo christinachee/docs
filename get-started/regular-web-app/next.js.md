@@ -21,13 +21,13 @@ In the [demo application](https://github.com/authgear/authgear-example-nextjs), 
 
 Before you begin, you'll need the following:
 
-* A **free Authgear account**. [Sign up](https://oursky.typeform.com/to/S5lvI8rN) if you don't have one already.
+* A **free Authgear account**. [Sign up](https://accounts.portal.authgear.com/signup) if you don't have one already.
 * [Node.js](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 * Experience with [Next.js](https://nextjs.org/) framework and application development.
 
 ### Part 1: Configure Authgear
 
-To use Authgear services, you’ll need to have an application set up in the Authgear [Dashboard](https://portal.authgearapps.com/). This setup allows users in Authgear to sign in to the Next.js application automatically once they are authenticated by Authgear.
+To use Authgear services, you’ll need to have an application set up in the Authgear [Dashboard](https://portal.authgear.com/). This setup allows users in Authgear to sign in to the Next.js application automatically once they are authenticated by Authgear.
 
 #### Step 1: Configure an application
 

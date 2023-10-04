@@ -19,12 +19,12 @@ You will learn the following throughout the article:
 
 Before you get started, you will need the following:
 
-* A **free Authgear account**. [Sign up](https://oursky.typeform.com/to/S5lvI8rN) if you don't have one already.
+* A **free Authgear account**. [Sign up](https://accounts.portal.authgear.com/signup) if you don't have one already.
 * [.NET 7](https://dotnet.microsoft.com/en-us/download) downloaded and installed on your machine. You can also use [Visual Studio](https://visualstudio.microsoft.com/) and [VS code](https://code.visualstudio.com/) to automatically detect the .NET version.
 
 ### Part 1: Configure Authgear
 
-To use Authgear services, you’ll need to have an application set up in the Authgear [Dashboard](https://portal.authgearapps.com/). The Authgear application is where you will configure how you want to authenticate and manage your users.
+To use Authgear services, you’ll need to have an application set up in the Authgear [Dashboard](https://portal.authgear.com/). The Authgear application is where you will configure how you want to authenticate and manage your users.
 
 #### Step 1: Configure an application
 
