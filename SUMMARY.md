@@ -25,6 +25,7 @@
   * [Laravel](get-started/regular-web-app/laravel.md)
   * [Express](get-started/regular-web-app/express.md)
   * [PHP](get-started/regular-web-app/php.md)
+  * [Python Flask App](get-started/regular-web-app/python-flask-app.md)
 * [Backend/API](get-started/start-building/backend-api.md)
   * [Backend Integration](get-started/backend-integration/README.md)
   * [Validate JWT in your application server](get-started/backend-integration/jwt.md)
