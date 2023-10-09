@@ -18,7 +18,7 @@ In this step, we'll create a webhook for the **User pre-create** event in the Au
 
 Enter the full URL that points to the page that will be receiving and processing the webhook requests in the Endpoint text field.
 
-<figure><img src="../../.gitbook/assets/authgear-webhooks.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/authgear-webhooks (2).png" alt=""><figcaption></figcaption></figure>
 
 Once you're done, click on the Save button at the top.
 
@@ -159,7 +159,7 @@ Select **TypeScript** as the type and **User pre-create** as the Event.
 
 The third field in a TypeScript hook is different from a regular webhook. The field allows you to enter JavaScript code that the hook can execute when an event is triggered.&#x20;
 
-<figure><img src="../../.gitbook/assets/authgear-typescript-hook.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/authgear-typescript-hook (1).png" alt=""><figcaption></figcaption></figure>
 
 You can click on the **Edit Script** button near the Script field to open the hook script editor.
 

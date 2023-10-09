@@ -12,7 +12,7 @@ The portal provides an interface for you to look up the log by event and date ra
 
 The **Users Activities** tab on the Audit Log page filters the log to only show activities performed by a normal user or by an admin on a user's profile.
 
-<figure><img src="../../.gitbook/assets/audit-user-tab.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/audit-user-tab (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Retrieve with Admin API
 

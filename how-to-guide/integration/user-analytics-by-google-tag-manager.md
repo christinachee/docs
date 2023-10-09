@@ -34,7 +34,7 @@ Google Tag Manager lets you create containers that hold marketing tags. Each con
 
 To get the container ID, log in to [GTM](https://tagmanager.google.com/) and navigate to the dashboard's homepage. You should find a list of all your containers and their ID. Note down the ID for the container you wish to connect to Authgear.
 
-<figure><img src="../../.gitbook/assets/gtm-home.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/gtm-home (1).png" alt=""><figcaption></figcaption></figure>
 
 If you don't have a container for your Authgear project yet, click on **Create Account** to create a new container. Enter your domain name for your Authgear project as the container name and select a target platform. For this example, we'll select **Web** as the target platform.
 
@@ -44,7 +44,7 @@ If you don't have a container for your Authgear project yet, click on **Create A
 
 First, log in to the Authgear Portal, then select your project and navigate to **Integrations**.
 
-<figure><img src="../../.gitbook/assets/authgear-integrations.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/authgear-integrations (1).png" alt=""><figcaption></figcaption></figure>
 
 Click on the **Connect** button next to the Google Tag Manager addon to open the configuration page.
 
@@ -62,13 +62,13 @@ In order to create tags that send data to Google Analytics, you need to have an 
 
 To create a stream, log in to Google Analytics then navigate to the **Admin** settings page.
 
-<figure><img src="../../.gitbook/assets/ga-admin.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/ga-admin (1).png" alt=""><figcaption></figcaption></figure>
 
 Create a new Google Analytics property for your Authgear project or select an existing one. Click on the Data Streams item under the property to view all streams and add a new web stream for your Authgear project.
 
 Note down the Measurement ID for your stream as we'll be using it later to create new tags.
 
-<figure><img src="../../.gitbook/assets/ga-stream-info.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/ga-stream-info (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Step 2: Create a new user-defined variable in GTM
 
@@ -76,7 +76,7 @@ Before we start sending data to Google Analytics, let's create a new variable in
 
 Go back to GTM and select the correct container for your project.
 
-<figure><img src="../../.gitbook/assets/gtm-container-home.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/gtm-container-home (1).png" alt=""><figcaption></figcaption></figure>
 
 Next, click on the **Variables** item on the left side navigation bar and create a new user variable with the following details:
 

@@ -45,11 +45,11 @@ The first step you need to take is to create a new application or configure an e
 
 To do that, log in to Authgear Portal, and select your project (or create a new one if you don't have any yet). From your project dashboard navigate to the **Applications** section and enter the details for your new application as shown below:
 
-<figure><img src="../../.gitbook/assets/authgear-configure-project.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/authgear-configure-project (1).png" alt=""><figcaption></figcaption></figure>
 
 Once you're done, click on the Save button to continue. Then, click on Next to see the configuration page for your application.
 
-<figure><img src="../../.gitbook/assets/authgear-app-config-page.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/authgear-app-config-page (1).png" alt=""><figcaption></figcaption></figure>
 
 The application configuration page contains basic information like `Client ID` an `Client Secret` that we'll use later in this tutorial. Hence, try to note the values down.
 
@@ -162,13 +162,13 @@ if (!isset($_GET['code'])) {
 
 At this point, if you try running the example app in a browser and click the Login link in index.php, your app should redirect to the Authgear login page. If you sign in successfully, you should be redirected back to the redirect URL you specified earlier in your project configuration.
 
-<figure><img src="../../.gitbook/assets/authgear-authorization-page.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/authgear-authorization-page (1).png" alt=""><figcaption></figcaption></figure>
 
-Authgear will redirect to your Authorized Redirect URI with extra parameters like `code` or error message in the URL. The value for the code parameter is your authorization code. In the next step, we'll use the authorization code to generate an access token.
+Authgear will redirect to your Authorized Redirect URI with extra parameters like `code` or an error message in the URL. The value for the code parameter is your authorization code. In the next step, we'll use the authorization code to generate an access token.
 
 #### Step 6: Get User Info
 
-Usually, after successful sign in you'll want to start using the current user's info to offer custom experience in your app.
+Usually, after successful sign-in, you'll want to start using the current user's info to offer custom experience in your app.
 
 In this step, we'll use the PHP OAuth 2.0 Client once more to interact with our Authgear app.
 

@@ -4,7 +4,7 @@ The Admin API & Portal tab in the Audit Log page allows you to analyze and monit
 
 The data under this tab can be handy for securing your Authgear project. For example, whenever an admin on your project downloads the Admin API key, the event is registered under the Admin API & Portal tab.
 
-<figure><img src="../../.gitbook/assets/audit-admin-tab (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/audit-admin-tab (2).png" alt=""><figcaption></figcaption></figure>
 
 ### Accessing Admin API & Portal Audit Through the Admin API.
 

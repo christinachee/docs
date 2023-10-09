@@ -38,11 +38,11 @@ Now let's create a new application.
 
 Log in to the Authgear portal, and select your project. From the project dashboard, navigate to the Applications section and enter your application details as shown below:
 
-<figure><img src="../../.gitbook/assets/authgear-app-create-express-real.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/authgear-app-create-express-real (1).png" alt=""><figcaption></figcaption></figure>
 
-Once you're done, click on Save to reveal the OAuth configuration. The application configuration page is where you can find your OAuth credentials like client ID, client secret, and a list of supported endpoints. Note down the configuration details as you'll use them later in your Express app.&#x20;
+Once you're done, click on Save to reveal the OAuth configuration. The application configuration page is where you can find your OAuth credentials like client ID, client secret, and a list of supported endpoints. Note down the configuration details as you'll use them later in your Express app.
 
-<figure><img src="../../.gitbook/assets/authgear-app-config-express.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/authgear-app-config-express (1).png" alt=""><figcaption></figcaption></figure>
 
 #### Step 2: Set Redirect URI
 
@@ -97,7 +97,7 @@ app.listen(3000, () => {
 
 **Note:** Paste the correct values of client id, client secret, and redirect URL for your Authgear app inside the `client` object in the config variable. Also, set tokenHost to the hostname part of your Authgear app endpoint URL. That is the part before the first "/". For example, tokenHost for `https://example.authgear.cloud/oauth2/token` will be `https://demo-1-ea.authgear.cloud`.
 
-Run your app.js file using the `node app.js` command. You should get a page like this on a web browser when you visit `localhost:3000`:&#x20;
+Run your app.js file using the `node app.js` command. You should get a page like this on a web browser when you visit `localhost:3000`:
 
 <figure><img src="../../.gitbook/assets/authgear-example-express-land.png" alt=""><figcaption></figcaption></figure>
 
@@ -113,9 +113,9 @@ app.get("/login", (req, res) => {
 });
 ```
 
-Now if you save your code and restart your app, clicking on the login link should redirect to the Authgear authorization page.&#x20;
+Now if you save your code and restart your app, clicking on the login link should redirect to the Authgear authorization page.
 
-<figure><img src="../../.gitbook/assets/authgear-auth-page-express.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/authgear-auth-page-express (1).png" alt=""><figcaption></figcaption></figure>
 
 #### Step 5: Exchange Authorization Code For Access Token
 
@@ -202,9 +202,9 @@ res.send(`
 
 This code sends another HTTP request, but this time to the user info endpoint and the request type is GET. The access token is sent as a _Bearer_ authorization header.
 
-At this point, save all changes and restart the application. Try logging in all over again, at the end you should be greeted with "Welcome \[your email address]".&#x20;
+At this point, save all changes and restart the application. Try logging in all over again, at the end you should be greeted with "Welcome \[your email address]".
 
-<figure><img src="../../.gitbook/assets/authgear-app-login-success (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/authgear-app-login-success (2).png" alt=""><figcaption></figcaption></figure>
 
 ### Conclusion
 
