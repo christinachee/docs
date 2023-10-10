@@ -116,6 +116,9 @@
       * [Update user's standard attributes](reference/apis/admin-api/api-examples/update-users-standard-attributes.md)
       * [Update user's picture](reference/apis/admin-api/api-examples/update-users-picture.md)
       * [Generate OTP code](reference/apis/admin-api/api-examples/generate-otp-code.md)
+* [Tokens](reference/tokens/README.md)
+  * [JWT Access Token](reference/tokens/jwt-access-token.md)
+  * [UserInfo](reference/tokens/userinfo.md)
 * [Glossary](reference/glossary.md)
 * [Billing FAQ](reference/billing-faq.md)
 
