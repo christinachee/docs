@@ -22,7 +22,7 @@ Authgear allows you to set a password policy for your project. In the following 
 
 To open the password policy page, log in to the Authgear Portal and navigate to **Authentication** > **Login Methods**. Once you're on the login methods page, scroll down and click the Password Policy tab.
 
-<figure><img src="../.gitbook/assets/authgear-password-policy.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/authgear-password-policy (1).png" alt=""><figcaption></figcaption></figure>
 
 #### Step 2: Set Password Requirements
 
@@ -48,11 +48,11 @@ The following table shows the scores for the various minimum password strength l
 
 
 
-| Password Strength Level | Score |
-| ----------------------- | ----- |
-| N/A                     | 0     |
-| Extremely guessable     | 1     |
-| Very guessable          | 2     |
-| Fair                    | 3     |
-| Very unguessable        | 4     |
-| Extremely unguessable   | 5     |
+| Password Strength Level | Score | Description                                                                                                          |
+| ----------------------- | ----- | -------------------------------------------------------------------------------------------------------------------- |
+| N/A                     | -     | Totally ignore the Advance password strength score and use the Basic password policy. E.g. Minimum password length.  |
+| Extremely guessable     | 0     | Too guessable: risky password. (guesses < 10^3)                                                                      |
+| Very guessable          | 1     | Very guessable: protection from throttled online attacks. (guesses < 10^6)                                           |
+| Fair                    | 2     | <p>Somewhat guessable: protection from unthrottled online attacks. (guesses &#x3C; 10^8)</p><p></p>                  |
+| Very unguessable        | 3     | <p>Safely unguessable: moderate protection from offline slow-hash scenario. (guesses &#x3C; 10^10)</p><p></p>        |
+| Extremely unguessable   | 4     | Very unguessable: strong protection from offline slow-hash scenario. (guesses >= 10^10)                              |
