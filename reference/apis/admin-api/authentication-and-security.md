@@ -123,6 +123,99 @@ token = jwt.encode(
 print(token)
 ```
 {% endtab %}
+
+{% tab title="Node.js" %}
+This example uses Express.js and the JsonWebToken package. So, first install both packages using the following commands:
+
+```sh
+npm install express
+```
+
+and
+
+```sh
+npm install jsonwebtoken
+```
+
+Here's the code for the Express.js app that generates the JWT:
+
+```javascript
+const express = require("express");
+const node_jwt = require('jsonwebtoken');
+const fs = require('fs');
+const app = express();
+const port = 3002;
+
+app.get('/', (request, response) => {
+    // Your project ID is the first part of your Authgear endpoint. 
+    // e.g. The project ID is "myapp" for "https://myapp.authgear.cloud"
+    // You can find your key ID in the Portal.
+    
+    const project_id = ""; //Place your Authgear project id
+    const key_id = ""; // Place your Authgear key ID
+    const expiresAt = Math.floor(Date.now() / 1000) + (60 * 5); //the current value means token will expire in 5 minutes.
+    
+    //Payload to include in JWT
+    const claims = {
+        aud: project_id,
+        iat: Math.floor(Date.now() / 1000),
+        exp: expiresAt
+
+    }
+
+    const privateKey = fs.readFileSync("key.pem"); //Read value from the downloaded key file
+    const header = {"typ": "JWT", "kid": key_id, "alg": "RS256"}
+    const jwt = node_jwt.sign(claims, privateKey, { header: header });
+
+    response.send("Generated JWT: " + jwt);
+});
+
+app.listen(port, () => {
+    console.log("server started on port " + port);
+});
+```
+{% endtab %}
+
+{% tab title="PHP" %}
+First, install the Firebase PHP JWT package using this command:
+
+```sh
+composer require firebase/php-jwt
+```
+
+The PHP code for generating JWT:
+
+```php
+<?php
+require 'vendor/autoload.php';
+use Firebase\JWT\JWT;
+
+// Your project ID is the first part of your Authgear endpoint. 
+// e.g. The project ID is "myapp" for "https://myapp.authgear.cloud"
+// You can find your key ID in the Portal.
+
+$project_id = ""; // Place your Authgear project id
+$key_id = ""; // Place your Authgear key ID
+$expiresAt = time() + (60*5); //the current value means token will expire in 5 minutes.
+
+//Payload to include in JWT
+$claims = [
+    "aud" => $project_id,
+    "iat" => time(),
+    "exp" => $expiresAt
+];
+
+$privateKey = file_get_contents("./key.pem"); //Read value from the downloaded key file
+$header = [
+    "typ" => "JWT",
+        "kid" => $key_id,
+        "alg" => "RS256"
+    ];
+$jwt = JWT::encode($claims, $privateKey, "RS256", null, $header);
+
+echo $jwt;
+```
+{% endtab %}
 {% endtabs %}
 
 #### Example of the JWT header
