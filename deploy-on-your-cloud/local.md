@@ -4,7 +4,7 @@ description: How to run locally with Docker.
 
 # Running locally with Docker
 
-Authgear is available as a Docker image. It depends on PostgreSQL and Redis. To run it locally, the simplest way is to use docker-compose.
+Authgear is available as a Docker image. It depends on PostgreSQL (with pg_partman enabled) and Redis. To run it locally, the simplest way is to use docker-compose.
 
 ## Create the project directory
 
@@ -15,29 +15,19 @@ mkdir myapp
 cd myapp
 ```
 
-## Create authgear.yaml and authgear.secrets.yaml
-
-First, we need to create authgear.yaml and authgear.secrets.yaml. Authgear itself is a CLI program capable of generating a minimal configuration file.
-
-Run the following command to generate minimal authgear.yaml and authgear.secrets.yaml:
-
-```bash
-docker run --rm -it -w "/work" -v "$PWD:/work" quay.io/theauthgear/authgear-server authgear init
-```
-
-authgear.yaml and authgear.secrets.yaml are generated in your working directory.
-
 ## Create docker-compose.yaml
 
-The next step is to create docker-compose.yaml to setup PostgreSQL, Redis, and Authgear.
+The next step is to create `docker-compose.yaml` to setup PostgreSQL, Redis, and Authgear.
 
-You can start with the following docker-compose.yaml:
+You can start with the following `docker-compose.yaml`:
 
 ```yaml
 version: "3"
 services:
   db:
-    image: postgres:12.3
+    image: postgres-pg-partman:latest
+    build:
+      context: ./postgres
     volumes:
       - db_data:/var/lib/postgresql/data
     environment:
@@ -47,7 +37,7 @@ services:
       - "5432:5432"
 
   redis:
-    image: redis:5.0
+    image: redis:6.2.6
     volumes:
       - redis_data:/data
     ports:
@@ -72,22 +62,89 @@ volumes:
     driver: local
 ```
 
+Note that we need to build the PostgreSQL image ourselves. We can do this with a simple Dockerfile.
+
+```bash
+mkdir postgres
+touch postgres/Dockerfile
+```
+
+Copy the following contents to `postgres/Dockerfile`
+
+```Dockerfile
+FROM postgres:12.3
+
+ENV PARTMAN_VERSION 4.5.1
+
+RUN apt-get update && apt-get install -y \
+	unzip \
+	build-essential \
+	postgresql-server-dev-11 \
+	wget \
+	&& rm -rf /var/lib/apt/lists/*
+
+RUN wget https://github.com/pgpartman/pg_partman/archive/v${PARTMAN_VERSION}.zip -O pg_partman-${PARTMAN_VERSION}.zip && unzip pg_partman-${PARTMAN_VERSION}.zip && cd pg_partman-${PARTMAN_VERSION} && make NO_BGW=1 install
+```
+
+## Create authgear.yaml and authgear.secrets.yaml
+
+First, we need to create `authgear.yaml` and `authgear.secrets.yaml`. Authgear itself is a CLI program capable of generating a minimal configuration file.
+
+Run the following command to generate minimal `authgear.yaml` and `authgear.secrets.yaml`:
+
+```bash
+docker run --rm -it -w "/work" -v "$PWD:/work" quay.io/theauthgear/authgear-server authgear init
+```
+
+This command is interactive and it will prompt you a series of questions.
+You can accept the defaults except you want to turn off email verification.
+
+```
+App ID (default 'my-app'):
+HTTP origin of authgear (default 'http://localhost:3000'):
+HTTP origin of portal (default 'http://portal.localhost:8000'):
+Would you like to turn off email verification? (In case you don't have SMTP credentials in your initial setup) [Y/N] (default 'false'): Y
+Database URL (default 'postgres://postgres:postgres@127.0.0.1:5432/postgres?sslmode=disable'):
+Database schema (default 'public'):
+Audit Database URL (default 'postgres://postgres:postgres@127.0.0.1:5432/postgres?sslmode=disable'):
+Audit Database schema (default 'public'):
+Elasticsearch URL (default 'http://localhost:9200'):
+Redis URL (default 'redis://localhost'):
+Redis URL for analytic (default 'redis://localhost/1'):
+config written to authgear.yaml
+config written to authgear.secrets.yaml
+```
+
+`authgear.yaml` and `authgear.secrets.yaml` are generated in your working directory.
+
 ## Edit authgear.secrets.yaml
 
 The three services run in the same network. We have to ensure Authgear can connect to PostgreSQL and Redis.
 
-Check authgear.secrets.yaml and see if it looks like the following:
+Since we do not have Elasticsearch in our docker-compose.yaml, we MUST remove the elasticsearch entry in `authgear.secrets.yaml`.
+
+Edit `authgear.secrets.yaml` so that it looks like the following:
 
 ```yaml
 secrets:
-- key: db
-  data:
+- data:
     database_schema: public
     database_url: postgres://postgres:postgres@db:5432/postgres?sslmode=disable
-- key: redis
-  data:
-    host: redis
-    port: 6379
+  key: db
+- data:
+    database_schema: public
+    database_url: postgres://postgres:postgres@db:5432/postgres?sslmode=disable
+  key: audit.db
+# Either remove or comment out this block.
+# - data:
+#     elasticsearch_url: http://localhost:9200
+#   key: elasticsearch
+- data:
+    redis_url: redis://redis
+  key: redis
+- data:
+    redis_url: redis://redis/1
+  key: analytic.redis
 # Other entries that are randomly generated.
 # They are not listed here because they will be different.
 ```
@@ -97,7 +154,8 @@ secrets:
 Authgear depends on them so they have to be started first.
 
 ```bash
-docker-compose up -d db redis
+docker compose build
+docker compose up -d db redis
 ```
 
 ## Run database migration
@@ -105,7 +163,9 @@ docker-compose up -d db redis
 Run the database migration:
 
 ```bash
-docker-compose run --rm  authgear authgear migrate up
+docker compose run --rm  authgear authgear database migrate up --database-url="postgres://postgres:postgres@db:5432/postgres?sslmode=disable" --database-schema="public"
+docker compose run --rm  authgear authgear audit database migrate up --database-url="postgres://postgres:postgres@db:5432/postgres?sslmode=disable" --database-schema="public"
+docker compose run --rm  authgear authgear images database migrate up --database-url="postgres://postgres:postgres@db:5432/postgres?sslmode=disable" --database-schema="public"
 ```
 
 ## Get it running
