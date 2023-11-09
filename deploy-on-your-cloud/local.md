@@ -97,20 +97,21 @@ docker run --rm -it -w "/work" -v "$PWD:/work" quay.io/theauthgear/authgear-serv
 ```
 
 This command is interactive and it will prompt you a series of questions.
-You can accept the defaults except you want to turn off email verification.
+You want to turn off email verification because we do not have SMTP setup.
+We also need to adjust some endpoints so that Authgear can connect to other services in the network.
 
 ```
 App ID (default 'my-app'):
 HTTP origin of authgear (default 'http://localhost:3000'):
 HTTP origin of portal (default 'http://portal.localhost:8000'):
 Would you like to turn off email verification? (In case you don't have SMTP credentials in your initial setup) [Y/N] (default 'false'): Y
-Database URL (default 'postgres://postgres:postgres@127.0.0.1:5432/postgres?sslmode=disable'):
+Database URL (default 'postgres://postgres:postgres@127.0.0.1:5432/postgres?sslmode=disable'): postgres://postgres:postgres@db:5432/postgres?sslmode=disable
 Database schema (default 'public'):
-Audit Database URL (default 'postgres://postgres:postgres@127.0.0.1:5432/postgres?sslmode=disable'):
+Audit Database URL (default 'postgres://postgres:postgres@127.0.0.1:5432/postgres?sslmode=disable'): postgres://postgres:postgres@db:5432/postgres?sslmode=disable
 Audit Database schema (default 'public'):
 Elasticsearch URL (default 'http://localhost:9200'):
-Redis URL (default 'redis://localhost'):
-Redis URL for analytic (default 'redis://localhost/1'):
+Redis URL (default 'redis://localhost'): redis://redis
+Redis URL for analytic (default 'redis://localhost/1'): redis://redis/1
 config written to authgear.yaml
 config written to authgear.secrets.yaml
 ```
