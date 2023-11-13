@@ -87,8 +87,14 @@ server {
   location = /_auth {
     # Set this location for internal use only
     internal;
-    set $resolver https://<YOUR_AUTHGEAR_ENDPOINT>/_resolver/resolve;
+    # Replace <YOUR_AUTHGEAR_ENDPOINT> with your authgear endpoint.
+    # For example, https://example.authgear.cloud
+    set $resolver <YOUR_AUTHGEAR_ENDPOINT>/_resolver/resolve;
     proxy_pass $resolver;
+    # Set the host so that authgear knows which app is calling the resolver endpoint
+    # Replace <YOUR_AUTHGEAR_ENDPOINT_HOST> with the host of your authgear endpoint.
+    # For example, example.authgear.cloud
+    proxy_set_header Host <YOUR_AUTHGEAR_ENDPOINT_HOST>;
     # The body is supposed to be consumed by your backend server.
     # Pass only the headers to the resolver
     proxy_pass_request_body off;
