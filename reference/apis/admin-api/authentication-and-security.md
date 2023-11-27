@@ -28,19 +28,19 @@ Here is the sample code of how to generate the JWT with the private key.
 package main
 
 import (
-    "encoding/json"
-    "fmt"
-    "os"
-    "time"
+	"encoding/json"
+	"fmt"
+	"os"
+	"time"
 
-    "github.com/lestrrat-go/jwx/jwa"
-    "github.com/lestrrat-go/jwx/jwk"
-    "github.com/lestrrat-go/jwx/jws"
-    "github.com/lestrrat-go/jwx/jwt"
+	"github.com/lestrrat-go/jwx/v2/jwa"
+	"github.com/lestrrat-go/jwx/v2/jwk"
+	"github.com/lestrrat-go/jwx/v2/jws"
+	"github.com/lestrrat-go/jwx/v2/jwt"
 )
 
-// Replace "myapp" with your project ID here. 
-// It is the first part of your Authgear endpoint. 
+// Replace "myapp" with your project ID here.
+// It is the first part of your Authgear endpoint.
 // e.g. The project ID is "myapp" for "https://myapp.authgear.cloud"
 const ProjectID = "myapp"
 
@@ -48,42 +48,41 @@ const ProjectID = "myapp"
 const KeyID = "mykid"
 
 func main() {
-    // Replace the following call with your own way to get the private key.
-    f, err := os.Open("private-key.pem")
-    if err != nil {
-        panic(err)
-    }
-    defer f.Close()
-    jwkSet, err := jwk.ParseReader(f, jwk.WithPEM(true))
-    if err != nil {
-        panic(err)
-    }
-    key, _ := jwkSet.Get(0)
+	// Replace the following call with your own way to get the private key.
+	f, err := os.Open("private-key.pem")
+	if err != nil {
+		panic(err)
+	}
+	defer f.Close()
+	jwkSet, err := jwk.ParseReader(f, jwk.WithPEM(true))
+	if err != nil {
+		panic(err)
+	}
+	key, _ := jwkSet.Key(0)
+	key.Set("kid", KeyID)
 
-    now := time.Now().UTC()
-    payload := jwt.New()
-    _ = payload.Set(jwt.AudienceKey, ProjectID)
-    _ = payload.Set(jwt.IssuedAtKey, now.Unix())
-    _ = payload.Set(jwt.ExpirationKey, now.Add(5*time.Minute).Unix())
+	now := time.Now().UTC()
+	payload := jwt.New()
+	_ = payload.Set(jwt.AudienceKey, ProjectID)
+	_ = payload.Set(jwt.IssuedAtKey, now.Unix())
+	_ = payload.Set(jwt.ExpirationKey, now.Add(10*365*24*time.Hour).Unix())
 
-    // The alg MUST be RS256.
-    alg := jwa.RS256
-    hdr := jws.NewHeaders()
-    hdr.Set("typ", "JWT")
-    hdr.Set("alg", alg.String())
-    hdr.Set("kid", KeyID)
+	// The alg MUST be RS256.
+	alg := jwa.RS256
+	hdr := jws.NewHeaders()
+	hdr.Set("typ", "JWT")
 
-    buf, err := json.Marshal(payload)
-    if err != nil {
-        panic(err)
-    }
+	buf, err := json.Marshal(payload)
+	if err != nil {
+		panic(err)
+	}
 
-    token, err := jws.Sign(buf, alg, key, jws.WithHeaders(hdr))
-    if err != nil {
-        panic(err)
-    }
+	token, err := jws.Sign(buf, jws.WithKey(alg, key, jws.WithProtectedHeaders(hdr)))
+	if err != nil {
+		panic(err)
+	}
 
-    fmt.Printf("%v\n", string(token))
+	fmt.Printf("%v\n", string(token))
 }
 ```
 {% endtab %}
