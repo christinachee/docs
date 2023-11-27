@@ -65,7 +65,7 @@ func main() {
 	payload := jwt.New()
 	_ = payload.Set(jwt.AudienceKey, ProjectID)
 	_ = payload.Set(jwt.IssuedAtKey, now.Unix())
-	_ = payload.Set(jwt.ExpirationKey, now.Add(10*365*24*time.Hour).Unix())
+	_ = payload.Set(jwt.ExpirationKey, now.Add(5*time.Minute).Unix())
 
 	// The alg MUST be RS256.
 	alg := jwa.RS256
