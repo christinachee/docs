@@ -4,7 +4,21 @@ description: Complete list of information in the UserInfo endpoint response.
 
 # UserInfo
 
-Authgear provides a UserInfo endpoint that your client application can send requests to for information about the current authenticated user.
+Authgear provides a UserInfo endpoint that your client application can send requests to for information about the current authenticated user. The current user is the owner of the access token included in your request to the UserInfo endpoint.
+
+The following is the path for the UserInfo endpoint:
+
+```
+/oauth2/userinfo
+```
+
+An example of a full URL for this endpoint looks like this: `https://your-project.authgear.cloud/oauth2/userinfo`. Replace the "**your-project.authgear.cloud**" part with the correct hostname for your Authgear project.
+
+You can also find the full URL for the UserInfo endpoint for your Authgear OIDC Client Application under **Application** > **\[your application]** in Authgear Portal.
+
+<figure><img src="../../../.gitbook/assets/authgear-oidc-app-config-endpoint.png" alt=""><figcaption></figcaption></figure>
+
+If you're using any of the Authgear SDKs, you can request the data from the UserInfo endpoint just by calling a method. For example, in the JavaScript Authgear SDK, the `fetchUserInfo()` method returns information about the current user. You can learn more about other SDKs [here](https://docs.authgear.com/get-started/native-mobile-app).
 
 The following code shows an example of the structure and some information that's usually in the JSON response of the UserInfo endpoint.
 

@@ -251,5 +251,5 @@ If you are using Postman, you can enable the Authorization type of OAuth2.0, pro
 
 
 
-See a detailed explanation of the structure and fields included in the response of the UserInfo endpoint [here](../../reference/tokens/userinfo.md).
+See a detailed explanation of the structure and fields included in the response of the UserInfo endpoint [here](../../reference/apis/oauth-2.0-and-openid-connect-oidc/userinfo.md).
 

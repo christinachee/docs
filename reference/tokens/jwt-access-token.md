@@ -4,11 +4,15 @@ description: Claims in JWT Access Token
 
 # JWT Access Token
 
-You can enable the issuing of JWT as an access token in your Applications configuration page of the Authgear Portal. This JWT contains several claims that describe your user and your application. The JWT access token that Authgear generates claims that are designed specifically for Authgear. Some standard JWT claims may not be included by default.
+You can enable the issuing of JWT as an access token in the configuration page of your Application in the Authgear Portal.&#x20;
+
+<figure><img src="../../.gitbook/assets/authgear-enable-jwt-token.png" alt=""><figcaption></figcaption></figure>
+
+This JWT contains several claims that describe your user and your application. The JWT access token that Authgear generates contains claims that are designed specifically for Authgear. Also, it may or may not include some standard JWT claims by default.
 
 In this section, we'll list all the claims in the JWT access token by default and explain each claim.
 
-The following code shows an example of the claims in a JWT access token:
+The following code shows an example of the claims in a JWT access token from Authgear:
 
 ```json
 {

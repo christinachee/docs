@@ -116,9 +116,10 @@
       * [Update user's standard attributes](reference/apis/admin-api/api-examples/update-users-standard-attributes.md)
       * [Update user's picture](reference/apis/admin-api/api-examples/update-users-picture.md)
       * [Generate OTP code](reference/apis/admin-api/api-examples/generate-otp-code.md)
+  * [OAuth 2.0 and OpenID Connect (OIDC)](reference/apis/oauth-2.0-and-openid-connect-oidc/README.md)
+    * [UserInfo](reference/apis/oauth-2.0-and-openid-connect-oidc/userinfo.md)
 * [Tokens](reference/tokens/README.md)
   * [JWT Access Token](reference/tokens/jwt-access-token.md)
-  * [UserInfo](reference/tokens/userinfo.md)
 * [Glossary](reference/glossary.md)
 * [Billing FAQ](reference/billing-faq.md)
 
