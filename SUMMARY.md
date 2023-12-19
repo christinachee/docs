@@ -49,6 +49,7 @@
   * [Passwordless Login for Apple App Store Review](how-to-guide/authenticate/passwordless-demo-user-for-apple-app-review.md)
   * [Setup local development environment for Cookie-based authentication](how-to-guide/authenticate/local-cookie-based-web-setup.md)
   * [App2App Authorization](how-to-guide/authenticate/app2app-authorization.md)
+  * [Forgot/Reset Password settings](how-to-guide/authenticate/forgot-reset-password-settings.md)
 * [Single Sign-on](how-to-guide/single-sign-on.md)
 * [Identity Providers](how-to-guide/how-to-setup-sso-integrations/README.md)
   * [Connect Apps to Apple](how-to-guide/how-to-setup-sso-integrations/apple.md)
