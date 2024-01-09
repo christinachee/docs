@@ -17,6 +17,7 @@
     * [Android OKHttp Interceptor Extension (Optional)](get-started/android/okhttp-interceptor-extension.md)
   * [Flutter SDK](get-started/flutter.md)
   * [React Native SDK](get-started/react-native.md)
+  * [Ionic SDK](get-started/native-mobile-app/ionic-sdk.md)
   * [Xamarin SDK](get-started/xamarin.md)
 * [Regular Web App](get-started/regular-web-app/README.md)
   * [Java Spring Boot](get-started/regular-web-app/java-spring-boot.md)
