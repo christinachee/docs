@@ -29,7 +29,7 @@ Authgear contains the following high-level components:
 
 * **Client App SDKs** - for developers to quickly implement authentication with Auth UI on your web and mobile applications. Check out [Start Building](get-started/start-building/) for tutorials and API References.
 * **Auth UI** - is the default batteries included UI for login, signup and setting page. You can customize the style via the **Portal**, including the CSS and HTML of each page**.**
-* **Authentication API** (coming soon) - for developers to implement their own login, signup and reauthenticate UI (e.g. a mobile native view); or to define a customized login, signup and reauth flow.
+* **Authentication Flow API** (coming soon) - for developers to implement their own login, signup and reauthenticate UI (e.g. a mobile native view); or to define a customized login, signup and reauth flow.
 * [**Use Authgear as OpenID Connect Provider**](how-to-guide/authenticate/oidc-provider.md) - for developers to use Authgear with other software that already support OIDC login, you can use Authgear as an OpenID Connect Provider.
 
 #### Backend Authentication and Integrations

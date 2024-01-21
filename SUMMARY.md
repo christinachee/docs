@@ -69,6 +69,8 @@
   * [Custom Email Provider](how-to-guide/customize/custom-email-provider.md)
   * [Customer Support Link](how-to-guide/customize/customer-support-link.md)
   * [Localization & UI Text](how-to-guide/customize/localization.md)
+  * [Custom UI](how-to-guide/customize/custom-ui/README.md)
+    * [Implement a custom account recovery UI using Authentication Flow API](how-to-guide/customize/custom-ui/implement-a-custom-account-recovery-ui-using-authentication-flow-api.md)
 * [Integrate](how-to-guide/integration/README.md)
   * [Access User Profiles](how-to-guide/integration/access-user-profiles.md)
   * [Add custom fields to a JWT Access Token](how-to-guide/integration/add-custom-fields-to-a-jwt-access-token.md)
