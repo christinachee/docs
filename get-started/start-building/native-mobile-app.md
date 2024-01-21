@@ -17,6 +17,8 @@ layout:
 
 # Native/Mobile App
 
+
+
 {% content-ref url="../android/" %}
 [android](../android/)
 {% endcontent-ref %}
@@ -31,6 +33,10 @@ layout:
 
 {% content-ref url="../react-native.md" %}
 [react-native.md](../react-native.md)
+{% endcontent-ref %}
+
+{% content-ref url="../native-mobile-app/ionic-sdk.md" %}
+[ionic-sdk.md](../native-mobile-app/ionic-sdk.md)
 {% endcontent-ref %}
 
 {% content-ref url="../xamarin.md" %}
