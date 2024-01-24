@@ -1,4 +1,4 @@
-# Biometric login
+# Add Biometric Login
 
 ## Overview
 
@@ -156,6 +156,102 @@ Future<void> _init() async {
         tokenStorage: TransientTokenStorage()
     );
     await _authgear.configure();
+}
+```
+{% endtab %}
+
+{% tab title="Ionic" %}
+```typescript
+import authgearCapacitor, { TransientTokenStorage, CancelError as CapacitorCancelError } from "@authgear/capacitor";
+import authgearWeb, { SessionState, UserInfo, CancelError as WebCancelError } from "@authgear/web";
+import { Capacitor } from "@capacitor/core";
+import { useCallback, useState } from "react";
+
+function isPlatformWeb(): boolean {
+    return Capacitor.getPlatform() === "web";
+}
+
+const CLIENT_ID = "client_id";
+const ENDPOINT = "http://<myapp>.authgear.cloud";
+
+function AuthenticationScreen() {
+
+    const [isAlertOpen, setIsAlertOpen] = useState(false);
+    const [alertHeader, setAlertHeader] = useState("");
+    const [alertMessage, setAlertMessage] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [initialized, setInitialized] = useState(false);
+
+    const [sessionState, setSessionState] = useState<SessionState | null>(() => {
+        if (isPlatformWeb()) {
+            return authgearWeb.sessionState;
+        }
+        return authgearCapacitor.sessionState;
+    });
+
+    const showError = useCallback((e: any) => {
+        const json = JSON.parse(JSON.stringify(e));
+        json["constructor.name"] = e?.constructor?.name;
+        json["message"] = e?.message;
+        let message = JSON.stringify(json);
+
+        if (e instanceof WebCancelError || e instanceof CapacitorCancelError) {
+            // Cancel is not an error actually.
+            return;
+        }
+
+        setIsAlertOpen(true);
+        setAlertHeader("Error");
+        setAlertMessage(message);
+    }, []);
+
+    const postConfigure = useCallback(async () => {
+        const sessionState = isPlatformWeb()
+            ? authgearWeb.sessionState
+            : authgearCapacitor.sessionState;
+        if (sessionState !== "AUTHENTICATED") {
+            setInitialized(true);
+            return;
+        }
+
+        if (isPlatformWeb()) {
+            await authgearWeb.fetchUserInfo();
+        } else {
+            await authgearCapacitor.fetchUserInfo();
+        }
+
+        setInitialized(true);
+    }, []);
+
+    const configure = useCallback(async () => {
+        setLoading(true);
+        try {
+
+            if (isPlatformWeb()) {
+                await authgearWeb.configure({
+                    clientID: CLIENT_ID,
+                    endpoint: ENDPOINT,
+                    sessionType: "refresh_token",
+                    isSSOEnabled: false,
+                });
+            } else {
+                await authgearCapacitor.configure({
+                    clientID: CLIENT_ID,
+                    endpoint: ENDPOINT,
+                    tokenStorage: new TransientTokenStorage()
+                });
+
+            }
+            await postConfigure();
+        } catch (e) {
+            showError(e);
+        } finally {
+            setLoading(false);
+        }
+    }, [
+        CLIENT_ID,
+        ENDPOINT
+    ]);
 }
 ```
 {% endtab %}
@@ -326,6 +422,42 @@ try {
 ```
 {% endtab %}
 
+{% tab title="Ionic" %}
+```typescript
+const biometricOptions: BiometricOptions = {
+  ios: {
+    localizedReason: "Use biometric to authenticate",
+    constraint: BiometricAccessConstraintIOS.BiometryCurrentSet,
+    policy: BiometricLAPolicy.deviceOwnerAuthenticationWithBiometrics,
+  },
+  android: {
+    title: "Biometric Authentication",
+    subtitle: "Biometric authentication",
+    description: "Use biometric to authenticate",
+    negativeButtonText: "Cancel",
+    constraint: [BiometricAccessConstraintAndroid.BiometricStrong],
+    invalidatedByBiometricEnrollment: true,
+  },
+};
+
+const updateBiometricState = useCallback(async () => {
+    if (isPlatformWeb()) {
+      return;
+    }
+
+    try {
+      await authgearCapacitor.checkBiometricSupported(biometricOptions);
+      const enabled = await authgearCapacitor.isBiometricEnabled();
+      setBiometricEnabled(enabled); //to be implemented in later step
+    } catch (e) {
+      console.error(e);
+    }
+  }, []);
+
+
+```
+{% endtab %}
+
 {% tab title="Xamarin" %}
 ```csharp
 // We will need the options for the other biometric api
@@ -437,6 +569,32 @@ try {
 ```
 {% endtab %}
 
+{% tab title="Ionic" %}
+```typescript
+const enableBiometric = useCallback(async () => {
+  setLoading(true);
+  try {
+    await authgearCapacitor.enableBiometric(biometricOptions);
+  } catch (e: unknown) {
+    showError(e);
+  } finally {
+    setLoading(false);
+    await updateBiometricState();
+  }
+}, [showError, updateBiometricState]);
+
+const onClickEnableBiometric = useCallback(
+  (e: MouseEvent<HTMLIonButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    enableBiometric();
+  },
+  [enableBiometric]
+);
+```
+{% endtab %}
+
 {% tab title="Xamarin" %}
 ```csharp
 try
@@ -495,6 +653,12 @@ try {
 } catch (e) {
     // failed to check the enabled status
 }
+```
+{% endtab %}
+
+{% tab title="Ionic" %}
+```typescript
+const [biometricEnabled, setBiometricEnabled] = useState<boolean>(false);
 ```
 {% endtab %}
 
@@ -575,6 +739,32 @@ try {
 ```
 {% endtab %}
 
+{% tab title="Ionic" %}
+```typescript
+      const showUserInfo = useCallback((userInfo: UserInfo) => {
+        const message = JSON.stringify(userInfo, null, 2);
+        setIsAlertOpen(true);
+        setAlertHeader("UserInfo");
+        setAlertMessage(message);
+      }, []);
+      
+      const authenticateBiometric = useCallback(async () => {
+        setLoading(true);
+        try {
+          const { userInfo } = await authgearCapacitor.authenticateBiometric(
+            biometricOptions
+          );
+          showUserInfo(userInfo);
+        } catch (e: unknown) {
+          showError(e);
+        } finally {
+          setLoading(false);
+          await updateBiometricState();
+        }
+      }, [showError, showUserInfo, updateBiometricState]);
+```
+{% endtab %}
+
 {% tab title="Xamrin" %}
 ```csharp
 try
@@ -636,6 +826,22 @@ try {
 } catch (e) {
     // failed to disable biometric login
 }
+```
+{% endtab %}
+
+{% tab title="Ionic" %}
+```typescript
+  const disableBiometric = useCallback(async () => {
+    setLoading(true);
+    try {
+      await authgearCapacitor.disableBiometric();
+    } catch (e: unknown) {
+      showError(e);
+    } finally {
+      setLoading(false);
+      await updateBiometricState();
+    }
+  }, [showError, updateBiometricState]);
 ```
 {% endtab %}
 
@@ -768,6 +974,39 @@ try {
 } on BiometricLockoutException catch (e) {
     // the biometric is locked out due to too many failed attempts
 } catch (e) {
+    // other error
+    // you may consider showing a generic error message to the user
+}
+```
+{% endtab %}
+
+{% tab title="Ionic" %}
+```typescript
+import {
+    CancelError,
+    BiometricPrivateKeyNotFoundError,
+    BiometricNotSupportedOrPermissionDeniedError,
+    BiometricNoEnrollmentError,
+    BiometricNoPasscodeError,
+    BiometricLockoutError,
+} from '@authgear/capacitor'
+
+if (e instanceof CancelError) {
+    // user cancel
+} else if (e instanceof BiometricPrivateKeyNotFoundError) {
+    // biometric info has changed. e.g. Touch ID or Face ID has changed.
+    // user have to set up biometric authentication again
+} else if (e instanceof BiometricNoEnrollmentError) {
+    // device does not have biometric set up
+    // e.g. have not set up Face ID or Touch ID in the device
+} else if (e instanceof BiometricNotSupportedOrPermissionDeniedError) {
+    // biometric is not supported in the current device
+    // or user has denied the permission of using Face ID
+} else if (e instanceof BiometricNoPasscodeError) {
+    // device does not have unlock credential or passcode set up
+} else if (e instanceof BiometricLockoutError) {
+    // the biometric is locked out due to too many failed attempts
+} else {
     // other error
     // you may consider showing a generic error message to the user
 }
