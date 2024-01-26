@@ -60,7 +60,7 @@ You have two options here. You can either clone a [working example](https://gith
 If you want to run an already working application, you can clone the demo project from this [GitHub repository](https://github.com/authgear/authgear-example-nextjs) using the following command.
 
 ```bash
-git clone <https://github.com/authgear/authgear-example-nextjs.git>
+git clone https://github.com/authgear/authgear-example-nextjs.git
 ```
 
 Since you've cloned a working repo, you don't need to follow the next section. If you'd like to understand more about what was done in the demo application, feel free to read them.
@@ -89,6 +89,11 @@ Now, you need to create a file named exactly like `[...nextauth].js` in `src/pag
 
 Next, you'll configure a [custom provider](https://next-auth.js.org/configuration/providers/oauth#using-a-custom-provider) for Authgear. Doing so ensures every request to the `/api/auth/*` path is handled by NextAuth.js.
 
+In the following code, we made a few config:
+
+1. We've added [`https://authgear.com/scopes/full-userinfo`](https://authgear.com/scopes/full-userinfo)as the scope to make Authgear return all user profiles
+2. We have made `id` and `name` in the Next Auth session (under `callbacks`). You can also add other attributes such as `email`, `phone_number`, and `preferred_username` to the session as well.
+
 ```jsx
 import NextAuth from "next-auth"
 
@@ -101,16 +106,38 @@ export const authOptions = {
             issuer: process.env.AUTHGEAR_ISSUER,
             clientId: process.env.AUTHGEAR_CLIENT_ID,
             clientSecret: process.env.AUTHGEAR_CLIENT_SECRET,
-            wellKnown: `${process.env.AUTHGEAR_ISSUER}/.well-known/openid-configuration/`,
+            wellKnown: `${process.env.AUTHGEAR_ISSUER}/.well-known/openid-configuration`,
+            authorization: { params: { scope: "openid offline_access https://authgear.com/scopes/full-userinfo" } },
+            client: {
+                token_endpoint_auth_method: "client_secret_post",
+            },
             profile(profile) {
               return {
                 id: profile.sub,
-                name: profile.name,
-                email: profile.email,
               }
             },
           }
     ],
+    callbacks: {
+        async jwt({ token, account, profile }) {
+            if (account) {
+                token.accessToken = account.access_token
+
+                token.id = profile.sub
+                token.name = profile.name
+            }
+            return token
+        },
+
+        async session({ session, token, user }) {
+            session.accessToken = token.accessToken
+
+            session.user.id = token.id
+            session.user.name = token.name
+
+            return session
+        }
+    },
 }
 
 export default NextAuth(authOptions)
@@ -146,7 +173,7 @@ export default function Component() {
     if (session) {
         return (
             <>
-                Status: Logged in as {session.user.email} <br />
+                Status: Logged in as {session.user.id} <br />
                 <button onClick={() => signOut()}>Log out</button>
             </>
         )
@@ -170,7 +197,7 @@ export default function Component() {
     if (session) {
         return (
             <>
-                Status: Logged in as {session.user.email} <br />
+                Status: Logged in as {session.user.id} <br />
                 <button onClick={() => signOut()}>Log out</button>
             </>
         )
