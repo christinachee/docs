@@ -15,46 +15,11 @@ layout:
     visible: true
 ---
 
-# API Queries and Mutations
+# Admin API Examples
 
 Authgear provides a GraphQL API that you can use to manage users and other resources right from your application or using the GraphiQL Explorer in Authgear Portal.
 
 The following section shows a detailed description and examples of supported queries and mutations.
-
-**Table of Content**
-
-1. [Queries](api-queries-and-mutations.md#1.-queries)\
-   1.1 [auditLogs](api-queries-and-mutations.md#1.1.-auditlogs)\
-   1.2 [users](api-queries-and-mutations.md#1.2.-users)\
-   1.3 [node](api-queries-and-mutations.md#1.3.-node)\
-   1.4 [nodes](api-queries-and-mutations.md#1.4.-nodes)
-2.  [Mutations](api-queries-and-mutations.md#mutations)\
-    2.1 [anonymizeUser](api-queries-and-mutations.md#2.1.-anonymizeuser)\
-    2.2 [createIdentity](api-queries-and-mutations.md#2.2.-createidentity)\
-    2.3 [createUser](api-queries-and-mutations.md#2.4.-createuser)&#x20;
-
-    2.4 [deleteAuthenticator](api-queries-and-mutations.md#2.5.-deleteauthenticator)
-
-    2.5 [deleteAuthorization](api-queries-and-mutations.md#2.6.-deleteauthorization)
-
-    2.6 [deleteIdentity](api-queries-and-mutations.md#2.7.-deleteidentity)
-
-    2.7 [deleteUser](api-queries-and-mutations.md#2.8.-deleteuser)
-
-    2.8 [generateOOBOTPCode](api-queries-and-mutations.md#2.9.-generateoobotpcode)
-
-    2.9 [resetPassword](api-queries-and-mutations.md#2.10.-resetpassword)\
-    2.10 [revokeAllSessions](api-queries-and-mutations.md#2.11.-revokeallsessions)\
-    2.11 [revokeSession](api-queries-and-mutations.md#2.12.-revokesession)\
-    2.12 [scheduleAccountAnonymization](api-queries-and-mutations.md#2.13.-scheduleaccountanonymization) \
-    2.13 [scheduleAccountDeletion](api-queries-and-mutations.md#2.14.-scheduleaccountdeletion)\
-    2.14 [sendResetPasswordMessage](api-queries-and-mutations.md#2.15.-sendresetpasswordmessage)\
-    2.15 [setDisabledStatus](api-queries-and-mutations.md#2.16.-setdisabledstatus)\
-    2.16 [setVerifiedStatus](api-queries-and-mutations.md#2.17.-setverifiedstatus)\
-    2.17 [unscheduleAccountAnonymization](api-queries-and-mutations.md#2.18.-unscheduleaccountanonymization)\
-    2.18 [unscheduleAccountDeletion](api-queries-and-mutations.md#2.19.-unscheduleaccountdeletion)\
-    2.19 [updateIdentity](api-queries-and-mutations.md#2.20.-updateidentity)\
-    2.20 [updateUser](api-queries-and-mutations.md#2.21.-updateuser)
 
 ## 1. Queries
 
