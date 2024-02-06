@@ -38,6 +38,6 @@ The GraphiQL tool is NOT a sandbox environment and all changes will be made on *
 
 ## API Examples
 
-{% content-ref url="api-examples/" %}
-[api-examples](api-examples/)
+{% content-ref url="api-queries-and-mutations.md" %}
+[api-queries-and-mutations.md](api-queries-and-mutations.md)
 {% endcontent-ref %}
