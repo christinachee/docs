@@ -113,7 +113,6 @@
 ## Reference
 
 * [APIs](reference/apis/README.md)
-  * [API for Client Applications](reference/apis/api-for-client-applications.md)
   * [Admin API](reference/apis/admin-api/README.md)
     * [Authentication and Security](reference/apis/admin-api/authentication-and-security.md)
     * [API Schema](reference/apis/admin-api/api-schema.md)
