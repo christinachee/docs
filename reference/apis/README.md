@@ -17,9 +17,9 @@ layout:
 
 # APIs
 
-Besides the Client SDKs, Authgear expose the following APIs for simple integration with your applications for authentication and user managements.
+Besides the Client SDKs, Authgear exposes the following APIs for simple integration with your applications for authentication and user management.
 
-All of these are on the endpoint of your app. The default endpoint is at `https://[myapp].authgear.cloud` unless you setup a custom domains. `[myapp]` is your project name.
+All of these are on the endpoint of your app. The default endpoint is at `https://[myapp].authgear.cloud` unless you set up a custom domain. `[myapp]` is your project name.
 
 Unless otherwise specified, all paths mentioned here are relative to the endpoint of your app.
 
@@ -27,14 +27,14 @@ Authgear provides the following groups of APIs:
 
 * **OAuth 2.0 and OpenID Connect**: for connecting with OIDC Clients
 * **Admin API**: for your servers to manage users via a GraphQL endpoint.
-* **AuthFlow API**: for developing a customized Web or Mobile Native Auth UI instead of the default provided by Authgear
-* **Resolver Endpoint**: for API Gateway or Servers to check the valiadity of access tokens or cookies in the request header.
+* **Authentication Flow (Auth Flow) API**: for developing a customized Web or Mobile Native Auth UI instead of the default user interface provided by Authgear.
+* **Resolver Endpoint**: for API Gateway or Servers to check the validity of access tokens or cookies in the request header.
 
-Here are all of the special path with each group of the API above.
+Here are all of the special paths with each group of the API above.
 
 ## OAuth 2.0 and OpenID Connect
 
-For more information about OIDC API endpoint, please refer to the following sections, or anyone of the Regular Web App getting started guide.
+For more information about the OIDC API endpoint, please refer to the following sections or any of the Regular Web App Getting Started guides.
 
 {% content-ref url="oauth-2.0-and-openid-connect-oidc/" %}
 [oauth-2.0-and-openid-connect-oidc](oauth-2.0-and-openid-connect-oidc/)
@@ -54,57 +54,56 @@ The related URLs are:
   This endpoint serves a JSON document containing the authorization server metadata of your app. That includes the authorization endpoint, the token endpoint, and the JWKs endpoint. Here is [an example of how it looks](https://accounts.portal.authgear.com/.well-known/openid-configuration).
 * `/oauth2/userinfo`\
   \
-  The UserInfo Endpoint is an OAuth 2.0 Protected Resource that returns Claims about the authenticated End-User. When the client presents with a valid Access Token, the endpoint responds with the claims packaged in a JSON object. The claims are also the attributes of the [User Profile](../../how-to-guide/user-management/user-profile.md).
+  The UserInfo Endpoint is an OAuth 2.0 Protected Resource that returns Claims about the authenticated end user. When the client presents with a valid Access Token, the endpoint responds with the claims packaged in a JSON object. The claims are also the attributes of the [User Profile](../../how-to-guide/user-management/user-profile.md).
 
 ## Admin API
 
-Please refer to the following documentations:
+For more details about the Admin API, please refer to the following documentation:
 
 {% content-ref url="admin-api/" %}
 [admin-api](admin-api/)
 {% endcontent-ref %}
 
-The Admin API are under:
+The path for the Admin API is:
 
 * `/_api/admin/graphql`
 
-## AuthFlow API
+## Authentication Flow API
 
-Please refer to the following documentations:
+You can find a detailed overview of the Authentication Flow API in the following documentation:
 
 {% content-ref url="../../how-to-guide/custom-ui/authentication-flow-api.md" %}
 [authentication-flow-api.md](../../how-to-guide/custom-ui/authentication-flow-api.md)
 {% endcontent-ref %}
 
-The Authentication Flow API are under:
+The path for the Authentication Flow API is:
 
-`api/v1/authentication_flows`
+`/api/v1/authentication_flows`
 
 ## Resolver Endpoints
 
-The resolver end point at the following URLs:
+The resolver endpoint is at the following URL:
 
 * `/_resolver/resolve`
 
-The endpoint serves as a resolver to check the access token or cookie in the request headers. Forward incoming HTTP requests to this endpoint and the resolver will add the `x-authgear-` headers the to response.
+The endpoint serves as a resolver to check the access token or cookie in the request headers. Forward incoming HTTP requests to this endpoint and the resolver will add the `x-authgear-` headers to the response.
 
 See the list of `x-authgear-` headers in the specs [here](https://github.com/authgear/authgear-server/blob/master/docs/specs/api-resolver.md).
 
 See implementation examples [here](../../get-started/backend-integration/nginx.md).
 
-A tutorial is available below, shall you choose to use Resolver Endpoints instead of JWT tokens to validate each API requests:
+Should you choose to use Resolver Endpoints instead of JWT tokens to validate each API request, check out the following tutorial to learn how to go about that:
 
 {% content-ref url="../../get-started/backend-integration/nginx.md" %}
 [nginx.md](../../get-started/backend-integration/nginx.md)
 {% endcontent-ref %}
 
-## Other special URLs
+## Other Special URLs
 
 Here are two other URLs
 
 * `/`\
-  \
-  This endpoint is the entry point of the Web UI. You can visit it if you want to try your configuration (only for custom domains). However, this is NOT the authorization endpoint. You must use our SDK to initiate the authentication.
-* `/settings`\
-  \
-  User settings UI
+  This endpoint is the entry point of the Web UI. You can visit it if you want to try your configuration (only for custom domains). However, this is NOT the authorization endpoint. You must use our SDK to initiate an authentication.
+* `/settings`
+
+This URL points to the default User settings UI provided by Authgear.
