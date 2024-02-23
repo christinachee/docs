@@ -84,6 +84,8 @@ server {
     auth_request_set $x_authgear_user_verified $upstream_http_x_authgear_user_verified;
     auth_request_set $x_authgear_session_acr $upstream_http_x_authgear_session_acr;
     auth_request_set $x_authgear_session_amr $upstream_http_x_authgear_session_amr;
+    auth_request_set $x_authgear_session_authenticated_at $upstream_http_x_authgear_session_authenticated_at;
+    auth_request_set $x_authgear_user_can_reauthenticate $upstream_http_x_authgear_user_can_reauthenticate;
 
     proxy_set_header x-authgear-session-valid $x_authgear_session_valid;
     proxy_set_header x-authgear-user-id $x_authgear_user_id;
@@ -91,6 +93,8 @@ server {
     proxy_set_header x-authgear-user-verified $x_authgear_user_verified;
     proxy_set_header x-authgear-session-acr $x_authgear_session_acr;
     proxy_set_header x-authgear-session-amr $x_authgear_session_amr;
+    proxy_set_header x-authgear-session-authenticated-at $x_authgear_session_authenticated_at;
+    proxy_set_header x-authgear-user-can-reauthenticate $x_authgear_user_can_reauthenticate;
   }
 
   location /_auth {
@@ -131,6 +135,8 @@ server {
     auth_request_set $x_authgear_user_verified $upstream_http_x_authgear_user_verified;
     auth_request_set $x_authgear_session_acr $upstream_http_x_authgear_session_acr;
     auth_request_set $x_authgear_session_amr $upstream_http_x_authgear_session_amr;
+    auth_request_set $x_authgear_session_authenticated_at $upstream_http_x_authgear_session_authenticated_at;
+    auth_request_set $x_authgear_user_can_reauthenticate $upstream_http_x_authgear_user_can_reauthenticate;
 
     proxy_set_header x-authgear-session-valid $x_authgear_session_valid;
     proxy_set_header x-authgear-user-id $x_authgear_user_id;
@@ -138,6 +144,8 @@ server {
     proxy_set_header x-authgear-user-verified $x_authgear_user_verified;
     proxy_set_header x-authgear-session-acr $x_authgear_session_acr;
     proxy_set_header x-authgear-session-amr $x_authgear_session_amr;
+    proxy_set_header x-authgear-session-authenticated-at $x_authgear_session_authenticated_at;
+    proxy_set_header x-authgear-user-can-reauthenticate $x_authgear_user_can_reauthenticate;
   }
 
   location /_auth {
