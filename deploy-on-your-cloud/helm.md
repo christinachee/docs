@@ -36,7 +36,7 @@ Do not make changes to the PostgreSQL databases, the schemas, the tables, the co
 
 ### Redis requirements
 
-Authgear stores user sessions and other ephemeral data in Redis. The requirement is roughly 30kB per user. The recommended version of Redis is >= 6.
+Authgear stores user sessions and other ephemeral data in Redis. The requirement is roughly 30kB per user. The recommended version of Redis is >= 6.2.
 
 ### Elasticsearch requirements
 
@@ -58,7 +58,7 @@ The latest two major versions of the supported browsers are supported.
 * 2 Cores + 3 Cores of CPU
 * 1 GB + 6 GB of memory
 * PostgreSQL 12 with `pg_partman>=4.0`, at least 5GB storage
-* Redis 6, with 30kB per user. 10000 users require 300MB.
+* Redis >= 6.2, with 30kB per user. 10000 users require 300MB.
 
 ## How to install this Helm chart
 
