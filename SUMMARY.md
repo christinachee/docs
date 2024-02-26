@@ -147,3 +147,7 @@
   * [Environment Variables](deploy-on-your-cloud/configurations/env.md)
   * [authgear.yaml](deploy-on-your-cloud/configurations/authgear.yaml.md)
   * [authgear.secrets.yaml](deploy-on-your-cloud/configurations/authgear.secrets.yaml.md)
+* [Reference Architecture Diagrams](deploy-on-your-cloud/reference-architecture-diagrams/README.md)
+  * [Google Cloud Reference Architecture](deploy-on-your-cloud/reference-architecture-diagrams/google-cloud-reference-architecture.md)
+  * [Azure Reference Architecture](deploy-on-your-cloud/reference-architecture-diagrams/azure-reference-architecture.md)
+  * [AWS Reference Architecture](deploy-on-your-cloud/reference-architecture-diagrams/aws-reference-architecture.md)
