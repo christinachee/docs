@@ -55,8 +55,8 @@ The latest two major versions of the supported browsers are supported.
 
 ### Hardware requirements summary
 
-* 2 Cores + 3 Cores of CPU
-* 1 GB + 6 GB of memory
+* CPU: 2 Cores CPU for the k8s nodes; 3 Cores for Elasticsearch&#x20;
+* Memory: 1GB memory for the k8s nodes; 6GB memory for Elasticsearch
 * PostgreSQL 12 with `pg_partman>=4.0`, at least 5GB storage
 * Redis >= 6.2, with 30kB per user. 10000 users require 300MB.
 
@@ -392,7 +392,7 @@ New features usually require database migration to add new tables and new column
 | `authgear.certManager.issuer.http01.name`                           | String  | Depends  | The name of the HTTP01 issuer. It is required when cert-manager is enabled                                                                                                                                                  |
 | `authgear.certManager.issuer.http01.kind`                           | String  | Depends  | The kind of the HTTP01 issuer. The default is `Issuer`                                                                                                                                                                      |
 | `authgear.certManager.issuer.http01.group`                          | String  | Depends  | The group of the HTTP01 issuer. The default is `cert-manager.io`                                                                                                                                                            |
-| `authgear.baseHost`                                                 | String  | Yes      | The apex domain you assign to Authgear, for example `authgear.cloud`                                                                                                                                                     |
+| `authgear.baseHost`                                                 | String  | Yes      | The apex domain you assign to Authgear, for example `authgear.cloud`                                                                                                                                                        |
 | `authgear.tls.wildcard.secretName`                                  | String  | No       | The name of the Secret to store the wildcard TLS certificate `*.baseHost`                                                                                                                                                   |
 | `authgear.tls.portal.secretName`                                    | String  | No       | The name of the Secret to store the portal TLS certificate `portal.baseHost`                                                                                                                                                |
 | `authgear.tls.portalAuthgear.secretName`                            | String  | No       | The name of the Secret to store the portal Authgear TLS certificate `accounts.portal.baseHost`                                                                                                                              |
