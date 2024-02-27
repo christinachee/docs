@@ -16,8 +16,6 @@ Before we dive into the step-by-step guide, here are some key things you should 
 * **Inputs**: You can pass values to Authentication Flow API using the `input` or `batch_input` parameters in your HTTP request body. Use the `batch_input` to send multiple values as in an array and `input` when you are passing only 1 value.&#x20;
 * **Finish Redirect URI**: A URL that you can use to redirect back to your app at the end of the authentication flow.
 
-**Note**: In order to follow this tutorial and implement the example app, you need to enable "Email + Password" option under **Authentication** > **Login Methods**. Also, Disable 2FA Requirements in **Authentication** > **2FA**.
-
 ### Pre-requisites
 
 To follow along with the example in this post, you should have the following:
@@ -26,6 +24,7 @@ To follow along with the example in this post, you should have the following:
 * [Composer](https://getcomposer.org/) installed on your computer.
 * A code editor like VS Code, Sublime, Atom, or any editor you use for PHP development.
 * An Authgear account. You can create one for free [here](https://www.authgear.com/).
+* Enable Custom UI for your Authgear Project. [Contact us](https://www.authgear.com/talk-with-us) to enable custom UI.&#x20;
 
 Now that you understand basic concepts about the Authentication API and what you need to follow along with our example, let's look at how to create our first custom login and signup page from scratch.
 
@@ -47,32 +46,43 @@ Enter a name for your application and set the **Application Type** as **OIDC Cli
 
 In this step, you'll add redirect URIs to your application. An Authorized Redirect URI should be a valid page on your application that you want Authgear to redirect users to at the end of the authentication flow.
 
-To add a new URI, scroll down to the **URIs** section on the configuration page for the application you created in the previous step. Next, click on the **Add URI** button then enter a valid URL for your application. For this example, enter `http://localhost:8081` as a redirect URI.
+To add a new URI, scroll down to the **URIs** section on the configuration page for the application you created in the previous step. Next, click on the **Add URI** button then enter a valid URL for your application. For this example, enter `http://localhost:8081/` as a redirect URI.
 
-<figure><img src="../../.gitbook/assets/authgear-config-app-native.png" alt=""><figcaption></figcaption></figure>
-
-You can add multiple URLs depending on the requirements of your application. For example, if your application is available on multiple platforms like a website and a native mobile your redirect URIs may look similar to the following:
-
-* `https://example.com`
-* `com.authgear.example://host/path`
-
-The first URI is an example for redirecting to a website, while the second is for redirecting back to a mobile application using the package name of the application.&#x20;
+<figure><img src="../../.gitbook/assets/authgear-config-redirect-php.png" alt=""><figcaption></figcaption></figure>
 
 Once you're done, save the changes to continue.
 
 #### Step 3: Add Custom UI URI
 
-The value for the Custom UI URI should be a link (absolute URL) to your custom login page. Authgear will redirect users to this page when they start an authentication request. The redirect will also include the URL query we mentioned earlier.
+The value for the Custom UI URI should be a link (absolute URL) to your custom login page. Authgear will redirect users to this page when they start an authentication request. Also, during redirect, Authgear will automatically include the URL query we mentioned earlier.
 
-Now, still within the configuration page for your application, scroll to the **Custom UI** section and add a link to your custom login page.
+Now, still within the configuration page for your application, scroll down to the **Custom UI** section and add a link to your custom login page.
 
 <figure><img src="../../.gitbook/assets/authgear-config-app-custom-ui-url.png" alt=""><figcaption></figcaption></figure>
 
-For our example, the link for our custom UI will be something like `https://domain.com/login.php`. Replace this with the correct URL to your custom login page.
+If you're testing your custom UI on a browser on the same device that you'll be using to serve the PHP code, you can enter your `localhost` URL  in Custom UI URI. For example, you can use the following URL if you will run the PHP code on your local machine using port 8081 :
 
-You can use  [CloudFlare Tunnel](https://developers.cloudflare.com/pages/how-to/preview-with-cloudflare-tunnel/) to get a public URL for your PHP application that's running locally. You can enter the public URL from CloudFlare as your Custom UI URI.
+```
+http://localhost:8081/login.php
+```
+
+Alternatively, can use  [CloudFlare Tunnel](https://developers.cloudflare.com/pages/how-to/preview-with-cloudflare-tunnel/) to get a public URL for your PHP application that's running locally. Then, enter the public URL from CloudFlare as your Custom UI URI.
 
 With that, we're done with the required configuration on the Authgear Portal. In the next part, we'll design some custom UI and implement the Authentication Flow API.
+
+#### Step 4: Enable Email + Password Login Option and Disable 2FA
+
+For our example app in this tutorial, users will be using their email and password to log in. Hence, you are required to enable this option in the Authgear Portal.
+
+&#x20;To do that,  enable the "Email + Password" option under **Authentication** > **Login Methods**.&#x20;
+
+<figure><img src="../../.gitbook/assets/authgear-login-methods (1).png" alt=""><figcaption></figcaption></figure>
+
+
+
+Also, disable 2FA (if enabled) so that the authentication flow does not include an extra step which our demo app will not cover.  You can disable 2FA Requirements in **Authentication** > **2FA** in the Authgear Portal.
+
+<figure><img src="../../.gitbook/assets/authgear-config-2fa (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Part 2: Implementing Authentication Flow API
 
@@ -111,7 +121,7 @@ require 'vendor/autoload.php';
 $appUrl = "";
 $clientID = "";
 $clientSecret = "";
-$redirectUri = "http://localhost:8081";
+$redirectUri = "http://localhost:8081/";
 
 $provider = new \League\OAuth2\Client\Provider\GenericProvider([
     'clientId'                => $clientID,    // The client ID assigned to you by the provider
