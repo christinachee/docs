@@ -53,6 +53,7 @@ For our example app, add the following URIs:
 * `com.authgear.example.capacitor://host/path`
 * `capacitor://localhost`
 * `http://localhost:8100/oauth-redirect`
+* `https://localhost`
 
 <figure><img src="../../.gitbook/assets/authgear-config-redirect-uri.png" alt=""><figcaption><p>authgear-app-redirect-uris</p></figcaption></figure>
 
@@ -109,11 +110,17 @@ npx cap add ios
 
 #### Step 2: Install Authgear SDK
 
+In this step, you'll install the Authgear SDK for Ionic (Capacitor) and the Javascript SDK for the web. The web SDK will help you test your application on a web browser.
+
+To install the SDKs, run the following commands in your Terminal or Command Prompt:
+
+**Authgear Ionic SDK**
+
 ```bash
 npm i @authgear/capacitor
 ```
 
-Authgear Web SDK
+**Authgear Web SDK**
 
 ```sh
 npm i @authgear/web
@@ -362,7 +369,7 @@ To handle redirect in the Android project, add the following code to **android/a
 
 #### Step 6: Implement UI
 
-At this point, you will create the UI for the AuthenticationScreen component.
+At this point, you will create the User Interface for the AuthenticationScreen component.
 
 To do that, add the following code to the end of the `AuthenticationScreen` component method:
 
@@ -528,5 +535,5 @@ Once your project builds successfully, you can try the Login, Signup, Fetch User
 
 ### Conclusion
 
-Authgear Capacitor SDK makes it easier to use Authgear in your Ionic application. It provides many helpful methods and interfaces for interacting with the Authgear service from your Ionic application. To learn more about the SDK check [the SDK Reference](https://authgear.github.io/authgear-sdk-js/docs/capacitor/) .
+Authgear Capacitor SDK makes it easier to use Authgear in your Ionic application. It provides many helpful methods and interfaces for interacting with the Authgear service from your Ionic application. To learn more about the SDK check [the SDK Reference](https://authgear.github.io/authgear-sdk-js/docs/capacitor/). Also, check out the complete repo for the Authgear Ionic SDK example app [here](https://github.com/authgear/authgear-sdk-js/tree/master/example/capacitor).
 
