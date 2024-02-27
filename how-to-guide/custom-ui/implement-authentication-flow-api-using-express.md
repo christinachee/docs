@@ -28,6 +28,7 @@ In order to follow along with the example in this post, you should have the foll
 * A code editor such as VS Code, Sublime, Atom, etc.
 * An Authgear account. You can create one for free [here](https://www.authgear.com/).
 * Be familiar with CLI tools like npm.
+* Enable Custom UI for your Authgear Project. [Contact us](https://www.authgear.com/talk-with-us) to enable custom UI.&#x20;
 
 Next, set up your Authgear project to use custom authentication UI by following the steps below.
 
@@ -61,39 +62,44 @@ To add an Authorized Redirect URI, scroll to the URIs section on your Authgear a
 For our example, the redirect URI will be:
 
 ```
-http://localhost:3000
+http://localhost:3000/
 ```
 
 Once you're done, click on the **Save** button to keep your changes.
 
-<figure><img src="../../.gitbook/assets/authgear-config-app-native.png" alt=""><figcaption></figcaption></figure>
-
-You can add multiple URLs depending on the requirements of your application. For example, if your application is available on multiple platforms like a website and a native mobile your redirect URIs may look similar to the following:
-
-* `https://example.com`
-* `com.authgear.example://host/path`
-
-The first URI is an example for redirecting to a website, while the second is for redirecting back to a mobile application using the package name of the application.&#x20;
+<figure><img src="../../.gitbook/assets/authgear-config-redirect.png" alt=""><figcaption><p>authgear portal app config redirect uri</p></figcaption></figure>
 
 #### Step 3: Set Custom UI URI
 
-Providing a custom UI URI does the actual job of enabling your custom authentication UI in your application. This will cause your application to show the custom UI instead of the default Auth UI during login/sign. The custom UI URI is basically a public link to your custom login page.&#x20;
+To use your custom authentication UI with Authgear, you need to specify the URI for your custom UI in the Authgear portal using the custom UI URI field.  This will cause your application to show the custom UI instead of the default Auth UI during login/sign. The custom UI URI is basically a link to your custom login page.
 
-For this example, in order to get a public URL for our local Express app we used **CloudFlare Tunnel**. See more instructions on how to setup CloudFlare tunnel on your local machine [here](https://developers.cloudflare.com/pages/how-to/preview-with-cloudflare-tunnel/).&#x20;
+Since we'll be testing  the example app on a browser that runs on the same computer as the Express server, you can use the following value for the Custom UI URI:
+
+```
+http://localhost:3000/login
+```
+
+Alternatively, you can get a public URL for our local Express app with **CloudFlare Tunnel**. See more instructions on how to set up CloudFlare tunnel on your local machine [here](https://developers.cloudflare.com/pages/how-to/preview-with-cloudflare-tunnel/).&#x20;
 
 To set the custom UI URI, scroll to the **Custom UI** section on your application configuration page and paste the URL (e.g the unique public URL from CloudFlare Tunnel) in the **Custom UI URI** text box.
-
-Example of public URL from CloudFlare:
-
-```
-https://freely-may-wool-absolutely.trycloudflare.com/login
-```
 
 **Note**: For our example app, you must include the `/login` path in the URL so that the user is redirected straight to our login route.
 
 <figure><img src="../../.gitbook/assets/authgear-config-app-custom-ui-url-2.png" alt=""><figcaption></figcaption></figure>
 
 That concludes all the configuration requirements in the Authgear portal for this example.
+
+#### Step 4: Enable Email + Password Login Option and Disable 2FA
+
+For our example app in this tutorial, users will be using their email and password to log in. Hence, you are required to enable this option in the Authgear Portal.
+
+&#x20;To do that,  enable the "Email + Password" option under **Authentication** > **Login Methods**.&#x20;
+
+<figure><img src="../../.gitbook/assets/authgear-login-methods.png" alt=""><figcaption></figcaption></figure>
+
+Also, disable 2FA (if enabled) so that the authentication flow does not include an extra step which our demo app will not cover.  You can disable 2FA Requirements in **Authentication** > **2FA** in the Authgear Portal.
+
+<figure><img src="../../.gitbook/assets/authgear-config-2fa.png" alt=""><figcaption></figcaption></figure>
 
 ### Part 2: Implementing Authentication Flow API
 
@@ -105,9 +111,9 @@ The application you'll build in this part is the same application your Custom UI
 
 Create a basic Express application for your Authgear project.
 
-To do that, first running the following commands on your computer to create a new project folder and install all the necessary dependencies:
+To do that, first run the following commands on your computer to create a new project folder and install all the necessary dependencies:
 
-Create project folder/direcotry:
+Create project folder/directory:
 
 ```sh
 mkdir authgear-express-example
@@ -122,7 +128,7 @@ cd authgear-express-example
 Install Express:
 
 ```sh
-npm i express
+npm install express
 ```
 
 For our example application, we'll be using the Axios node package to make HTTP requests.  Run the following command to install Axios in your project:
@@ -134,10 +140,10 @@ npm install axios
 Install dotenv. We'll use this package to enable the use of .env file to store project configuration:
 
 ```sh
-npm i dotenv
+npm install dotenv
 ```
 
-After installing the above dependencies, create a new app.js file in project directory you created earlier. Add the following code to the file:
+After installing the above dependencies, create a new app.js file in the project directory you created earlier. Add the following code to the file:
 
 ```javascript
 const express = require('express');
@@ -220,19 +226,19 @@ app.get('/startLogin', (req, res) => {
 Create a `.env` file then add the following code to it:
 
 ```properties
-CLIENT_ID = ""
-CLIENT_SECRET = ""
-AUTHGEAR_ENDPOINT = ""
-REDIRECT_URL="http://localhost:3000"
+CLIENT_ID=paste_your_client_id_here
+CLIENT_SECRET=paste_your_client_id_here
+AUTHGEAR_ENDPOINT=paste_your_client_id_here
+REDIRECT_URL=http://localhost:3000/
 ```
 
 Add the correct values from your Authgear application configuration page in the .env file.
 
-At the end of this step, you should have an Express application that can connect to Authgear. However, we are yet to implement the custom login/signup page. In the next steps we'll implement both pages.
+At the end of this step, you should have an Express application that can connect to Authgear. However, we are yet to implement the custom login/signup page. In the next steps, we'll implement both pages.
 
 #### Step 2: Create Login Page
 
-Add the following code to you app.js file just below the `app.get('/startLogin',...)` route:
+Add the following code to your app.js file just below the `app.get('/startLogin',...)` route:
 
 ```javascript
 
