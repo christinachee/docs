@@ -17,7 +17,7 @@ layout:
 
 # Admin API Examples
 
-Authgear provides a GraphQL API that you can use to manage users and other resources right from your application or using the GraphiQL Explorer in Authgear Portal.
+Authgear provides a GraphQL API that you can use to manage users and other resources right from your application or using the GraphiQL Explorer in **Authgear Portal** > **Advanced** > **Admin API**.
 
 The following section shows a detailed description and examples of supported queries and mutations.
 
@@ -1102,9 +1102,11 @@ You can use this mutation to update an existing user's details. You can update s
 updateUser(input: UpdateUserInput!): UpdateUserPayload!
 ```
 
-**Example:**
+**Example 1 (Standard Attributes):**
 
-For this updateUser example, we will be updating the standard attributes for a user. The first thing to do is to extract all the current values of the user's standard attributes into a variable. Then, add new fields or modify existing fields in the variable with new values.
+For this `updateUser` example, we will be updating the standard attributes for a user. The first thing to do is to extract all the current values of the user's standard attributes into a variable. Then, add new fields or modify existing fields in the variable with new values.&#x20;
+
+**Note:** It is important to include the current values of the fields that you don't wish to update but still want to keep.  The Admin API will delete any existing fields you omit in the variable.&#x20;
 
 The following block of code shows an example variable. If you're using GraphiQL, simply create the variable in the variable tab of GraphiQL like this:
 
@@ -1155,7 +1157,62 @@ mutation ($standardAttributes: UserStandardAttributes) {
 {% endtab %}
 {% endtabs %}
 
+**Example 2 (Custom Attributes)**
 
+The following example shows how to update custom attributes.&#x20;
+
+**Note:** You must have created the custom attributes you wish to update in **Authgear Portal** > **User Profile** > **Custom Attributes**.
+
+<figure><img src="../../../.gitbook/assets/authgear-custom-attr.png" alt=""><figcaption></figcaption></figure>
+
+
+
+Create a variable and extract the current custom attributes into it. Modify the values of the attributes you wish to update or add new attributes.
+
+**Note:** Again, it is important to include the current values of the fields that you don't wish to update but still want to keep.  The Admin API will delete any existing fields you omit in the variable.
+
+The following block of code shows an example of the variable. You can set the variable in the variable tab of GraphiQL.
+
+```graphql
+{
+  "customAttributes": {
+    "town": "Lagos"
+  }
+}
+```
+
+{% tabs %}
+{% tab title="Query" %}
+```graphql
+mutation ($customAttributes: UserCustomAttributes) {
+  updateUser(input: {userID: "<ENCODED USER ID>", customAttributes: $customAttributes}) {
+    user {
+      id
+      customAttributes
+    }
+  }
+}
+
+```
+{% endtab %}
+
+{% tab title="Response" %}
+```json
+{
+  "data": {
+    "updateUser": {
+      "user": {
+        "customAttributes": {
+          "town": "John"
+        },
+        "id": "VABlcjo2Y2I3KBU9Zi0zNGYwLTRhNTPdYjQ3ZS0wYWWeMWYzNzQyA1A"
+      }
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
 
 
 
