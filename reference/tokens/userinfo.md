@@ -16,7 +16,7 @@ An example of a full URL for this endpoint looks like this: `https://your-projec
 
 You can also find the full URL for the UserInfo endpoint for your Authgear OIDC Client Application under **Application** > **\[your application]** in Authgear Portal.
 
-<figure><img src="../../../.gitbook/assets/authgear-oidc-app-config-endpoint.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/authgear-oidc-app-config-endpoint.png" alt=""><figcaption></figcaption></figure>
 
 If you're using any of the Authgear SDKs, you can request the data from the UserInfo endpoint just by calling a method. For example, in the JavaScript Authgear SDK, the `fetchUserInfo()` method returns information about the current user. You can learn more about other SDKs [here](https://docs.authgear.com/get-started/native-mobile-app).
 

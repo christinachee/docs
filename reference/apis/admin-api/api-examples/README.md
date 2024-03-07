@@ -1,5 +1,5 @@
 ---
-description: Learn how to perform common actions from our examples
+description: Learn how to perform common actions from the examples
 ---
 
 # User Management Examples

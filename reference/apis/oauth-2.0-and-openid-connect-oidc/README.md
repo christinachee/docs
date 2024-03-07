@@ -8,6 +8,6 @@ description: >-
 
 
 
-{% content-ref url="userinfo.md" %}
-[userinfo.md](userinfo.md)
+{% content-ref url="../../tokens/userinfo.md" %}
+[userinfo.md](../../tokens/userinfo.md)
 {% endcontent-ref %}
