@@ -321,7 +321,7 @@ The value of `SessionState` can be `Unknown`, `NoSession` or `Authenticated`. In
 
 ## Fetching User Info
 
-In some cases, you may need to obtain current user info through the SDK. (e.g. Display email address in the UI). Use the `FetchUserInfoAsync` function to obtain the user info, see [example](../how-to-guide/user-management/user-profile.md#userinfo-endpoint).
+In some cases, you may need to obtain current user info through the SDK. (e.g. Display email address in the UI). Use the `FetchUserInfoAsync` function to obtain the user info, see [example](../how-to-guide/user-management/user-profile/#userinfo-endpoint).
 
 ## Logout
 

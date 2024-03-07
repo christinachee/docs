@@ -62,7 +62,9 @@ The sample response:
 
 ### Update the user's standard attributes by mutation
 
-Copy the original standard attributes, change the attributes that you want to update.
+{% hint style="warning" %}
+Make sure to copy the original standard attributes as **any attributes that are missing in the payload will be deleted**. Next, change the values for attributes that you want to update.
+{% endhint %}
 
 The query:
 
@@ -156,3 +158,7 @@ The sample response:
   }
 }
 ```
+
+### Updating Custom Attributes
+
+To learn how to update a user's **custom attributes**, see the [update custom attribute example](https://docs.authgear.com/reference/apis/admin-api/api-queries-and-mutations#id-2.20.-updateuser).
