@@ -4,15 +4,6 @@ The node `id` is a globally unique identifier of an object. It is needed when yo
 
 The node id is a [base64url](https://datatracker.ietf.org/doc/html/rfc4648#section-5) encoded string with the format of `<NODE_TYPE>:<ID>`. For example, in `User:97b1c929-842c-415c-a7df-6967efdda160` , the node is "User" while "97b1c929-842c-415c-a7df-6967efdda160" is the ID for a specific user.
 
-**Table of content**
-
-* [User node type](node-id.md#1.-generate-id-for-user-node-type)
-* [AuditLog node type](node-id.md#2.-generate-id-for-auditlog-node-type)
-* [Session node type](node-id.md#3.-generate-id-for-session-node-type)
-* [Authenticator node type](node-id.md#4.-generate-id-for-authenticator-node-type)
-* [Authorization node type](node-id.md#5.-generate-id-for-authorization-node-type)
-* [Identity node type](node-id.md#6.-generate-id-for-identity-node-type)
-
 ## 1. Generate id for User node type
 
 You can use your preferred programming language or tool to encode node IDs to base64url as shown below:
