@@ -20,7 +20,7 @@ The standard attributes in UserProfile in OIDC are a standardized schema for rep
 * **An Authgear account:** You need an Authgear account to follow this guide. If you don't have one, you can[ create it for free](https://accounts.portal.authgear.com/signup) on the Authgear website.
 * **A Registered App:** You need a [registered application](https://docs.authgear.com/get-started/website#setup-application-in-authgear) (client) in Authgear.
 
-### Access user profiles from the Authgear UI portal
+### 1 Access user profiles from the Authgear UI portal
 
 It is the fastest and easiest way to view user profiles and manage them.&#x20;
 
@@ -53,7 +53,7 @@ Go to **Portal** > **User Profile** > **Custom Attributes** and click **Add New 
 
 </details>
 
-### Access user profiles from apps using Authgear SDKs
+### 2 Access user profiles from apps using Authgear SDKs
 
 Once Authgear completes authentication and returns control to your application, it provides the user profile to the application. Most developers prefer to use the **Authgear SDKs** to get the UserInfo object using the **fetch user info** function. To start using this function read [getting started guides](../../get-started/start-building/) relevant to the **SDK of your choice**. Here are some code snippets for different SDKs:
 
@@ -132,7 +132,7 @@ catch
 {% endtab %}
 {% endtabs %}
 
-### Access user profiles from Admin API
+### 3 Access user profiles from Admin API
 
 Authgear provides an [Admin API](../../reference/apis/admin-api/) GraphQL endpoint that allows applications and services to access and manipulate the User Profile object. The [API Explorer](../../reference/apis/admin-api/#api-explorer) lets users interactively explore the Admin API. With the API Explorer, you can search for users' profiles or update their standard or custom attributes. See the example steps of how to achieve this below:
 
@@ -170,7 +170,7 @@ query {
 
 </details>
 
-### Access user profiles from the OIDC UserInfo endpoint
+### 4 Access user profiles from the OIDC UserInfo endpoint
 
 The OpenID Connect (OIDC) [UseInfo](../user-management/user-profile.md#userinfo-endpoint) endpoint is a protected resource that provides information about a user when a service provider presents an access token that has been issued by your **Authgear Token endpoint**. The scopes in the access token specify the user attributes that are returned in the response of the user info endpoint. It is important to note that the `openid` scope must be one of the access token claims.
 
@@ -249,7 +249,11 @@ If you are using Postman, you can enable the Authorization type of OAuth2.0, pro
 
 </details>
 
-
-
 See a detailed explanation of the structure and fields included in the response of the UserInfo endpoint [here](../../reference/tokens/userinfo.md).
+
+### 5 Embed User Profiles into JWT
+
+Authgear WebHooks makes it possible to embed the standard attributes and custom attributes for a user's profile into the OIDC JSON Web Token (JWT). Hence, you access both profile attributes in the JWT returned to your OIDC client without making another call to the UserInfo endpoint.
+
+See our post about how to [Add custom fields to a JWT Access Token](../integration/add-custom-fields-to-a-jwt-access-token.md) to learn more.
 
