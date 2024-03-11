@@ -91,7 +91,7 @@ oauth.register(
     client_id=env.get("AUTHGEAR_CLIENT_ID"),
     client_secret=env.get("AUTHGEAR_CLIENT_SECRET"),
     client_kwargs={
-        "scope": "openid",
+        "scope": "openid offline_access",
     },
     server_metadata_url=f'https://{env.get("AUTHGEAR_DOMAIN")}/.well-known/openid-configuration',
 )
@@ -118,6 +118,14 @@ def callback():
     session["user"] = token
     return redirect("/")
 ```
+
+**Refresh Token**
+
+Calling the  `authorize_access_token()` method of the Flask Authlib package will include a refresh token in the token response, provided your Flask application has `offline_access` as one of the OAuth 2.0 scopes.
+
+Authlib will also use the refresh token to obtain a new access token automatically when the current access token has expired.
+
+**Logout**
 
 The route `/logout` manages the user's logout process from the application. It clears the user's session within the app and momentarily redirects to Authgear's logout endpoint to guarantee a thorough session clearance. After this, users are navigated back to your home route (which we'll discuss shortly).
 

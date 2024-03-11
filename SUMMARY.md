@@ -79,7 +79,7 @@
   * [Audit Log for Admin API and Portal](how-to-guide/monitor/audit-log-for-admin-api-and-portal.md)
   * [Analytics](how-to-guide/monitor/analytics.md)
 * [User Management](how-to-guide/user-management/README.md)
-  * [User Profile](how-to-guide/user-management/user-profile/README.md)
+  * [User Profile](how-to-guide/user-management/user-profile.md)
     * [Update User Profiles](how-to-guide/user-management/user-profile/update-user-profiles.md)
   * [User Settings](how-to-guide/user-management/auth-ui.md)
   * [Account Deletion](how-to-guide/user-management/account-deletion.md)

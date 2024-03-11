@@ -41,9 +41,15 @@ Every application in Authgear is assigned an alphanumeric, unique client ID that
 
 A **Redirect URI** is a URL in your application that you would like Authgear to redirect users to after they have authenticated. In our case, it will be a home page for our Spring Boot App. If not set, users will not be returned to your application after they log in.
 
+To follow the example in this post, add the following URL as a redirect URI:
+
+```
+http://localhost:8080/login/oauth2/code/authgear/
+```
+
 #### Step 3: Choose a Login method
 
-After you created the Authgear app, you choose how users need to **authenticate on the login page**. From the “Authentication” tab, navigate to “Login Methods”, you can choose a **login method** from various options including, by email, mobile, or social, just using a username or the custom method you specify. For this demo, we choose the **Email+Passwordless** approach where our users are asked to register an account and log in by using their emails. They will receive a One-time password (OTP) to their emails and verify the code to use the app.
+After you create the Authgear app, you choose how users need to **authenticate on the login page**. From the “Authentication” tab, navigate to “Login Methods”, you can choose a **login method** from various options including by email, mobile, or social, just using a username or the custom method you specify. For this demo, we choose the **Email+Passwordless** approach where our users are asked to register an account and log in by using their emails. They will receive a One-time password (OTP) to their emails and verify the code to use the app.
 
 <figure><img src="https://uploads-ssl.webflow.com/60658b47b03f0c77e8c14884/64ae48ba190172f7f9f9cc0e_Untitled%20(4)%20(1).png" alt=""><figcaption></figcaption></figure>
 
@@ -86,8 +92,8 @@ Spring Security makes it easy to configure your application for authentication w
 spring.security.oauth2.client.registration.authgear.client-id={your-client-id}
 spring.security.oauth2.client.registration.authgear.client-secret={your-client-secret}
 spring.security.oauth2.client.registration.authgear.authorization-grant-type=authorization_code
-spring.security.oauth2.client.registration.authgear.scope=openid
-spring.security.oauth2.client.registration.authgear.redirect-uri=http://localhost:8080/
+spring.security.oauth2.client.registration.authgear.scope=openid,offline_access
+spring.security.oauth2.client.registration.authgear.redirect-uri=http://localhost:8080/login/oauth2/code/authgear/
 spring.security.oauth2.client.provider.authgear.token-uri=https://{DOMAIN}/oauth2/token
 spring.security.oauth2.client.provider.authgear.authorization-uri=https://{DOMAIN}/oauth2/authorize
 
@@ -162,7 +168,7 @@ public class HomeController {
 
 #### Step 6: Run the Application
 
-To run the application, you can execute the mvn spring-boot:run goal. Or run from your editor the main ExampleApplication.java file. The sample application will be available at http://localhost:8080/.
+To run the application, you can execute the `mvn spring-boot:run` goal. Or run from your editor the main ExampleApplication.java file. The sample application will be available at http://localhost:8080/.
 
 <figure><img src="https://uploads-ssl.webflow.com/60658b47b03f0c77e8c14884/64ae61c4c93bc48ef731785f_Untitled%20(13).png" alt=""><figcaption></figcaption></figure>
 
@@ -170,7 +176,7 @@ Click on the **Login** button to be redirected to the Authgear login page.
 
 <figure><img src="https://uploads-ssl.webflow.com/60658b47b03f0c77e8c14884/64ae61ca49cc298d411f03d6_Untitled%20(14).png" alt=""><figcaption></figcaption></figure>
 
-You can also customize the login page UI view from the Authgear Portal. After you sign-up, you will receive an OTP code in your email to verify your identity.
+You can also customize the login page UI view from the Authgear Portal. After you sign up, you will receive an OTP code in your email to verify your identity.
 
 <figure><img src="https://uploads-ssl.webflow.com/60658b47b03f0c77e8c14884/64ae61e40046a0f0dbeff9d0_Untitled%20(15).png" alt=""><figcaption></figcaption></figure>
 
@@ -178,7 +184,7 @@ And log into your new account, you will be redirected back to the home page:
 
 <figure><img src="https://uploads-ssl.webflow.com/60658b47b03f0c77e8c14884/64ae61eb29d7e0cb537f5f01_Untitled%20(16).png" alt=""><figcaption></figcaption></figure>
 
-You have successfully configured a Spring Boot application to use Authgear for authentication. Now users can sign-up for a new account, log in, and log out. The full source code of the examples can be found [on GitHub](https://github.com/Boburmirzo/authgear-spring-oauth2-example).
+You have successfully configured a Spring Boot application to use Authgear for authentication. Now users can sign up for a new account, log in, and log out. The full source code of the examples can be found [on GitHub](https://github.com/Boburmirzo/authgear-spring-oauth2-example).
 
 ### Next steps
 

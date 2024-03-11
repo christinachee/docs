@@ -166,7 +166,7 @@ The value of `sessionState` can be `.unknown`, `.noSession` or `.authenticated`.
 
 ## Fetching User Info
 
-In some cases, you may need to obtain current user info through the SDK. (e.g. Display email address in the UI). Use the `fetchUserInfo` function to obtain the user info, see [example](../how-to-guide/user-management/user-profile/#userinfo-endpoint).
+In some cases, you may need to obtain current user info through the SDK. (e.g. Display email address in the UI). Use the `fetchUserInfo` function to obtain the user info, see [example](../how-to-guide/user-management/user-profile.md#userinfo-endpoint).
 
 ## Using the Access Token in HTTP Requests
 

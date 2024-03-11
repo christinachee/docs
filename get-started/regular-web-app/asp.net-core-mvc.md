@@ -50,13 +50,13 @@ Also, enable **Issue JWT as an access token** option under the **Access Token** 
 
 #### Step 4: Choose a Login method
 
-After you created the **Authgear app**, you choose how users need to **authenticate on the login page**. From the **Authentication** tab, navigate to **Login Methods**, you can choose a **login method** from various options including, by email, mobile, or social, just using a username or the custom method you specify. For this demo, we choose the **Email+Passwordless** approach where our users are asked to register an account and log in by using their emails. They will receive a One-time password (OTP) to their emails and verify the code to use the app.
+After you create the **Authgear app**, you choose how users need to **authenticate on the login page**. From the **Authentication** tab, navigate to **Login Methods**, you can choose a **login method** from various options including, by email, mobile, or social, just using a username or the custom method you specify. For this demo, we choose the **Email+Passwordless** approach where our users are asked to register an account and log in by using their emails. They will receive a One-time password (OTP) to their emails and verify the code to use the app.
 
 <figure><img src="../../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
 
 ### Part 2: Configure [ASP.NET](http://asp.net) Core application to use Authgear
 
-This guide will use to provide a way for your users to log in to your [ASP.NET](http://asp.net/) Core application. The [project source code](https://github.com/authgear/authgear-example-dotnet) can be found on GitHub. If you are familiar with the steps, you can skip this part and clone the code repository and run the code sample by following the [README.md](https://github.com/authgear/authgear-example-dotnet/blob/main/README.md) file there.
+This guide will be used to provide a way for your users to log in to your [ASP.NET](http://asp.net/) Core application. The [project source code](https://github.com/authgear/authgear-example-dotnet) can be found on GitHub. If you are familiar with the steps, you can skip this part and clone the code repository and run the code sample by following the [README.md](https://github.com/authgear/authgear-example-dotnet/blob/main/README.md) file there.
 
 #### Step 1: Install dependencies
 
@@ -248,7 +248,39 @@ After successful authentication, you should see the protected page with the foll
 
 <figure><img src="../../.gitbook/assets/Untitled (20).png" alt="" width="531"><figcaption></figcaption></figure>
 
-#### Step 4: Set up and run the application
+#### Step 4: Get and Use Refresh Token
+
+As part of the OAuth 2.0 standard, we can use the refresh token returned by the token endpoint to get a new access token. Doing so enables our application to replace an expired access token without requiring the user to repeat the entire login process.
+
+The following code in `ProtectedModel.cs` is responsible for doing that:
+
+```csharp
+public async Task<IActionResult> OnPostRefreshToken()
+{
+    await this.tokenClient.RefreshAccessToken(this.HttpContext);
+    this.AccessToken = await this.tokenClient.GetAccessToken(this.HttpContext);
+    this.RefreshToken = await this.tokenClient.GetRefreshToken(this.HttpContext);
+    return Page();
+}
+```
+
+**Note:** You must include `offline_access` in your OAuth 2.0 scope for the Authgear authorization server to return a refresh token.
+
+#### Step 5: Logout
+
+The Logout button on the `Protected.cshtml` page calls the `OnPostLogout()` method in ProtectedModel.cs. The method will delete the current user session and redirect to Authgear's end session endpoint for the user to complete the logout process.
+
+The code sample below shows the implementation of the `OnPostLogout()` method:
+
+```csharp
+public async Task OnPostLogout()
+    {
+        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        await HttpContext.SignOutAsync(OpenIdConnectDefaults.AuthenticationScheme);
+    }
+```
+
+#### Step 6: Set up and run the application
 
 Start by cloning the project into your local machine:
 
@@ -270,7 +302,7 @@ Update the following configuration variables in the `appsettings.json` file with
         "ClientId": "{your-client-id}",
         "ClientSecret": "{your-client-secret}",
         "Issuer": "{your-authgear-app-endpoint}",
-        "Scope": "openid",
+        "Scope": "openid offline_access",
         "PostLogoutRedirectUri": "<http://localhost:5002>",
         "TokenEndpoint": "{your-authgear-app-endpoint}/oauth2/token"
     },
@@ -301,8 +333,6 @@ Your users can log in to your application through a page hosted by Authgear, whi
 <figure><img src="../../.gitbook/assets/image (19).png" alt="" width="464"><figcaption></figcaption></figure>
 
 After you have authenticated, a protected view is rendered. The application receives an Access token that it uses to present user data on the screen, and tokens that could be used in upstream requests to some backend API, to access data on behalf of the user.
-
-
 
 <figure><img src="../../.gitbook/assets/Untitled (20).png" alt=""><figcaption></figcaption></figure>
 

@@ -44,7 +44,3 @@ If you have a traditional web application like **Java EE, Express, PHP, GO, Lara
 {% content-ref url="python-flask-app.md" %}
 [python-flask-app.md](python-flask-app.md)
 {% endcontent-ref %}
-
-{% content-ref url="../authentication-approach/cookie-based.md" %}
-[cookie-based.md](../authentication-approach/cookie-based.md)
-{% endcontent-ref %}
