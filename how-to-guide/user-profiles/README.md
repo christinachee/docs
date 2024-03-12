@@ -6,8 +6,8 @@ description: How to guides related to user profiles
 
 
 
-{% content-ref url="access-user-profiles.md" %}
-[access-user-profiles.md](access-user-profiles.md)
+{% content-ref url="../integration/access-user-profiles.md" %}
+[access-user-profiles.md](../integration/access-user-profiles.md)
 {% endcontent-ref %}
 
 {% content-ref url="update-attributes.md" %}
