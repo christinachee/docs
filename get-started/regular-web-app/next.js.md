@@ -163,7 +163,7 @@ export default function App({
 }
 ```
 
-This will make the `[useSession()](<https://next-auth.js.org/getting-started/client#usesession>)` React Hook accessible to your entire application. Now, create a component that will either render a "Log in" or "Log out" button, depending on the session state, in a `src/components/login-button.jsx` file.
+This will make the[ useSession()](https://next-auth.js.org/getting-started/client#usesession) React Hook accessible to your entire application. Now, create a component that will either render a "Log in" or "Log out" button, depending on the session state, in a `src/components/login-button.jsx` file.
 
 ```jsx
 import { useSession, signIn, signOut } from "next-auth/react"

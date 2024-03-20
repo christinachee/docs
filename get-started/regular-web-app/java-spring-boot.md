@@ -44,7 +44,7 @@ A **Redirect URI** is a URL in your application that you would like Authgear to 
 To follow the example in this post, add the following URL as a redirect URI:
 
 ```
-http://localhost:8080/login/oauth2/code/authgear/
+http://localhost:8080/login/oauth2/code/authgear
 ```
 
 #### Step 3: Choose a Login method
@@ -104,7 +104,7 @@ authgear.oauth2.end-session-endpoint=https://{DOMAIN}/oauth2/end_session
 
 #### Step 3: Add login to your application
 
-To enable user login with Authgear, create a class that will provide an instance of **SecurityFilterChain**, add the @EnableMethodSecurity annotation, and override the necessary method:
+To enable user login with Authgear, create a class that will provide an instance of **SecurityFilterChain**, add the `@EnableMethodSecurity` annotation, and override the necessary method:
 
 ```java
 

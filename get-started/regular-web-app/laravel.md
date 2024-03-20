@@ -112,13 +112,19 @@ Once the setup is complete, navigate around your project file structure and you 
 
 Before we continue, let's add an extra `oauth_uid` field to the `users` table migration file. This field will store a user's unique ID from Authgear after successful login.
 
-Open the create\_users\_table file that is inside the `database/migrations/` folder (this file will have a date value at the end of its name) and add the following code to a new line inside the `Schema::create()` method:
+Open the `create_users_table...` file that is inside the `database/migrations/` folder (this file will have a date value at the end of its name) and add the following code to a new line inside the `Schema::create()` method:
 
 ```php
 $table->string('oauth_uid')->nullable();
 ```
 
-Finally, run the `php artisan migrate` command to create the users and other tables.
+Add the MySQL database `DB_DATABASE`, `DB_USERNAME`, and `DB_PASSWORD` for the database you wish to use with your Laravel project in your Laravel project's `.env` file.
+
+Finally, create the users and other tables by running the following command:
+
+```bash
+php artisan migrate
+```
 
 #### Step 5: Send OAuth User Authorization Request
 
@@ -158,7 +164,7 @@ class OAuthController extends Controller {
             'urlAuthorize'            => $appUrl.'/oauth2/authorize',
             'urlAccessToken'          => $appUrl.'/oauth2/token',
             'urlResourceOwnerDetails' => $appUrl.'/oauth2/userInfo',
-            'scopes' => 'openid'
+            'scopes' => 'openid offline_access'
         ]);
     }
 
@@ -176,13 +182,13 @@ class OAuthController extends Controller {
 Next, add your Authgear Application's Client ID, Client Secret, and the redirect URI you specified earlier to your Laravel project's **.env** file using the following keys:
 
 ```
-AUTHGEAR_PROJECT_URL = ""
-AUTHGEAR_APP_CLIENT_ID = ""
-AUTHGEAR_APP_CLIENT_SECRET = ""
-AUTHGEAR_APP_REDIRECT_URI = "http://localhost:8000/oauth/callback"
+AUTHGEAR_PROJECT_URL=""
+AUTHGEAR_APP_CLIENT_ID=""
+AUTHGEAR_APP_CLIENT_SECRET=""
+AUTHGEAR_APP_REDIRECT_URI="http://localhost:8000/oauth/callback"
 ```
 
-**Note:** Your Authgear project URL is the hostname part of any of your endpoint URLs. For example, the project URL for a project with `https://laravel-app.authgear.cloud/oauth2/authorize` as authorization endpoint will be `https://laravel-app.authgear.cloud`.
+**Note:** Your Authgear project URL is the hostname of any of your endpoint URLs. For example, the project URL for a project with an authorization endpoint: `https://laravel-app.authgear.cloud/oauth2/authorize`  will be `https://laravel-app.authgear.cloud`.
 
 Now let's create a route in our Laravel project that will call the `startAuthorization()` method.
 
@@ -253,6 +259,8 @@ if (isset($accessToken)) {
 }
 ```
 
+The `getResourceOwner()` method will call Authgear's UserInfo endpoint.
+
 If you dump the userInfo variable (`dd($userInfo)`), you should get an output similar to this:
 
 ```json
@@ -269,25 +277,45 @@ If you dump the userInfo variable (`dd($userInfo)`), you should get an output si
 ]
 ```
 
-The above array contains the user's info from Authgear. We'll proceed to use this information to link the Authgear user to a default Laravel authentication account. As a result, our app can start a regular Laravel authenticated user session and allow access to protected routes.
+The above array contains the user's info from Authgear. We'll proceed to use this information to link the Authgear user to a default (Breeze) Laravel authentication account. As a result, our app can start a regular Laravel authenticated user session and allow access to protected routes.
 
-To implement the above feature, add the following code after the line with `$userInfo = $resourceOwner->toArray();` :
+To implement the above feature, find the following line in **OAuthController.php**:
 
 ```php
+$userInfo = $resourceOwner->toArray();
+```
+
+Add the following code after the above line:
+
+```php
+if (empty($userInfo['email'])) {
+    return redirect('/')->withErrors(['msg' => 'Only profile with email is supported!']);
+}
 //check if user already registered
 $oldUser = User::query()->whereEmail($userInfo['email'])->first();
 if (!empty($oldUser)) {
-    $oldUser->oauth_uid = $userInfo['sub'];
-    $oldUser->save();
-    Auth::guard('web')->login($oldUser);
+
+    //if old user has the same Authgear sub (uuid), skip register and log them in.
+    if ($userInfo['sub'] == $oldUser->oauth_uid) {
+        Auth::guard('web')->login($oldUser);
+        session(['accessToken' => $accessToken]);
+        session(['refreshToken' => $accessToken->getRefreshToken()]);
+    } else {
+        //if sub is different,
+        //ask user to login to existing account and link the existing account to link new authgear profile
+        return redirect('/')->withErrors(['msg' => 'Email already registered please log in to link your account.']);
+    }
 } else {
     $user = User::create([
         'name' => $userInfo['email'],
         'email' => $userInfo['email'],
-        'password' => Hash::make($userInfo['sub'] ."-". $userInfo['email'])
-        ]);
+        'oauth_uid' => $userInfo['sub'],
+        'password' => Hash::make($userInfo['sub'] . "-" . $userInfo['email'])
+    ]);
 
-        Auth::guard('web')->login($user);
+    Auth::guard('web')->login($user);
+    session(['accessToken' => $accessToken]);
+    session(['refreshToken' => $accessToken->getRefreshToken()]);
 }
 
 // Redirect user to a protected route
@@ -296,9 +324,105 @@ return redirect('/dashboard');
 
 Find the complete code for the OAuthController [here](https://github.com/authgear/authgear-example-laravel/blob/main/app/Http/Controllers/OAuthController.php).
 
+#### Step 8: Using Refresh Token
+
+OAuth 2.0 access tokens expire after some time. The refresh token on the other hand live longer. As a result, you can use the refresh token to request a new access token. In this step, we'll do exactly that in our Laravel application.
+
+First, app/Http/Controllers/ProfileController.php and update the content of the edit() method to the following:
+
+```php
+public function edit(Request $request): View
+{
+    $appUrl = env("AUTHGEAR_PROJECT_URL", "");
+    $provider = new GenericProvider([
+        'clientId'                => env("AUTHGEAR_APP_CLIENT_ID", ""),
+        'clientSecret'            => env("AUTHGEAR_APP_CLIENT_SECRET", ""),
+        'redirectUri'             => env("AUTHGEAR_APP_REDIRECT_URI", ""),
+        'urlAuthorize'            => $appUrl . '/oauth2/authorize',
+        'urlAccessToken'          => $appUrl . '/oauth2/token',
+        'urlResourceOwnerDetails' => $appUrl . '/oauth2/userInfo',
+        'scopes' => 'openid offline_access'
+    ]);
+
+    $accessToken = session('accessToken');
+
+    if ($accessToken->hasExpired()) {
+        $refreshToken = session('refreshToken');
+        $accessToken = $provider->getAccessToken('refresh_token', [
+            'refresh_token' => $refreshToken
+        ]);
+        session(['accessToken' => $accessToken]);
+    }
+    $resourceOwner = $provider->getResourceOwner($accessToken);
+    $userInfo = $resourceOwner->toArray();
+
+
+    return view('profile.edit', [
+        'user' => $request->user(), 'authgearUserInfo' => $userInfo,
+    ]);
+}
+```
+
+The above code checks if the current access token is expired using the `hasExpired()` method. If the condition is true, we call the `getAccessToken()` method with the refresh token to get a new access token.
+
+The value of the current access token is updated to the new access token.
+
+Next, this edit() method also displays the current user's profile details from your Authgear project on the UI. To implement this, add the following code to **resources/views/profile/edit.blade.php**, just below the line with "`<div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">`":
+
+```html
+<div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+    <div class="max-w-xl">
+        <h2>Authgear user data</h2>
+        <p>Email: {{ $authgearUserInfo['email'] }}</p>
+        <p>UUID: {{ $authgearUserInfo['sub'] }}</p>
+    </div>
+</div>
+```
+
 At this point, if we run our app and click on the login link on the landing page, we should be redirected to the Authgear authorization page. After granting authorization, we are directed to the callback route of our Laravel app. If authentication is successful we should be redirected to the default Breeze-protected dashboard page that looks like this:
 
 <figure><img src="../../.gitbook/assets/laravel-example-dashboad (1).png" alt=""><figcaption></figcaption></figure>
+
+#### Step 9: Logout
+
+To log a user out, we'll delete all existing PHP session data and then call the Authgear token revoke endpoint.
+
+First, add a new logout function to the OAuthController.php file using the following code:
+
+```php
+public function logout(Request $request)
+{
+    Auth::guard('web')->logout();
+
+    $request->session()->invalidate();
+
+    $request->session()->regenerateToken();
+
+    if (session('accessToken') != null) {
+        $options = [];
+        $options['headers']['content-type'] = 'application/x-www-form-urlencoded';
+        $options['body'] = http_build_query(['token'=>session('refreshToken')]);
+        $request = $this->provider->getRequest(
+            'POST',
+            env("AUTHGEAR_PROJECT_URL", "") . '/oauth2/revoke',
+            $options
+        );
+        $this->provider->getResponse($request);
+    
+        session(['accessToken' => null]);
+        session(['refreshToken' => null]);
+    }
+
+    return redirect('/');
+}
+```
+
+Then, open routes/web.php and update the logout route to the following:
+
+```php
+Route::post('logout', [OAuthController::class, 'logout'])
+                ->name('logout');
+```
 
 ### What's Next
 
