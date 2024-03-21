@@ -4,7 +4,9 @@ description: Integrate Authgear to your website with the Web SDK
 
 # JavaScript (Web)
 
-This guide provides instructions on integrating Authgear with a Web app. Supported browsers include:
+In this guide, you'll learn how to integrate Authgear into your website using the [Token Approach](https://docs.authgear.com/get-started/authentication-approach/token-based). In the token approach, the Authgear server returns an access token and refresh token to your SPA application after successful user authentication. Your application can send this access token in subsequent HTTP requests to access protected resources. The alternative to the token approach is the [Cookies Approach](https://docs.authgear.com/get-started/authentication-approach/cookie-based) which involves  Authgear setting cookies after successful authentication. Your application will send the cookies in subsequent requests to access protected resources.
+
+This guide uses the Authgear Web SDK for integrating Authgear with a Web app. Supported browsers include:
 
 * Last 2 Firefox major versions
 * Last 2 Chrome major versions
@@ -269,13 +271,9 @@ authgear
     });
 ```
 
-### Cookie-based authentication
-
-If you are using cookies, all requests from your applications under `*.yourdomain.com` to your application server will include the session cookie automatically. You can skip this section and see the next step: [Backend Integration](../backend-integration/)
-
 ## Next steps
 
-To protect your application server from unauthorized access. You will need to **integrate Authgear to your backend**.
+To protect your application server from unauthorized access. You will need to [integrate Authgear to your backend](https://docs.authgear.com/get-started/backend-api/backend-integration).
 
 {% content-ref url="../backend-integration/" %}
 [backend-integration](../backend-integration/)
