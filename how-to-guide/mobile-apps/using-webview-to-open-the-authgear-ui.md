@@ -4,7 +4,7 @@ description: >-
   WebKitWebView using Authgear Mobile SDKs.
 ---
 
-# Use WebKitWebViewUIImplementation and UIImplementation
+# Using WebView to open the Authgear UI
 
 The default behavior of the Authgear Mobile SDKs is to launch AuthUI in [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) in iOS and [Custom Tabs](https://developer.chrome.com/docs/android/custom-tabs) in Android. The latest versions of the mobile SDKs include `WebKitWebViewUIImplementation` a `UIImplementation` which makes it possible to customize the above behavior. For example, setting the `uiImplementation` attribute in the `configure()` method of the Authgear Capacitor SDK to `WebKitWebViewUIImplementation()` will open AuthUI using [WKWebView](https://developer.apple.com/documentation/webkit/wkwebview) on iOS and [android.webkit.WebView](https://developer.android.com/reference/android/webkit/WebView) on Android.
 
@@ -38,7 +38,7 @@ authgear
 ```
 {% endtab %}
 
-{% tab title="Android" %}
+{% tab title="Android (Native)" %}
 ```java
 private Authgear authgear = new Authgear(
                                 getApplication(),
@@ -53,7 +53,7 @@ private Authgear authgear = new Authgear(
 ```
 {% endtab %}
 
-{% tab title="iOS" %}
+{% tab title="iOS (Native)" %}
 ```swift
 Authgear(
             clientId: "<CLIENT_ID>",
@@ -67,7 +67,9 @@ Authgear(
 {% endtab %}
 {% endtabs %}
 
-Setting `uiImplementation` to `WebKitWebViewUIImplementation` in the above example will change the behavior of your application from the default to using `WKWebView` on iOS and `android.webkit.WebView` on Android.&#x20;
+Setting `uiImplementation` to `WebKitWebViewUIImplementation` in the above example will change the behavior of your application from using **ASWebAuthenticationSession** on iOS and **Custom Tabs** on Android to using `WKWebView` and `android.webkit.WebView` respectively.
+
+To set `uiImplementation` to `WKWebView` in the native iOS SDK, use `WKWebViewUIImplementation`  or implement your own [custom UIImplementation](using-webview-to-open-the-authgear-ui.md#implementing-your-custom-uiimplementation).
 
 ### Customizing the WebKitWebView UI
 
@@ -127,7 +129,7 @@ authgear
 ```
 {% endtab %}
 
-{% tab title="Android" %}
+{% tab title="Android (Native)" %}
 ```java
 private int actionBarBackgroundColor = 0xffffff00;
 private int actionBarButtonTintColor = 0xff000000;
@@ -144,7 +146,7 @@ private Authgear authgear = new Authgear(
 ```
 {% endtab %}
 
-{% tab title="iOS" %}
+{% tab title="iOS (Native)" %}
 ```swift
 Authgear(
             clientId: "<CLIENT_ID>",

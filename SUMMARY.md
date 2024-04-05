@@ -93,7 +93,7 @@
 * [Mobile Apps](how-to-guide/mobile-apps/README.md)
   * [Use SDK to call your application server](how-to-guide/mobile-apps/using-sdk-to-call-your-application-server.md)
   * [Force authentication on app launch](how-to-guide/mobile-apps/force-authentication-on-app-launch.md)
-  * [Use WebKitWebViewUIImplementation and UIImplementation](how-to-guide/mobile-apps/use-webkitwebviewuiimplementation-and-uiimplementation.md)
+  * [Using WebView to open the Authgear UI](how-to-guide/mobile-apps/using-webview-to-open-the-authgear-ui.md)
 * [Custom UI](how-to-guide/custom-ui/README.md)
   * [Authentication Flow API](how-to-guide/custom-ui/authentication-flow-api.md)
   * [Implement Authentication Flow API using Express](how-to-guide/custom-ui/implement-authentication-flow-api-using-express.md)
