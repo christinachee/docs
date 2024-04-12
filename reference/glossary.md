@@ -11,45 +11,6 @@ This glossary provides definitions for technical terms and abbreviations to make
 
 We've arranged the glossary terms and abbreviations in alphabetical order on the left side. Select any term to see the full definition and explanation.&#x20;
 
-**Table of content**
-
-* [Access token](glossary.md#access-token)
-* [Admin API](glossary.md#admin-api)
-* [Anonymous Users](glossary.md#anonymous-users)
-* [Auth UI](glossary.md#auth-ui)
-* [Authentication](glossary.md#authentication)
-* [Authorization](glossary.md#authorization)
-* [Authorization code](glossary.md#authorization-code)
-* [Authorized Redirect URIs](glossary.md#authorized-redirect-uris)
-* [Biometric authentication](glossary.md#biometric-authentication)
-* [Blocking events](glossary.md#blocking-events)
-* [Claims](glossary.md#claims)
-* [Client ID](glossary.md#client-id)
-* [Client Secret](glossary.md#client-secret)
-* [Custom Attributes](glossary.md#custom-attributes)
-* [JWT](glossary.md#jwt)
-* [JavaScript / TypeScript Hooks](glossary.md#javascript-typescript-hooks)
-* [Magic link](glossary.md#magic-link)
-* [Multi-factor authentication (MFA)](glossary.md#multi-factor-authentication-mfa)
-* [Non-Blocking Events](glossary.md#non-blocking-events)
-* [OAuth](glossary.md#oauth)
-* [OpenID Connect (OIDC)](glossary.md#openid-connect-oidc)
-* [Passkey](glossary.md#passkey)
-* [Passwordless](glossary.md#passwordless)
-* [Project](glossary.md#project)
-* [Reauthentication](glossary.md#reauthentication)
-* [Refresh token](glossary.md#refresh-token)
-* [SDK](glossary.md#sdk)
-* [Single sign-on (SSO)](glossary.md#single-sign-on-sso)
-* [Social login](glossary.md#social-login)
-* [Standard Attributes](glossary.md#standard-attributes)
-* [TOTP](glossary.md#totp)
-* [User Anonymization](glossary.md#user-anonymization)
-* [User Deletion](glossary.md#user-deletion)
-* [User Settings](glossary.md#user-settings)
-* [Userinfo Endpoint](glossary.md#userinfo-endpoint)
-* [Webhooks](glossary.md#webhooks)
-
 ### Access token
 
 An access token is a credential that a client application can use to access a user's account and resources on Authgear. The user needs to first grant a client authorization to their account before the client can request an access token.
@@ -118,6 +79,12 @@ The client secret is a confidential string sent together with the client ID as c
 
 Custom Attributes allow you to add extra fields to the user attributes. Custom attributes can help capture extra data that isn't already included in the standard attribute.
 
+### Groups
+
+Groups is an access management feature in Authgear that makes it possible to create one or more groups, add [roles](glossary.md#roles) to the groups, and add users to the groups.
+
+If a user is in a group, all the roles for that group are returned for their profile. See our [roles and group documentation](../how-to-guide/user-management/manage-users-roles-and-groups.md) to learn more about using groups.
+
 ### JWT
 
 JWT stands for JSON Web Token. JWTs are self-contained and can be securely used to share authentication and authorization information between a server and a client.
@@ -169,6 +136,12 @@ Reauthentication is the process of verifying the identity of a user that's alrea
 ### Refresh token
 
 A refresh token is a special token that can be used to obtain a new access token without having to re-authenticate a user.
+
+### Roles
+
+Roles can be used to control access to certain parts of an application or API that's powered by Authgear.  Roles are returned using the `https://authgear.com/claims/user/roles` attribute in Authgear's JWT access token and [UserInfo](tokens/userinfo.md) as an array.&#x20;
+
+The following is an example of how you can use roles. In a blog application with two roles (`admin` and `reader`), you can restrict access for editing and adding new posts to only users with the `admin` role. Check out our documentation on [roles and groups](../how-to-guide/user-management/manage-users-roles-and-groups.md) to learn more about managing roles in Authgear.
 
 ### SDK
 
