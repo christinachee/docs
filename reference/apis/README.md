@@ -27,6 +27,7 @@ Authgear provides the following groups of APIs:
 
 * **OAuth 2.0 and OpenID Connect**: for connecting with OIDC Clients
 * **Admin API**: for your servers to manage users via a GraphQL endpoint.
+* **User Import API:** this is an API that supports the bulk import of users from another system to an Authgear project.
 * **Authentication Flow (Auth Flow) API**: for developing a customized Web or Mobile Native Auth UI instead of the default user interface provided by Authgear.
 * **Resolver Endpoint**: for API Gateway or Servers to check the validity of access tokens or cookies in the request header.
 
@@ -68,6 +69,24 @@ The path for the Admin API is:
 
 * `/_api/admin/graphql`
 
+## User Import API
+
+To learn more about using the User Import API, see the following documentation page:
+
+{% content-ref url="../../how-to-guide/user-management/import-users-using-user-import-api.md" %}
+[import-users-using-user-import-api.md](../../how-to-guide/user-management/import-users-using-user-import-api.md)
+{% endcontent-ref %}
+
+The path for the User Import API:
+
+* `/_api/admin/users/import`
+
+Use this endpoint to import users.
+
+* `/_api/admin/users/import/{ID}`
+
+Use this endpoint to query the status of an existing user import task.
+
 ## Authentication Flow API
 
 You can find a detailed overview of the Authentication Flow API in the following documentation:
@@ -78,7 +97,7 @@ You can find a detailed overview of the Authentication Flow API in the following
 
 The path for the Authentication Flow API is:
 
-`/api/v1/authentication_flows`
+* `/api/v1/authentication_flows`
 
 ## Resolver Endpoints
 
