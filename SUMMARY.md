@@ -134,6 +134,7 @@
     * [UserInfo](reference/tokens/userinfo.md)
 * [Tokens](reference/tokens/README.md)
   * [JWT Access Token](reference/tokens/jwt-access-token.md)
+  * [Refresh Token](reference/tokens/refresh-token.md)
 * [Glossary](reference/glossary.md)
 * [Billing FAQ](reference/billing-faq.md)
 
