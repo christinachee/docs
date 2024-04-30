@@ -10,8 +10,8 @@ description: How to guides related to user profiles
 [access-user-profiles.md](../integration/access-user-profiles.md)
 {% endcontent-ref %}
 
-{% content-ref url="update-attributes.md" %}
-[update-attributes.md](update-attributes.md)
+{% content-ref url="update-user-profiles.md" %}
+[update-user-profiles.md](update-user-profiles.md)
 {% endcontent-ref %}
 
 {% content-ref url="update-user-profile-on-sign-up-using-hooks.md" %}

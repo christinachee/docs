@@ -4,7 +4,7 @@ description: Learn how to access User Profiles
 
 # Access User Profiles
 
-To access any of the applications in your Authgear account, each user must have a profile in the account. [User Profiles](../user-management/user-profile.md) contain information about your users such as name, contact information, and [standard](../user-management/user-profile.md#standard-attributes) and[ custom attributes](../user-management/user-profile.md#custom-attributes) you define. You can retrieve and manage user profiles in the following ways:
+To access any of the applications in your Authgear account, each user must have a profile in the account. [User Profiles](../user-profiles/user-profile.md) contain information about your users such as name, contact information, and [standard](../user-profiles/user-profile.md#standard-attributes) and[ custom attributes](../user-profiles/user-profile.md#custom-attributes) you define. You can retrieve and manage user profiles in the following ways:
 
 * [From the Authgear UI portal](access-user-profiles.md#id-1.-access-user-profiles-from-the-authgear-ui-portal).
 * [From your apps using Authgear SDKs](access-user-profiles.md#id-2.-access-user-profiles-from-apps-using-authgear-sdks).
@@ -133,6 +133,8 @@ catch
 {% endtab %}
 {% endtabs %}
 
+
+
 ### 3. Access user profiles from Admin API
 
 Authgear provides an [Admin API](../../reference/apis/admin-api/) GraphQL endpoint that allows applications and services to access and manipulate the User Profile object. The [API Explorer](../../reference/apis/admin-api/#api-explorer) lets users interactively explore the Admin API. With the API Explorer, you can search for users' profiles or update their standard or custom attributes. See the example steps of how to achieve this below:
@@ -159,7 +161,7 @@ query {
   users(
     searchKeyword: "bobur@oursky.com"
   ) {
-    edges {e
+    edges {
       node {
 	standardAttributes
         customAttributes
@@ -173,7 +175,19 @@ query {
 
 ### 4. Access user profiles from the OIDC UserInfo endpoint
 
-The OpenID Connect (OIDC) [UseInfo](../user-management/user-profile.md#userinfo-endpoint) endpoint is a protected resource that provides information about a user when a service provider presents an access token that has been issued by your **Authgear Token endpoint**. The scopes in the access token specify the user attributes that are returned in the response of the user info endpoint. It is important to note that the `openid` scope must be one of the access token claims.
+The OpenID Connect (OIDC) [UseInfo](../user-profiles/user-profile.md#userinfo-endpoint) endpoint is a protected resource that provides information about a user when a service provider presents an access token that has been issued by your **Authgear Token endpoint**. The scopes in the access token specify the user attributes that are returned in the response of the user info endpoint. It is important to note that the `openid` scope must be one of the access token claims.
+
+#### UserInfo Endpoint
+
+The UserInfo endpoint returns the Claims about the authenticated end-user, including the standard profile and custom attributes.
+
+The `userInfo` object is returned from calling **fetch user info** function which contains a unique identifier of the user.
+
+| Key         | Type      | Description                                                                                                                                                                                                       |
+| ----------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| isAnonymous | _boolean_ | Indicate if the user is anonymous, i.e. no [identity](../../concepts/user-identity-and-authenticator.md#identity) or [authenticator](../../concepts/user-identity-and-authenticator.md#authenticator) is provided |
+| isVerified  | _boolean_ | Indicate if the user completed the verification requirement                                                                                                                                                       |
+| sub         | _string_  | Unique identifier of the user in your Authgear project                                                                                                                                                            |
 
 To access a user's profile using the UserInfo endpoint of OpenID Connect, you need to follow these steps:
 
@@ -188,38 +202,19 @@ We are going to use **cURL** commands in our API calls or you can also use [Post
 **Prerequisites**
 
 * Make sure that you have a registered app type of **OIDC Client Application** in Authgear Portal.
+* You have successfully configured your application to use Authgear as an OIDC provider. See your [getting started guide](https://docs.authgear.com/get-started/start-building) for detailed steps.
 
-**Step 1: Obtain the necessary parameters**
+**Step 1: Obtain an access token**
 
-Open your **OpenID Auth App** configuration, and find **Client ID**, **Client Secret**, and check **Authorization**, and **Token** endpoints. You will use them in the next steps.
+Your client application needs a valid access token for a user in order to make request to the UserInfo endpoint.
 
-<img src="../../.gitbook/assets/image (5).png" alt="" data-size="original">
-
-<img src="../../.gitbook/assets/image (3) (1).png" alt="" data-size="original">
-
-**Step 2: Construct the authorization endpoint URL**
-
-The URL for this endpoint is usually provided by the authorization server and includes parameters specifying the requested `scope`, `client_id`, and response\_type. Here's an example URL for the authorization endpoint:
-
-```bash
-https://<YOUR_AUTHGEAR_ENDPOINT>/oauth2/authorize?client_id={YOUR_CLIENT_ID}&response_type=code&scope=openid
-```
-
-Replace `<YOUR_AUTHGEAR_ENDPOINT>` with your Authgear server's domain, `YOUR_CLIENT_ID` with your application's Client ID from **OpenID App.**
-
-**Step 3: Redirect the user to the authorization endpoint**
-
-Next, you need to redirect the user to the authorization endpoint. You can just put the URL in your browser and log in with a user credential you are interested to retrieve an access token for. After successful authentication and consent, the Authgear will redirect the user back to your specified redirect URI, including an **authorization code** as a query parameter. You will need the code in the next step&#x20;
-
-![](<../../.gitbook/assets/image (10).png>)
-
-**Step 4: Obtain an access token**
-
-You need to make a request to the **OpenID App's Token endpoint** to exchange the **authorization code** we retrieved in the previous step for an access token.&#x20;
+To get an access token, you need to make a request to the **OpenID App's Token endpoint** to exchange the **authorization code** that was retrieved after authorization for an access token.&#x20;
 
 * The token endpoint URL is usually something like `https://<YOUR_AUTHGEAR_ENDPOINT>/oauth2/token`.
 * Include parameters such as `grant_type=authorization_code`, `code=AUTHORIZATION_CODE`, `client_id=YOUR_CLIENT_ID`, `client_secret=YOUR_CLIENT_SECRET`, and `redirect_uri=YOUR_REDIRECT_URI`.
 * Make a POST request to the token endpoint to obtain the access token.
+
+The following is an example of a request to the token endpoint sent for a terminal using cURL:
 
 ```bash
 curl --request POST \
@@ -233,7 +228,7 @@ curl --request POST \
   --data scope=openid
 ```
 
-**Step 5: Make a request to the Userinfo endpoint**
+**Step 2: Make a request to the Userinfo endpoint**
 
 Once you have obtained a **JWT access token**, you can use it to make a request to the Userinfo endpoint. The request to the Userinfo endpoint should include the access token in the `Authorization` header using the `Bearer` scheme.
 
@@ -252,7 +247,7 @@ If you are using Postman, you can enable the Authorization type of OAuth2.0, pro
 
 See a detailed explanation of the structure and fields included in the response of the UserInfo endpoint [here](../../reference/tokens/userinfo.md).
 
-### 5. Embed User Profiles into JWT
+### 5. Embed User Profiles into the JWT Access Token
 
 Authgear WebHooks makes it possible to embed the standard attributes and custom attributes for a user's profile into the OIDC JSON Web Token (JWT). Hence, you access both profile attributes in the JWT returned to your OIDC client without making another call to the UserInfo endpoint.
 

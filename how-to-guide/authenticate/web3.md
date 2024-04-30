@@ -27,7 +27,7 @@ At the current stage, the following token types are supported:
 
 ## **Wallet address and NFTs in UserInfo**
 
-In the [`UserInfo`](../user-management/user-profile.md#userinfo-endpoint) object of a user, the wallet address and the NFTs owned can be found.
+In the [`UserInfo`](../user-profiles/user-profile.md#userinfo-endpoint) object of a user, the wallet address and the NFTs owned can be found.
 
 Here is an example of such user:
 
