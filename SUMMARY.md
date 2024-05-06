@@ -133,6 +133,7 @@
   * [Authentication Flow API](reference/apis/authentication-flow-api.md)
   * [OAuth 2.0 and OpenID Connect (OIDC)](reference/apis/oauth-2.0-and-openid-connect-oidc/README.md)
     * [UserInfo](reference/tokens/userinfo.md)
+    * [Supported Scopes](reference/apis/oauth-2.0-and-openid-connect-oidc/supported-scopes.md)
 * [Tokens](reference/tokens/README.md)
   * [JWT Access Token](reference/tokens/jwt-access-token.md)
   * [Refresh Token](reference/tokens/refresh-token.md)
