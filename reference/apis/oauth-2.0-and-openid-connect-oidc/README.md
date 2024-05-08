@@ -11,3 +11,7 @@ description: >-
 {% content-ref url="../../tokens/userinfo.md" %}
 [userinfo.md](../../tokens/userinfo.md)
 {% endcontent-ref %}
+
+{% content-ref url="supported-scopes.md" %}
+[supported-scopes.md](supported-scopes.md)
+{% endcontent-ref %}

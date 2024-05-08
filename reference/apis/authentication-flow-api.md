@@ -1248,9 +1248,226 @@ Content-Type: application/json
 
 Typically you do not need this because the state is returned after creation or after input was passed.
 
+## 6.0 Error Handling
+
+In this section, we'll cover how the Authentication Flow API handles different kinds of errors.
+
+The Authentication Flow API returns an HTTP status code within the 400 range when a request is not successful. Or, an error with HTTP status code when there's an internal error in the server.
+
+> Some fields may be absent in the error response from the Authentication Flow API depending on the type of error that occurred. Hence, we recommend doing checks for such fields in your code before using them in your application logic.
+
+### 6.1 The error object.
+
+The main HTTP response from the Authentication Flow API may include an `error` field when an `error` occurs in the authentication flow. The value of the `error` field is the error object. The `error` object includes the following fields:
+
+* `name`: this is a short tag that qualifies a set of related errors.
+* `reason`: The value of the reason field can be used to distinguish between different types of errors. It is more specific than the `name` field, and more reliable for usage in application logic than the `message` field as the value of the `message` field can change.
+* `message`: the value of the `message` field is a string that contains more descriptive information about the error that has occurred.
+* `code`: This is the HTTP status code associated with an error. Examples include 500, 400, 401, and 404.
+* `info`: The info field may be absent in an error response. When it is present, the value is an object that contains more detailed information about the error that has occurred. Below are more details about some of the data in the `info` field.
+
+#### Error.info
+
+The `error.info` object may include these fields:
+
+* `FlowType`: This field tells the type of authentication flow for which the error has occurred. For example, `login` and `signup` flows.
+* `causes`: This is an array with more details about all the possible sources of the current error and hints on how to resolve the error.
+* `cause`: The value of cause is an object with simple details about why the current error occurred.
+
+To further understand the structure of the error response from the Authentication Flow API, lets consider some examples of common errors. We'll categorize the errors using the `error.reason`
+
+### 6.2 ValidationFailed
+
+The value of `error.reason` can be `ValidationFailed` when there's a missing required field. In the example below, the error occurred because the request to Authentication Flow API's `/api/v1/authentication_flows/states/input` endpoint is missing a required `input` or `batch_input` field.
+
+```json
+"error": {
+        "name": "Invalid",
+        "reason": "ValidationFailed",
+        "message": "invalid request body",
+        "code": 400,
+        "info": {
+            "causes": [
+                {
+                    "location": "",
+                    "kind": "required",
+                    "details": {
+                        "actual": [
+                            "state_token"
+                        ],
+                        "expected": [
+                            "input"
+                        ],
+                        "missing": [
+                            "input"
+                        ]
+                    }
+                },
+                {
+                    "location": "",
+                    "kind": "required",
+                    "details": {
+                        "actual": [
+                            "state_token"
+                        ],
+                        "expected": [
+                            "batch_input"
+                        ],
+                        "missing": [
+                            "batch_input"
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+```
+
+Another cause for a `ValidationFailed` error is an invalid format in the value of a required field or an invalid constant in a required field.&#x20;
+
+An example of an invalid constant is setting the value of `identification` to anything outside the allowed values (`email`, `phone`, `oauth`, `username`). Also, using a constant for any feature that is not supported by your current login methods may throw the same error. You can always find more specific details about the cause of the error in the `error.info` object.&#x20;
+
+The following example shows a `ValidationFailed` error for when a user enters a string that's not the correct format for an email address:
+
+```json
+"error": {
+        "name": "Invalid",
+        "reason": "ValidationFailed",
+        "message": "invalid login ID",
+        "code": 400,
+        "info": {
+            "FlowType": "signup",
+            "causes": [
+                {
+                    "location": "/login_id",
+                    "kind": "format",
+                    "details": {
+                        "format": "email"
+                    }
+                }
+            ]
+        }
+    }
+```
+
+### 6.3 InvariantViolated
+
+An `InvariantViolated` error may occur when the input for a signup flow contains an identity (email, phone, or username) that already exists for another user. You can find more specific details about the cause of the `InvariantViolated` error in the `error.info` object.
+
+The following example shows an error response for a signup flow that attempts to register a new user with an email that already exists for another user:
+
+```json
+"error": {
+        "name": "Invalid",
+        "reason": "InvariantViolated",
+        "message": "identity already exists",
+        "code": 400,
+        "info": {
+            "FlowType": "signup",
+            "IdentityTypeExisting": "login_id",
+            "IdentityTypeIncoming": "login_id",
+            "LoginIDTypeExisting": "email",
+            "LoginIDTypeIncoming": "email",
+            "cause": {
+                "kind": "DuplicatedIdentity"
+            }
+        }
+    }
+```
+
+### 6.4 PasswordPolicyViolated
+
+When the value for a new password does not meet the minimum password requirement for your Authgear project, the Authentication Flow API will return an error with `PasswordPolicyViolated`. More details about how the password in the request fails to meet the requirement will be in the `error.info` object.
+
+In the following example, the password in the request fails to meet the minimum length of 8 characters:
+
+```json
+"error": {
+    "name": "Invalid",
+    "reason": "PasswordPolicyViolated",
+    "message": "password policy violated",
+    "code": 400,
+    "info": {
+        "FlowType": "signup",
+        "causes": [
+            {
+                "Name": "PasswordTooShort",
+                "Info": {
+                    "min_length": 8,
+                    "pw_length": 4
+                }
+            }
+        ]
+    }
+}
+```
+
+### 6.5 AuthenticationFlowNotFound
+
+The value of  `error.reason` can be `AuthenticationFlowNotFound` when the `state_token` in the request is invalid or expired. This type of error does not include the `info` field.
+
+```json
+"error": {
+        "name": "NotFound",
+        "reason": "AuthenticationFlowNotFound",
+        "message": "flow not found",
+        "code": 404
+    }
+```
+
+### 6.6 InvalidCredentials
+
+The Authentication Flow API will return an `InvalidCredentials` error when an authentication fails because the input value for an authenticator is invalid ( e.g. a wrong password is entered for an existing user).
+
+More details about the authenticator type can be found in the `error.info` object as shown below:
+
+```json
+"error": {
+        "name": "Unauthorized",
+        "reason": "InvalidCredentials",
+        "message": "invalid credentials",
+        "code": 401,
+        "info": {
+            "AuthenticationType": "password",
+            "FlowType": "login"
+        }
+    }
+```
+
+### 6.7 UserNotFound
+
+A `UserNotFound` error will occur when the input value for user identity (email, phone, username) does not exist in an Authgear project. In other words, no user was found for the email, phone number, or username.
+
+More details about the error will be in the error.info object.
+
+```json
+"error": {
+        "name": "NotFound",
+        "reason": "UserNotFound",
+        "message": "user not found",
+        "code": 404,
+        "info": {
+            "FlowType": "login",
+            "IdentityTypeIncoming": "login_id",
+            "LoginIDTypeIncoming": ""
+        }
+    }
+```
+
+### 6.8 UnexpectedError
+
+This is a rare error that may occur due to improper inputs such as poorly formatted JSON (e.g. including a trailing comma in JSON).
+
+```json
+"error": {
+        "name": "InternalError",
+        "reason": "UnexpectedError",
+        "message": "unexpected error occurred",
+        "code": 500
+    }
+```
 
 
 
 
-###
 
