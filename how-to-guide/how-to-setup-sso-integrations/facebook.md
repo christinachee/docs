@@ -50,7 +50,7 @@ Your will need the **App ID** and **App Secret** to configure Facebook Login.
 
 🎉 Done! You have just added Facebook Login to your apps!
 
-Your end-users can now sign in with Facebook on Authgear pre-built Log In and Sign Up page. Existing end-users can connect their account to Facebook in the [User Settings](../user-management/auth-ui.md) page.
+Your end-users can now sign in with Facebook on Authgear pre-built Log In and Sign Up page. Existing end-users can connect their account to Facebook in the [User Settings](../customize/auth-ui.md) page.
 
 !["Login with Facebook" in Log in and Sign up page](../../.gitbook/assets/facebook\_sign\_in.png)
 
