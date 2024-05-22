@@ -310,6 +310,7 @@ $ docker run -v "$PWD"/resources:/app/resources --rm -it authgear-server authgea
 App ID (default 'my-app'): accounts
 HTTP origin of authgear (default 'http://localhost:3000'): https://accounts.portal.myapp.com
 HTTP origin of portal (default 'http://portal.localhost:8000'): https://portal.myapp.com
+Phone OTP Mode (sms, whatsapp, whatsapp_sms) (default 'sms'):
 Would you like to turn off email verification? (In case you don't have SMTP credentials in your initial setup) [Y/N] (default 'false'): N
 ```
 {% endtab %}
@@ -322,6 +323,7 @@ $ ./authgear init \
 App ID (default 'my-app'): accounts
 HTTP origin of authgear (default 'http://localhost:3000'): https://accounts.portal.myapp.com
 HTTP origin of portal (default 'http://portal.localhost:8000'): https://portal.myapp.com
+Phone OTP Mode (sms, whatsapp, whatsapp_sms) (default 'sms'):
 Would you like to turn off email verification? (In case you don't have SMTP credentials in your initial setup) [Y/N] (default 'false'): N
 ```
 {% endtab %}

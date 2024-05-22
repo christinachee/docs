@@ -104,6 +104,7 @@ We also need to adjust some endpoints so that Authgear can connect to other serv
 App ID (default 'my-app'):
 HTTP origin of authgear (default 'http://localhost:3000'):
 HTTP origin of portal (default 'http://portal.localhost:8000'):
+Phone OTP Mode (sms, whatsapp, whatsapp_sms) (default 'sms'):
 Would you like to turn off email verification? (In case you don't have SMTP credentials in your initial setup) [Y/N] (default 'false'): Y
 Database URL (default 'postgres://postgres:postgres@127.0.0.1:5432/postgres?sslmode=disable'): postgres://postgres:postgres@db:5432/postgres?sslmode=disable
 Database schema (default 'public'):
