@@ -46,6 +46,7 @@
   * [Add Anonymous Users](how-to-guide/authenticate/anonymous-users.md)
   * [Add authentication to any web page](how-to-guide/authenticate/add-authentication-to-any-web-page.md)
   * [Use Authgear as an OpenID Connect Provider](how-to-guide/authenticate/oidc-provider.md)
+  * [How to Use the OAuth 2.0 State Parameter](how-to-guide/authenticate/how-to-use-the-oauth-2.0-state-parameter.md)
   * [Reauthentication](how-to-guide/authenticate/reauthentication.md)
   * [Passwordless Login for Apple App Store Review](how-to-guide/authenticate/passwordless-demo-user-for-apple-app-review.md)
   * [Setup local development environment for Cookie-based authentication](how-to-guide/authenticate/local-cookie-based-web-setup.md)
