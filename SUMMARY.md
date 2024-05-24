@@ -89,6 +89,7 @@
   * [Account Deletion](how-to-guide/user-management/account-deletion.md)
   * [Import Users using User Import API](how-to-guide/user-management/import-users-using-user-import-api.md)
   * [Manage Users Roles and Groups](how-to-guide/user-management/manage-users-roles-and-groups.md)
+  * [How to Handle Password While Creating Accounts for Users](how-to-guide/user-management/how-to-handle-password-while-creating-accounts-for-users.md)
 * [User Profiles](how-to-guide/user-profiles/README.md)
   * [What is User Profile](how-to-guide/user-profiles/user-profile.md)
   * [Access User Profiles](how-to-guide/integration/access-user-profiles.md)
