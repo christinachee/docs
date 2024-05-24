@@ -93,6 +93,7 @@
   * [What is User Profile](how-to-guide/user-profiles/user-profile.md)
   * [Access User Profiles](how-to-guide/integration/access-user-profiles.md)
   * [Update User Profiles](how-to-guide/user-profiles/update-user-profiles.md)
+  * [Profile Custom Attributes](how-to-guide/user-profiles/profile-custom-attributes.md)
   * [Update user profile on sign-up using Hooks](how-to-guide/user-profiles/update-user-profile-on-sign-up-using-hooks.md)
 * [Events and Hooks](how-to-guide/events-hooks/README.md)
   * [Event List](how-to-guide/events-hooks/event-list.md)

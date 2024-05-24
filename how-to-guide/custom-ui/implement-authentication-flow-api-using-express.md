@@ -574,3 +574,5 @@ The above code calls the `submitSignUpData()` function which initiates the secon
 Just like we've implemented custom UI for email and password authentication in this example, you can design custom UIs for other authentication flows that Authgear supports. For example, OTP and TOTP.
 
 To learn more about all the endpoints the Authentication Flow API supports, and their inputs and outputs, you should check out the API reference page for Authentication Flow API.
+
+You can find the complete code for the example application in this post in our [Authentication Flow API Example GitHub repository](https://github.com/authgear/authflow-example-express).

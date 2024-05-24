@@ -4,8 +4,6 @@ description: How to guides related to user profiles
 
 # User Profiles
 
-
-
 {% content-ref url="../integration/access-user-profiles.md" %}
 [access-user-profiles.md](../integration/access-user-profiles.md)
 {% endcontent-ref %}
@@ -16,4 +14,8 @@ description: How to guides related to user profiles
 
 {% content-ref url="update-user-profile-on-sign-up-using-hooks.md" %}
 [update-user-profile-on-sign-up-using-hooks.md](update-user-profile-on-sign-up-using-hooks.md)
+{% endcontent-ref %}
+
+{% content-ref url="profile-custom-attributes.md" %}
+[profile-custom-attributes.md](profile-custom-attributes.md)
 {% endcontent-ref %}
