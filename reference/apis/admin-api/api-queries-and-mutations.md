@@ -254,6 +254,159 @@ query {
 {% endtab %}
 {% endtabs %}
 
+### 1.5 groups
+
+The groups query returns a list of all [groups](../../../how-to-guide/user-management/manage-users-roles-and-groups.md) in an Authgear project. It will return nothing if no group has been created yet. Groups can be a field in the `roles` query.
+
+**Schema:**
+
+```graphql
+groups(
+searchKeyword: String
+excludedIDs: [ID!]
+after: String
+first: Int
+last: Int
+before: String
+): GroupConnection
+```
+
+**Example:**
+
+{% tabs %}
+{% tab title="Query" %}
+```graphql
+query {
+  groups(first: 10) {
+    edges {
+      cursor
+      node {
+        id
+        key
+        description
+      }
+    }
+  }
+}
+```
+{% endtab %}
+
+{% tab title="Response" %}
+```json
+{
+  "data": {
+    "groups": {
+      "edges": [
+        {
+          "cursor": "b2Zmc2V0OjA",
+          "node": {
+            "description": "Staff members with super admin permissions",
+            "id": "R3JvdXA6OTU4YTA2ODIXRMb4n6MDAwMDAwMDAwMDA0ZDVjUKx",
+            "key": "admin_staff"
+          }
+        },
+        {
+          "cursor": "b2Zmc2V0OjE",
+          "node": {
+            "description": "Group for quickly applying team_member role to batch users.",
+            "id": "R3JvdXA6XRMb4n6MDAwMDAwMDAwMDA0ZDVjUKJl",
+            "key": "regular_staff"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+### 1.6 roles
+
+You can use this query to get all the roles available in an Authgear project. The roles query will return nothing if no roles have been created for the Authgear project. Roles can also be a field in the node of the `groups` query. See [Manage Users Roles and Groups](../../../how-to-guide/user-management/manage-users-roles-and-groups.md) to learn more about roles and groups.
+
+**Schema:**
+
+```graphql
+roles(
+excludedIDs: [ID!]
+last: Int
+before: String
+after: String
+first: Int
+searchKeyword: String
+): RoleConnection
+```
+
+**Example:**
+
+{% tabs %}
+{% tab title="Query" %}
+```graphql
+query {
+  roles(first: 10) {
+    edges {
+      cursor
+      node {
+        id
+        key
+        description
+        groups {
+          edges{
+            node {
+              key
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+{% endtab %}
+
+{% tab title="Response" %}
+```json
+{
+  "data": {
+    "roles": {
+      "edges": [
+        {
+          "cursor": "b2Zmc2V0OjA",
+          "node": {
+            "description": "Leads a specific department where they also work.",
+            "groups": {
+              "edges": []
+            },
+            "id": "Um9sZTozMjc5NWRiNhOTgtOTzMzZkZGNi1hOWVkLTE2MC0RlOWFkMTM",
+            "key": "department_lead"
+          }
+        },
+        {
+          "cursor": "b2Zmc2V0OjE",
+          "node": {
+            "description": "Regular staff working in a specific department.",
+            "groups": {
+              "edges": [
+                {
+                  "node": {
+                    "key": "regular_staff"
+                  }
+                }
+              ]
+            },
+            "id": "Um9sZToyMjc5NWRiNhOTgtOTzMzZkZGNi1hOWVkLTE2MC0RlOWFkZTA",
+            "key": "team_member"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
+
 ## 2. Mutations
 
 With mutations, you can modify data from your application using the Admin API GraphQL. For example, you can use mutation to update
@@ -1214,5 +1367,761 @@ mutation ($customAttributes: UserCustomAttributes) {
 {% endtab %}
 {% endtabs %}
 
+### 2.21 createGroup
 
+Run this mutation to add a new access management group to your Authgear application.
+
+**Schema:**
+
+```graphql
+createGroup(input: CreateGroupInput!): CreateGroupPayload!
+```
+
+**Example:**
+
+{% tabs %}
+{% tab title="Query" %}
+```graphql
+mutation {
+  createGroup(input: {key: "test_group", name: "Test group", description: "This is a test group created using the Admin API"}) {
+    group {
+      id
+    }
+  }
+}
+```
+{% endtab %}
+
+{% tab title="Response" %}
+```json
+{
+  "data": {
+    "createGroup": {
+      "group": {
+        "id": "R3JvdXA6YTUxYTNmMWQtMDE0ZC00N2JmLTgwNDQtMjEzOTczZDJlMTkx"
+      }
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+**Note:** The value of `key` can not be empty, must be between 1 and 40 characters long, accepted characters are `[a-zA-Z0-9:_]` and the prefix `authgear:` is reserved for Authgear internal use.
+
+### 2.22 createRole
+
+You can use this mutation to add a new access management role to your Authgear application.
+
+**Schema:**
+
+```graphql
+createRole(input: CreateRoleInput!): CreateRolePayload!
+```
+
+**Example:**
+
+{% tabs %}
+{% tab title="Query" %}
+```graphql
+mutation {
+  createRole(input: {key: "test_role", name: "Test role", description: "This is a test role created using the Admin API"}) {
+    role {
+      id
+    }
+  }
+}
+```
+{% endtab %}
+
+{% tab title="Response" %}
+```json
+{
+  "data": {
+    "createRole": {
+      "role": {
+        "id": "Um9sZTo2NzNhZGE3Mi1mYWI1LTRiMmMtOTBmYy1hMjY1YmQxY2Q2YjA"
+      }
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+**Note:** The value of `key` can not be empty, must be between 1 and 40 characters long, accepted characters are `[a-zA-Z0-9:_]` and the prefix `authgear:` is reserved for Authgear internal use.
+
+### 2.23 addRoleToGroups
+
+Use this mutation to add a role to one or more groups in a single operation.
+
+**Schema:**
+
+```graphql
+addRoleToGroups(input: AddRoleToGroupsInput!): AddRoleToGroupsPayload!
+```
+
+**Example:**
+
+{% tabs %}
+{% tab title="Query" %}
+```graphql
+mutation {
+  addRoleToGroups(input: {roleKey: "test_role", groupKeys: ["test_group", "another_group"]}) {
+    role {
+      id
+    }
+  }
+}
+```
+{% endtab %}
+
+{% tab title="Response" %}
+```json
+{
+  "data": {
+    "addRoleToGroups": {
+      "role": {
+        "id": "Um9sZTo2NzNhZGE3Mi1mYWI1LTRiMmMtOTBmYy1hMjY1YmQxY2Q2YjA"
+      }
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+### 2.24 addGroupToRoles
+
+Adds a group to one or more roles in a single operation.
+
+**Schema:**
+
+```graphql
+addGroupToRoles(input: AddGroupToRolesInput!): AddGroupToRolesPayload!
+```
+
+**Example:**
+
+{% tabs %}
+{% tab title="Query" %}
+```graphql
+mutation {
+  addGroupToRoles(input: {groupKey: "test_group", roleKeys: ["test_role", "another_role"]}) {
+    group {
+      id
+    }
+  }
+}
+```
+{% endtab %}
+
+{% tab title="Response" %}
+```json
+{
+  "data": {
+    "addGroupToRoles": {
+      "group": {
+        "id": "R3JvdXA6YTUxYTNmMWQtMDE0ZC00N2JmLTgwNDQtMjEzOTczZDJlMTkx"
+      }
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+### 2.25 addUserToRoles
+
+Adds a user to one or more roles in a single operation.
+
+**Schema:**
+
+```graphql
+addUserToRoles(input: AddUserToRolesInput!): AddUserToRolesPayload!
+```
+
+**Example:**
+
+{% tabs %}
+{% tab title="Query" %}
+```graphql
+mutation {
+  addUserToRoles(input: {userID: "<ENCODED USER ID>", roleKeys: ["test_role", "another_role"]}) {
+    user {
+      id
+      standardAttributes
+    }
+  }
+}
+```
+{% endtab %}
+
+{% tab title="Response" %}
+```json
+{
+  "data": {
+    "addUserToRoles": {
+      "user": {
+        "id": "VXNlcjomMyOS02ZGIzlmZWQxN2LTRhMTgtYWE3My03NzQxM5YzcxZmQ",
+        "standardAttributes": {
+          "email": "user2@example.com",
+          "email_verified": false,
+          "family_name": "Doe",
+          "given_name": "John",
+          "name": "John Doe",
+          "updated_at": 1712213796
+        }
+      }
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+### 2.26 addRoleToUsers
+
+Adds a role to one or more users in a single operation.
+
+**Schema:**
+
+```graphql
+addRoleToUsers(input: AddRoleToUsersInput!): AddRoleToUsersPayload!
+```
+
+**Example:**
+
+{% tabs %}
+{% tab title="Query" %}
+```graphql
+mutation {
+  addRoleToUsers(input: {roleKey: "test_role", userIDs: ["<ENCODED USER ID>", "<ANOTHER ENCODED USER ID>"]}) {
+    role {
+      id
+    }
+  }
+}
+```
+{% endtab %}
+
+{% tab title="Response" %}
+```json
+{
+  "data": {
+    "addRoleToUsers": {
+      "role": {
+        "id": "Um9sZTo2NzNhZGE3Mi1mYWI1LTRiMmMtOTBmYy1hMjY1YmQxY2Q2YjA"
+      }
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+### 2.27 addUserToGroups
+
+Adds a user to one or more groups in a single operation.
+
+**Schema:**
+
+```graphql
+addUserToGroups(input: AddUserToGroupsInput!): AddUserToGroupsPayload!
+```
+
+**Example:**
+
+{% tabs %}
+{% tab title="Query" %}
+```graphql
+mutation {
+  addUserToGroups(input: {userID: "<ENCODED USER ID>", groupKeys: ["test_group", "another_group"]}) {
+    user {
+      id
+      standardAttributes
+    }
+  }
+}
+```
+{% endtab %}
+
+{% tab title="Response" %}
+```json
+{
+  "data": {
+    "addUserToGroups": {
+      "user": {
+        "id": "VXNlcjo5YzcxZmMyOS02ZGI2LTRhMTgtYWE3My03NzQxMzlmZWQxNmQ",
+        "standardAttributes": {
+          "email": "user2@example.com",
+          "email_verified": false,
+          "family_name": "Doe",
+          "given_name": "John",
+          "name": "John Doe",
+          "updated_at": 1712213796
+        }
+      }
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+### 2.28 addGroupToUsers
+
+Adds a group to one or more user in a single operation.
+
+**Schema:**
+
+```graphql
+addGroupToUsers(input: AddGroupToUsersInput!): AddGroupToUsersPayload!
+```
+
+**Example:**
+
+{% tabs %}
+{% tab title="Query" %}
+```graphql
+mutation {
+  addGroupToUsers(input: {groupKey: "test_group", userIDs: ["<ENCODED USER ID>", "<ANOTHER ENCODED USER ID>"]}) {
+    group {
+      id
+    }
+  }
+}
+```
+{% endtab %}
+
+{% tab title="Response" %}
+```json
+{
+  "data": {
+    "addGroupToUsers": {
+      "group": {
+        "id": "R3JvdXA6YTUxYTNmMWQtMDE0ZC00N2JmLTgwNDQtMjEzOTczZDJlMTkx"
+      }
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+### 2.29 updateRole
+
+Updates details about an existing role.
+
+**Schema:**
+
+```graphql
+updateRole(input: UpdateRoleInput!): UpdateRolePayload!
+```
+
+**Example:**
+
+{% tabs %}
+{% tab title="Query" %}
+```graphql
+mutation {
+  updateRole(input: {id:"<ENCODED ROLE ID>", key: "test_role_updated", name: "Test Role Updated", description: "Updated version of this role"}) {
+    role {
+      id
+    }
+  }
+}
+```
+{% endtab %}
+
+{% tab title="Response" %}
+```json
+{
+  "data": {
+    "updateRole": {
+      "role": {
+        "id": "Um9sZTo2ODk1YWVhZi0yM2U4LTQ5ODYtYWQ3NC1mY2VlZWEwNWQwMzU"
+      }
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+**Note:** Pass `null` as the value of `key`, `name` or `description` if you do not wish to update them and pass and empty string (`""`) to delete the value of name and description. Also, some GrahpQL libraries may not allow you to pass a literal `null` directly in the query, in such cases, use a variable to defind the value of `input`.
+
+### 2.30 updateGroup
+
+Updates details about an existing group.
+
+**Schema:**
+
+```graphql
+updateGroup(input: UpdateGroupInput!): UpdateGroupPayload!
+```
+
+**Example:**
+
+{% tabs %}
+{% tab title="Query" %}
+```graphql
+mutation {
+  updateGroup(input: {id:"<ENCODED GROUP ID>", key: "test_group_updated", name: "Test Group Updated", description: "Updated version of this group"}) {
+    group {
+      id
+    }
+  }
+}
+```
+{% endtab %}
+
+{% tab title="Response" %}
+```json
+{
+  "data": {
+    "updateGroup": {
+      "group": {
+        "id": "R3JvdXA6NzI3MTMxNDgtMzIzMy00ZWVjLTlhOGMtYWNiYjg2MWY5OTlk"
+      }
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+**Note:** Pass `null` as the value of `key`, `name` or `description` if you do not wish to update them and pass and empty string (`""`) to delete the value of name and description. Also, some GrahpQL libraries may not allow you to pass a literal `null` directly in the query, in such cases, use a variable to defind the value of `input`.
+
+### 2.31 removeUserFromGroups
+
+Removes a user from one or more groups they're currently in.
+
+**Schema:**
+
+```graphql
+removeUserFromGroups(input: RemoveUserFromGroupsInput!): RemoveUserFromGroupsPayload!
+```
+
+**Example:**
+
+{% tabs %}
+{% tab title="Query" %}
+```graphql
+mutation {
+  removeUserFromGroups(input: {userID: "<ENCODED USER ID>", groupKeys: ["test_group", "another_group"]}) {
+    user {
+      id
+      standardAttributes
+    }
+  }
+}
+```
+{% endtab %}
+
+{% tab title="Response" %}
+```json
+{
+  "data": {
+    "removeUserFromGroups": {
+      "user": {
+        "id": "VXNlcjo5YzcxZmMyOS02ZGI2LTRhMTgtYWE3My03NzQxMzlmZWQxNmQ",
+        "standardAttributes": {
+          "email": "user2@example.com",
+          "email_verified": false,
+          "family_name": "Doe",
+          "given_name": "John",
+          "name": "John Doe",
+          "updated_at": 1712213796
+        }
+      }
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+
+
+### 2.32 removeRoleFromGroups
+
+Removes a role from one or more groups.
+
+**Schema:**
+
+```graphql
+removeRoleFromGroups(input: RemoveRoleFromGroupsInput!): RemoveRoleFromGroupsPayload!
+```
+
+Example:
+
+{% tabs %}
+{% tab title="Query" %}
+```graphql
+mutation {
+  removeRoleFromGroups(input: {roleKey: "test_role", groupKeys: ["test_group", "another_role"]}) {
+    role {
+      id
+    }
+  }
+}
+```
+{% endtab %}
+
+{% tab title="Response" %}
+```json
+{
+  "data": {
+    "removeRoleFromGroups": {
+      "role": {
+        "id": "Um9sZToyOWIwMDM3Yy01ZDEyLTQ3ZjQtYWVhOS1mMGRjMGJiYjk2ZTA",
+      }
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+### 2.33 removeUserFromRoles
+
+Removes a user from one or more roles.
+
+**Schema:**
+
+```graphql
+removeUserFromRoles(input: RemoveUserFromRolesInput!): RemoveUserFromRolesPayload!
+```
+
+**Example:**
+
+{% tabs %}
+{% tab title="Query" %}
+```graphql
+mutation {
+  removeUserFromRoles(input: {userID: "<ENCODED USER ID>", roleKeys: ["test_role", "another_role"]}) {
+    user {
+      id
+      standardAttributes
+    }
+  }
+}
+```
+{% endtab %}
+
+{% tab title="Response" %}
+```json
+{
+  "data": {
+    "removeUserFromRoles": {
+      "user": {
+        "id": "VXNlcjo5YzcxZmMyOS02ZGI2LTRhMTgtYWE3My03NzQxMzlmZWQxNmQ",
+        "standardAttributes": {
+          "email": "user2@example.com",
+          "email_verified": false,
+          "family_name": "Doe",
+          "given_name": "John",
+          "name": "John Doe",
+          "updated_at": 1712213796
+        }
+      }
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+### 2.34 removeGroupFromRoles
+
+Removes a group from one or more roles in a single operation.
+
+**Schema:**
+
+```graphql
+removeGroupFromRoles(input: RemoveGroupFromRolesInput!): RemoveGroupFromRolesPayload!
+```
+
+**Example:**
+
+{% tabs %}
+{% tab title="Query" %}
+```graphql
+mutation {
+  removeGroupFromRoles(input: {groupKey: "test_group", roleKeys: ["test_role", "another_role"]}) {
+    group {
+      id
+    }
+  }
+}
+```
+{% endtab %}
+
+{% tab title="Response" %}
+```json
+{
+  "data": {
+    "removeGroupFromRoles": {
+      "group": {
+        "id": "R3JvdXA6OTU4YTA2ODItMDU3ZS00ZmJjLTg3MzItNGRhMDliNWQxNTAx",
+      }
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+### 2.35 removeRoleFromUsers
+
+Removes a role from one or more users in a single operation.
+
+**Schema:**
+
+```graphql
+removeRoleFromUsers(input: RemoveRoleFromUsersInput!): RemoveRoleFromUsersPayload!
+```
+
+**Example:**
+
+{% tabs %}
+{% tab title="Query" %}
+```graphql
+mutation {
+  removeRoleFromUsers(input: {roleKey: "test_role", userIDs: ["<ENCODED USER ID>", "<ANOTHER ENCODED USER ID>"]}) {
+    role {
+      id
+    }
+  }
+}
+```
+{% endtab %}
+
+{% tab title="Response" %}
+```json
+{
+  "data": {
+    "removeRoleFromUsers": {
+      "role": {
+        "id": "Um9sZTozMjc5NWRiNi1hOWVkLTRhOTgtOTE2MC0zMzZkZGNlOWFkMTM",
+      }
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+### 2.36 removeGroupFromUsers
+
+Removes group from one or more users in a single operation.
+
+**Schema:**
+
+```graphql
+removeGroupFromUsers(input: RemoveGroupFromUsersInput!): RemoveGroupToUsersPayload!
+```
+
+**Example:**
+
+{% tabs %}
+{% tab title="Query" %}
+```graphql
+mutation {
+  removeGroupFromUsers(input: {groupKey: "test_group", userIDs: ["<ENCODED USER ID>", "<ANOTHER ENCODED USER ID>"]}) {
+    group {
+      id
+    }
+  }
+}
+```
+{% endtab %}
+
+{% tab title="Response" %}
+```json
+{
+  "data": {
+    "removeGroupFromUsers": {
+      "group": {
+        "id": "R3JvdXA6OTU4YTA2ODItMDU3ZS00ZmJjLTg3MzItNGRhMDliNWQxNTAx",
+      }
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+### 2.37 deleteGroup
+
+Use this mutation to delete an existing group.
+
+**Schema:**
+
+```graphql
+deleteGroup(input: DeleteGroupInput!): DeleteGroupPayload!
+```
+
+**Example:**
+
+{% tabs %}
+{% tab title="Query" %}
+```graphql
+mutation {
+  deleteGroup(input: {id: "<ENCODED GROUP ID>"}) {
+    ok
+  }
+}
+```
+{% endtab %}
+
+{% tab title="Response" %}
+```json
+{
+  "data": {
+    "deleteGroup": {
+      "ok": true
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+### 2.38 deleteRole
+
+Use this mutation to delete an existing role.
+
+**Schema:**
+
+```graphql
+deleteRole(input: DeleteRoleInput!): DeleteRolePayload!
+```
+
+**Example:**
+
+{% tabs %}
+{% tab title="Query" %}
+```graphql
+mutation {
+  deleteRole(input: {id: "<ENCODED ROLE ID>"}) {
+    ok
+  }
+}
+```
+{% endtab %}
+
+{% tab title="Response" %}
+```json
+{
+  "data": {
+    "deleteRole": {
+      "ok": true
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
 
