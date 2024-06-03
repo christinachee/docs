@@ -54,7 +54,7 @@
   * [Forgot/Reset Password settings](how-to-guide/authenticate/forgot-reset-password-settings.md)
   * [Set Password Expiry](how-to-guide/authenticate/set-password-expiry.md)
 * [Single Sign-on](how-to-guide/single-sign-on.md)
-* [Identity Providers](how-to-guide/how-to-setup-sso-integrations/README.md)
+* [Social Login / Identity Providers](how-to-guide/how-to-setup-sso-integrations/README.md)
   * [Connect Apps to Apple](how-to-guide/how-to-setup-sso-integrations/apple.md)
   * [Connect Apps to Google](how-to-guide/how-to-setup-sso-integrations/google.md)
   * [Connect Apps to Facebook](how-to-guide/how-to-setup-sso-integrations/facebook.md)
