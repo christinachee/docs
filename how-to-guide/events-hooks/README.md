@@ -36,15 +36,15 @@ To abort the operation, return a JSON document with `is_allowed` set to `false`,
 }
 ```
 
-If any of your hooks aborts the operation, the operation is aborted. The `reason` and `title` will be shown to the end-user as an error message.
+If any of your hooks abort the operation, the operation is aborted. The `reason` and `title` will be shown to the end-user as an error message.
 
 Each of your hooks must respond within 5 seconds. All of your hooks must complete within 10 seconds. Otherwise, the delivery will fail to due timeout.
 
 ### Blocking Event Mutations
 
-Your hooks can optionally apply mutation for certain blocking events. The supported mutation is specific for each type of blocking events. Refer to the [Event List](event-list.md) to see what mutation is supported.
+Your hooks can optionally apply mutation for certain blocking events. The supported mutation is specific for each type of blocking event. Refer to the [Event List](event-list.md) to see what mutation is supported.
 
-Mutations by a hook is applied only when the operation is allowed to proceed. Mutations take effect only when all hooks allow the operation to proceed.
+Mutations by a hook are applied only when the operation is allowed to proceed. Mutations take effect only when all hooks allow the operation to proceed.
 
 The mutations are specified in the hook response. Objects not appearing in `mutations` are left intact. The mutated objects are **NOT** merged with the original ones.
 
@@ -143,6 +143,8 @@ Events have the following shape:
 * `context`: The context of the event.
 * `context.timestamp`: signed 64-bit UNIX timestamp of when this event is generated. Retried deliveries do not affect this field.
 * `context.user_id`: The ID of the user associated with the event. It may be absent. For example, the user has not been authenticated yet.
-* `context.preferred_languages`: User preferred languages, which are inferred from the request. Return values of the `ui_locales` query if it is provided in the Auth UI, otherwise return languages in the `Accept-Language` request header.
-* `context.language`: User locale which is derived based on user's preferred languages and app's languages config.
-* `context.triggered_by`: Triggered by indicates who triggered the events, values can be `user` or `admin_api`. `user` means it is triggered by the end-user. `admin_api` means it is triggered by Admin API or admin portal.
+* `context.preferred_languages`: User-preferred languages, which are inferred from the request. Return values of the `ui_locales` query if it is provided in the Auth UI, otherwise return languages in the `Accept-Language` request header.
+* `context.language`: User locale which is derived based on the user's preferred languages and the app's languages config.
+* `context.triggered_by`: Triggered by indicates who triggered the events, values can be `user` , `admin_api`, `system`, or `portal`. `user` means it is triggered by the end-user. `admin_api` means it is triggered by Admin API or using Admin API operations via the portal. `system` means the event originates from a background job. `portal` means the event originates from the Authgear portal and is an operation that does not use the Admin API. Examples of operations that do not use the Admin API can be found in the screenshot below:
+
+<figure><img src="../../.gitbook/assets/authgear-project-events.png" alt=""><figcaption></figcaption></figure>
