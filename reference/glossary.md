@@ -193,3 +193,11 @@ A webhook is a method of sending notifications of events on one web application 
 
 Authgear webhooks can send HTTP POST requests to a URL you specify when an event like new user creation is triggered. The HTTP request contains a payload with data related to the event. Using webhooks you can implement more custom features for your Authgear project.
 
+### Your Authgear Endpoint
+
+Your Authgear endpoint or project endpoint is the active domain name that points to your Authgear project. Your Authgear endpoint has many uses. For example, you'll need it to connect a client application to your Authgear project or redirect users to your login and sign-up page.
+
+The easiest way to find out what your Authgear endpoint is is to navigate to **Custom Domains** in the Authgear Portal. Your endpoint is the domain in the row with a green **Active** status.
+
+<figure><img src="../.gitbook/assets/authgear-active-domain.png" alt=""><figcaption></figcaption></figure>
+

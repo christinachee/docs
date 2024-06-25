@@ -43,10 +43,8 @@ Enter your app name on the next screen and finish the app creation process.
 {% hint style="info" %}
 Redirect URI has the form of `https://<YOUR_AUTHGEAR_ENDPOINT>/sso/oauth2/callback/:alias`. The `alias` is used as the identifier of OAuth provider. You can configure the `alias` in Authgear Portal.
 
-You can get the value for `<YOUR_AUTHGEAR_ENDPOINT>` by clicking on the **Try it now** link in **Authgear Portal** >  **Sign up your first user**. The value you need is everything between `https://` and  `/login?...`
+See [Your Authgear Endpoint](../../reference/glossary.md#your-authgear-endpoint) for instructions on how to get the value for `YOUR_AUTHGEAR_ENDPOINT`.
 {% endhint %}
-
-
 
 ## Step 3: Configure Login with Facebook in Authgear Portal
 
