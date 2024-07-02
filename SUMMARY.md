@@ -64,12 +64,12 @@
   * [Connect Apps to Microsoft AD FS](how-to-guide/how-to-setup-sso-integrations/adfs.md)
   * [Connect Apps to Azure AD B2C](how-to-guide/how-to-setup-sso-integrations/azureadb2c.md)
   * [Connect Apps to WeChat](how-to-guide/how-to-setup-sso-integrations/wechat.md)
-* [Built-in UI](how-to-guide/customize/README.md)
-  * [Branding in Auth UI](how-to-guide/customize/branding.md)
-  * [User Settings](how-to-guide/customize/auth-ui.md)
-  * [Privacy Policy & Terms of Service Links](how-to-guide/customize/privacy-policy-terms-of-service.md)
-  * [Customer Support Link](how-to-guide/customize/customer-support-link.md)
-  * [Localization & UI Text](how-to-guide/customize/localization.md)
+* [Built-in UI](how-to-guide/built-in-ui/README.md)
+  * [Branding in Auth UI](how-to-guide/built-in-ui/branding.md)
+  * [User Settings](how-to-guide/built-in-ui/auth-ui.md)
+  * [Privacy Policy & Terms of Service Links](how-to-guide/built-in-ui/privacy-policy-terms-of-service.md)
+  * [Customer Support Link](how-to-guide/built-in-ui/customer-support-link.md)
+  * [Localization & UI Text](how-to-guide/built-in-ui/localization.md)
 * [Custom UI](how-to-guide/custom-ui/README.md)
   * [Authentication Flow API](how-to-guide/custom-ui/authentication-flow-api.md)
   * [Implement Authentication Flow API using Express](how-to-guide/custom-ui/implement-authentication-flow-api-using-express.md)
@@ -142,6 +142,8 @@
   * [Refresh Token](reference/tokens/refresh-token.md)
 * [Glossary](reference/glossary.md)
 * [Billing FAQ](reference/billing-faq.md)
+* [Rate Limits](reference/rate-limits/README.md)
+  * [Account Lockout](reference/rate-limits/account-lockout.md)
 
 ## Client App SDKs
 
