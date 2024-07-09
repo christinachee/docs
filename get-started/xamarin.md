@@ -364,4 +364,4 @@ For detailed documentation on the Xamarin SDK, visit [Xamarin SDK Reference](htt
 
 ### Footnote
 
-\[^1]: For futher instruction on setting up custom URI scheme in Xamarin, see [https://www.xamarinhelp.com/uri-scheme/](https://www.xamarinhelp.com/uri-scheme/) \[^2]: For more explaination on JWT, see [https://en.wikipedia.org/wiki/JSON\_Web\_Token](https://en.wikipedia.org/wiki/JSON\_Web\_Token)
+\[^1]: For further instruction on setting up custom URI scheme in Xamarin, see [https://www.xamarinhelp.com/uri-scheme/](https://www.xamarinhelp.com/uri-scheme/) \[^2]: For more explanation on JWT, see [https://en.wikipedia.org/wiki/JSON\_Web\_Token](https://en.wikipedia.org/wiki/JSON\_Web\_Token)

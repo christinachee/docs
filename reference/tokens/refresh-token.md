@@ -272,7 +272,7 @@ try {
     </div>
 `);
 } catch (error) {
-  res.send("An error occoured! Login could not complete. Error data: " + error);
+  res.send("An error occurred! Login could not complete. Error data: " + error);
 }
 ```
 

@@ -153,7 +153,7 @@ Run `npm run dev` now to run the project and you will see default page with the 
 
 ## Step 2: Create routes for the project
 
-Create a `AuthReditect.vue` file in the `src/components` folder with the same content as `src/components/Home.vue` at this moment.&#x20;
+Create a `AuthRedirect.vue` file in the `src/components` folder with the same content as `src/components/Home.vue` at this moment.&#x20;
 
 Create a file called `router.ts` in the `src/` folder. We will import `Home` and `AuthRedirect` component as the route and we will implement these components later. The content of this file will look like this:&#x20;
 

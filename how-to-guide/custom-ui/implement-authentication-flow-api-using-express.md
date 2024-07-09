@@ -202,7 +202,7 @@ app.get('/', async (req, res) => {
         </div>
     `);
     } catch (error) {
-      res.send("An error occoured! Login could not complete. Error data: " + JSON.stringify(error.response.data));
+      res.send("An error occurred! Login could not complete. Error data: " + JSON.stringify(error.response.data));
     }
   }
 
@@ -390,7 +390,7 @@ app.post('/login', async (req, res) => {
     }
     catch (error) {
         console.log(error);
-        res.send("Error: anthentication failed!");
+        res.send("Error: authentication failed!");
     }
 });
 ```
@@ -562,7 +562,7 @@ app.post('/signup', async (req, res) => {
     }
     catch (error) {
         console.log(error)
-        res.send("Error: anthentication failed!");
+        res.send("Error: authentication failed!");
     }
 });
 ```

@@ -151,7 +151,7 @@ app.get("/", async (req, res) => {
 
     } catch (error) {
       console.log(error);
-      res.send("An error occoured! Could not complete login. Error data: " + error);
+      res.send("An error occurred! Could not complete login. Error data: " + error);
     }
   }
 

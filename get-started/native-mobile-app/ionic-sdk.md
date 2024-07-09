@@ -262,7 +262,7 @@ const [sessionState, setSessionState] = useState<SessionState | null>(() => {
 const loggedIn = sessionState === "AUTHENTICATED";
 ```
 
-Then, add the `authentucate()` method by pasting the following code to the end of the `AuthenticationScreen` component:
+Then, add the `authenticate()` method by pasting the following code to the end of the `AuthenticationScreen` component:
 
 ```typescript
 const authenticate = useCallback(async (page: string) => {

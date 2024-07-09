@@ -26,7 +26,7 @@ To follow along, you'll need the following:
 * PHP runtime (E.g XAMPP for testing offline on Windows devices)
 * An Authgear account. [Sign up](https://accounts.portal.authgear.com/signup) for free if you don't have an account yet.
 * [Composer](https://getcomposer.org/download/) (PHP package manager) installation
-* Your preffered code editor (e.g VS Code).
+* Your preferred code editor (e.g VS Code).
 
 #### What We Will Build
 

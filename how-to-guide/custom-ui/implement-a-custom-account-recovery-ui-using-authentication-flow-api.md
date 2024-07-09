@@ -306,7 +306,7 @@ app.post('/recovery', async (req, res) => {
     }
     catch (error) {
         console.log(error)
-        res.send("Error: anthentication failed!");
+        res.send("Error: authentication failed!");
     }
 });
 ```
@@ -369,7 +369,7 @@ app.get('/verifyRecovery', async (req, res) => {
 
                 <div>
                     <a href="/resendOtp">Resend Code</a>
-                    <span> (wait untill ${recoveryResponseData.can_resend_at})</span>
+                    <span> (wait until ${recoveryResponseData.can_resend_at})</span>
                 </div>
             </form>
         </div>
@@ -432,7 +432,7 @@ app.post('/verifyRecovery', async (req, res) => {
     }
     catch (error) {
         console.log(error)
-        res.send("Error: anthentication failed!");
+        res.send("Error: authentication failed!");
     }
 });
 ```

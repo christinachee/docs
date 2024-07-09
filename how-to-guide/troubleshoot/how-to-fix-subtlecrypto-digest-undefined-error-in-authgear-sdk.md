@@ -34,7 +34,7 @@ The following are examples of the error messages you will get SubtleCrypto: dige
 
 ### Fix
 
-The followingare ways to fix the SubtleCrypto: digest() non-HTTPS/secure context error::
+The following are ways to fix the SubtleCrypto: digest() non-HTTPS/secure context error:
 
 * If you need to run your application on a local environment or for testing where you can't set up HTTPS, consider running your application in [secure contexts](https://developer.mozilla.org/en-US/docs/Web/Security/Secure\_Contexts#when\_is\_a\_context\_considered\_secure), For example, http://localhost or http://127.0.0.1.
 * To run your application from another domain other than a localhost, set up HTTPS on the domain.
