@@ -111,7 +111,7 @@ server {
 
 {% tab title="nginx in docker" %}
 {% hint style="info" %}
-Docker `host` network driver is not supported in Docker Desktop, it has to be in a `bridge` network. If your nginx in docker needs to proxy requests to services in your host network, it needs to resolve `host.docker.intenrnal` through `127.0.0.11`. If your services are also in the same docker bridge network (i.e. same docker-compose without specifying multiple networks), the destination domain will be the container name.
+Docker `host` network driver is not supported in Docker Desktop, it has to be in a `bridge` network. If your nginx in docker needs to proxy requests to services in your host network, it needs to resolve `host.docker.internal` through `127.0.0.11`. If your services are also in the same docker bridge network (i.e. same docker-compose without specifying multiple networks), the destination domain will be the container name.
 {% endhint %}
 
 ```

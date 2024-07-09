@@ -275,4 +275,4 @@ For detailed documentation on the Flutter SDK, visit [Flutter SDK Reference](htt
 
 \[^1]: For futher instruction on setting up custom URI scheme in Flutter, see [https://docs.flutter.dev/development/ui/navigation/deep-linking](https://docs.flutter.dev/development/ui/navigation/deep-linking)
 
-\[^2]: For more explaination on JWT, see [https://en.wikipedia.org/wiki/JSON\_Web\_Token](https://en.wikipedia.org/wiki/JSON\_Web\_Token)
+\[^2]: For more explanation on JWT, see [https://en.wikipedia.org/wiki/JSON\_Web\_Token](https://en.wikipedia.org/wiki/JSON\_Web\_Token)

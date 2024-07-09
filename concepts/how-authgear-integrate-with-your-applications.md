@@ -39,7 +39,7 @@ If you host a Web Application which is server side rendered, such as Ruby on Rai
 
 In this setting, if you have multiple applications under `yourdomain.com`, all applications would share the same session cookies automatically.
 
-To login, you would redirect users to `identity.yourdomain.com/oauth2/authroize?` with a `redirect_uri` parameter set. After the authentication is successful, Authgear will redirect the users to the URI, and set a cookie with a session access token.
+To login, you would redirect users to `identity.yourdomain.com/oauth2/authorize?` with a `redirect_uri` parameter set. After the authentication is successful, Authgear will redirect the users to the URI, and set a cookie with a session access token.
 
 Your backend could verify the session access token via `/_resolver/resolve`.
 

@@ -20,7 +20,7 @@ Here are easy steps to achieve this:
 
 **Step 5. Add** a new **Blocking Event**.
 
-**Step 6.** Choose the Block Hook **Type** as the _TypeSctipt_ and set the Event option to _User_ _pre-create_. You will write a new Typescript function from scratch.
+**Step 6.** Choose the Block Hook **Type** as the _TypeScript_ and set the Event option to _User_ _pre-create_. You will write a new Typescript function from scratch.
 
 **Step 7.** Click on **Edit Script** under the **Config** option.
 

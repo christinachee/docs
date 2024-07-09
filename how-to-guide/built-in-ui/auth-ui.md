@@ -96,7 +96,7 @@ public void onClickOpenSettingsPage() {
 
         @Override
         public void onFailed(Throwable throwable) {
-            // Some error occured.
+            // Some error occurred.
         }
     });
 }

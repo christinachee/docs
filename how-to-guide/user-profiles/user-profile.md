@@ -38,7 +38,7 @@ The standard attributes coupled with identities are listed below:
 
 The above attributes are coupled with identities when a user specifies them during sign-up, when users verify their email address or phone number, or from **User Management** > **Users** > select a user > **Identities** in Authgear portal or via the Admin API.
 
-The Login Methods enabled for an Authgear project affect the indentities available.
+The Login Methods enabled for an Authgear project affect the identities available.
 
 ## Custom Attributes
 

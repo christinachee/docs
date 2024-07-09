@@ -145,7 +145,7 @@ Here are the detailed steps for iOS, Android, React Native, and Flutter.
     ```
 * After setting up the `WechatOpenSDK`, universal link should be enabled in your application. We will need two links for the setup. One is for the WeChat SDK used, another is for the Authgear SDK to trigger delegate function when user click "Login with WeChat" button. Here are the suggestion of the links.
   * **WECHAT\_UNIVERICAL\_LINK**: `https://{YOUR_DOMAIN}/wechat`
-  * **WECHAT\_REDICRECT\_URI\_FOR\_AUTHGEAR**: `https://{YOUR_DOMAIN}/open_wechat_app`
+  * **WECHAT\_REDIRECT\_URI\_FOR\_AUTHGEAR**: `https://{YOUR_DOMAIN}/open_wechat_app`
 * Login WeChat Open platform, open the application detail page, update the development information iOS section.
 
 ![](<../../.gitbook/assets/wechat-development-information (5) (5) (5) (5) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (8).png>)
@@ -158,7 +158,7 @@ Here are the detailed steps for iOS, Android, React Native, and Flutter.
   * Fill in **Client ID** with the **AppID**.
   * Fill in **Client Secret** with the **AppSecret**.
   * Fill in **原始 ID** with the **原始 ID**.
-  * Add **WECHAT\_REDICRECT\_URI\_FOR\_AUTHGEAR** above in **WeChat redirect URIs**.
+  * Add **WECHAT\_REDIRECT\_URI\_FOR\_AUTHGEAR** above in **WeChat redirect URIs**.
   * **Save** the settings.
 * Update the code
   *   Setup WeChat SDK when app launch
@@ -239,27 +239,27 @@ Here are the detailed steps for iOS, Android, React Native, and Flutter.
   *   Provide `wechatRedirectURI` when calling `authenticate` and `promoteAnonymousUser` in authgear sdk
 
       ```swift
-        // Replace "WECHAT_REDICRECT_URI_FOR_AUTHGEAR" with link defined above
+        // Replace "WECHAT_REDIRECT_URI_FOR_AUTHGEAR" with link defined above
         container?.authenticate(
             redirectURI: "REDIRECT_URI",
             prompt: "login",
-            wechatRedirectURI: "WECHAT_REDICRECT_URI_FOR_AUTHGEAR"
+            wechatRedirectURI: "WECHAT_REDIRECT_URI_FOR_AUTHGEAR"
         ) { result in
         }
 
         // For anonymous user support only
-        // Replace "WECHAT_REDICRECT_URI_FOR_AUTHGEAR" with link defined above
+        // Replace "WECHAT_REDIRECT_URI_FOR_AUTHGEAR" with link defined above
         container?.promoteAnonymousUser(
             redirectURI: "REDIRECT_URI",
-            wechatRedirectURI: "WECHAT_REDICRECT_URI_FOR_AUTHGEAR"
+            wechatRedirectURI: "WECHAT_REDIRECT_URI_FOR_AUTHGEAR"
         ) { result in
         }
 
         // Open setting page
-        // Replace "WECHAT_REDICRECT_URI_FOR_AUTHGEAR" with link defined above
+        // Replace "WECHAT_REDIRECT_URI_FOR_AUTHGEAR" with link defined above
         container?.open(
             page: .settings,
-            wechatRedirectURI: "WECHAT_REDICRECT_URI_FOR_AUTHGEAR"
+            wechatRedirectURI: "WECHAT_REDIRECT_URI_FOR_AUTHGEAR"
         )
       ```
 * Here is the completed [example](https://github.com/authgear/authgear-sdk-ios/tree/master/example).
@@ -275,14 +275,14 @@ Here are the detailed steps for iOS, Android, React Native, and Flutter.
 * Fill in application signature, you can obtain it with command `keytool -list -v -keystore YOUR_KEYSTORE_FILE_PATH`. WeChat needs the certificate fingerprint in MD5, remove `:` in the fingerprint. It should be string in length 32.
 * Fill in your package name
 * We will need to define a custom url for Authgear SDK to trigger delegate function when user click "Login with WeChat" button. Here is the example, you should update it with your own scheme.
-  * **"WECHAT\_REDICRECT\_URI\_FOR\_AUTHGEAR"**: `com.myapp://host/open_wechat_app`
+  * **"WECHAT\_REDIRECT\_URI\_FOR\_AUTHGEAR"**: `com.myapp://host/open_wechat_app`
 * Go to Authgear portal, do the following:
   * In the portal, go to **Authentication > Social / Enterprise Login**.
   * Enable **Sign in with WeChat (Mobile/移动应用)**.
   * Fill in **Client ID** with the **AppID**.
   * Fill in **Client Secret** with the **AppSecret**.
   * Fill in **原始 ID** with the **原始 ID**.
-  * Add **WECHAT\_REDICRECT\_URI\_FOR\_AUTHGEAR** above in **WeChat redirect URIs**.
+  * Add **WECHAT\_REDIRECT\_URI\_FOR\_AUTHGEAR** above in **WeChat redirect URIs**.
   * **Save** the settings.
 * Update the code
   *   Update application `AndroidManifest.xml`
@@ -304,7 +304,7 @@ Here are the detailed steps for iOS, Android, React Native, and Flutter.
                 <data android:scheme="com.myapp"
                     android:host="host"
                     android:pathPrefix="/path"/>
-                <!-- Add this for WeChat setup, this should match the WECHAT_REDICRECT_URI_FOR_AUTHGEAR defined above -->
+                <!-- Add this for WeChat setup, this should match the WECHAT_REDIRECT_URI_FOR_AUTHGEAR defined above -->
                 <data android:scheme="com.myapp"
                     android:host="host"
                     android:pathPrefix="/open_wechat_app"/>
@@ -370,9 +370,9 @@ Here are the detailed steps for iOS, Android, React Native, and Flutter.
   *   Provide `wechatRedirectURI` when calling `authorize` and `promoteAnonymousUser` in Authgear SDK.
 
       ```java
-        // Replace "WECHAT_REDICRECT_URI_FOR_AUTHGEAR" with link defined above
+        // Replace "WECHAT_REDIRECT_URI_FOR_AUTHGEAR" with link defined above
         AuthenticateOptions options = new AuthenticateOptions(AUTHGEAR_REDIRECT_URI);
-        options.setWechatRedirectURI(WECHAT_REDICRECT_URI_FOR_AUTHGEAR);
+        options.setWechatRedirectURI(WECHAT_REDIRECT_URI_FOR_AUTHGEAR);
         mAuthgear.authenticate(options, new OnAuthenticateListener() {
             @Override
             public void onAuthenticated(@Nullable UserInfo userInfo) {
@@ -384,9 +384,9 @@ Here are the detailed steps for iOS, Android, React Native, and Flutter.
         });
 
         // For anonymous user support only
-        // Replace "WECHAT_REDICRECT_URI_FOR_AUTHGEAR" with link defined above
+        // Replace "WECHAT_REDIRECT_URI_FOR_AUTHGEAR" with link defined above
         PromoteOptions options = new PromoteOptions(AUTHGEAR_REDIRECT_URI);
-        options.setWechatRedirectURI(WECHAT_REDICRECT_URI_FOR_AUTHGEAR);
+        options.setWechatRedirectURI(WECHAT_REDIRECT_URI_FOR_AUTHGEAR);
         mAuthgear.promoteAnonymousUser(options, new OnPromoteAnonymousUserListener() {
             @Override
             public void onPromoted(@NonNull UserInfo userInfo) {
@@ -398,9 +398,9 @@ Here are the detailed steps for iOS, Android, React Native, and Flutter.
         });
 
         // Open setting page
-        // Replace "WECHAT_REDICRECT_URI_FOR_AUTHGEAR" with link defined above
+        // Replace "WECHAT_REDIRECT_URI_FOR_AUTHGEAR" with link defined above
         SettingOptions options = new SettingOptions();
-        options.setWechatRedirectURI(WECHAT_REDICRECT_URI_FOR_AUTHGEAR);
+        options.setWechatRedirectURI(WECHAT_REDIRECT_URI_FOR_AUTHGEAR);
         mAuthgear.open(Page.Settings, options);
       ```
 * Here is the completed [example](https://github.com/authgear/authgear-sdk-android/tree/main/javasample).
@@ -410,8 +410,8 @@ Here are the detailed steps for iOS, Android, React Native, and Flutter.
 * Setup Authgear SDK
 * Follow [iOS接入指南](https://developers.weixin.qq.com/doc/oplatform/Mobile\_App/Access\_Guide/iOS.html) and [Android接入指南](https://developers.weixin.qq.com/doc/oplatform/Mobile\_App/Access\_Guide/Android.html) to setup WeChat SDK. For the coding part, we will further explain in the below steps.
 * In iOS, after setting up the WechatOpenSDK, universal link should be enabled in your application. We will need two links for the setup. One is for the WeChat SDK used, another is for the Authgear SDK to trigger delegate function when user click "Login with WeChat" button. Here are the suggestion of the links.
-  * **IOS\_WECHAT\_UNIVERICAL\_LINK**: `https://{YOUR_DOMAIN}/wechat`
-  * **IOS\_WECHAT\_REDICRECT\_URI\_FOR\_AUTHGEAR**: `https://{YOUR_DOMAIN}/open_wechat_app`
+  * **IOS\_WECHAT\_UNIVERSAL\_LINK**: `https://{YOUR_DOMAIN}/wechat`
+  * **IOS\_WECHAT\_REDIRECT\_URI\_FOR\_AUTHGEAR**: `https://{YOUR_DOMAIN}/open_wechat_app`
 * In android, you need to sign your app to use WeChat SDK. Obtain your application signature by running command `keytool -list -v -keystore YOUR_KEYSTORE_FILE_PATH` with your keystore file. WeChat needs the certificate fingerprint in MD5, remove `:` in the fingerprint. It should be string in length 32.
 * Login WeChat Open platform, open the application detail page, update the development information iOS and Android sections.
 
@@ -419,18 +419,18 @@ Here are the detailed steps for iOS, Android, React Native, and Flutter.
 
 * In iOS
   * Fill in "Bundle ID" field with your app bundle id.
-  * Fill in "Universal Links" with "IOS\_WECHAT\_UNIVERICAL\_LINK" above.
+  * Fill in "Universal Links" with "IOS\_WECHAT\_UNIVERSAL\_LINK" above.
 * In Android
   * Fill in application signature.
   * Fill in your package name
 * For android, we will need to define a custom url for Authgear SDK to trigger delegate function when user click "Login with WeChat" button. Here is the example, you should update it with your own scheme.
-  * **ANDROID\_WECHAT\_REDICRECT\_URI\_FOR\_AUTHGEAR**: `com.myapp://host/open_wechat_app`
+  * **ANDROID\_WECHAT\_REDIRECT\_URI\_FOR\_AUTHGEAR**: `com.myapp://host/open_wechat_app`
 * Login Authgear portal, go to "Single-Sign On" page, then do the following:
   * Enable "Sign in with WeChat (Mobile/移动应用)"
   * Fill in "Client ID" with the WeChat "AppID".
   * Fill in "Client Secret" with the WeChat "AppSecret".
   * Fill in "原始 ID" with the WeChat "原始 ID".
-  * Add "IOS\_WECHAT\_REDICRECT\_URI\_FOR\_AUTHGEAR" and "ANDROID\_WECHAT\_REDICRECT\_URI\_FOR\_AUTHGEAR" above into "WeChat redirect URIs"
+  * Add "IOS\_WECHAT\_REDIRECT\_URI\_FOR\_AUTHGEAR" and "ANDROID\_WECHAT\_REDIRECT\_URI\_FOR\_AUTHGEAR" above into "WeChat redirect URIs"
   * Click save.
 * Update the code
   *   In Android, Update application `AndroidManifest.xml`.
@@ -452,7 +452,7 @@ Here are the detailed steps for iOS, Android, React Native, and Flutter.
                 <data android:scheme="com.myapp"
                     android:host="host"
                     android:pathPrefix="/path"/>
-                <!-- Add this for WeChat setup, this should match the WECHAT_REDICRECT_URI_FOR_AUTHGEAR defined above -->
+                <!-- Add this for WeChat setup, this should match the WECHAT_REDIRECT_URI_FOR_AUTHGEAR defined above -->
                 <data android:scheme="com.myapp"
                     android:host="host"
                     android:pathPrefix="/open_wechat_app"/>
@@ -481,10 +481,10 @@ Here are the detailed steps for iOS, Android, React Native, and Flutter.
   *   Provide `wechatRedirectURI` when calling Authgear SDK `authorize` and `promoteAnonymousUser` in js
 
       ```javascript
-        // REPLACE IOS_WECHAT_REDICRECT_URI_FOR_AUTHGEAR and ANDROID_WECHAT_REDICRECT_URI_FOR_AUTHGEAR
+        // REPLACE IOS_WECHAT_REDIRECT_URI_FOR_AUTHGEAR and ANDROID_WECHAT_REDIRECT_URI_FOR_AUTHGEAR
         const wechatRedirectURI = Platform.select<string>({
-            android: 'ANDROID_WECHAT_REDICRECT_URI_FOR_AUTHGEAR',
-            ios: 'IOS_WECHAT_REDICRECT_URI_FOR_AUTHGEAR',
+            android: 'ANDROID_WECHAT_REDIRECT_URI_FOR_AUTHGEAR',
+            ios: 'IOS_WECHAT_REDIRECT_URI_FOR_AUTHGEAR',
         });
 
         authgear
@@ -540,8 +540,8 @@ Here are the detailed steps for iOS, Android, React Native, and Flutter.
 * Setup Authgear SDK
 * Follow [iOS接入指南](https://developers.weixin.qq.com/doc/oplatform/Mobile\_App/Access\_Guide/iOS.html) and [Android接入指南](https://developers.weixin.qq.com/doc/oplatform/Mobile\_App/Access\_Guide/Android.html) to setup WeChat SDK. For the coding part, we will further explain in the below steps.
 * In iOS, after setting up the WechatOpenSDK, universal link should be enabled in your application. We will need two links for the setup. One is for the WeChat SDK used, another is for the Authgear SDK to trigger delegate function when user click "Login with WeChat" button. Here are the suggestion of the links.
-  * **IOS\_WECHAT\_UNIVERICAL\_LINK**: `https://{YOUR_DOMAIN}/wechat`
-  * **IOS\_WECHAT\_REDICRECT\_URI\_FOR\_AUTHGEAR**: `https://{YOUR_DOMAIN}/open_wechat_app`
+  * **IOS\_WECHAT\_UNIVERSAL\_LINK**: `https://{YOUR_DOMAIN}/wechat`
+  * **IOS\_WECHAT\_REDIRECT\_URI\_FOR\_AUTHGEAR**: `https://{YOUR_DOMAIN}/open_wechat_app`
 * In android, you need to sign your app to use WeChat SDK. Obtain your application signature by running command `keytool -list -v -keystore YOUR_KEYSTORE_FILE_PATH` with your keystore file. WeChat needs the certificate fingerprint in MD5, remove `:` in the fingerprint. It should be string in length 32.
 * Login WeChat Open platform, open the application detail page, update the development information iOS and Android sections.
 
@@ -549,18 +549,18 @@ Here are the detailed steps for iOS, Android, React Native, and Flutter.
 
 * In iOS
   * Fill in "Bundle ID" field with your app bundle id.
-  * Fill in "Universal Links" with "IOS\_WECHAT\_UNIVERICAL\_LINK" above.
+  * Fill in "Universal Links" with "IOS\_WECHAT\_UNIVERSAL\_LINK" above.
 * In Android
   * Fill in application signature.
   * Fill in your package name
 * For android, we will need to define a custom url for Authgear SDK to trigger delegate function when user click "Login with WeChat" button. Here is the example, you should update it with your own scheme.
-  * **ANDROID\_WECHAT\_REDICRECT\_URI\_FOR\_AUTHGEAR**: `com.myapp://host/open_wechat_app`
+  * **ANDROID\_WECHAT\_REDIRECT\_URI\_FOR\_AUTHGEAR**: `com.myapp://host/open_wechat_app`
 * Login Authgear portal, go to "Single-Sign On" page, then do the following:
   * Enable "Sign in with WeChat (Mobile/移动应用)"
   * Fill in "Client ID" with the WeChat "AppID".
   * Fill in "Client Secret" with the WeChat "AppSecret".
   * Fill in "原始 ID" with the WeChat "原始 ID".
-  * Add "IOS\_WECHAT\_REDICRECT\_URI\_FOR\_AUTHGEAR" and "ANDROID\_WECHAT\_REDICRECT\_URI\_FOR\_AUTHGEAR" above into "WeChat redirect URIs"
+  * Add "IOS\_WECHAT\_REDIRECT\_URI\_FOR\_AUTHGEAR" and "ANDROID\_WECHAT\_REDIRECT\_URI\_FOR\_AUTHGEAR" above into "WeChat redirect URIs"
   * Click save.
 * Update the code
   *   In Android, Update application `AndroidManifest.xml`.
@@ -582,7 +582,7 @@ Here are the detailed steps for iOS, Android, React Native, and Flutter.
                 <data android:scheme="com.myapp"
                     android:host="host"
                     android:pathPrefix="/path"/>
-                <!-- Add this for WeChat setup, this should match the WECHAT_REDICRECT_URI_FOR_AUTHGEAR defined above -->
+                <!-- Add this for WeChat setup, this should match the WECHAT_REDIRECT_URI_FOR_AUTHGEAR defined above -->
                 <data android:scheme="com.myapp"
                     android:host="host"
                     android:pathPrefix="/open_wechat_app"/>
@@ -602,12 +602,12 @@ Here are the detailed steps for iOS, Android, React Native, and Flutter.
   *   Provide `wechatRedirectURI`.
 
       ```dart
-        // REPLACE IOS_WECHAT_REDICRECT_URI_FOR_AUTHGEAR and ANDROID_WECHAT_REDICRECT_URI_FOR_AUTHGEAR
+        // REPLACE IOS_WECHAT_REDIRECT_URI_FOR_AUTHGEAR and ANDROID_WECHAT_REDIRECT_URI_FOR_AUTHGEAR
         var wechatRedirectURI = "";
         if (Platform.isIOS) {
-            wechatRedirectURI = 'IOS_WECHAT_REDICRECT_URI_FOR_AUTHGEAR';
+            wechatRedirectURI = 'IOS_WECHAT_REDIRECT_URI_FOR_AUTHGEAR';
         } else if (Platform.isAndroid) {
-            wechatRedirectURI = 'ANDROID_WECHAT_REDICRECT_URI_FOR_AUTHGEAR';
+            wechatRedirectURI = 'ANDROID_WECHAT_REDIRECT_URI_FOR_AUTHGEAR';
         }
 
         await authgear.authenticate(redirectURI: "REDIRECT_URI", wechatRedirectURI: wechatRedirectURI);

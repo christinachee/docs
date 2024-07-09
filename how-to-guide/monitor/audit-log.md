@@ -16,7 +16,7 @@ The **Users Activities** tab on the Audit Log page filters the log to only show 
 
 ### Retrieve with Admin API
 
-The API schema can be found in the [Admin API QraphiQL Explorer](../../reference/apis/admin-api/#api-explorer). For example:
+The API schema can be found in the [Admin API GraphiQL Explorer](../../reference/apis/admin-api/#api-explorer). For example:
 
 ```graphql
 query {
@@ -82,15 +82,15 @@ Here is the list of activity types that are logged:
 | ----------------------------- | ------------------------------------------------------------- |
 | IDENTITY\_BIOMETRIC\_DISABLED | Biometric login is disabled by a user or an admin             |
 | IDENTITY\_BIOMETRIC\_ENABLED  | User enabled biometric login                                  |
-| IDENTITY\_EMAIL\_ADDED        | A user or admin added a new email to an exisiting user        |
-| IDENTITY\_EMAIL\_REMOVED      | An email address was removed from an exisiting user's profile |
+| IDENTITY\_EMAIL\_ADDED        | A user or admin added a new email to an existing user        |
+| IDENTITY\_EMAIL\_REMOVED      | An email address was removed from an existing user's profile |
 | IDENTITY\_EMAIL\_UPDATED      | A user updated their email address                            |
-| IDENTITY\_OAUTH\_CONNECTED    | A profle is linked to OAuth                                   |
+| IDENTITY\_OAUTH\_CONNECTED    | A profile is linked to OAuth                                   |
 | IDENTITY\_OAUTH\_DISCONNECTED | A profile is unlinked from OAuth                              |
-| IDENTITY\_PHONE\_ADDED        | A user or admin added a new phone number to an exisiting user |
-| IDENTITY\_PHONE\_REMOVED      | A phone number was removed from an exisiting user's profile   |
+| IDENTITY\_PHONE\_ADDED        | A user or admin added a new phone number to an existing user |
+| IDENTITY\_PHONE\_REMOVED      | A phone number was removed from an existing user's profile   |
 | IDENTITY\_PHONE\_UPDATED      | A user updated their phone number                             |
-| IDENTITY\_USERNAME\_ADDED     | A user or admin added a new username to an exisiting user     |
+| IDENTITY\_USERNAME\_ADDED     | A user or admin added a new username to an existing user     |
 | IDENTITY\_USERNAME\_REMOVED   | A user or admin removed the username for a user               |
 | IDENTITY\_USERNAME\_UPDATED   | The username for a user was updated                           |
 
@@ -106,7 +106,7 @@ Here is the list of activity types that are logged:
 | USER\_DELETION\_UNSCHEDULED | A previously scheduled user deletion is unscheduled                              |
 | USER\_DISABLED              | User account disabled. An admin disabling a users account can trigger this event |
 | USER\_PROFILE\_UPDATED      | A user updated details like their profile name, gender and more                  |
-| USER\_REENABLED             | A user account that was prviously disabled is enabled                            |
+| USER\_REENABLED             | A user account that was previously disabled is enabled                            |
 | USER\_SESSION\_TERMINATED   | An active user session is terminated                                             |
 | USER\_SIGNED\_OUT           | A user that was signed in logged out                                             |
 
@@ -116,7 +116,7 @@ Here is the list of activity types that are logged:
 | ----------------------- | ------------------------------------------------------------------- |
 | WHATSAPP\_OTP\_VERIFIED | User completed a verification process using WhatsApp to receive OTP |
 | SMS\_SENT               | An SMS notification like OTP was sent to a user                     |
-| EMAIL\_SENT             | An email notice like verfiication code was sent to a user           |
+| EMAIL\_SENT             | An email notice like verification code was sent to a user           |
 
 ## Log data
 

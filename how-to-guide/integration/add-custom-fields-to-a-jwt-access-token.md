@@ -36,7 +36,7 @@ With the use of Hooks, Authgear provides flexibility for adding custom logic to 
 
 1. Navigate to your Authgear Dashboard's **Advanced**->**Hooks** section.
 2. **Add** a new **Blocking Event**.
-3. Choose the Block Hook **Type** as the _TypeSctipt_ and set the Event option to _JWT access token pre-create_. You will write a new Typescript function from scratch.
+3. Choose the Block Hook **Type** as the _TypeScript_ and set the Event option to _JWT access token pre-create_. You will write a new Typescript function from scratch.
 
 <figure><img src="../../.gitbook/assets/image (9) (1).png" alt=""><figcaption></figcaption></figure>
 

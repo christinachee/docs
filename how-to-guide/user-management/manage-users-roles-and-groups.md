@@ -246,7 +246,7 @@ To do this in Authgear Portal, first navigate to **User Management** > **Roles**
 
 ### 4.3 Update or Delete a Role
 
-To update the properties of an exisiting role such as the name, description or key, navigate to User **User Management** > **Roles** in Authgear Portal. Click on the role you wish to modify to open the **Settings** tab, then change the value for the property you wish to update in the form. Once you're done, click on the **Save** button.
+To update the properties of an existing role such as the name, description or key, navigate to User **User Management** > **Roles** in Authgear Portal. Click on the role you wish to modify to open the **Settings** tab, then change the value for the property you wish to update in the form. Once you're done, click on the **Save** button.
 
 <figure><img src="../../.gitbook/assets/authgear-update-role.png" alt=""><figcaption></figcaption></figure>
 
