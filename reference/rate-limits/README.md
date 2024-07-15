@@ -80,7 +80,7 @@ The rate limits under this section apply to all messages (email and SMS) your Au
 | Item  | Limit per IP | Limit per target |
 | ----- | ------------ | ---------------- |
 | Email | 200/min      | 50/24hrs         |
-| SMS   | 60/min       | 240/24hrs        |
+| SMS   | 60/min       | 10/hr            |
 
 ### Customizing Default Limits
 
