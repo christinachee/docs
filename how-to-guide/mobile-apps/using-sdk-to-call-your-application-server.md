@@ -4,24 +4,24 @@ description: >-
   Authgear
 ---
 
-# Use SDK to call your application server
+# Use SDK to make authorized API calls to backend
 
 ## Using Authgear SDK to call your application server
 
-In this section, we are going to explain how to make an authorized request to your application server by using Authgear SDK. If you are using **Cookie-based authentication** in your web application, you can skip this section as session cookies are handled by the browser automatically.
+In this section, we are going to explain how to make an authorized request to your backend API by using Authgear SDK. Authgear SDKs make it easy to refresh access token if needed and maintain session state.
 
-## Setup Overview
+If you are using **Cookie-based authentication** in your web application, you can skip this section as session cookies are handled by the browser automatically.
+
+## Overview
 
 1. To determine which user is calling your server, you will need to include the Authorization header in every request that send to your application server.
-2. You will need to set up [Backend integration](../../get-started/backend-integration/nginx.md), Authgear will help you to resolve the Authorization header to determine whether the incoming HTTP request is authenticated or not.
+2. On your Backend/API, you will need to set up [Backend integration](../../get-started/backend-integration/nginx.md). Authgear will help you to handle the Authorization header to determine whether the incoming HTTP request is authenticated or not.
 
-In the below section, we will explain how to set up SDK to include Authorization header to your application requests.
+In the below section, we will explain how to set up SDK to for the purpose of making authorized API calls to your backend.
 
-## SDK setup
+## SDK Setup
 
-### Configuration
-
-Configure the Authgear SDK with the Authgear endpoint and client id. The SDK must be properly configured before use, you can call `configure` multiple times but you should only need to call it once. No network call will be triggered during `configure`.
+Configure the Authgear SDK with the Authgear endpoint and client id. The SDK must be properly configured before use by calling `configure`. No network call will be triggered during `configure`.
 
 {% tabs %}
 {% tab title="Javascript" %}
@@ -91,9 +91,11 @@ await authgear.ConfigureAsync();
 {% endtab %}
 {% endtabs %}
 
-### Get the latest session state
+## UserInfo and Session State
 
-`sessionState` reflect the user logged in state. Right after configure, the session state only reflects the SDK local state. That means even `sessionState` is `AUTHENTICATED`, the session may be invalid if it is revoked remotely. You will only know that after calling the server, call `fetchUserInfo` as soon as it is proper to do so, e.g. when the device goes online.
+`sessionState` reflect the user logged in state. However the session state is cached locally and only updated after each server call.&#x20;
+
+Usually right after login/signup via `authorize`,You will call `fetchUserInfo` as soon as possible with `authgear.sessionState` became `AUTHENTICATED`
 
 {% tabs %}
 {% tab title="Javascript" %}
@@ -188,11 +190,15 @@ if (sessionState == SessionState.Authenticated)
 {% endtab %}
 {% endtabs %}
 
-## Calling an API
+## Makeing an API call
 
-### **Use `fetch` function from the SDK (JavaScript Only)**
+When you make a API call to Backend API, you will need to include the access token in the `Authorization` header. Access token is also short lived and need to be regularly rotated by Refresh token for security purpose. Authgear SDKs provide the following functions to simplify both steps.
 
-**Javascript Only**. Authgear SDK provides `fetch` function for you to call your application server. The `fetch` function will include Authorization header in your application request, and handle refresh access token automatically. `authgear.fetch` implement [fetch](https://fetch.spec.whatwg.org/). If you are using another networking library and want to include the Authorization header yourself. You can skip this and go to the next step.
+### **The `fetch` function (JavaScript Only)**
+
+**Javascript Only**. Authgear SDK provides `fetch` function for you to call your application server. The `fetch` function will include Authorization header in your application request, and handle refresh access token automatically. `authgear.fetch` implement [fetch](https://fetch.spec.whatwg.org/).&#x20;
+
+If you are using another networking library, you will need to use `refreshAccessTokenIfNeeded().` and include the `Authorization` header yourself, as described in the next paragraph.
 
 {% tabs %}
 {% tab title="Javascript" %}
@@ -205,7 +211,7 @@ authgear
 {% endtab %}
 {% endtabs %}
 
-### Add the access token to the HTTP request header
+### The refreshAccessTokenIfNeeded function
 
 You will need to include the Authorization header in your application request. Call `refreshAccessTokenIfNeeded` every time before using the access token, the function will check and make the network call only if the access token has expired. Include the access token into the Authorization header of your application request.
 
@@ -299,9 +305,9 @@ httpRequestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer
 {% endtab %}
 {% endtabs %}
 
-### Handle revoked sessions
+## Handle revoked sessions
 
-If the session is revoked from the management portal, the client will call your application server with an invalid access token. Your application server can check that by looking at the [resolver headers](../../get-started/backend-integration/nginx.md).
+If the session is revoked from the management portal, the client will call your Backend API with an invalid access token. Your application server can check that by looking at the [resolver headers](../../get-started/backend-integration/nginx.md).
 
 For example, you application may return HTTP status code 401 for unauthorized requests. Depending on your application flow, you may want to show your user login page again or reset the SDK `sessionState` to `NO_SESSION` locally. To clear the `sessionState`, you can use `clearSessionState` function.
 
