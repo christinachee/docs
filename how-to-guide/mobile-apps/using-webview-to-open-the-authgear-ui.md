@@ -4,13 +4,42 @@ description: >-
   WebKitWebView using Authgear Mobile SDKs.
 ---
 
-# Using WebView to open the Authgear UI
+# Customize the Login Pop-up / Disable the login alert box
 
-The default behavior of the Authgear Mobile SDKs is to launch AuthUI in [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) in iOS and [Custom Tabs](https://developer.chrome.com/docs/android/custom-tabs) in Android. The latest versions of the mobile SDKs include `WebKitWebViewUIImplementation` a `UIImplementation` which makes it possible to customize the above behavior. For example, setting the `uiImplementation` attribute in the `configure()` method of the Authgear Capacitor SDK to `WebKitWebViewUIImplementation()` will open AuthUI using [WKWebView](https://developer.apple.com/documentation/webkit/wkwebview) on iOS and [android.webkit.WebView](https://developer.android.com/reference/android/webkit/WebView) on Android.
+The default of the Authgear Mobile SDKs is to launch AuthUI in [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) in iOS and [Custom Tabs](https://developer.chrome.com/docs/android/custom-tabs) in Android. ASWebAuthentication is an API provided by Apple for login purpose. It will store the session cookie and share with Safari, which makes Single Sign-on (SSO) between mobile app and web apps possible.
 
-Omitting the `uiImplementation` attribute in the `configure()` method will fall back to the default behavior (launching  AuthUI in ASWebAuthenticationSession/Custom Tabs). You can also explicitly  choose the default behavior by setting `uiImplementation` to `DeviceBrowserUIImplementation()`.
+However, it rqeuires user consent, and will display a login alert box:
 
-### Example:  Setting UIImplementation
+{% hint style="success" %}
+TODO: add an alert box image here
+{% endhint %}
+
+There are multiple ways you can avoid the login alert box:
+
+## 1. Use ephemeral sessions
+
+If you do not need SSO between mobile and web apps, you can disable by setting `isSSOEnabled = false`.
+
+{% hint style="success" %}
+TODO: add sample code here.
+{% endhint %}
+
+It will not share the session cookies between your app and Safari. And the login alert box will not show to prompt user consent.
+
+## 2. Use WebKitUIImplementation
+
+The mobile SDKs include `WebKitWebViewUIImplementation`, a `UIImplementation` which makes it possible to customize more UI.
+
+Depends on platforms, there are various alternatives:
+
+* iOS: WKWebViewUIImplementation
+* Other platforms / Android: WebKitWebViewUIImplementation
+
+Setting the `uiImplementation` attribute in the `configure()` method of the Authgear SDK to `WebKitWebViewUIImplementation()` will open AuthUI using [WKWebView](https://developer.apple.com/documentation/webkit/wkwebview) on iOS and [android.webkit.WebView](https://developer.android.com/reference/android/webkit/WebView) on Android.
+
+Omitting the `uiImplementation` attribute in the `configure()` method will fall back to the default behavior (launching AuthUI in ASWebAuthenticationSession/Custom Tabs, which is `DeviceBrowserUIImplementation`).
+
+### Example Code
 
 The following examples show how to set the `uiImplementation`  attribute.
 
@@ -69,7 +98,7 @@ Authgear(
 
 Setting `uiImplementation` to `WebKitWebViewUIImplementation` in the above example will change the behavior of your application from using **ASWebAuthenticationSession** on iOS and **Custom Tabs** on Android to using `WKWebView` and `android.webkit.WebView` respectively.
 
-To set `uiImplementation` to `WKWebView` in the native iOS SDK, use `WKWebViewUIImplementation`  or implement your own [custom UIImplementation](using-webview-to-open-the-authgear-ui.md#implementing-your-custom-uiimplementation).
+To set `uiImplementation` to `WKWebView` in the native iOS SDK, use `WKWebViewUIImplementation` .
 
 ### Customizing the WebKitWebView UI
 
@@ -164,7 +193,7 @@ Authgear(
 {% endtab %}
 {% endtabs %}
 
-### Implementing your Custom UIImplementation
+## 3. Implement Custom UIImplementation
 
 You can implement your own custom `UIImplementation` when the `WebKitWebViewUIImplementation` does not meet the requirements of your use case.
 
@@ -192,9 +221,9 @@ authgear.configure({
 
 To get a deeper understanding of how to implement your UIImplementation, see the code for the [WebKitWebViewUIImplementation](https://github.com/authgear/authgear-sdk-android/blob/main/sdk/src/main/java/com/oursky/authgear/WebKitWebViewUIImplementation.kt) implementation.
 
-### Unsupported Features and Services
+## Unsupported Features
 
-When you drop the default DeviceBrowserUIImplementation to use your own custom UI implementation that uses WebView, it is important to note that you'll be losing the following features and services:
+When you drop the default DeviceBrowserUIImplementation to use your own custom UI implementation that uses WebView, it is important to note that you'll be losing the following features, due to iOS or other security limitations.
 
 1. **Login with Google:** Google prohibits the use of `WebKitWebView` with the Google SSO. Learn more here: [https://developers.googleblog.com/2021/06/upcoming-security-changes-to-googles-oauth-2.0-authorization-endpoint.html](https://developers.googleblog.com/2021/06/upcoming-security-changes-to-googles-oauth-2.0-authorization-endpoint.html). As a result `WebKitWebViewUIImplementation` and Google SSO cannot be used together.
 2. **Passkey:** Passkey is not supported in WebKitWebView.

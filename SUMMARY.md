@@ -105,7 +105,7 @@
 * [Mobile Apps](how-to-guide/mobile-apps/README.md)
   * [Use SDK to make authorized API calls to backend](how-to-guide/mobile-apps/using-sdk-to-call-your-application-server.md)
   * [Force authentication on app launch](how-to-guide/mobile-apps/force-authentication-on-app-launch.md)
-  * [Using WebView to open the Authgear UI](how-to-guide/mobile-apps/using-webview-to-open-the-authgear-ui.md)
+  * [Customize the Login Pop-up / Disable the login alert box](how-to-guide/mobile-apps/using-webview-to-open-the-authgear-ui.md)
 * [Troubleshoot](how-to-guide/troubleshoot/README.md)
   * [How to Fix SubtleCrypto: digest() undefined Error in Authgear SDK](how-to-guide/troubleshoot/how-to-fix-subtlecrypto-digest-undefined-error-in-authgear-sdk.md)
 
