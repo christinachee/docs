@@ -32,7 +32,7 @@ Make sure the option **Issue JWT as access token** is enabled in your **Applicat
 
 ### Create a new Event Hook
 
-With the use of Hooks, Authgear provides flexibility for adding custom logic to your authentication pipeline. You can create a Hook which is triggered any of these [Events ](https://docs.authgear.com/integrate/events-hooks/event-list)about to occur. For example, `oidc.jwt.pre_create` the event happens just before issuing the JWT access token and it can be used to put extra information into the token.&#x20;
+With the use of Hooks, Authgear provides flexibility for adding custom logic to your authentication pipeline. You can create a Hook which is triggered any of these [Events ](https://docs.authgear.com/integrate/events-hooks/event-list)about to occur. For example, `oidc.jwt.pre_create` the event happens just before issuing the JWT access token and it can be used to put extra information into the token.
 
 1. Navigate to your Authgear Dashboard's **Advanced**->**Hooks** section.
 2. **Add** a new **Blocking Event**.
@@ -88,11 +88,7 @@ This part explains how to retrieve an access token using **OpenID App** Endpoint
 
 Open your **OpenID Auth App** configuration, and find **Client ID**, **Client Secret**, and check **Authorization**, and **Token** endpoints. You will use them in the next steps.
 
-
-
-<img src="../../.gitbook/assets/image (5).png" alt="" data-size="original">
-
-<img src="../../.gitbook/assets/image (3) (1).png" alt="" data-size="original">
+<img src="../../.gitbook/assets/image (5).png" alt="" data-size="original"> <img src="../../.gitbook/assets/image (3) (1).png" alt="" data-size="original">
 
 **Step 2: Construct the authorization endpoint URL**
 
@@ -106,13 +102,13 @@ Replace `<YOUR_AUTHGEAR_ENDPOINT>` with your Authgear server's domain, `YOUR_CLI
 
 **Step 3: Redirect the user to the authorization endpoint**
 
-Next, you need to redirect the user to the authorization endpoint. You can just put the URL in your browser and log in with a user credential you are interested to retrieve an access token for. After successful authentication and consent, the Authgear will redirect the user back to your specified redirect URI, including an **authorization code** as a query parameter. You will need the code in the next step&#x20;
+Next, you need to redirect the user to the authorization endpoint. You can just put the URL in your browser and log in with a user credential you are interested to retrieve an access token for. After successful authentication and consent, the Authgear will redirect the user back to your specified redirect URI, including an **authorization code** as a query parameter. You will need the code in the next step
 
-![](<../../.gitbook/assets/image (10).png>)
+<img src="../../.gitbook/assets/image (10).png" alt="" data-size="original">
 
 **Step 4: Obtain an access token**
 
-You need to make a request to the **OpenID App's Token endpoint** to exchange the authorization code we retrieved in the previous step for an access token.&#x20;
+You need to make a request to the **OpenID App's Token endpoint** to exchange the authorization code we retrieved in the previous step for an access token.
 
 * The token endpoint URL is usually something like `https://<YOUR_AUTHGEAR_ENDPOINT>/oauth2/token`.
 * Include parameters such as `grant_type=authorization_code`, `code=AUTHORIZATION_CODE`, `client_id=YOUR_CLIENT_ID`, `client_secret=YOUR_CLIENT_SECRET`, and `redirect_uri=YOUR_REDIRECT_URI`.
@@ -132,12 +128,10 @@ curl --request POST \
 
 **Step 5: Verify custom attributes in the access token**
 
-Finally, we can debug the access token using the [JWT Debugger tool](https://jwt.io/) to see if the custom field and value we added previously are there inside the JWT payload.&#x20;
+Finally, we can debug the access token using the [JWT Debugger tool](https://jwt.io/) to see if the custom field and value we added previously are there inside the JWT payload.
 
-![](<../../.gitbook/assets/image (9).png>)
+<img src="../../.gitbook/assets/image (9).png" alt="" data-size="original">
 
-\
-
+\\
 
 </details>
-

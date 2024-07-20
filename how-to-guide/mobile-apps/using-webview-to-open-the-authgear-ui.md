@@ -6,23 +6,26 @@ description: >-
 
 # Customize the Login Pop-up / Disable the login alert box
 
-The default of the Authgear Mobile SDKs is to launch AuthUI in [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) in iOS and [Custom Tabs](https://developer.chrome.com/docs/android/custom-tabs) in Android. ASWebAuthentication is an API provided by Apple for login purpose. It will store the session cookie and share with Safari, which makes Single Sign-on (SSO) between mobile app and web apps possible.
+The default of the Authgear Mobile SDKs is to launch AuthUI in [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) in iOS and [Custom Tabs](https://developer.chrome.com/docs/android/custom-tabs) in Android. ASWebAuthentication is an API provided by Apple for login purpose. It will store the session cookie and share with Safari, which makes Single Sign-on (SSO) between mobile apps and web apps possible.
 
-However, it rqeuires user consent, and will display a login alert box:
+However, it requires user consent, and will display a login alert box:
 
-{% hint style="success" %}
-TODO: add an alert box image here
-{% endhint %}
+<figure><img src="../../.gitbook/assets/ios-login-alert-phone.PNG" alt="" width="188"><figcaption></figcaption></figure>
 
 There are multiple ways you can avoid the login alert box:
 
 ## 1. Use ephemeral sessions
 
-If you do not need SSO between mobile and web apps, you can disable by setting `isSSOEnabled = false`.
+If you do not need SSO between mobile and web apps, you can disable it by setting `isSSOEnabled = false`.
 
-{% hint style="success" %}
-TODO: add sample code here.
-{% endhint %}
+```javascript
+authgear
+      .configure({
+        clientID: "<CLIENT_ID>",
+        endpoint: "<AUTHGEAR_ENDPOINT>",
+        isSSOEnabled: false,
+});
+```
 
 It will not share the session cookies between your app and Safari. And the login alert box will not show to prompt user consent.
 
@@ -30,7 +33,7 @@ It will not share the session cookies between your app and Safari. And the login
 
 The mobile SDKs include `WebKitWebViewUIImplementation`, a `UIImplementation` which makes it possible to customize more UI.
 
-Depends on platforms, there are various alternatives:
+Depending on the platforms, there are various alternatives:
 
 * iOS: WKWebViewUIImplementation
 * Other platforms / Android: WebKitWebViewUIImplementation
@@ -63,7 +66,7 @@ authgear
         clientID: "<CLIENT_ID>",
         endpoint: "<AUTHGEAR_ENDPOINT>",
         uiImplementation: new WebKitWebViewUIImplementation()
-      })
+});
 ```
 {% endtab %}
 
