@@ -18,6 +18,20 @@ There are multiple ways you can avoid the login alert box:
 
 If you do not need SSO between mobile and web apps, you can disable it by setting `isSSOEnabled = false`.
 
+
+
+{% tabs %}
+{% tab title="iOS (Native)" %}
+```swift
+Authgear(
+            clientId: "<CLIENT_ID>",
+            endpoint: "<AUTHGEAR_ENDPOINT>",
+            isSSOEnabled: false,
+        )
+```
+{% endtab %}
+
+{% tab title="React Native" %}
 ```javascript
 authgear
       .configure({
@@ -26,6 +40,8 @@ authgear
         isSSOEnabled: false,
 });
 ```
+{% endtab %}
+{% endtabs %}
 
 It will not share the session cookies between your app and Safari. And the login alert box will not show to prompt user consent.
 
@@ -90,10 +106,9 @@ private Authgear authgear = new Authgear(
 Authgear(
             clientId: "<CLIENT_ID>",
             endpoint: "<AUTHGEAR_ENDPOINT>",
-            tokenStorage: tokenStorageInstance,
+            tokenStorage: TransientTokenStorage(),
             uiImplementation: WKWebViewUIImplementation(),
-            isSSOEnabled: isSSOEnabled,
-            app2AppOptions: app2AppOptions
+            isSSOEnabled: true,
         )
 ```
 {% endtab %}
@@ -183,14 +198,13 @@ private Authgear authgear = new Authgear(
 Authgear(
             clientId: "<CLIENT_ID>",
             endpoint: "<AUTHGEAR_ENDPOINT>",
-            tokenStorage: tokenStorageInstance,
+            tokenStorage: TransientTokenStorage(),
             uiImplementation: WKWebViewUIImplementation(
                modalPresentationStyle: UIModalPresentationStyle.fullScreen,
                navigationBarBackgroundColor: UIColor.yellow,
                navigationBarButtonTintColor: UIColor.black
             ),
-            isSSOEnabled: isSSOEnabled,
-            app2AppOptions: app2AppOptions
+            isSSOEnabled: true
         )
 ```
 {% endtab %}
