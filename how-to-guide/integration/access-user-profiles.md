@@ -56,13 +56,17 @@ Go to **Portal** > **User Profile** > **Custom Attributes** and click **Add New 
 
 ### 2. Access user profiles from apps using Authgear SDKs
 
-Once Authgear completes authentication and returns control to your application, it provides the user profile to the application. Most developers prefer to use the **Authgear SDKs** to get the UserInfo object using the **fetch user info** function. To start using this function read [getting started guides](../../get-started/start-building/) relevant to the **SDK of your choice**. Here are some code snippets for different SDKs:
+Once Authgear completes authentication and returns control to your application, it provides the user profile to the application. Most developers prefer to use the **Authgear SDKs** to get the UserInfo object using the **fetch user info** function. To start using this function read [getting started guides](../../get-started/start-building/) relevant to the **SDK of your choice**. Here are some code snippets that call the fetch user info function for different Authgear SDKs:
 
 {% tabs %}
 {% tab title="JavaScript" %}
 ```javascript
 try{
     const userInfo = await authgear.fetchUserInfo()
+    // example: output the 'sub' attribute from userInfo to console
+    // sub is a unique identifier for each user.
+    // You can read other attributes such as email and phoneNumber depending on your login method
+    console.log(userInfo.sub)
 } catch(e) {
     // failed to fetch user info
 }
@@ -79,6 +83,8 @@ authgear.fetchUserInfo { userInfoResult in
     switch userInfoResult {
     case let .success(userInfo):
         // read the userInfo if needed
+        let userId = userInfo.sub
+        let email = userInfo.email
     case let .failure(error):
         // failed to fetch user info
         // the refresh token maybe expired or revoked
@@ -93,6 +99,10 @@ authgear.fetchUserInfo(new OnFetchUserInfoListener() {
     public void onFetchedUserInfo(@NonNull UserInfo userInfo) {
         // sessionState is now up to date
         // read the userInfo if needed
+        // example: output the 'sub' attribute from userInfo to LogCat
+        // sub is a unique identifier for each user.
+        // You can read other attributes such as email and phoneNumber depending on your login method
+        Log.d("UserID:", userInfo.sub);
     }
 
     @Override
@@ -109,6 +119,10 @@ authgear.fetchUserInfo(new OnFetchUserInfoListener() {
 try {
   UserInfo userInfo = await authgear.getUserInfo();
   // read the userInfo if needed
+  // example: output the 'sub' attribute from userInfo to console
+  // sub is a unique identifier for each user.
+  // You can read other attributes such as email and phoneNumber depending on your login method
+  print(userInfo.sub);
 } catch (e) {
   // failed to fetch user info
   // the refresh token maybe expired or revoked
@@ -123,6 +137,10 @@ SessionState state = authgear.sessionState;
 try
 {
     var userInfo = await authgear.FetchUserInfoAsync()
+    // example: output the 'sub' attribute from userInfo to console
+    // sub is a unique identifier for each user.
+    // You can read other attributes such as email and phoneNumber depending on your login method
+    console.log(userInfo.sub)
 }
 catch
 {
@@ -133,7 +151,9 @@ catch
 {% endtab %}
 {% endtabs %}
 
-
+{% hint style="info" %}
+See the [UserInfo page](https://docs.authgear.com/reference/apis/oauth-2.0-and-openid-connect-oidc/userinfo) for more details about the shape of user info and the available user profile attributes.
+{% endhint %}
 
 ### 3. Access user profiles from Admin API
 
@@ -182,6 +202,8 @@ The OpenID Connect (OIDC) [UseInfo](../user-profiles/user-profile.md#userinfo-en
 The UserInfo endpoint returns the Claims about the authenticated end-user, including the standard profile and custom attributes.
 
 The `userInfo` object is returned from calling **fetch user info** function which contains a unique identifier of the user.
+
+The following are some attributes that are usually in the userInfo object. Other attributes like email, phoneNumber and custom attributes will be in the userInfo object if those attributes were set for the current user.
 
 | Key         | Type      | Description                                                                                                                                                                                                       |
 | ----------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
