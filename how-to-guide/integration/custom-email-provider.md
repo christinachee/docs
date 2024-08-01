@@ -12,9 +12,9 @@ Authgear currently supports **SendGrid** and other custom SMTP Providers.
 
 ## Send from an email address under your domain
 
-The sender address can be configured by changing the value of the`email.default.sender` key in the localization JSON. Go to **Portal** > **Localization** > **Translations** and add/change the value of `email.default.sender` to your own email address, for example `no-replay@myapp.com`, and **Save** the settings. The value can be set separately for each locale.&#x20;
+The sender address can be configured by changing the value of the`email.default.sender` key in the localization JSON. Go to **Portal** > **Branding** > **Custom Text** and add/change the value of `email.default.sender` to your own email address, for example `no-replay@myapp.com`, and **Save** the settings. The value can be set separately for each locale.&#x20;
 
-![](../../.gitbook/assets/email-default-sender.png)
+<figure><img src="../../.gitbook/assets/authgear-default-sender-fix1.png" alt=""><figcaption></figcaption></figure>
 
 ## Sender domain authentication
 
@@ -26,7 +26,7 @@ Follow the instructions from the email service provider for setting up your doma
 
 ## Configure the external SMTP provider
 
-The external SMTP provider can be set up in **Portal** > **Custom Email Provider**. Enable the **Use my own provider** toggle to see the fields.
+The external SMTP provider can be set up in **Portal** > **Advanced** > **Custom Email Provider**. Enable the **Use my own provider** toggle to see the fields.
 
 ### Use SendGrid as external SMTP provider
 
