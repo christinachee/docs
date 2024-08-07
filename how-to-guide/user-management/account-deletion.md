@@ -49,9 +49,76 @@ await authgear.FetchUserInfoAsync();
 {% endtab %}
 {% endtabs %}
 
+## Open Account Deletion Page From Authgear SDK
+
+You can now open the account deletion directly from Authgear SDKs. The account deletion page will be opened in a WebView.
+
+<figure><img src="../../.gitbook/assets/authgear-reactn-deletion-page.png" alt="" width="188"><figcaption></figcaption></figure>
+
+The following code examples show how to open the account deletion page from Authgear SDKs:&#x20;
+
+{% tabs %}
+{% tab title="React Native" %}
+```typescript
+authgear
+  .deleteAccount({
+    redirectURI: "<POST_DELETE_REDIRECT_URI>",
+    colorScheme: colorScheme as ColorScheme,
+  })
+```
+{% endtab %}
+
+{% tab title="Flutter" %}
+```dart
+_authgear.deleteAccount(
+        redirectURI: "<POST_DELETE_REDIRECT_URI>",
+      );
+```
+{% endtab %}
+
+{% tab title="Android" %}
+```java
+SettingsActionOptions options = new SettingsActionOptions(
+        "<AUTHGEAR_REDIRECT_URI>"
+);
+options.setColorScheme(getColorScheme());
+mAuthgear.deleteAccount(options, new OnOpenSettingsActionListener() {
+    @Override
+    public void onFinished() {
+        mIsLoading.setValue(false);
+        Log.d(TAG, "deleteAccount finished");
+    }
+
+    @Override
+    public void onFailed(Throwable throwable) {
+        Log.d(TAG, throwable.toString());
+        mIsLoading.setValue(false);
+        setError(throwable);
+    }
+});
+```
+{% endtab %}
+
+{% tab title="iOS" %}
+```
+authgear?.deleteAccount(
+    colorScheme: self.colorScheme,
+    redirectURI: "<AUTHGEAR_REDIRECT_URI>"
+) { result in
+    switch result {
+    case .success:
+        self.successAlertMessage = "Deleted account successfully"
+    case let .failure(error):
+        self.setError(error)
+    }
+}
+```
+{% endtab %}
+{% endtabs %}
+
 ## Deactivated User
 
-When the end-user has initiated the account deletion. Their account will be **deactivated** and scheduled for deletion after the grace period.
+When the end-user has initiated the account deletion, their account will be **deactivated** and scheduled for deletion after the grace period.
 
 **Deactivated** users are always **disabled**. They will not be able to complete the authentication process. The `is_deactivated` status signal that the `is_disabled` status was turned `true` by the end-user themselves rather than the admin.
 
