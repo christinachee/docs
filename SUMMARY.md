@@ -79,6 +79,7 @@
   * [Implement Authentication Flow API using Express](how-to-guide/custom-ui/implement-authentication-flow-api-using-express.md)
   * [Implement Authentication Flow API using PHP](how-to-guide/custom-ui/implement-authentication-flow-api-using-php.md)
   * [Add Custom Login/Signup UI to Native Apps](how-to-guide/custom-ui/add-custom-login-signup-ui-to-native-apps.md)
+  * [Manually Link OAuth Provider using Account Management API](how-to-guide/custom-ui/manually-link-oauth-provider-using-account-management-api.md)
   * [Implement a custom account recovery UI using Authentication Flow API](how-to-guide/custom-ui/implement-a-custom-account-recovery-ui-using-authentication-flow-api.md)
 * [Integrate](how-to-guide/integration/README.md)
   * [Add custom fields to a JWT Access Token](how-to-guide/integration/add-custom-fields-to-a-jwt-access-token.md)
