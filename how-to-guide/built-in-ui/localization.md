@@ -1,7 +1,3 @@
----
-description: Customize text in AuthUI for different languages
----
-
 # Custom Text
 
 You can use your own translation or change the default text in the AuthUI. To do this, you'll edit **translation.json**.
