@@ -12,9 +12,11 @@ In this guide, you'll learn how to use all the customization options available.
 
 To open the new Authgear Design page, log in to the Authgear Portal and navigate to **Branding** > **Design**.
 
-<figure><img src="../../.gitbook/assets/authgear-design.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/authgear-design-2.png" alt=""><figcaption></figcaption></figure>
 
-The Design page is divided into 2 columns. The left column shows a preview of your customizations in real-time. The right column is the menu with all the customization options for different UI elements (e.g. Name, Logo, Favicon).
+The Design page is divided into 2 columns. The left column shows a preview of your customizations in real time. The right column is the menu with all the customization options for different UI elements (e.g. Name, Logo, Favicon).
+
+The **Language** drop-down on the top right corner allows you to customize AuthUI text such as Organisation Name, and [links](branding.md#id-7.-links) (Privacy Policy, Terms of Service, and Customer Support) for specific languages.
 
 ### Customization Options
 
@@ -22,23 +24,29 @@ The Design page is divided into 2 columns. The left column shows a preview of yo
 
 Use this option to set the application name you want to display in AuthUI (Login and Register pages).
 
-#### 2. Logo
+#### 2. Theme
+
+The Theme options allow you to switch between Light Mode, Dark Mode, or Auto (User Preference) on the Design page and for your project. If you select a theme and click the **Save** button, that theme will be applied to your project.
+
+You can also use the Design page to select a theme (Dark mode or Light mode) to further customize it. Skip to the [Dark mode section](branding.md#customize-dark-mode-and-light-mode) to learn more
+
+#### 3. Logo
 
 The logo option allows you to replace the default Authgear logo in AuthUI with your own brand logo. You can add a PNG, JPG, or GIF image smaller than 100 KB.
 
-#### 3. Favicon
+#### 4. Favicon
 
 Use this option to add a custom favicon that will show in browser tabs. The size of the image you upload must be a multiple of 32px square, and be a PNG, JPG, or GIF file.
 
-#### 4. Card
+#### 5. Card
 
 The card option allows you to set the **Alignment** of the AuthUI card. By default, the AuthUI card is aligned to the **Center**. You change the alignment to either Left, Right, or Center.
 
-#### 5. Background
+#### 6. Background
 
 Use this option to change the background color of AuthUI pages. You can either use a background color (CSS hexadecimal color code) or upload a PNG, JPEG, or GIF image smaller than 1 MB.
 
-#### 6. Buttons
+#### 7. Buttons
 
 The button customization option lets you customize multiple properties of the buttons in AuthUI. The following are the properties you can customize:
 
@@ -50,7 +58,7 @@ The button customization option lets you customize multiple properties of the bu
 
 **Border radius:** The curved edges Border radius style allows further customization for the actual size of the border radius in pixels. Use this option to set the level of curved edges.
 
-#### 7. Links
+#### 8. Links
 
 Under the Links section, you'll find options to set the text color for links in AuthUI and also options for configuring [Privacy Policy, Terms of Service](https://docs.authgear.com/how-to-guide/built-in-ui/privacy-policy-terms-of-service), and [Customer Support](https://docs.authgear.com/how-to-guide/built-in-ui/customer-support-link) that are linked on AuthUI.
 
@@ -64,7 +72,7 @@ Under the Links section, you'll find options to set the text color for links in 
 
 Note that leaving the links properties unset will fall back to primary language settings.
 
-#### 8. Input field
+#### 9. Input field
 
 The Input field section contains options for styling text input fields in AuthUI. The following are the various properties you can set:
 
@@ -72,10 +80,24 @@ The Input field section contains options for styling text input fields in AuthUI
 
 **Border radius:** You can use this option to further customize the level of curve of the curved edges Border radius style.
 
-#### 9. Back to your app
+#### 10. Back to your app
 
 Use this option to add a button under the [user settings page](https://docs.authgear.com/how-to-guide/built-in-ui/auth-ui) to navigate the user to your website.
 
-#### 10. Authgear branding
+#### 11. Authgear branding
 
 You can use this toggle to remove Authgear branding in the AuthUI for your project.
+
+### Customize Dark Mode and Light Mode
+
+Attributes of the default AuthUI dark mode and light mode can be customized. For example, you can change the default color of the dark background in dark mode.
+
+To customize an attribute, select the theme (light or dark mode) you wish to customize, then navigate to the attribute you wish to customize and modify it.
+
+The following are attributes you can customize for each theme:
+
+* [Background](branding.md#id-6.-background)
+* [Buttons](branding.md#id-7.-buttons)
+* [Link Color](branding.md#id-8.-links)
+* [Card Alignment](branding.md#id-5.-card)
+* [Input field](branding.md#id-9.-input-field)
