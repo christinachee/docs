@@ -84,8 +84,8 @@ The rate limits under this section apply to all messages (email and SMS) your Au
 
 ### Default OTP Valid Time
 
-* The default valid time for 6-digit One-time password (OTP) is 5 minutes.
-* For OTP in the form of a verification link, the default valid time is 20 minutes.
+* The default valid time for a 6-digit One-time password (OTP) is 5 minutes.
+* For one-time verification links, the default valid time is 20 minutes.
 
 ### Customizing Default Limits
 
