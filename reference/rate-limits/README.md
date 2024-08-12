@@ -48,7 +48,7 @@ The cooldown for user verification can be set to a custom value in the Authgear 
 Other limits you can set from the Verification tab include:&#x20;
 
 * **Daily 6-digit OTP limit per user**: Sets the maximum number of OTP a user can request in 24 hours.
-* **6-digit OTP valid duration (seconds):** The validity of an OTP code sent to a user. Authgear will no longer accept a code after the number of seconds specified here has passed since when they requested the OTP.
+* **6-digit OTP valid duration (seconds):** The validity of an OTP code sent to a user. Authgear will no longer accept a code after the number of seconds specified here has passed since the user requested the OTP.
 * **Number of attempts allowed for 6-digit OTP:** This feature is turned off by default. When turned on, a valid OTP will become invalid after a user enters the wrong codes for the specified number of attempts.
 
 ### Account Lockout
@@ -81,6 +81,11 @@ The rate limits under this section apply to all messages (email and SMS) your Au
 | ----- | ------------ | ---------------- |
 | Email | 200/min      | 50/24hrs         |
 | SMS   | 60/min       | 10/hr            |
+
+### Default OTP Valid Time
+
+* The default valid time for 6-digit One-time password (OTP) is 5 minutes.
+* For OTP in the form of a verification link, the default valid time is 20 minutes.
 
 ### Customizing Default Limits
 
