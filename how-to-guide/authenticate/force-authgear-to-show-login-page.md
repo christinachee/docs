@@ -1,16 +1,18 @@
 ---
 description: >-
-  Force Authgear to always show login page when user the authorization URL is
-  opened.
+  Force Authgear to always show login page even if the user have already logged
+  in.
 ---
 
 # Force Authgear to Show Login Page
 
-The normal authentication flow for Authgear starts with your application making a request to the Authgear authorization endpoint.  This request will usually load the login or signup page. However, AuthUI may show the "Continue Screen" or `select_account` flow instead if there is an existing session stored on the user's browser.
+When user login / signup to Authgear, it usually starts with your application making a request to the authorization endpoint, which leads to a login or signup screen.
+
+If the user is already signed in on the browser, the Single Sign On feature will show a "Continue Screen" instead as follows.
 
 <figure><img src="../../.gitbook/assets/authgear-continue-screen.png" alt=""><figcaption></figcaption></figure>
 
-In this guide, you'll learn how to force Authgear to always show the login page even when there is an existing session on the user's browser.
+If your application do not want to utilize the Single Sign On feature, and always show the login / sign up screen instead, you can force Authgear to show login page by using `prompt="login"`  at the `authorize` endpoint.
 
 ### How to Force Authgear to Show Login Page
 
