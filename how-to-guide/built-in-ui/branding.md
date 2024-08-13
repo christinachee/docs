@@ -12,7 +12,7 @@ In this guide, you'll learn how to use all the customization options available.
 
 To open the new Authgear Design page, log in to the Authgear Portal and navigate to **Branding** > **Design**.
 
-<figure><img src="../../.gitbook/assets/authgear-design-2.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/authgear-design-3.png" alt=""><figcaption></figcaption></figure>
 
 The Design page is divided into 2 columns. The left column shows a preview of your customizations in real time. The right column is the menu with all the customization options for different UI elements (e.g. Name, Logo, Favicon).
 
@@ -27,6 +27,8 @@ Use this option to set the application name you want to display in AuthUI (Login
 #### 2. Theme
 
 The Theme options allow you to switch between Light Mode, Dark Mode, or Auto (User Preference) on the Design page and for your project. If you select a theme and click the **Save** button, that theme will be applied to your project.
+
+When the **Auto based on user preference** theme option is selected, AuthUI will choose a theme based on a specific user's settings.
 
 You can also use the Design page to select a theme (Dark mode or Light mode) to further customize it. Skip to the [Dark mode section](branding.md#customize-dark-mode-and-light-mode) to learn more
 
@@ -92,12 +94,11 @@ You can use this toggle to remove Authgear branding in the AuthUI for your proje
 
 Attributes of the default AuthUI dark mode and light mode can be customized. For example, you can change the default color of the dark background in dark mode.
 
-To customize an attribute, select the theme (light or dark mode) you wish to customize, then navigate to the attribute you wish to customize and modify it.
+To customize an attribute, select the theme (light or dark mode) you wish to customize, then navigate to the attribute you wish to customize and modify it. Or select Auto based on user preference to see customization options for both themes at the same time.
 
 The following are attributes you can customize for each theme:
 
+* [Logo](branding.md#id-3.-logo)
 * [Background](branding.md#id-6.-background)
-* [Buttons](branding.md#id-7.-buttons)
+* [Buttons](branding.md#id-7.-buttons) (fill color and label color)
 * [Link Color](branding.md#id-8.-links)
-* [Card Alignment](branding.md#id-5.-card)
-* [Input field](branding.md#id-9.-input-field)
