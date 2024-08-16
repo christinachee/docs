@@ -10,8 +10,9 @@
 6. Configure "Redirect URI" with `https://<YOUR_AUTHGEAR_ENDPOINT>/sso/oauth2/callback/azureadb2c`.
 7. Follow [this guide](https://docs.microsoft.com/en-us/azure/active-directory-b2c/add-sign-up-and-sign-in-policy?pivots=b2c-user-flow) to create a sign-up and sign-in user flow.
 8. After creating the user flow, configure it
-  - Open "Application Claims".
-  - Make sure "Email Addresses" is checked.
+
+* Open "Application Claims".
+* Make sure "Email Addresses" is checked.
 
 ## Configure Sign in with Azure AD B2c through the portal
 
@@ -25,10 +26,14 @@ Then in Authgear portal, do the following:
 
 1. In the portal, go to **Authentication > Social / Enterprise Login**.
 2. Enable **Sign in with Microsoft Azure AD B2C**.
-2. Fill in **Client ID** with the **Application (Client) ID** above.
-3. Fill in **Client secret** with the client secret you get when you create the app registration.
-4. Fill in **Tenant** with the Azure AD B2C **Tenant Name**.
-5. Fill in **Policy** with the **Policy (User Flow) Name**. Normally it starts with `b2c_`.
-6. **Save** the changes
+3. Fill in **Client ID** with the **Application (Client) ID** above.
+4. Fill in **Client secret** with the client secret you get when you create the app registration.
+5. Fill in **Tenant** with the Azure AD B2C **Tenant Name**.
+6. Fill in **Policy** with the **Policy (User Flow) Name**. Normally it starts with `b2c_`.
+7. **Save** the changes
 
 🎉 Done! You have just added Azure AD B2C Login to your apps!
+
+### Force Login page
+
+Azure AD B2C automatically logs in to the same account without requiring a username and password. To prevent this behaviour, you can use the `prompt=login` parameter to force Azure AD B2C to show the login page. See our [guide on using the prompt=login parameter](../force-social-enterprise-login-providers-to-show-login-screen.md) in Authgear SDKs to learn more.

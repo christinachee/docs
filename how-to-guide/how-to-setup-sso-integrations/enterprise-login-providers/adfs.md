@@ -17,3 +17,7 @@ Redirect URI has the form of `/sso/oauth2/callback/:alias`. The `alias` is used 
 4. **Save** the settings.
 
 🎉 Done! You have just added Microsoft AD FS Login to your apps!
+
+### Force Users to Re-authenticate
+
+Microsoft AD FS supports the `prompt=login` parameter. You can include this parameter in your request when you want users to re-authenticate. See our [guide on using the prompt=login parameter](../force-social-enterprise-login-providers-to-show-login-screen.md) in Authgear SDKs to learn more.

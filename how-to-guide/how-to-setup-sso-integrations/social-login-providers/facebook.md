@@ -6,7 +6,7 @@ description: Add Facebook Sign in to your apps in less than 5 minutes.
 
 This guide shows how to connect your Authgear application to Facebook so users can log in using the Login with Facebook feature.
 
-<figure><img src="../../.gitbook/assets/authgear-login-fb.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/authgear-login-fb.png" alt=""><figcaption></figcaption></figure>
 
 ## Step 1: Create an App in Facebook for Developers
 
@@ -20,13 +20,13 @@ You will need a Facebook developer Account. Register as one by clicking **Get St
 
 To create a new app, go to the Facebook Developers [Apps](https://developers.facebook.com/apps) panel then click the Click **Create App** button.
 
-<figure><img src="../../.gitbook/assets/facebook-devs-app-landing.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/facebook-devs-app-landing.png" alt=""><figcaption></figcaption></figure>
 
 On the next screen, select **Other** as your app **use case** then, click **Next**.
 
 In the **app type** selection screen, pick the option that best meets your requirements. For our example, we'll select the **Consumer** app type.
 
-<figure><img src="../../.gitbook/assets/facebook-devs-select-app-type.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/facebook-devs-select-app-type.png" alt=""><figcaption></figcaption></figure>
 
 Enter your app name on the next screen and finish the app creation process.
 
@@ -38,12 +38,12 @@ Enter your app name on the next screen and finish the app creation process.
 4. Make sure **Client OAuth Login** and **Web OAuth Login** are enabled.
 5. Add `https://<YOUR_AUTHGEAR_ENDPOINT>/sso/oauth2/callback/facebook` to **Valid OAuth Redirect URIs** and save the changes.&#x20;
 
-![](../../.gitbook/assets/facebook\_setup\_ouath\_client.png)
+![](../../../.gitbook/assets/facebook\_setup\_ouath\_client.png)
 
 {% hint style="info" %}
 Redirect URI has the form of `https://<YOUR_AUTHGEAR_ENDPOINT>/sso/oauth2/callback/:alias`. The `alias` is used as the identifier of OAuth provider. You can configure the `alias` in Authgear Portal.
 
-See [Your Authgear Endpoint](../../reference/glossary.md#your-authgear-endpoint) for instructions on how to get the value for `YOUR_AUTHGEAR_ENDPOINT`.
+See [Your Authgear Endpoint](../../../reference/glossary.md#your-authgear-endpoint) for instructions on how to get the value for `YOUR_AUTHGEAR_ENDPOINT`.
 {% endhint %}
 
 ## Step 3: Configure Login with Facebook in Authgear Portal
@@ -52,7 +52,7 @@ See [Your Authgear Endpoint](../../reference/glossary.md#your-authgear-endpoint)
 
 After setting up the Facebook Login product, go to **App settings** > **Basic** in the sidebar.
 
-![](../../.gitbook/assets/facebook-devs-oauth-details.png)
+![](../../../.gitbook/assets/facebook-devs-oauth-details.png)
 
 You will need the **App ID** and **App Secret** to configure Facebook Login so, note them down.
 
@@ -63,10 +63,10 @@ You will need the **App ID** and **App Secret** to configure Facebook Login so, 
 3. Fill in the **Client ID** with the **App ID** obtained from the Facebook Developers portal in the previous step.
 4. **Save** the settings.
 
-<figure><img src="../../.gitbook/assets/authgear-social-fb.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/authgear-social-fb.png" alt=""><figcaption></figcaption></figure>
 
 🎉 Done! You have just added Facebook Login to your apps!
 
-Your end-users can now sign in with Facebook on Authgear's pre-built Log In and Sign Up page. Existing end-users can connect their account to Facebook in the [User Settings](../built-in-ui/auth-ui.md) page.
+Your end-users can now sign in with Facebook on Authgear's pre-built Log In and Sign Up page. Existing end-users can connect their account to Facebook in the [User Settings](../../built-in-ui/auth-ui.md) page.
 
-![Your end-users can connect to their Facebook account in User Settings page](../../.gitbook/assets/connect\_with\_facebook.png)
+![Your end-users can connect to their Facebook account in User Settings page](../../../.gitbook/assets/connect\_with\_facebook.png)

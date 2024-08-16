@@ -13,14 +13,14 @@ To create a website application in WeChat, you can choose to setup a website app
 * View the application detail page, obtain the "AppID" and "AppSecret" on the top of the application page.
 * Go to Account Center > Basic information, to obtain the "原始ID".
 
-![](<../../.gitbook/assets/wechat-account-id (1).png>)
+![](<../../../.gitbook/assets/wechat-account-id (1).png>)
 
 ### Setup the Sandbox Application (微信公众平台接口测试帐号)
 
 * Use your WeChat app to login in [微信公众平台接口测试帐号申请](https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login).
 * Obtain the "appID", "appSecret" and "原始ID". The "原始ID" is the "微信号" in the top right corner.
 
-![](../../.gitbook/assets/wechat-sandbox-account-id.png)
+![](../../../.gitbook/assets/wechat-sandbox-account-id.png)
 
 * Fill in 接口配置信息. The URL must be pointing at a publicly reachable server. The token is a string of your choice.
 * Implement the 接口配置信息 server. Here is an example written in Golang.
@@ -118,11 +118,11 @@ Here are the detailed steps for iOS, Android, React Native, and Flutter.
 * Create Mobile Application (移动应用), fill in information and wait for approval (It may take few days).
 * View the application detail page, obtain the `AppID` and `AppSecret` on the top of the page.
 
-![](../../.gitbook/assets/wechat-mobile-app-id.png)
+![](../../../.gitbook/assets/wechat-mobile-app-id.png)
 
 * Go to Account Center > Basic information, to obtain the "原始ID".
 
-![](<../../.gitbook/assets/wechat-account-id (1).png>)
+![](<../../../.gitbook/assets/wechat-account-id (1).png>)
 
 * Save those values, we will need them in the section below.
 
@@ -148,7 +148,7 @@ Here are the detailed steps for iOS, Android, React Native, and Flutter.
   * **WECHAT\_REDIRECT\_URI\_FOR\_AUTHGEAR**: `https://{YOUR_DOMAIN}/open_wechat_app`
 * Login WeChat Open platform, open the application detail page, update the development information iOS section.
 
-![](<../../.gitbook/assets/wechat-development-information (5) (5) (5) (5) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (8).png>)
+![](<../../../.gitbook/assets/wechat-development-information (5) (5) (5) (5) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (8).png>)
 
 * Fill in "Bundle ID" field with your app bundle id.
 * Fill in "Universal Links" with "WECHAT\_UNIVERICAL\_LINK" above.
@@ -270,7 +270,7 @@ Here are the detailed steps for iOS, Android, React Native, and Flutter.
 * Follow [Android接入指南](https://developers.weixin.qq.com/doc/oplatform/Mobile\_App/Access\_Guide/Android.html) to setup Wechat SDK. For the coding part, we will further explain in the below steps.
 * Login WeChat Open platform, open the application detail page, update the development information Android section.
 
-![](<../../.gitbook/assets/wechat-development-information (5) (5) (5) (5) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (10).png>)
+![](<../../../.gitbook/assets/wechat-development-information (5) (5) (5) (5) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (10).png>)
 
 * Fill in application signature, you can obtain it with command `keytool -list -v -keystore YOUR_KEYSTORE_FILE_PATH`. WeChat needs the certificate fingerprint in MD5, remove `:` in the fingerprint. It should be string in length 32.
 * Fill in your package name
@@ -415,7 +415,7 @@ Here are the detailed steps for iOS, Android, React Native, and Flutter.
 * In android, you need to sign your app to use WeChat SDK. Obtain your application signature by running command `keytool -list -v -keystore YOUR_KEYSTORE_FILE_PATH` with your keystore file. WeChat needs the certificate fingerprint in MD5, remove `:` in the fingerprint. It should be string in length 32.
 * Login WeChat Open platform, open the application detail page, update the development information iOS and Android sections.
 
-![](<../../.gitbook/assets/wechat-development-information (5) (5) (5) (5) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (13).png>)
+![](<../../../.gitbook/assets/wechat-development-information (5) (5) (5) (5) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (13).png>)
 
 * In iOS
   * Fill in "Bundle ID" field with your app bundle id.
@@ -545,7 +545,7 @@ Here are the detailed steps for iOS, Android, React Native, and Flutter.
 * In android, you need to sign your app to use WeChat SDK. Obtain your application signature by running command `keytool -list -v -keystore YOUR_KEYSTORE_FILE_PATH` with your keystore file. WeChat needs the certificate fingerprint in MD5, remove `:` in the fingerprint. It should be string in length 32.
 * Login WeChat Open platform, open the application detail page, update the development information iOS and Android sections.
 
-![](<../../.gitbook/assets/wechat-development-information (5) (5) (5) (5) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (13).png>)
+![](<../../../.gitbook/assets/wechat-development-information (5) (5) (5) (5) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (13).png>)
 
 * In iOS
   * Fill in "Bundle ID" field with your app bundle id.

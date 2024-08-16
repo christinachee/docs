@@ -32,3 +32,7 @@ Redirect URI has the form of `/sso/oauth2/callback/:alias`. The `alias` is used 
 6. **Save** the settings.
 
 🎉 Done! You have just added Azure Active Directory (Azure AD) Login to your apps!
+
+### Force Login page
+
+Azure Active Directory automatically logs in to the same account without requiring a username and password. To prevent this behaviour, you can use the `prompt=login` parameter to force Azure Active Directory to show the login page. See our [guide on using the prompt=login parameter](../force-social-enterprise-login-providers-to-show-login-screen.md) in Authgear SDKs to learn more.
