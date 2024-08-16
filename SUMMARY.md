@@ -126,6 +126,7 @@
 ## Security
 
 * [Brute-force Protection](security/brute-force-protection.md)
+* [Bot Protection](security/bot-protection.md)
 * [Non-HTTP scheme redirect URI](security/redirect-uri.md)
 * [Password Strength](security/password-strength.md)
 
