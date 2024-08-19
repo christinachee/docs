@@ -78,29 +78,63 @@ To continue and finish the authentication flow, you can send the value for `stat
 
 **Request method:** POST
 
+To help you understand the structure of the Authentication Flow API HTTP(S) request, here is an example of an actual request in Postman:
+
+<figure><img src="../../.gitbook/assets/authflow-api-postman.png" alt=""><figcaption></figcaption></figure>
+
 **Request body:**
 
 ```json
 {
     "state_token": "authflowstate_VGHZ8SBCKGZK2KW84TCAKWGM8QZH0B69",
-    "batch_input": [
-      {
-            "identification": "email",
-            "login_id": "user@example.com"
-      },
-      {
-          "authentication": "primary_password",
-          "password": "12345678"
-      }
-    ]
+    "input": {
+        "identification": "email",
+        "login_id": "user@example.com"
+    }
 }
 ```
 
-In this second request (or second step of the authentication flow), we use the `state_token` to pass the user ID and password for the user we want to log in to our application.
+In this second request (or second step of the authentication flow), we use the `state_token` from the response to the previous request in the request body to continue the authentication flow. The request body includes the `input` field that passes the type of  `identification`  the user will provide (for example, `email`) and the `login_id` which is the actual value for the user's identification.
 
-You may send more requests just like this second request depending on the number of steps required for your specific authentication flow.
+The response to the above request should look like this:
+
+```json
+{
+    "result": {
+        "state_token": "authflowstate_ABCJVB0IJKLQ2S1K2G34RX56R1C1E789",
+        "type": "login",
+        "name": "default",
+        "action": {
+            "type": "authenticate",
+            "data": {
+                "type": "authentication_data",
+                "options": [
+                    {
+                        "authentication": "primary_password"
+                    }
+                ],
+                "device_token_enabled": false
+            }
+        }
+    }
+}
+```
+
+You may send more requests just like this second request depending on the number of steps required for your specific authentication flow. For example, to complete the login authentication flow, send another request with the the authenticator (password) like this:
+
+```json
+{
+    "state_token": "authflowstate_ABCJVB0IJKLQ2S1K2G34RX56R1C1E789",
+    "input": {
+        "authentication": "primary_password",
+        "password": "sup3r$tr0ngpa$$"
+    }
+}
+```
 
 To use the Authentication Flow API to build your custom UI, you need to configure a Custom UI URI in the Authgear portal. This URI should point to your custom authentication page.
+
+For more details about the Authentication Flow API endpoints, inputs, response, and more visit the [API reference page](../../reference/apis/authentication-flow-api.md).
 
 ### How the Authentication Flow API Works
 
