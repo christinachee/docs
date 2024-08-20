@@ -178,3 +178,4 @@
   * [Google Cloud Reference Architecture](deploy-on-your-cloud/reference-architecture-diagrams/google-cloud-reference-architecture.md)
   * [Azure Reference Architecture](deploy-on-your-cloud/reference-architecture-diagrams/azure-reference-architecture.md)
   * [AWS Reference Architecture](deploy-on-your-cloud/reference-architecture-diagrams/aws-reference-architecture.md)
+  * [Throughput Scaling Reference](deploy-on-your-cloud/reference-architecture-diagrams/throughput-scaling-reference.md)
