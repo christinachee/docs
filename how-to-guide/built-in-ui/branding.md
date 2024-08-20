@@ -66,13 +66,19 @@ Under the Links section, you'll find options to set the text color for links in 
 
 **Link color:** Use this option to set the text color for links in AuthUI. The value should be a hexadecimal color code.
 
+**Link decoration:** You can use this option to add the `underline` text-decoration to links that are displayed in AuthUI.
+
+<figure><img src="../../.gitbook/assets/authgear-design-underline-link.png" alt="" width="375"><figcaption></figcaption></figure>
+
+
+
 **Privacy Policy:** Use this option to add a link to your privacy policy page.
 
 **Terms of Service:** Use this option to set a custom link for your terms of service
 
 **Customer Support:** Use this option to add a link to your support page.
 
-Note that leaving the links properties unset will fall back to primary language settings.
+Note that when any of the link properties is unset AuthUI will fall back to the primary language's default settings.
 
 #### 9. Input field
 
