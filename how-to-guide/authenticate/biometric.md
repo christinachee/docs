@@ -16,7 +16,21 @@ Authgear supports enabling biometric login in the native mobile application. You
 
 A pair of cryptographic keys will be generated upon registering biometric login. The private key will be stored securely in the device (using Keystore in Android and Keychain in iOS), while the public key is stored in the Authgear server. To authenticate the user, fingerprint or face is presented to unlock the private key, and a digital signed message is sent to the server to proof the authenticity of the user.
 
-Sounds overwhelming? Authgear's magic handle all these for you. Follow this guide to enable biometric login in your app with a few lines of code.
+**Fig 1.0. The following figure shows the sequence for enabling Biometric Login on a supported device:**
+
+<figure><img src="../../.gitbook/assets/Enable Biometric-2024-07-31-205050.png" alt=""><figcaption><p>Enable Biometric Login</p></figcaption></figure>
+
+The Client App that is already logged in to a user's account will check if biometrics is supported by the user's device. If the device supports biometric login, it is then enabled. The public key is sent to Authgear server and associated with the logged-in user's account.
+
+The flow is then completed and biometric login is enabled for the user on the Client App.
+
+**Fig 2.0. The following figure shows the sequence for a user logging in with Biometric:**
+
+<figure><img src="../../.gitbook/assets/Login with Biometric-2024-07-31-205100.png" alt=""><figcaption><p>Logging in with Biometric</p></figcaption></figure>
+
+With biometric login already enabled for the user, the next time they need to log in they can initiate a biometric authentication flow which will follow the sequence shown in Fig 2.0 above. Once the biometric login is successful, Authgear server will return an access token and a refresh token. The client application can then use the access token to make authenticated requests.
+
+Sounds overwhelming? Authgear's magic handles all these for you. Follow this guide to enable biometric login with a few lines of code in your app.
 
 ## Enable biometric authentication for your project
 
