@@ -65,6 +65,8 @@ The following are the two types of 2FA grace periods you can set for your Authge
 
 **Individual Grace Period:** This is a type of grace period that is set per user. It grants a user 10 days to set up 2FA for their account. This is ideal for allowing individual users to set up 2FA when the Global Grace Period is disabled.
 
+### How to roll out mandatory 2FA:
+
 The following steps show how to roll out Mandatory 2FA using grace periods:
 
 1. Change 2FA requirement policy to Mandatory
