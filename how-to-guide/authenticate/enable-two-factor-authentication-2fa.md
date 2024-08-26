@@ -55,7 +55,7 @@ Use the **up** and **down** allows on the right of each method to order the prio
 
 Once you're done, click on the **Save** button at the top-left of the 2-Factor Authentication page to keep your new settings.
 
-## 2. 2FA Grace Period and How 2FA Should Be Rolled Out
+## 2. Grace Period in Mandatory 2FA
 
 The 2FA Grace Period feature grants your users some time to set up 2FA for their accounts. This is very helpful for the Mandatory enforcement of 2FA.
 
@@ -65,7 +65,7 @@ The following are the two types of 2FA grace periods you can set for your Authge
 
 **Individual Grace Period:** This is a type of grace period that is set per user. It grants a user 10 days to set up 2FA for their account. This is ideal for allowing individual users to set up 2FA when the Global Grace Period is disabled.
 
-### How to roll out mandatory 2FA:
+### How to roll out Mandatory 2FA
 
 The following steps show how to roll out Mandatory 2FA using grace periods:
 
