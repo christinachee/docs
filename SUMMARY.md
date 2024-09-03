@@ -142,6 +142,7 @@
     * [API Schema](reference/apis/admin-api/api-schema.md)
     * [Admin API Examples](reference/apis/admin-api/api-queries-and-mutations.md)
     * [Using global node IDs](reference/apis/admin-api/node-id.md)
+    * [Retrieving users using Admin API](reference/apis/admin-api/retrieving-users-using-admin-api.md)
     * [User Management Examples](reference/apis/admin-api/api-examples/README.md)
       * [Search for users](reference/apis/admin-api/api-examples/search-for-users.md)
       * [Update user's standard attributes](reference/apis/admin-api/api-examples/update-users-standard-attributes.md)
